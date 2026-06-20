@@ -1,0 +1,9 @@
+* text=auto
+
+*.dll binary
+*.dylib binary
+*.ogg binary
+*.pdb binary
+*.png binary
+*.so binary
+*.ttf binary
