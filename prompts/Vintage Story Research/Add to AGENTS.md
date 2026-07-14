@@ -1,7 +1,7 @@
 ## Vintage Story Research
 
-When this project needs Vintage Story game, API, asset, recipe, patch, Config Lib, or indexed
-mod-reference knowledge, use the Vintage Story Reference repository:
+When this project needs Vintage Story game, API, asset, recipe, patch, decompiled code, external documentation, or
+indexed mod-reference knowledge, use the Vintage Story Reference repository:
 
 ```text
 ..\Vintage Story Reference
@@ -13,31 +13,5 @@ Before researching, read and follow:
 ..\Vintage Story Reference\prompts\Vintage Story Research\VINTAGE_STORY_RESEARCH.md
 ```
 
-Then read the current reference usage guide:
-
-```text
-..\Vintage Story Reference\INDEX_USAGE.md
-```
-
-Always query the SQLite indexes before opening raw files:
-
-- `versions\<game-version>\Index\assets.sqlite`
-  - for assets, JSON, recipes, blocks, items, textures, shapes, lang files, worldgen, and patches.
-- `versions\<game-version>\Index\code.sqlite`
-  - for API symbols, decompiled C# types, methods, inheritance, member signatures, and source locations.
-- `versions\<game-version>\Index\web.sqlite`
-  - for curated external documentation such as Config Lib JSON API behavior and indexed mod overview pages.
-
-Use the target Vintage Story version for `<game-version>`.  If the target version is unclear, inspect this project's
-files and project memory first, then use `..\Vintage Story Reference\INDEX_USAGE.md` to identify the currently indexed
-versions and make any fallback version assumption explicit.
-
-Use the helper scripts under
-
-- `tools\asset-index`
-- `tools\code-index`
-- `tools\web-index`
-
-with small result limits.  Open raw reference files only after an index returns specific candidate paths or line numbers.
-Do not recursively scan the full reference trees, do not load binary assets into text context, and do not treat
-`NOTES.md` as authoritative metadata.
+That prompt defines when and how to use the archive, including version selection, index-first research, raw-file access,
+and safety rules.

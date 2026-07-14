@@ -44,7 +44,7 @@ Project-specific structure decision: `prompts/` is intentionally kept at the rep
 
 The Vintage Story Research prompt is deliberately separate from `INDEX_USAGE.md`: `INDEX_USAGE.md` documents this repository's current indexes and commands, while `prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md` is the reusable instruction set that can be referenced or copied into other projects.
 
-The drop-in `prompts/Vintage Story Research/Add to AGENTS.md` snippet should remain version-agnostic. It should refer to `versions/<game-version>/...` and instruct consuming projects to determine their target Vintage Story version, then consult `INDEX_USAGE.md` for currently indexed versions. Do not hardcode `1.22.3` in that reusable snippet; version-specific paths belong in `INDEX_USAGE.md`, manifests, or local examples.
+The drop-in `prompts/Vintage Story Research/Add to AGENTS.md` snippet should stay short, version-agnostic, and broadly scoped. It should tell consuming projects when to use the Vintage Story Reference archive and where to read the full research prompt. It should not name one indexed mod as though it is special; detailed examples, index paths, version-selection rules, and research mechanics belong in `prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md`, `INDEX_USAGE.md`, manifests, or local examples.
 
 ## External interfaces and integrations
 
@@ -120,3 +120,5 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - Added `prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md` and `prompts/Vintage Story Research/Add to AGENTS.md` so other Codex-assisted projects can adopt the index-first Vintage Story research workflow.
 - Updated README, INDEX_USAGE, AGENTS, and project memory to document the Vintage Story Research prompt bundle.
 - Revised the Vintage Story Research AGENTS snippet and full prompt to avoid hardcoding `1.22.3`; reusable instructions now use `<game-version>`/`$v` and tell agents to consult `INDEX_USAGE.md` for current indexed versions.
+- Shortened `prompts/Vintage Story Research/Add to AGENTS.md` so it only declares when to use the archive and where the full instructions live.
+- Removed the specific Config Lib mention from the Vintage Story Research AGENTS snippet so the trigger text remains about broad reference categories rather than one indexed mod.
