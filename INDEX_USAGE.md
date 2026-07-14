@@ -1,11 +1,13 @@
 # Vintage Story Reference Instructions for AI Projects
 
-This repository is a local reference library for AI-assisted Vintage Story modding work. Other projects should use it as a searchable reference source, not as a project to build or copy wholesale.
+This repository is a local reference library for AI-assisted Vintage Story modding work.  Other projects should use it
+as a searchable reference source, not as a project to build or copy wholesale.
 
-The most important rule: query the SQLite indexes first. Do not recursively scan or read the full `Assets`, `API`, or `mods` trees unless an index cannot answer the question.
+Always query the SQLite indexes first.  Do not recursively scan or read the full `Assets`, `API`, or `mods` trees unless
+an index cannot answer the question.
+
 
 ## Instruction Block for Other AI Projects
-
 Use this text when pointing another AI-enabled project at this repository:
 
 ```text
@@ -103,7 +105,9 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.s
 E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.index.json
 ```
 
-At the time these instructions were written, the `1.22.3` asset index covered about `21,921` vanilla and mod asset files, the code index covered about `4,100` C# files, `4,233` types, and `20,372` members, and the web index covered `2` external documentation sources split into `35` sections. Treat those as sanity-check values, not permanent truth.
+At the time these instructions were written, the `1.22.3` asset index covered about `21,921` vanilla and mod asset
+files, the code index covered about `4,100` C# files, `4,233` types, and `20,372` members, and the web index covered `2`
+external documentation sources split into `35` sections. Treat those as sanity-check values, not permanent truth.
 
 ## Recommended Workflow
 
