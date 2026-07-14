@@ -12,6 +12,8 @@ The repository currently documents Vintage Story `1.22.3` as the indexed version
 
 The Config Lib JSON API GitHub wiki page and VS Village Mod DB page are indexed as curated external documentation. The source manifest is `versions/1.22.3/Web/sources.json`; the generated SQLite index is `versions/1.22.3/Index/web.sqlite`; the generated manifest is `versions/1.22.3/Index/web.index.json`; query tooling is under `tools/web-index`.
 
+The repository also contains a root-level `prompts/` catalog for reusable Codex agent operating standards. Current prompt bundles cover persistent project memory, Vintage Story mod coding standards, and project/Git hygiene. `AGENTS.md` intentionally points at these project-local prompt files instead of the older sibling `Shared Agent Skills` folder.
+
 The working tree contains many untracked reference and index files. Treat those as existing user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
@@ -21,6 +23,8 @@ No active work is currently in progress. The Config Lib web documentation index 
 ## Durable technical knowledge
 
 Agents should query the SQLite indexes before reading raw reference trees. Asset questions should start with `assets.sqlite`; C# and symbol questions should start with `code.sqlite`; curated external documentation questions should start with `web.sqlite` once present.
+
+Other Codex-assisted projects should read `INDEX_USAGE.md` when they need to use this repository as a Vintage Story knowledge source. They should read or adopt files under `prompts/` when they need the user's agent operating standards.
 
 The Config Lib JSON API upstream source is the GitHub wiki page at `https://github.com/maltiez2/vsmod_configlib/wiki/JSON-API`. Its raw Markdown endpoint is `https://raw.githubusercontent.com/wiki/maltiez2/vsmod_configlib/JSON-API.md`.
 
@@ -35,6 +39,8 @@ The web documentation index follows the existing project pattern of generated SQ
 The Markdown splitter ignores headings inside fenced code blocks. This matters for the Config Lib page because YAML examples contain decorative `###` lines that should remain example text rather than becoming documentation headings.
 
 The web index builder supports both Markdown-like sources and scoped HTML sources. For HTML pages, it converts selected HTML into Markdown-like text before sectioning so headings, lists, and paragraphs remain searchable through the same `sections` and `web_text` tables.
+
+Project-specific structure decision: `prompts/` is intentionally kept at the repository root as a reusable prompt catalog, and `.codex/skills/` is intentionally kept for project-local Codex skills. This overrides the generic project standard that ordinary documentation belongs under `docs/`.
 
 ## External interfaces and integrations
 
@@ -85,6 +91,8 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `tools/asset-index` - Asset index builder and query helper.
 - `tools/code-index` - Decompiled C# code index builder and query helper.
 - `tools/web-index` - Curated external documentation index builder and query helper.
+- `prompts` - Reusable Codex agent prompt standards for project memory, coding standards, and project/Git hygiene.
+- `.codex/skills` - Project-local Codex skills for indexing assets, indexing decompiled C# code, and updating reference mod folders.
 - `versions/1.22.3/Index` - Generated SQLite indexes and manifests.
 - `versions/1.22.3/Web/sources.json` - Curated external web documentation source list.
 
@@ -102,3 +110,6 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - Extended the web index builder to normalize scoped HTML pages into searchable sections.
 - Rebuilt `web.sqlite`; the web index now contains `2` sources and `35` sections, including `21` VS Village sections.
 - Verified VS Village searches for village founding, pathfinding commands, and village generation.
+- Updated `AGENTS.md` to use the project-local prompt catalog under `prompts/` for persistent memory, coding standards, and project/Git hygiene.
+- Documented `prompts/` and `.codex/skills/` in `README.md`, `INDEX_USAGE.md`, and project memory.
+- Updated the prompt catalog's small `Add to AGENTS` snippets so they point at the Vintage Story Reference prompt catalog instead of the old sibling `Shared Agent Skills` folder.

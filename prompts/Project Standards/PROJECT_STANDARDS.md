@@ -274,11 +274,11 @@ Add the following to each project's root-level `AGENTS.md`:
 ```markdown
 ## Shared Project Standards
 
-Read and follow the shared Project Standards skill before making project changes:
+Before making changes, read and follow:
 
-`../Shared Agent Skills/PROJECT_STANDARDS.md`
+`E:\Gaming\Vintage Story\mods\Vintage Story Reference\prompts\Project and Git Hygiene\PROJECT_STANDARDS.md`
 
 These shared standards apply unless this project's `AGENTS.md` contains a more specific instruction that explicitly overrides them.
 ```
 
-This relative path assumes that the project and `Shared Agent Skills` are sibling folders under the common `mods/` directory. It remains valid when the entire `mods/` directory is moved.
+This path points to the prompt catalog maintained in the Vintage Story Reference repository. If the prompt catalog is copied into another repository, update the path in that repository's `AGENTS.md` to the local copy.

@@ -1,6 +1,6 @@
 # Vintage Story Reference
 
-Versioned reference repository for Vintage Story decompiled assemblies, extracted assets, selected mods, and curated external documentation indexes.
+Versioned reference repository for Vintage Story decompiled assemblies, extracted assets, selected mods, curated external documentation indexes, and reusable Codex agent prompts/skills.
 
 For AI-enabled projects that want to use this repository without scanning the full reference trees, see `INDEX_USAGE.md`.
 
@@ -14,6 +14,8 @@ For AI-enabled projects that want to use this repository without scanning the fu
 - `Assets` - Extracted base asset trees such as `creative`, `game`, and `survival`.
 - `mods` - Selected mod assets, binaries, and supporting files.
 - `Web` - Curated external documentation source manifests for generated searchable web indexes.
+- `prompts` - Reusable agent prompt standards for project memory, coding style, and project/Git hygiene.
+- `.codex/skills` - Project-local Codex skills for maintaining and querying this reference repository.
 
 The version project is an index project for browsing and search. It is not intended to rebuild Vintage Story.
 
