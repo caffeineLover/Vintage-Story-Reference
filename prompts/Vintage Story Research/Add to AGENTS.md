@@ -21,12 +21,16 @@ Then read the current reference usage guide:
 
 Always query the SQLite indexes before opening raw files:
 
-- `versions\1.22.3\Index\assets.sqlite`
+- `versions\<game-version>\Index\assets.sqlite`
   - for assets, JSON, recipes, blocks, items, textures, shapes, lang files, worldgen, and patches.
-- `versions\1.22.3\Index\code.sqlite`
+- `versions\<game-version>\Index\code.sqlite`
   - for API symbols, decompiled C# types, methods, inheritance, member signatures, and source locations.
-- `versions\1.22.3\Index\web.sqlite`
+- `versions\<game-version>\Index\web.sqlite`
   - for curated external documentation such as Config Lib JSON API behavior and indexed mod overview pages.
+
+Use the target Vintage Story version for `<game-version>`.  If the target version is unclear, inspect this project's
+files and project memory first, then use `..\Vintage Story Reference\INDEX_USAGE.md` to identify the currently indexed
+versions and make any fallback version assumption explicit.
 
 Use the helper scripts under
 

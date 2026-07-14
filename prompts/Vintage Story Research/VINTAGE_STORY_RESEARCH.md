@@ -40,22 +40,25 @@ From PowerShell, define the reference root:
 
 ```powershell
 $vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
+$v = '<game-version>'
 ```
+
+Replace `<game-version>` with the target Vintage Story version. If the target version is unknown, inspect the consuming project first, then consult `INDEX_USAGE.md` for currently indexed versions and state any fallback assumption explicitly.
 
 Use `python -B` for all helper scripts so Python does not create `__pycache__` folders.
 
 Common queries:
 
 ```powershell
-python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.3\Index\assets.sqlite" --search copper --limit 20
-python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.3\Index\assets.sqlite" --category recipes --limit 20
-python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.3\Index\code.sqlite" --type ICoreAPI --limit 20
-python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.3\Index\code.sqlite" --member RegisterBlockClass --limit 20
-python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --list-sources
-python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --search "configlib-patches json" --limit 20
+python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\$v\Index\assets.sqlite" --search copper --limit 20
+python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\$v\Index\assets.sqlite" --category recipes --limit 20
+python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\$v\Index\code.sqlite" --type ICoreAPI --limit 20
+python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\$v\Index\code.sqlite" --member RegisterBlockClass --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\$v\Index\web.sqlite" --list-sources
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\$v\Index\web.sqlite" --search "configlib-patches json" --limit 20
 ```
 
-Adjust the `versions\1.22.3` path if `INDEX_USAGE.md` identifies a different version as relevant.
+If an index for the target version does not exist, do not silently use another version. Report the missing index and ask whether to use the nearest indexed version or update the reference archive.
 
 ## Research Workflow
 
