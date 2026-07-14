@@ -276,7 +276,7 @@ Add the following to each project's root-level `AGENTS.md`:
 
 Before making changes, read and follow:
 
-`E:\Gaming\Vintage Story\mods\Vintage Story Reference\prompts\Project and Git Hygiene\PROJECT_STANDARDS.md`
+`E:\Gaming\Vintage Story\mods\Vintage Story Reference\prompts\Project Standards\PROJECT_STANDARDS.md`
 
 These shared standards apply unless this project's `AGENTS.md` contains a more specific instruction that explicitly overrides them.
 ```

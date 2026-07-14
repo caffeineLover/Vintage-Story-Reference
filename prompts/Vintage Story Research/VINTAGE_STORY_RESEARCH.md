@@ -1,0 +1,90 @@
+# Vintage Story Research Instructions
+
+Use these instructions when a project needs to consult the Vintage Story Reference repository as an external knowledge source for Vintage Story modding, game behavior, APIs, assets, recipes, patches, Config Lib, indexed mod documentation, or examples from decompiled code.
+
+## Reference Repository
+
+The Vintage Story Reference repository is located at:
+
+```text
+E:\Gaming\Vintage Story\mods\Vintage Story Reference
+```
+
+Before using the reference repository, read and follow:
+
+```text
+E:\Gaming\Vintage Story\mods\Vintage Story Reference\INDEX_USAGE.md
+```
+
+That file is the authoritative usage guide for the current index layout, query scripts, indexed game versions, and limitations.
+
+## Core Rule
+
+Always query the SQLite indexes first. Do not recursively scan or bulk-read the raw `Assets`, `API`, or `mods` trees unless an index cannot answer the question and a narrow candidate path has already been identified.
+
+Use the indexes as locators and summaries:
+
+- Use the asset index for JSON assets, recipes, blocks, items, textures, shapes, lang files, worldgen, patches, and other asset metadata.
+- Use the code index for API symbols, decompiled C# types, methods, inheritance, member signatures, and source locations.
+- Use the web documentation index for curated external documentation, such as Config Lib JSON API behavior and indexed mod overview pages.
+
+## Version Discipline
+
+Identify the Vintage Story version targeted by the project or task before researching. If the target version is unknown, check the project files and project memory first. If it still cannot be determined, use the current indexed version from `INDEX_USAGE.md` only as an explicit assumption.
+
+Do not assume a newer or older Vintage Story version behaves the same. Prefer the index and source files under the matching `versions/<game-version>` folder.
+
+## Standard Query Setup
+
+From PowerShell, define the reference root:
+
+```powershell
+$vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
+```
+
+Use `python -B` for all helper scripts so Python does not create `__pycache__` folders.
+
+Common queries:
+
+```powershell
+python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.3\Index\assets.sqlite" --search copper --limit 20
+python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.3\Index\assets.sqlite" --category recipes --limit 20
+python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.3\Index\code.sqlite" --type ICoreAPI --limit 20
+python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.3\Index\code.sqlite" --member RegisterBlockClass --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --list-sources
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --search "configlib-patches json" --limit 20
+```
+
+Adjust the `versions\1.22.3` path if `INDEX_USAGE.md` identifies a different version as relevant.
+
+## Research Workflow
+
+1. Determine whether the question is about assets, C# code, external documentation, or a combination.
+2. Read the relevant manifest in `versions/<version>/Index` when counts, indexed roots, or freshness matter.
+3. Query the narrowest useful index with a small limit, usually `10` to `50`.
+4. Inspect the returned paths, line numbers, headings, snippets, or source URLs.
+5. Open raw files only after the index returns specific candidate files or line ranges.
+6. For exact C# behavior, read the specific source file and line range returned by the code index.
+7. For exact JSON behavior, read the specific asset file returned by the asset index.
+8. For curated web documentation, treat index entries as dated records and check the upstream URL when current upstream wording matters.
+9. Summarize findings with the source of truth used, including file paths, line numbers, query terms, or source URLs when useful.
+
+## Safety And Scope
+
+- Do not recursively read the full reference trees into context.
+- Do not load binary assets into text context.
+- Do not read or use `NOTES.md` as authoritative metadata; it is personal notes only.
+- Do not treat decompiled source as build-ready project source.
+- Do not treat `references_hint` as a complete call graph.
+- Do not edit the Vintage Story Reference repository from another project unless the user explicitly asks to update the reference archive itself.
+- If sandbox permissions prevent reading the reference repository, ask the user to add it as a readable workspace root or otherwise grant access. Do not ask the user to paste large source, asset, or index contents.
+
+## Applying Findings
+
+When using reference findings to change another project:
+
+- Prefer project-local abstractions and patterns over copying reference code.
+- Treat decompiled code as behavioral evidence, not as code to paste.
+- Keep compatibility notes version-specific.
+- Record durable discoveries in the consuming project's project memory if persistent memory is enabled.
+- Include enough reference context in the final answer that the user can tell which index, file, or documentation source supported the decision.

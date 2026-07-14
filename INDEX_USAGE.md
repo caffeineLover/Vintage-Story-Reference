@@ -6,9 +6,10 @@ as a searchable reference source, not as a project to build or copy wholesale.
 Always query the SQLite indexes first.  Do not recursively scan or read the full `Assets`, `API`, or `mods` trees unless
 an index cannot answer the question.
 
-`INDEX_USAGE.md` is the handoff document for using this repository as a Vintage Story knowledge source. For reusable
-agent operating standards such as persistent project memory, coding standards, and project/Git hygiene, use the
-project-local prompt catalog under `prompts/`.
+`INDEX_USAGE.md` is the handoff document for using this repository as a Vintage Story knowledge source. For a reusable
+AGENTS.md prompt that teaches other Codex-assisted projects this research workflow, use
+`prompts\Vintage Story Research\Add to AGENTS.md`. For reusable agent operating standards such as persistent project
+memory, coding standards, and project/Git hygiene, use the project-local prompt catalog under `prompts/`.
 
 
 ## Instruction Block for Other AI Projects
@@ -73,8 +74,8 @@ If sandbox permissions prevent reading this folder, ask the user to add the Vint
 
 - `prompts`
   - Reusable agent prompt standards maintained with this repository.
-  - Current prompt bundles cover persistent project memory, Vintage Story mod coding standards, and project/Git hygiene.
-  - Use these when a Codex-assisted project should adopt the user's agent operating standards, not when it only needs game/reference facts.
+  - Current prompt bundles cover persistent project memory, Vintage Story mod coding standards, project/Git hygiene, and Vintage Story research.
+  - Use `prompts\Vintage Story Research\Add to AGENTS.md` when another Codex-assisted project should learn how to consult this knowledge archive.
 
 - `.codex/skills`
   - Project-local Codex skills for indexing assets, indexing decompiled code, and updating reference mod folders.

@@ -2,7 +2,7 @@
 
 Before doing substantial work, read and follow:
 
-`E:\Gaming\Vintage Story\mods\Vintage Story Reference\prompts\Project Memory\PROJECT_MEMORY_INSTRUCTIONS.md`
+`E:\Gaming\Vintage Story\mods\Vintage Story Reference\prompts\Project Memory\PROJECT_MEMORY.md`
 
 Then read the project-specific memory file:
 

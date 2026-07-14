@@ -3,7 +3,7 @@ Before performing substantial work, read and follow the shared instructions at:
 
 `..\Vintage Story Reference\prompts\Project Memory\PROJECT_MEMORY.md`
 
-These instructions as mandatory.  Maintain this repository's project-specific memory at `docs/PROJECT_MEMORY.md`.
+These instructions are mandatory.  Maintain this repository's project-specific memory at `docs/PROJECT_MEMORY.md`.
 Before completing a work session, update that project memory as required by the shared instructions.
 
 
@@ -30,3 +30,6 @@ unless this `AGENTS.md` contains a more specific instruction that explicitly ove
 This repository intentionally keeps reusable agent prompts under the root-level `prompts/` folder and project-local
 Codex skills under `.codex/skills/`.  These folders are part of this reference project even though the shared project
 standards normally place documentation under `docs/`.
+
+The `prompts\Vintage Story Research\VINTAGE_STORY_RESEARCH.md` prompt teaches other Codex-assisted projects how to
+consult this repository as a searchable Vintage Story knowledge archive.
