@@ -1,6 +1,4 @@
-# Personal Notes
-
-This file is for personal notes only; not reference metadata for any specific Vintage Story version.
+# Peter's Personal Notes
 
 ## Skills
 - `Update Mods`: Checks all the mods; downloads updates; decompiles using dot net spy if necessary.  Won't delete  old
