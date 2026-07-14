@@ -122,3 +122,4 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - Revised the Vintage Story Research AGENTS snippet and full prompt to avoid hardcoding `1.22.3`; reusable instructions now use `<game-version>`/`$v` and tell agents to consult `INDEX_USAGE.md` for current indexed versions.
 - Shortened `prompts/Vintage Story Research/Add to AGENTS.md` so it only declares when to use the archive and where the full instructions live.
 - Removed the specific Config Lib mention from the Vintage Story Research AGENTS snippet so the trigger text remains about broad reference categories rather than one indexed mod.
+- Cleaned up this repository's root `AGENTS.md` so it uses project-local prompt paths instead of sibling-project paths through `..\Vintage Story Reference`.
