@@ -1,6 +1,6 @@
 # Vintage Story Reference
 
-Versioned reference repository for Vintage Story decompiled assemblies, extracted assets, and selected mods.
+Versioned reference repository for Vintage Story decompiled assemblies, extracted assets, selected mods, and curated external documentation indexes.
 
 For AI-enabled projects that want to use this repository without scanning the full reference trees, see `INDEX_USAGE.md`.
 
@@ -13,6 +13,7 @@ For AI-enabled projects that want to use this repository without scanning the fu
 - `API` - Decompiled game assemblies and their original decompiler-generated project files.
 - `Assets` - Extracted base asset trees such as `creative`, `game`, and `survival`.
 - `mods` - Selected mod assets, binaries, and supporting files.
+- `Web` - Curated external documentation source manifests for generated searchable web indexes.
 
 The version project is an index project for browsing and search. It is not intended to rebuild Vintage Story.
 

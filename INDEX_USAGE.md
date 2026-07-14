@@ -15,12 +15,14 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference
 Before scanning raw Vintage Story assets, mod assets, or decompiled C# source, query the reference indexes:
 - Asset index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\assets.sqlite
 - Code index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\code.sqlite
+- Web documentation index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.sqlite
 
 Use the helper query scripts:
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\asset-index\query_asset_index.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\code-index\query_code_index.py
+- E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\web-index\query_web_index.py
 
-Keep result limits small. Open raw files only after an index returns candidate paths and line numbers. Treat the indexes as locators and summaries, not as the final source of truth for exact implementation details. Do not read NOTES.md as metadata; it is personal notes only. Do not load binary assets into AI context.
+Keep result limits small. Open raw files only after an index returns candidate paths and line numbers. Treat the indexes as locators and summaries, not as the final source of truth for exact implementation details. Web documentation entries are dated index content; check the upstream URL when recency matters. Do not read NOTES.md as metadata; it is personal notes only. Do not load binary assets into AI context.
 
 If sandbox permissions prevent reading this folder, ask the user to add the Vintage Story Reference repository as a readable workspace root or otherwise grant read access. Do not ask the user to paste or attach the full asset/source trees.
 ```
@@ -43,16 +45,25 @@ If sandbox permissions prevent reading this folder, ask the user to add the Vint
   - Some mods include decompiled source folders. The code index includes decompiled mod code when present.
   - Old mod versions may remain side by side. Do not assume the newest-looking folder is the only relevant one; check manifests and folder names.
 
+- `versions/<game-version>/Web`
+  - Curated external documentation source manifests.
+  - These source lists feed the generated web documentation index.
+  - The web index is for searchable documentation knowledge, not local page snapshots.
+
 - `versions/<game-version>/Index`
   - Stable generated index artifacts.
   - `assets.sqlite` and `assets.index.json` describe assets.
   - `code.sqlite` and `code.index.json` describe decompiled C# code.
+  - `web.sqlite` and `web.index.json` describe curated external documentation.
 
 - `tools/asset-index`
   - Scripts for building and querying the asset index.
 
 - `tools/code-index`
   - Scripts for building and querying the code index.
+
+- `tools/web-index`
+  - Scripts for building and querying the curated external documentation index.
 
 - `NOTES.md`
   - Personal user notes. Do not treat this file as authoritative metadata.
@@ -85,18 +96,27 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\code.
 E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\code.index.json
 ```
 
-At the time these instructions were written, the `1.22.3` asset index covered about `21,921` vanilla and mod asset files and the code index covered about `4,100` C# files, `4,233` types, and `20,372` members. Treat those as sanity-check values, not permanent truth.
+Web documentation index:
+
+```text
+E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.sqlite
+E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.index.json
+```
+
+At the time these instructions were written, the `1.22.3` asset index covered about `21,921` vanilla and mod asset files, the code index covered about `4,100` C# files, `4,233` types, and `20,372` members, and the web index covered `1` external documentation source split into `14` sections. Treat those as sanity-check values, not permanent truth.
 
 ## Recommended Workflow
 
 1. Identify the Vintage Story version being targeted.
 2. Read the matching manifests in `versions/<version>/Index`.
 3. Query `assets.sqlite` for asset questions or `code.sqlite` for C# questions.
-4. Use small limits, usually `10` to `50`.
-5. Open only the raw files returned by the index.
-6. For exact behavior, read the specific source file and line range returned by the code index.
-7. For exact JSON details, read the specific asset file returned by the asset index.
-8. If the index is missing, stale, or for the wrong game version, ask the user to refresh the index from this reference project.
+4. Query `web.sqlite` for curated external documentation such as Config Lib JSON API behavior.
+5. Use small limits, usually `10` to `50`.
+6. Open only the raw files returned by the index.
+7. For exact behavior, read the specific source file and line range returned by the code index.
+8. For exact JSON details, read the specific asset file returned by the asset index.
+9. For external documentation, inspect the source URL when current upstream behavior matters.
+10. If the index is missing, stale, or for the wrong game version, ask the user to refresh the index from this reference project.
 
 ## Access From Another Workspace
 
@@ -111,6 +131,7 @@ Then call query scripts by absolute path:
 ```powershell
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.3\Index\assets.sqlite" --search copper --limit 20
 python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.3\Index\code.sqlite" --type ICoreAPI --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --search "conditional patches" --limit 20
 ```
 
 Use `python -B` so Python does not create `__pycache__` folders.
@@ -191,6 +212,40 @@ python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.
 
 The code index is a conservative symbol index, not a compiler. It is good for finding likely files, declarations, signatures, inheritance, and line numbers. For exact control flow or implementation details, open the returned source file and inspect the relevant lines.
 
+## Web Documentation Index
+
+Use `web.sqlite` for curated external documentation that is not part of the local game assets or decompiled code. This is currently useful for Config Lib JSON API questions.
+
+Important tables:
+
+- `sources`
+  - One row per external documentation page.
+  - Useful columns include `slug`, `title`, `url`, `raw_url`, `retrieved_at_utc`, `last_known_edited`, `applies_to`, and `content_hash`.
+
+- `sections`
+  - One row per heading-based documentation section.
+  - Useful columns include `heading_path`, `start_line`, `end_line`, and `body`.
+
+- `web_text`
+  - Full-text search table over source titles, heading paths, and section bodies.
+
+Web query examples:
+
+```powershell
+$vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
+
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --list-sources
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --search "configlib-patches json" --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --search "mapping values range logarithmic" --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --heading "Conditional patches" --limit 20
+```
+
+Current indexed web documentation sources in `1.22.3`:
+
+- `configlib-json-api` - Config Lib JSON API GitHub wiki page, last known edited `2024-05-14`, retrieved into the index on `2026-07-14`.
+
+The web index stores searchable documentation content in SQLite and a manifest, but it does not keep separate local HTML or Markdown snapshots. Treat web entries as dated reference material and use the `url` column when current upstream documentation matters.
+
 ## Current Code Roots in 1.22.3
 
 The current `1.22.3` code index includes:
@@ -231,6 +286,7 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference
 - Do not assume `1.22.3` is the right version for every future question.
 - Do not treat `references_hint` as a complete call graph.
 - Do not treat decompiled source as build-ready project source.
+- Do not treat web documentation index entries as live upstream content; they are dated index records.
 
 ## Refreshing Indexes
 
@@ -238,5 +294,6 @@ Other projects should generally consume these indexes as read-only. To refresh o
 
 - `index assets`
 - `index reference code`
+- `python -B tools\web-index\build_web_index.py --version 1.22.3`
 
 After refreshing, other projects should reread this file and the relevant manifests before querying.
