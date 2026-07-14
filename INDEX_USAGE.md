@@ -133,16 +133,16 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.s
 E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.index.json
 ```
 
-At the time these instructions were written, the `1.22.3` asset index covered about `21,921` vanilla and mod asset
-files, the code index covered about `4,100` C# files, `4,233` types, and `20,372` members, and the web index covered `2`
-external documentation sources split into `35` sections. Treat those as sanity-check values, not permanent truth.
+At the time these instructions were written, the `1.22.3` asset index covered about `22,052` vanilla and mod asset
+files, the code index covered about `4,320` C# files, `4,461` types, and `21,231` members, and the web index covered `4`
+external documentation sources split into `87` sections. Treat those as sanity-check values, not permanent truth.
 
 ## Recommended Workflow
 
 1. Identify the Vintage Story version being targeted.
 2. Read the matching manifests in `versions/<version>/Index`.
 3. Query `assets.sqlite` for asset questions or `code.sqlite` for C# questions.
-4. Query `web.sqlite` for curated external documentation such as Config Lib JSON API behavior or VS Village gameplay behavior.
+4. Query `web.sqlite` for curated external documentation such as Config Lib JSON API behavior, VS Village gameplay behavior, or RPVoiceChat administration and project docs.
 5. Use small limits, usually `10` to `50`.
 6. Open only the raw files returned by the index.
 7. For exact behavior, read the specific source file and line range returned by the code index.
@@ -256,7 +256,7 @@ The code index is a conservative symbol index, not a compiler. It is good for fi
 
 ## Web Documentation Index
 
-Use `web.sqlite` for curated external documentation that is not part of the local game assets or decompiled code. This is currently useful for Config Lib JSON API questions and VS Village gameplay/design-reference questions.
+Use `web.sqlite` for curated external documentation that is not part of the local game assets or decompiled code. This is currently useful for Config Lib JSON API questions, VS Village gameplay/design-reference questions, and RPVoiceChat server/project-reference questions.
 
 Important tables:
 
@@ -283,12 +283,16 @@ python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22
 python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --source vsvillage --search "Summoning Horn Settlement Keeper" --limit 20
 python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --source vsvillage --search "villager pathfinding command" --limit 20
 python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --source vsvillage --heading "Village Generation" --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --source rpvoicechat-server-administration --search "bitrate" --limit 20
+python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.3\Index\web.sqlite" --source rpvoicechat-github-readme --search "Opus RNNoise" --limit 20
 ```
 
 Current indexed web documentation sources in `1.22.3`:
 
 - `configlib-json-api` - Config Lib JSON API GitHub wiki page, last known edited `2024-05-14`, retrieved into the index on `2026-07-14`.
 - `vsvillage-moddb` - VS Village Mod DB page, last known modified `2026-06-09`, retrieved into the index on `2026-07-14`.
+- `rpvoicechat-server-administration` - RPVoiceChat Server Administration GitHub wiki page, last known edited `2026-07-14`, retrieved into the index on `2026-07-14`.
+- `rpvoicechat-github-readme` - RPVoiceChat GitHub README from the `development` branch, last known edited `2026-07-14`, retrieved into the index on `2026-07-14`.
 
 The web index stores searchable documentation content in SQLite and a manifest, but it does not keep separate local HTML or Markdown snapshots. Treat web entries as dated reference material and use the `url` column when current upstream documentation matters.
 
@@ -304,9 +308,11 @@ The current `1.22.3` code index includes:
 - `configlib_1.12.0/configlib_1.12.0 - decompiled`
 - `jaunt_3.0.0-rc.3/decompiled-assembly`
 - `petai_v5.1.1/decompiled assembly`
+- `rpvoicechat_2.5.8/RPVoiceChat`
 - `vsimgui_1.2.7/decompiled assemblies`
+- `wolftaming_v5.0.1/WolfTaming`
 
-Other mod folders may exist but may not be present in the code index if they do not contain decompiled `.cs` files.
+Other mod folders may exist but may not be present in the code index if they do not contain decompiled `.cs` files or project-style source folders.
 
 ## When To Open Raw Files
 

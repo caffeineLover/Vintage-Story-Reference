@@ -67,7 +67,7 @@ Use `.codex/skills/vintage-story-reference-mod-updater/SKILL.md` when downloadin
 After adding or updating a mod:
 
 1. Rebuild the asset index if the mod contains assets.
-2. Rebuild the code index if the mod contains decompiled C# source.
+2. Rebuild the code index if the mod contains decompiled C# source or a project-style source folder with a `.csproj`.
 3. Update `versions/<version>/version.catalog.json` if the change affects documented roots or summary counts.
 4. Update `INDEX_USAGE.md` if the list of indexed roots or consumer guidance changed.
 5. Update `docs/PROJECT_MEMORY.md` with durable notes, failed attempts, or risks.
