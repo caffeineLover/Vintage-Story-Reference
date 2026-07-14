@@ -2,6 +2,8 @@
 
 Versioned reference repository for Vintage Story decompiled assemblies, extracted assets, and selected mods.
 
+For AI-enabled projects that want to use this repository without scanning the full reference trees, see `INDEX_USAGE.md`.
+
 ## Versions
 
 - `versions/1.22.3` - Vintage Story 1.22.3 reference payload.
