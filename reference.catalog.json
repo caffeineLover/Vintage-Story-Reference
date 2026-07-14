@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "catalog_purpose": "Machine-readable discovery catalog for the Vintage Story Reference repository.",
+  "default_game_version": "1.22.3",
+  "documentation": {
+    "overview": "README.md",
+    "consumer_usage": "INDEX_USAGE.md",
+    "architecture": "docs/ARCHITECTURE.md",
+    "maintenance": "docs/MAINTAINING_REFERENCE.md",
+    "project_memory": "docs/PROJECT_MEMORY.md"
+  },
+  "query_wrapper": {
+    "path": "tools/reference-query.py",
+    "description": "Unified wrapper around the asset, code, and web query helpers."
+  },
+  "versions": {
+    "1.22.3": {
+      "path": "versions/1.22.3",
+      "catalog": "versions/1.22.3/version.catalog.json",
+      "description": "Vintage Story 1.22.3 reference payload."
+    }
+  },
+  "prompt_catalog": {
+    "root": "prompts",
+    "bundles": {
+      "project_memory": {
+        "instructions": "prompts/Project Memory/PROJECT_MEMORY.md",
+        "agents_snippet": "prompts/Project Memory/Add to AGENTS.md"
+      },
+      "coding_standards": {
+        "instructions": "prompts/Coding Standards/CODING_STANDARDS.md",
+        "agents_snippet": "prompts/Coding Standards/Add to AGENTS.md"
+      },
+      "project_standards": {
+        "instructions": "prompts/Project Standards/PROJECT_STANDARDS.md",
+        "agents_snippet": "prompts/Project Standards/Add to Agents.md"
+      },
+      "vintage_story_research": {
+        "instructions": "prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md",
+        "agents_snippet": "prompts/Vintage Story Research/Add to AGENTS.md"
+      }
+    }
+  },
+  "codex_skills": {
+    "asset_indexer": ".codex/skills/vintage-story-reference-asset-indexer/SKILL.md",
+    "code_indexer": ".codex/skills/vintage-story-reference-code-indexer/SKILL.md",
+    "mod_updater": ".codex/skills/vintage-story-reference-mod-updater/SKILL.md"
+  }
+}

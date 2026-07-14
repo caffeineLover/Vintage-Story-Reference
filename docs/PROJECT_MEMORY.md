@@ -14,6 +14,8 @@ The Config Lib JSON API GitHub wiki page and VS Village Mod DB page are indexed 
 
 The repository also contains a root-level `prompts/` catalog for reusable Codex agent operating standards and reference-research workflows. Current prompt bundles cover persistent project memory, Vintage Story mod coding standards, project/Git hygiene, and Vintage Story research. `AGENTS.md` intentionally points at these project-local prompt files instead of the older sibling `Shared Agent Skills` folder.
 
+The repository now has machine-readable discovery catalogs. `reference.catalog.json` is the root catalog for docs, prompts, skills, tools, and available versions. Each version should have `versions/<version>/version.catalog.json` for version-specific reference roots, indexes, manifests, and query/build scripts.
+
 The working tree contains many untracked reference and index files. Treat those as existing user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
@@ -23,6 +25,8 @@ No active work is currently in progress. The Config Lib web documentation index 
 ## Durable technical knowledge
 
 Agents should query the SQLite indexes before reading raw reference trees. Asset questions should start with `assets.sqlite`; C# and symbol questions should start with `code.sqlite`; curated external documentation questions should start with `web.sqlite` once present.
+
+For routine consumer queries, prefer `tools/reference-query.py`. It reads the catalogs, resolves the selected version, and delegates to the existing source-specific query helpers. The asset, code, and web query scripts remain the source-specific interfaces and should not be duplicated inside the wrapper.
 
 Other Codex-assisted projects should read `INDEX_USAGE.md` when they need to use this repository as a Vintage Story knowledge source. They can paste `prompts/Vintage Story Research/Add to AGENTS.md` into their own `AGENTS.md` to learn the index-first research workflow. They should read or adopt the other files under `prompts/` when they need the user's agent operating standards.
 
@@ -45,6 +49,8 @@ Project-specific structure decision: `prompts/` is intentionally kept at the rep
 The Vintage Story Research prompt is deliberately separate from `INDEX_USAGE.md`: `INDEX_USAGE.md` documents this repository's current indexes and commands, while `prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md` is the reusable instruction set that can be referenced or copied into other projects.
 
 The drop-in `prompts/Vintage Story Research/Add to AGENTS.md` snippet should stay short, version-agnostic, and broadly scoped. It should tell consuming projects when to use the Vintage Story Reference archive and where to read the full research prompt. It should not name one indexed mod as though it is special; detailed examples, index paths, version-selection rules, and research mechanics belong in `prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md`, `INDEX_USAGE.md`, manifests, or local examples.
+
+Architecture decision: keep consumer docs, maintainer docs, catalogs, scripts, and prompts separate. `README.md` remains a short overview; `INDEX_USAGE.md` is the current concrete consumer map; `docs/ARCHITECTURE.md` explains the system shape; `docs/MAINTAINING_REFERENCE.md` explains maintenance workflows; catalogs are small machine-readable pointers; generated manifests remain the detailed generated-index source of truth.
 
 ## External interfaces and integrations
 
@@ -77,6 +83,11 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqlite --source vsvillage --search "Summoning Horn Settlement Keeper"
 python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqlite --source vsvillage --search "villager pathfinding command"
 python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqlite --source vsvillage --heading "Village Generation"
+python -B tools\reference-query.py --list-versions
+python -B tools\reference-query.py --version 1.22.3 --list-indexes
+python -B tools\reference-query.py --version 1.22.3 asset --search copper --limit 5
+python -B tools\reference-query.py --version 1.22.3 code --type ICoreAPI --limit 5
+python -B tools\reference-query.py --version 1.22.3 web --list-sources
 ```
 
 On 2026-07-14, those commands succeeded. `git diff --check` reported only Git line-ending warnings for `INDEX_USAGE.md` and `README.md`.
@@ -95,8 +106,13 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `tools/asset-index` - Asset index builder and query helper.
 - `tools/code-index` - Decompiled C# code index builder and query helper.
 - `tools/web-index` - Curated external documentation index builder and query helper.
+- `tools/reference-query.py` - Unified query wrapper that resolves catalog paths and delegates to source-specific query helpers.
 - `prompts` - Reusable Codex agent prompt standards for project memory, coding standards, project/Git hygiene, and Vintage Story research.
 - `.codex/skills` - Project-local Codex skills for indexing assets, indexing decompiled C# code, and updating reference mod folders.
+- `reference.catalog.json` - Root machine-readable discovery catalog.
+- `versions/1.22.3/version.catalog.json` - Version-specific discovery catalog for the 1.22.3 reference payload.
+- `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
+- `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
 - `versions/1.22.3/Index` - Generated SQLite indexes and manifests.
 - `versions/1.22.3/Web/sources.json` - Curated external web documentation source list.
 
@@ -123,3 +139,7 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - Shortened `prompts/Vintage Story Research/Add to AGENTS.md` so it only declares when to use the archive and where the full instructions live.
 - Removed the specific Config Lib mention from the Vintage Story Research AGENTS snippet so the trigger text remains about broad reference categories rather than one indexed mod.
 - Cleaned up this repository's root `AGENTS.md` so it uses project-local prompt paths instead of sibling-project paths through `..\Vintage Story Reference`.
+- Added `reference.catalog.json` and `versions/1.22.3/version.catalog.json` as machine-readable discovery catalogs.
+- Added `tools/reference-query.py` as a unified wrapper around the asset, code, and web query helpers.
+- Added `docs/ARCHITECTURE.md` and `docs/MAINTAINING_REFERENCE.md`.
+- Updated `README.md`, `INDEX_USAGE.md`, and the Vintage Story Research prompt to document the catalog-and-wrapper workflow.

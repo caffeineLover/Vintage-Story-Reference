@@ -1,0 +1,76 @@
+# Vintage Story Reference Architecture
+
+This repository is a searchable reference archive for AI-assisted Vintage Story modding. It is not a normal mod project and is not intended to rebuild Vintage Story. Its main job is to make large reference trees usable through small, targeted indexes.
+
+## Main Audiences
+
+- Other Codex-assisted Vintage Story projects that need game, asset, API, or mod-reference knowledge.
+- Agents working in this repository to add versions, mods, websites, indexes, prompts, or skills.
+- Human maintainers who need to understand how the archive is organized.
+
+## Documentation Roles
+
+- `README.md` gives a short human overview and points to the right next documents.
+- `INDEX_USAGE.md` is the concrete consumer guide for the current archive layout, index paths, query commands, tables, and limitations.
+- `docs/ARCHITECTURE.md` explains how the repository's moving parts relate to each other.
+- `docs/MAINTAINING_REFERENCE.md` explains how to add and refresh reference material.
+- `docs/PROJECT_MEMORY.md` records durable project history, decisions, risks, and verified commands.
+
+## Prompt And Skill Roles
+
+- `prompts/` is the reusable prompt catalog. These files can be referenced or copied into other projects.
+- `prompts/Vintage Story Research/Add to AGENTS.md` is the short drop-in snippet for another project's `AGENTS.md`.
+- `prompts/Vintage Story Research/VINTAGE_STORY_RESEARCH.md` is the stable behavior prompt for using this archive correctly.
+- `.codex/skills/` contains project-local Codex skills for maintaining this archive.
+
+## Catalog Roles
+
+- `reference.catalog.json` is the root machine-readable discovery catalog.
+- `versions/<version>/version.catalog.json` is the version-specific discovery catalog.
+- Generated index manifests under `versions/<version>/Index/*.index.json` remain the source of truth for exact generated timestamps, detailed counts, roots, and limitations.
+- Source manifests such as `versions/<version>/Web/sources.json` record curated external inputs.
+
+Catalogs should point to existing manifests, scripts, prompts, and skills. They should not duplicate large generated details that already live in generated index manifests.
+
+## Tool Roles
+
+- `tools/reference-query.py` is the preferred consumer entry point when an agent wants one stable command shape.
+- `tools/asset-index/` builds and queries the asset SQLite index.
+- `tools/code-index/` builds and queries the decompiled C# code SQLite index.
+- `tools/web-index/` builds and queries the curated external documentation SQLite index.
+
+The wrapper delegates to the specialized query helpers. It should stay thin so the source-specific scripts remain the place where index-specific query behavior lives.
+
+## Version Layout
+
+Each version folder owns the reference payload and generated indexes for one Vintage Story game version:
+
+```text
+versions/<version>/
+  API/
+  Assets/
+  mods/
+  Web/
+  Index/
+  version.catalog.json
+```
+
+The `API`, `Assets`, and `mods` folders are raw reference material. Agents should not scan them broadly. The `Index` folder is the normal entry point for research.
+
+## Index Types
+
+- Asset index: searchable metadata and extracted facts for assets, JSON, recipes, shapes, textures, lang files, worldgen, and patches.
+- Code index: conservative symbol metadata for decompiled C# source, including types, members, inheritance, and source locations.
+- Web index: curated external documentation converted into searchable sections.
+
+Indexes are locators and summaries. Exact behavior still requires opening the specific raw source, asset, or upstream page identified by an index result.
+
+## Design Rules
+
+- Query indexes before opening raw files.
+- Keep consumer prompts stable and version-agnostic.
+- Keep `INDEX_USAGE.md` concrete and current.
+- Keep machine-readable catalogs small and pointer-oriented.
+- Treat web documentation entries as dated records.
+- Treat decompiled source as behavioral evidence, not source to paste into mods.
+- Do not treat `NOTES.md` as project metadata.

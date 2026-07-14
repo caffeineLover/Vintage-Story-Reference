@@ -11,6 +11,10 @@ AGENTS.md prompt that teaches other Codex-assisted projects this research workfl
 `prompts\Vintage Story Research\Add to AGENTS.md`. For reusable agent operating standards such as persistent project
 memory, coding standards, and project/Git hygiene, use the project-local prompt catalog under `prompts/`.
 
+For machine-readable discovery, use `reference.catalog.json` and `versions/<game-version>/version.catalog.json`.
+For a single query entry point, prefer `tools/reference-query.py`; the source-specific query scripts remain available
+when you need their exact interfaces.
+
 
 ## Instruction Block for Other AI Projects
 Use this text when pointing another AI-enabled project at this repository:
@@ -25,6 +29,7 @@ Before scanning raw Vintage Story assets, mod assets, or decompiled C# source, q
 - Web documentation index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.sqlite
 
 Use the helper query scripts:
+- E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\reference-query.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\asset-index\query_asset_index.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\code-index\query_code_index.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\web-index\query_web_index.py
@@ -62,6 +67,13 @@ If sandbox permissions prevent reading this folder, ask the user to add the Vint
   - `assets.sqlite` and `assets.index.json` describe assets.
   - `code.sqlite` and `code.index.json` describe decompiled C# code.
   - `web.sqlite` and `web.index.json` describe curated external documentation.
+  - Generated manifests remain the source of truth for exact index generation details.
+
+- `versions/<game-version>/version.catalog.json`
+  - Version-specific discovery catalog for reference roots, indexes, source manifests, and query/build scripts.
+
+- `reference.catalog.json`
+  - Root discovery catalog for available versions, docs, prompts, skills, and the query wrapper.
 
 - `tools/asset-index`
   - Scripts for building and querying the asset index.
@@ -71,6 +83,9 @@ If sandbox permissions prevent reading this folder, ask the user to add the Vint
 
 - `tools/web-index`
   - Scripts for building and querying the curated external documentation index.
+
+- `tools/reference-query.py`
+  - Unified wrapper that resolves the selected version and delegates to the asset, code, or web query helper.
 
 - `prompts`
   - Reusable agent prompt standards maintained with this repository.
@@ -144,6 +159,16 @@ $vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
 ```
 
 Then call query scripts by absolute path:
+
+```powershell
+python -B "$vsref\tools\reference-query.py" --list-versions
+python -B "$vsref\tools\reference-query.py" --version 1.22.3 --list-indexes
+python -B "$vsref\tools\reference-query.py" --version 1.22.3 asset --search copper --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.3 code --type ICoreAPI --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.3 web --search "conditional patches" --limit 20
+```
+
+The source-specific helpers are also available:
 
 ```powershell
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.3\Index\assets.sqlite" --search copper --limit 20

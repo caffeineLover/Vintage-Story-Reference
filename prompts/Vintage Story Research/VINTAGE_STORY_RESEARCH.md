@@ -47,7 +47,18 @@ Replace `<game-version>` with the target Vintage Story version. If the target ve
 
 Use `python -B` for all helper scripts so Python does not create `__pycache__` folders.
 
-Common queries:
+Prefer the unified wrapper for routine queries:
+
+```powershell
+python -B "$vsref\tools\reference-query.py" --version $v asset --search copper --limit 20
+python -B "$vsref\tools\reference-query.py" --version $v asset --category recipes --limit 20
+python -B "$vsref\tools\reference-query.py" --version $v code --type ICoreAPI --limit 20
+python -B "$vsref\tools\reference-query.py" --version $v code --member RegisterBlockClass --limit 20
+python -B "$vsref\tools\reference-query.py" --version $v web --list-sources
+python -B "$vsref\tools\reference-query.py" --version $v web --search "configlib-patches json" --limit 20
+```
+
+The source-specific helpers are still available when their exact interfaces are useful:
 
 ```powershell
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\$v\Index\assets.sqlite" --search copper --limit 20
