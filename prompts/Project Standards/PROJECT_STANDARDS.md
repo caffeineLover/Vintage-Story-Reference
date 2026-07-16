@@ -34,7 +34,6 @@ Every project must contain a root-level `AGENTS.md` file.
 Project-specific instructions belong in that file. Shared agent skills should be referenced rather than duplicated.
 
 ## Git
-
 Every project must be managed with Git.
 
 If a project is not already a Git repository, initialize Git before making project changes.
@@ -47,6 +46,12 @@ The repository should also contain:
 - A root-level `.editorconfig` file to standardize basic formatting across editors and coding agents.
 
 Do not rewrite published Git history. Do not move or reuse published tags, and do not force-push shared branches unless the user explicitly instructs you to do so.
+
+### Branches for Significant Work
+Before beginning a significant feature, enhancement, broad refactor, or otherwise intrusive code change, a coding agent
+must ask the user whether a new Git branch should be created. Small fixes, documentation edits, targeted investigations,
+and routine maintenance may remain on the current branch unless the user requests otherwise.
+
 
 ## Repository Reproducibility
 
