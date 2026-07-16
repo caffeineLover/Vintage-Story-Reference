@@ -141,6 +141,7 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 
 ### 2026-07-16
 
+- Changed GitHub repository `caffeineLover/Vintage-Story-Reference` visibility from public to private with `gh repo edit`; verified GitHub reports `PRIVATE`.
 - Pushed local `main` commits `cd267a53..865634aa` to `origin/main`.
 - Verified the branch was not behind `origin/main` before pushing.
 - Left the existing untracked reference, tool, mod, and index folders untouched.
