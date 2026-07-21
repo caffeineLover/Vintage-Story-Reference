@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vintage Story Reference Code Indexer"
+  short_description: "Use indexed VS reference code."
+  default_prompt: "Use $vintage-story-reference-code-indexer to query Vintage Story reference C# code through the local index."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "New Version Mods"
+  short_description: "Populate VS Reference mods for a version."
+  default_prompt: "Use $new-version-mods to download and decompile compatible reference mods for version <version>."

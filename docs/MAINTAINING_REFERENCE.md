@@ -8,23 +8,31 @@ This document records the maintainer workflows for adding or refreshing referenc
 2. Read `docs/PROJECT_MEMORY.md`.
 3. Check `git status --short` and preserve unrelated user changes.
 4. Identify the target Vintage Story version.
-5. Prefer project-local skills under `.codex/skills/` for asset indexing, code indexing, and mod updates.
+5. Prefer project-local skills under `.codex/skills/` for asset indexing, code indexing, new-version mod population, web source indexing, and mod updates.
 
 ## Adding A New Vintage Story Version
 
+Use `.codex/skills/do-new-version/SKILL.md` for the standard new-version workflow. It creates the browse-only version wrapper project, populates API and assets, invokes `.codex/skills/new-version-mods/SKILL.md` for selected reference mods, invokes `.codex/skills/do-new-web/SKILL.md` for curated web sources, and then builds the final indexes.
+
 1. Create `versions/<version>/`.
-2. Add the raw reference payload under the expected version layout:
+2. Add `versions/<version>/VintageStory.Reference.<version>.csproj` to `Vintage Story Reference.sln` under a matching version solution folder.
+3. Add the raw reference payload under the expected version layout:
    - `API/`
    - `Assets/`
    - `mods/`
    - `Web/`
    - `Index/`
-3. Add `versions/<version>/version.catalog.json`.
-4. Add the version to `reference.catalog.json`.
-5. Build asset and code indexes for the new version.
-6. Build the web index if `versions/<version>/Web/sources.json` exists.
-7. Update `INDEX_USAGE.md` with the current version, paths, counts, and examples.
-8. Update `docs/PROJECT_MEMORY.md`.
+4. For the built-in API payload, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, and `Mods/VSSurvivalMod.dll` into flattened `API/<Assembly>_decompiled_<version>` folders. Do not keep `.sln` or `.slnx` files.
+5. Copy the full client `assets` contents into `Assets/`; do not use a reduced server-only asset folder as the final full asset payload.
+6. Download the newest compatible selected reference mods for the target version, normalize mod folders as `<modid>_<modversion>`, keep one latest compatible folder per mod id, and decompile managed .NET DLLs when present.
+7. Copy or merge curated web source entries from the nearest previous version with `Web/sources.json`.
+8. Add `versions/<version>/version.catalog.json`.
+9. Add the version to `reference.catalog.json`.
+10. Build asset and code indexes for the new version after API, assets, and selected mods are in place.
+11. Build the web index for the new version after `versions/<version>/Web/sources.json` exists.
+12. Leave generated `versions/<version>/Index` files uncommitted by default; they are local rebuildable artifacts and may exceed normal GitHub file limits.
+13. Update `INDEX_USAGE.md` with the current version, paths, counts, and examples.
+14. Update `docs/PROJECT_MEMORY.md`.
 
 ## Refreshing Asset Indexes
 
@@ -62,7 +70,9 @@ The code index is conservative symbol metadata, not a compiler or full semantic 
 
 ## Adding Or Updating Mods
 
-Use `.codex/skills/vintage-story-reference-mod-updater/SKILL.md` when downloading, staging, extracting, or decompiling mods under `versions/<version>/mods`.
+Use `.codex/skills/new-version-mods/SKILL.md` when downloading, staging, extracting, or decompiling mods under `versions/<version>/mods`.
+
+For new Vintage Story version folders, normalize mod folder names as `<modid>_<modversion>` using `modinfo.json` or Mod DB metadata. Each version should contain only one completed folder per mod id: the latest release compatible with that game version, preferring an exact game-version tag and using a documented same-line fallback only when no exact patch release exists. If an existing version already has duplicates, report them and remove duplicates only when cleanup was explicitly requested.
 
 After adding or updating a mod:
 
@@ -74,10 +84,12 @@ After adding or updating a mod:
 
 ## Adding A Website
 
+Use `.codex/skills/do-new-web/SKILL.md` when copying, merging, refreshing, or indexing curated external web sources for a Vintage Story version.
+
 1. Add a source entry to `versions/<version>/Web/sources.json`.
 2. Prefer `source_type` values already supported by `tools/web-index/build_web_index.py`.
 3. For Mod DB pages, use an appropriate `html_scope` so navigation, file tables, and unrelated site chrome are not indexed as documentation.
-4. Rebuild the web index:
+4. Rebuild the web index as a local generated artifact:
 
 ```powershell
 python -B tools\web-index\build_web_index.py --version <version>
@@ -91,6 +103,7 @@ python -B tools\reference-query.py --version <version> web --search "search term
 ```
 
 6. Update `INDEX_USAGE.md`, `versions/<version>/version.catalog.json`, and `docs/PROJECT_MEMORY.md` when sources, counts, or assumptions change.
+7. Do not stage generated `versions/<version>/Index` files unless the user explicitly requests generated-index versioning and the repository has a suitable large-file policy.
 
 ## Updating Catalogs
 

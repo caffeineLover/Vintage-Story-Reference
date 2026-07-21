@@ -1,0 +1,4 @@
+interface:
+  display_name: "Do New Web"
+  short_description: "Copy and index web sources for a VS version."
+  default_prompt: "Use $do-new-web to copy previous-version web sources and build the web index for version <version>."

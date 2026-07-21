@@ -6,3 +6,6 @@ riderModule.iml
 .vs/
 *.suo
 *.user
+
+# Generated reference indexes. Rebuild locally with tools/*-index scripts.
+versions/*/Index/

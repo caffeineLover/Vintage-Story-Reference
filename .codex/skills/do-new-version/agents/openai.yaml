@@ -1,0 +1,4 @@
+interface:
+  display_name: "Do New Version"
+  short_description: "Populate and index a new Vintage Story reference version."
+  default_prompt: "Use $do-new-version when a new Vintage Story release needs a version folder, decompiled API sources, full assets, reference mods, web sources, and indexes."

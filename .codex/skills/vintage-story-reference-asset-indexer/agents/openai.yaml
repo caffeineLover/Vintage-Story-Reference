@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vintage Story Reference Asset Indexer"
+  short_description: "Use indexed VS reference assets."
+  default_prompt: "Use $vintage-story-reference-asset-indexer to query Vintage Story reference assets through the local index."
