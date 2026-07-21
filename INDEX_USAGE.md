@@ -16,7 +16,8 @@ For a single query entry point, prefer `tools/reference-query.py`; the source-sp
 when you need their exact interfaces.
 
 Vintage Story `1.22.3` remains the default fully indexed version. Vintage Story `1.22.4` currently has decompiled API
-sources, copied full client assets, selected reference mods, and generated code/asset indexes, but no web index.
+sources, copied full client assets, selected reference mods, copied curated web sources, and generated code/asset/web
+indexes.
 
 
 ## Instruction Block for Other AI Projects
@@ -143,19 +144,23 @@ external documentation sources split into `87` sections. Treat those as sanity-c
 ## Additional Indexed Version: 1.22.4
 
 Vintage Story `1.22.4` has decompiled `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources, copied full
-client assets, selected reference mods, and code/asset indexes. Query it explicitly by version:
+client assets, selected reference mods, copied curated web sources, and code/asset/web indexes. Query it explicitly by
+version:
 
 ```powershell
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 asset --search copper --limit 20
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 asset --category recipes --limit 20
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 code --type ICoreAPI --limit 20
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 code --search BlockEntity --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.4 web --list-sources
+python -B "$vsref\tools\reference-query.py" --version 1.22.4 web --search "configlib-patches json" --limit 20
 ```
 
 Its asset index currently covers `22,070` files, including `11,035` JSON files, and its code index covers `4,726` C#
-files, `5,085` types, and `25,624` members. The selected `1.22.4` mod set was seeded from the `1.22.3` mod folders.
-BetterRuins has an exact Mod DB `1.22.4` release; the other selected mods use the newest Mod DB release tagged for the
-`1.22.x` line and should be treated as same-line reference fallbacks. Web indexes are not configured for `1.22.4` yet.
+files, `5,085` types, and `25,624` members. Its web index currently covers `4` copied source entries split into `87`
+sections. The selected `1.22.4` mod set was seeded from the `1.22.3` mod folders. BetterRuins has an exact Mod DB
+`1.22.4` release; the other selected mods use the newest Mod DB release tagged for the `1.22.x` line and should be
+treated as same-line reference fallbacks.
 
 ## Recommended Workflow
 
