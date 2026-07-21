@@ -30,7 +30,7 @@ Use `.codex/skills/do-new-version/SKILL.md` for the standard new-version workflo
 9. Add the version to `reference.catalog.json`.
 10. Build asset and code indexes for the new version after API, assets, and selected mods are in place.
 11. Build the web index for the new version after `versions/<version>/Web/sources.json` exists.
-12. Leave generated `versions/<version>/Index` files uncommitted by default; they are local rebuildable artifacts and may exceed normal GitHub file limits.
+12. Keep `versions/<version>/Index/.gitignore` tracked so the `Index` folder exists in Git, but leave generated index files uncommitted by default; they are local rebuildable artifacts and may exceed normal GitHub file limits.
 13. Update `INDEX_USAGE.md` with the current version, paths, counts, and examples.
 14. Update `docs/PROJECT_MEMORY.md`.
 
@@ -103,7 +103,7 @@ python -B tools\reference-query.py --version <version> web --search "search term
 ```
 
 6. Update `INDEX_USAGE.md`, `versions/<version>/version.catalog.json`, and `docs/PROJECT_MEMORY.md` when sources, counts, or assumptions change.
-7. Do not stage generated `versions/<version>/Index` files unless the user explicitly requests generated-index versioning and the repository has a suitable large-file policy.
+7. Do not stage generated `versions/<version>/Index` files other than the folder's `.gitignore` unless the user explicitly requests generated-index versioning and the repository has a suitable large-file policy.
 
 ## Updating Catalogs
 

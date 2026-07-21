@@ -21,7 +21,7 @@ Use this workflow as part of `do-new-version` after the target version folder ex
 - Treat `versions/<version>/Web/sources.json` as curated source metadata, not generated index output. It should be kept with the version.
 - Add `versions/<version>/Web/sources.json` to Git after creating or merging it. Do not leave it only as an untracked local file.
 - Build `versions/<version>/Index/web.sqlite` and `versions/<version>/Index/web.index.json` from the target source manifest.
-- Treat `versions/<version>/Index` as generated local output. Do not stage or commit `web.sqlite` or `web.index.json` unless the user explicitly asks and generated-index versioning has been confirmed.
+- Track `versions/<version>/Index/.gitignore` so the `Index` folder exists in Git, but do not stage or commit `web.sqlite` or `web.index.json` unless the user explicitly asks and generated-index versioning has been confirmed.
 - Update `versions/<version>/version.catalog.json` so it includes the `web` index entry after the index is built.
 - Do not mark the target version as the default in `reference.catalog.json` unless the user asks.
 - Update `docs/PROJECT_MEMORY.md` before finishing the work session.
@@ -66,7 +66,7 @@ git add -- versions/<target>/Web/sources.json
 python -B tools\web-index\build_web_index.py --version <target>
 ```
 
-8. Leave the generated `versions/<target>/Index/web.sqlite` and `versions/<target>/Index/web.index.json` uncommitted by default.
+8. Keep `versions/<target>/Index/.gitignore` tracked and leave the generated `versions/<target>/Index/web.sqlite` and `versions/<target>/Index/web.index.json` uncommitted by default.
 9. Update `versions/<target>/version.catalog.json` so `indexes.web` points at:
    - `versions/<target>/Index/web.sqlite`
    - `versions/<target>/Index/web.index.json`

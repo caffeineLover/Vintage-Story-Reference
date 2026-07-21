@@ -7,5 +7,6 @@ riderModule.iml
 *.suo
 *.user
 
-# Generated reference indexes. Rebuild locally with tools/*-index scripts.
-versions/*/Index/
+# Generated reference indexes. Keep each Index folder via its local .gitignore only.
+versions/*/Index/*
+!versions/*/Index/.gitignore

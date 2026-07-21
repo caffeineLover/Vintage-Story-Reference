@@ -18,7 +18,7 @@ The repository now has machine-readable discovery catalogs. `reference.catalog.j
 
 The `versions/1.22.4/API` tree is populated with decompiled `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources. Decompiled API trees for `1.22.3` and `1.22.4` intentionally use flattened assembly wrapper folders and do not keep `.sln` files. The `1.22.4` version folder has copied full client assets, selected reference mods, copied curated web sources, plus code, asset, and web indexes. The root solution now contains a `VintageStory.Reference.1.22.4` wrapper project for browsing the `1.22.4` payload in Rider.
 
-Generated `versions/<version>/Index` folders are local rebuildable output and should not be staged or pushed by default. `versions/1.22.4/Index/assets.sqlite` is over GitHub's normal 100 MB file limit. The repository `.gitignore` now ignores `versions/*/Index/`; commit curated source manifests such as `versions/<version>/Web/sources.json`, not the generated SQLite indexes, unless the user explicitly chooses a large-file strategy.
+Generated files inside `versions/<version>/Index` are local rebuildable output and should not be staged or pushed by default. Each `Index` folder should exist in Git via a tracked `versions/<version>/Index/.gitignore` file that ignores every generated file below it. `versions/1.22.4/Index/assets.sqlite` is over GitHub's normal 100 MB file limit. Commit curated source manifests such as `versions/<version>/Web/sources.json`, not the generated SQLite indexes, unless the user explicitly chooses a large-file strategy.
 
 The working tree contains many untracked reference and index files. Treat those as existing user/reference material unless the user explicitly asks to clean or commit them.
 
@@ -156,7 +156,7 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `versions/<version>/VintageStory.Reference.<version>.csproj` - Non-compiling Rider/MSBuild wrapper project that includes the version catalog, API, assets, mods, and Web source manifest as browseable `None` items.
 - `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
-- `versions/1.22.3/Index` - Generated SQLite indexes and manifests.
+- `versions/1.22.3/Index` - Tracked folder containing local generated SQLite indexes and manifests; only `Index/.gitignore` should be committed by default.
 - `versions/1.22.3/Web/sources.json` - Curated external web documentation source list.
 - `versions/1.22.4/API` - Decompiled 1.22.4 `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources.
 - `versions/1.22.4/Assets` - Full copied 1.22.4 client assets from the Linux client archive.
@@ -219,6 +219,8 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - Deleted the redundant legacy `versions/1.22.3/README.md` per the user's request. Updated `versions/1.22.3/VintageStory.Reference.1.22.3.csproj` to remove the deleted README include and to include `version.catalog.json` plus `Web\**\*`, matching the 1.22.4 browse-only wrapper pattern.
 - Updated `.codex/skills/new-version-mods/SKILL.md`, `.codex/skills/do-new-version/SKILL.md`, and `docs/MAINTAINING_REFERENCE.md` so future `do-new-version` runs normalize mod folders as `<modid>_<modversion>` and keep one latest compatible folder per mod id in each new version.
 - Added a `.gitignore` rule for `versions/*/Index/` and updated the new-version/web workflows to leave generated SQLite indexes and generated index manifests uncommitted by default. `versions/1.22.4/Index/assets.sqlite` is larger than 100 MB, so pushing index databases without Git LFS would be unsafe.
+- Corrected the generated-index Git policy so the `Index` folder itself is represented in Git by `versions/<version>/Index/.gitignore`, while generated `.sqlite` databases and index manifests remain ignored. Added this placeholder policy for `versions/1.22.3/Index` and `versions/1.22.4/Index`.
+- Verified the pending 1.22.3 API layout changes match the current 1.22.4 flattened API pattern: `VintagestoryAPI_decompiled_1.22.3`, `VintagestoryLib_decompiled_1.22.3`, and `VSSurvivalMod_decompiled_1.22.3` contain source directly, have no same-name child project folders, and no `.sln`/`.slnx` files remain under `versions/1.22.3/API`.
 
 ### 2026-07-16
 

@@ -29,7 +29,7 @@ This skill includes selected reference mod updates by invoking `new-version-mods
 - Build or refresh `versions/<version>/Index/code.sqlite` and `versions/<version>/Index/code.index.json` after API decompilation and mod decompilation.
 - Build or refresh `versions/<version>/Index/assets.sqlite` and `versions/<version>/Index/assets.index.json` after copying assets and adding mod assets.
 - Build or refresh `versions/<version>/Index/web.sqlite` and `versions/<version>/Index/web.index.json` after copying `versions/<version>/Web/sources.json`.
-- Treat `versions/<version>/Index` as generated local output. Do not stage or commit index SQLite databases or generated index manifests unless the user explicitly asks and a large-file strategy such as Git LFS has been confirmed.
+- Track `versions/<version>/Index/.gitignore` so the `Index` folder exists in Git, but do not stage or commit index SQLite databases or generated index manifests unless the user explicitly asks and a large-file strategy such as Git LFS has been confirmed.
 - Do not report a new version as ready until representative code-index, asset-index, and web-index queries succeed.
 - Update `docs/PROJECT_MEMORY.md` before finishing the work session.
 
@@ -51,7 +51,7 @@ The `Assets` folder should contain the release asset domains directly, normally 
 
 The version wrapper `.csproj` should include the reference payload as browseable `None` items, including `Web`, and should not compile decompiled game sources.
 
-Build locally and keep out of Git by default:
+Build locally under the tracked `Index` folder and keep out of Git by default:
 
 - `versions/<version>/Index/code.sqlite`
 - `versions/<version>/Index/code.index.json`
