@@ -18,6 +18,11 @@
       "path": "versions/1.22.3",
       "catalog": "versions/1.22.3/version.catalog.json",
       "description": "Vintage Story 1.22.3 reference payload."
+    },
+    "1.22.4": {
+      "path": "versions/1.22.4",
+      "catalog": "versions/1.22.4/version.catalog.json",
+      "description": "Vintage Story 1.22.4 API, asset, code-index, and asset-index reference payload."
     }
   },
   "prompt_catalog": {
@@ -44,6 +49,7 @@
   "codex_skills": {
     "asset_indexer": ".codex/skills/vintage-story-reference-asset-indexer/SKILL.md",
     "code_indexer": ".codex/skills/vintage-story-reference-code-indexer/SKILL.md",
-    "mod_updater": ".codex/skills/vintage-story-reference-mod-updater/SKILL.md"
+    "new_version_mods": ".codex/skills/new-version-mods/SKILL.md",
+    "new_version": ".codex/skills/do-new-version/SKILL.md"
   }
 }

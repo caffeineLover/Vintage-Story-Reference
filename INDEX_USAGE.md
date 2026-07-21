@@ -15,6 +15,9 @@ For machine-readable discovery, use `reference.catalog.json` and `versions/<game
 For a single query entry point, prefer `tools/reference-query.py`; the source-specific query scripts remain available
 when you need their exact interfaces.
 
+Vintage Story `1.22.3` remains the default fully indexed version. Vintage Story `1.22.4` currently has decompiled API
+sources, copied full client assets, selected reference mods, and generated code/asset indexes, but no web index.
+
 
 ## Instruction Block for Other AI Projects
 Use this text when pointing another AI-enabled project at this repository:
@@ -134,8 +137,25 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.3\Index\web.i
 ```
 
 At the time these instructions were written, the `1.22.3` asset index covered about `22,052` vanilla and mod asset
-files, the code index covered about `4,320` C# files, `4,461` types, and `21,231` members, and the web index covered `4`
+files, the code index covered about `4,324` C# files, `4,465` types, and `21,242` members, and the web index covered `4`
 external documentation sources split into `87` sections. Treat those as sanity-check values, not permanent truth.
+
+## Additional Indexed Version: 1.22.4
+
+Vintage Story `1.22.4` has decompiled `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources, copied full
+client assets, selected reference mods, and code/asset indexes. Query it explicitly by version:
+
+```powershell
+python -B "$vsref\tools\reference-query.py" --version 1.22.4 asset --search copper --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.4 asset --category recipes --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.4 code --type ICoreAPI --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.4 code --search BlockEntity --limit 20
+```
+
+Its asset index currently covers `22,070` files, including `11,035` JSON files, and its code index covers `4,726` C#
+files, `5,085` types, and `25,624` members. The selected `1.22.4` mod set was seeded from the `1.22.3` mod folders.
+BetterRuins has an exact Mod DB `1.22.4` release; the other selected mods use the newest Mod DB release tagged for the
+`1.22.x` line and should be treated as same-line reference fallbacks. Web indexes are not configured for `1.22.4` yet.
 
 ## Recommended Workflow
 

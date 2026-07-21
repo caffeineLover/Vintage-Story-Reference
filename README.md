@@ -8,6 +8,7 @@ For the architecture and maintenance model, see `docs/ARCHITECTURE.md` and `docs
 ## Versions
 
 - `versions/1.22.3` - Vintage Story 1.22.3 reference payload.
+- `versions/1.22.4` - Vintage Story 1.22.4 API, assets, selected mods, code index, and asset index.
 
 ## Layout
 
