@@ -22,7 +22,7 @@ Use `.codex/skills/do-new-version/SKILL.md` for the standard new-version workflo
    - `mods/`
    - `Web/`
    - `Index/`
-4. For the built-in API payload, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, and `Mods/VSSurvivalMod.dll` into flattened `API/<Assembly>_decompiled_<version>` folders. Do not keep `.sln` or `.slnx` files.
+4. For the built-in API payload, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll` into flattened `API/<Assembly>_decompiled_<version>` folders. Do not keep `.sln` or `.slnx` files.
 5. Copy the full client `assets` contents into `Assets/`; do not use a reduced server-only asset folder as the final full asset payload.
 6. Download the newest compatible selected reference mods for the target version, normalize mod folders as `<modid>_<modversion>`, keep one latest compatible folder per mod id, and decompile managed .NET DLLs when present.
 7. Copy or merge curated web source entries from the nearest previous version with `Web/sources.json`.

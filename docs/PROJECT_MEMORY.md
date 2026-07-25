@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-07-21
+Last updated: 2026-07-23
 
 ## Project overview
 
@@ -16,7 +16,7 @@ The repository also contains a root-level `prompts/` catalog for reusable Codex 
 
 The repository now has machine-readable discovery catalogs. `reference.catalog.json` is the root catalog for docs, prompts, skills, tools, and available versions. Each version should have `versions/<version>/version.catalog.json` for version-specific reference roots, indexes, manifests, and query/build scripts.
 
-The `versions/1.22.4/API` tree is populated with decompiled `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources. Decompiled API trees for `1.22.3` and `1.22.4` intentionally use flattened assembly wrapper folders and do not keep `.sln` files. The `1.22.4` version folder has copied full client assets, selected reference mods, copied curated web sources, plus code, asset, and web indexes. The root solution now contains a `VintageStory.Reference.1.22.4` wrapper project for browsing the `1.22.4` payload in Rider.
+The `versions/1.22.4/API` tree is populated with decompiled `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod` sources. Decompiled API trees intentionally use flattened assembly wrapper folders and do not keep `.sln` files. The `1.22.3` API tree was intentionally not backfilled with `VSCreativeMod` or `VSEssentials` because active targeting has moved to `1.22.4` and future `1.22.5`. The `1.22.4` version folder has copied full client assets, selected reference mods, copied curated web sources, plus code, asset, and web indexes. The root solution now contains a `VintageStory.Reference.1.22.4` wrapper project for browsing the `1.22.4` payload in Rider.
 
 Generated files inside `versions/<version>/Index` are local rebuildable output and should not be staged or pushed by default. Each `Index` folder should exist in Git via a tracked `versions/<version>/Index/.gitignore` file that ignores every generated file below it. `versions/1.22.4/Index/assets.sqlite` is over GitHub's normal 100 MB file limit. Commit curated source manifests such as `versions/<version>/Web/sources.json`, not the generated SQLite indexes, unless the user explicitly chooses a large-file strategy.
 
@@ -29,6 +29,10 @@ No active work is currently in progress. RPVoiceChat 2.5.8 assets, project-style
 ## Durable technical knowledge
 
 Agents should query the SQLite indexes before reading raw reference trees. Asset questions should start with `assets.sqlite`; C# and symbol questions should start with `code.sqlite`; curated external documentation questions should start with `web.sqlite` once present.
+
+PetAI 5.1.1 does not register a Vintage Story slash/chat command for setting pet obedience. Its `EntityBehaviorReceiveCommand.SetCommand` handles PetAI pet commands (`SIMPLE`, `COMPLEX`, and `AGGRESSIONLEVEL`) and gates command execution against `EntityBehaviorTameable.Obedience` using each command's `minObedience`, but does not mutate obedience. Obedience is stored in `domesticationstatus.obedience` by `EntityBehaviorTameable`; it is set to `1f` by the `magicbone` path, increased by accepted taming items and petting, and decreased by the disobedience tick.
+
+Vintage Story 1.22.4 `Vintagestory.Common.ModCompilationContext` includes `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll` in the built-in Roslyn reference set used when compiling source-code mods. The decompiled `VSSurvivalMod.csproj` also references both `VSEssentials` and `VSCreativeMod`.
 
 For routine consumer queries, prefer `tools/reference-query.py`. It reads the catalogs, resolves the selected version, and delegates to the existing source-specific query helpers. The asset, code, and web query scripts remain the source-specific interfaces and should not be duplicated inside the wrapper.
 
@@ -46,13 +50,13 @@ For Opus voice-chat implementation research, start with the code index root `rpv
 
 RPVoiceChat upstream documentation sources are now indexed as `rpvoicechat-server-administration` and `rpvoicechat-github-readme`. The Server Administration page covers server config path `ModConfig/RPVoiceChat/rpvoicechat-server.json`, network settings, codec bitrate settings, communication systems, sound-emitting object ranges, and `/rpvc` admin commands. The README records project overview, usage/configuration entry points, developer documentation links, and Opus/RNNoise licensing notes.
 
-Vintage Story 1.22.4 API sources were produced from the public Windows dedicated server ZIP `vs_server_win-x64_1.22.4.zip` from the Vintage Story CDN. The downloaded ZIP was verified against MD5 `162941f6a5d6dbc576cce700f50d16bf`. Decompilation used `ilspycmd` `10.1.1.8388` with `--nested-directories`, `--use-varnames-from-pdb`, and reference paths to the extracted server root, `Lib`, and `Mods`. The transient temp-derived `<HintPath>` entries in the generated SDK-style `.csproj` files were removed before keeping the output. The API wrappers are flattened, so files live directly under `VintagestoryAPI_decompiled_1.22.4`, `VintagestoryLib_decompiled_1.22.4`, and `VSSurvivalMod_decompiled_1.22.4` rather than under same-name child folders.
+Vintage Story 1.22.4 API sources were produced from the public Windows dedicated server ZIP `vs_server_win-x64_1.22.4.zip` from the Vintage Story CDN. The downloaded ZIP was verified against MD5 `162941f6a5d6dbc576cce700f50d16bf`. Decompilation used `ilspycmd` `10.1.1.8388` with `--nested-directories`, `--use-varnames-from-pdb`, and reference paths to the extracted server root, `Lib`, and `Mods`. The transient temp-derived `<HintPath>` entries in the generated SDK-style `.csproj` files were removed before keeping the output. The 1.22.4 API wrappers are flattened, so files live directly under `VintagestoryAPI_decompiled_1.22.4`, `VintagestoryLib_decompiled_1.22.4`, `VSCreativeMod_decompiled_1.22.4`, `VSEssentials_decompiled_1.22.4`, and `VSSurvivalMod_decompiled_1.22.4`.
 
 Vintage Story 1.22.4 full assets were copied from the public Linux client archive `vs_client_linux-x64_1.22.4.tar.gz` from the Vintage Story CDN. The downloaded archive was verified against MD5 `c7d943c25de23f5055e485d86b01aaf8`. The Windows dedicated server package contains a reduced `assets` folder; do not use server-only assets as the final full `versions/<version>/Assets` payload.
 
 Rider/JetBrains `no index` labels on version folders refer to IDE solution/project indexing, not the repository's SQLite reference indexes. On 2026-07-21, `versions/1.22.4/VintageStory.Reference.1.22.4.csproj` was added and nested under a `1.22.4` solution folder beside the existing `1.22.3` wrapper. Version wrapper projects disable default compile/resource items and include `version.catalog.json`, `API`, `Assets`, `mods`, and `Web` as `None` items so Rider can browse the reference payload without compiling decompiled game sources. If Rider still displays stale `no index` labels after this change, reload the solution or refresh IDE indexes.
 
-Future new Vintage Story releases should use the project-local `do-new-version` Codex skill. It records the preferred workflow: create a browse-only `versions/<version>/VintageStory.Reference.<version>.csproj` and solution entry, create `versions/<version>/API` and `versions/<version>/Assets`, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, and `Mods/VSSurvivalMod.dll` from the official release package into flattened wrapper folders, copy full client assets, use `new-version-mods` to download/decompile current compatible selected reference mods, use `do-new-web` to copy/index curated web sources from the nearest previous version, avoid keeping decompiler-generated `.sln` or `.slnx` files, build the code, asset, and web indexes, and update catalogs so other agents can discover the indexed API, assets, mod references, and web references.
+Future new Vintage Story releases should use the project-local `do-new-version` Codex skill. It records the preferred workflow: create a browse-only `versions/<version>/VintageStory.Reference.<version>.csproj` and solution entry, create `versions/<version>/API` and `versions/<version>/Assets`, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll` from the official release package into flattened wrapper folders, copy full client assets, use `new-version-mods` to download/decompile current compatible selected reference mods, use `do-new-web` to copy/index curated web sources from the nearest previous version, avoid keeping decompiler-generated `.sln` or `.slnx` files, build the code, asset, and web indexes, and update catalogs so other agents can discover the indexed API, assets, mod references, and web references.
 
 The project-local skill for reference mod population is `.codex/skills/new-version-mods`. It replaced the longer `vintage-story-reference-mod-updater` name on 2026-07-21. Use it independently for `versions/<version>/mods` update work, and invoke it from `do-new-version` before final code/asset index builds so mod assets and decompiled mod code are included in the new version's indexes.
 
@@ -158,7 +162,7 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
 - `versions/1.22.3/Index` - Tracked folder containing local generated SQLite indexes and manifests; only `Index/.gitignore` should be committed by default.
 - `versions/1.22.3/Web/sources.json` - Curated external web documentation source list.
-- `versions/1.22.4/API` - Decompiled 1.22.4 `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources.
+- `versions/1.22.4/API` - Decompiled 1.22.4 `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod` sources.
 - `versions/1.22.4/Assets` - Full copied 1.22.4 client assets from the Linux client archive.
 - `versions/1.22.4/mods` - Selected 1.22.4 reference mod set seeded from 1.22.3, with exact 1.22.4 Mod DB releases preferred and same-line 1.22.x fallbacks recorded when exact patch tags were unavailable.
 - `versions/1.22.4/Web/sources.json` - Copied curated external web documentation source manifest for the 1.22.4 web index.
@@ -221,6 +225,15 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - Added a `.gitignore` rule for `versions/*/Index/` and updated the new-version/web workflows to leave generated SQLite indexes and generated index manifests uncommitted by default. `versions/1.22.4/Index/assets.sqlite` is larger than 100 MB, so pushing index databases without Git LFS would be unsafe.
 - Corrected the generated-index Git policy so the `Index` folder itself is represented in Git by `versions/<version>/Index/.gitignore`, while generated `.sqlite` databases and index manifests remain ignored. Added this placeholder policy for `versions/1.22.3/Index` and `versions/1.22.4/Index`.
 - Verified the pending 1.22.3 API layout changes match the current 1.22.4 flattened API pattern: `VintagestoryAPI_decompiled_1.22.3`, `VintagestoryLib_decompiled_1.22.3`, and `VSSurvivalMod_decompiled_1.22.3` contain source directly, have no same-name child project folders, and no `.sln`/`.slnx` files remain under `versions/1.22.3/API`.
+
+### 2026-07-23
+
+- Investigated whether PetAI exposes a command for directly setting pet obedience. Queried the 1.22.4 code and asset indexes, then inspected PetAI 5.1.1 source and related pet entity JSON. Confirmed there is no `RegisterCommand`/`ChatCommands` registration in PetAI, and no PetAI command type or command name that sets obedience. PetAI commands only set behavior state or aggression mode and require minimum obedience thresholds.
+- Investigated whether `VSEssentials.dll` should be added to the API decompile/index list. Found that 1.22.4 `ModCompilationContext` references both `Mods/VSCreativeMod.dll` and `Mods/VSEssentials.dll` before `Mods/VSSurvivalMod.dll`, and `VSSurvivalMod.csproj` references both `VSEssentials` and `VSCreativeMod`. No workflow or index changes were made during this investigation.
+- Backfilled `versions/1.22.4/API` with flattened decompiles of `Mods/VSCreativeMod.dll` and `Mods/VSEssentials.dll` from the official 1.22.4 Windows dedicated server ZIP. Verified the ZIP MD5 as `162941f6a5d6dbc576cce700f50d16bf` and used `ilspycmd` `10.1.1.8388`.
+- Updated `tools/code-index/build_code_index.py`, `.codex/skills/do-new-version/SKILL.md`, `.codex/skills/vintage-story-reference-code-indexer/SKILL.md`, `docs/MAINTAINING_REFERENCE.md`, `versions/1.22.4/version.catalog.json`, `reference.catalog.json`, `README.md`, and `INDEX_USAGE.md` so future versions and 1.22.4 consumers use the five built-in API roots.
+- Rebuilt `versions/1.22.4/Index/code.sqlite`; the 1.22.4 code index now contains `5,301` C# files, `5,678` types, and `29,328` members across `15` source roots. The new API root counts are `51` C# files for `VSCreativeMod` and `524` for `VSEssentials`.
+- Intentionally did not backfill `versions/1.22.3/API` with `VSCreativeMod` or `VSEssentials`, per the user's direction that current work targets `1.22.4` and future `1.22.5`.
 
 ### 2026-07-16
 

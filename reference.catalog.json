@@ -22,7 +22,7 @@
     "1.22.4": {
       "path": "versions/1.22.4",
       "catalog": "versions/1.22.4/version.catalog.json",
-      "description": "Vintage Story 1.22.4 API, asset, selected-mod, web, code-index, asset-index, and web-index reference payload."
+      "description": "Vintage Story 1.22.4 five-assembly API, asset, selected-mod, web, code-index, asset-index, and web-index reference payload."
     }
   },
   "prompt_catalog": {

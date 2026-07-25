@@ -1,6 +1,6 @@
 ---
 name: do-new-version
-description: Project-local workflow for adding a newly released Vintage Story game version to this reference repository by creating a version project, populating versions/VERSION/API and versions/VERSION/Assets, decompiling VintagestoryAPI, VintagestoryLib, and VSSurvivalMod, downloading/decompiling current compatible reference mods, copying/indexing previous-version web documentation sources, and building the code, asset, and web indexes. Use when the user says "do new version", asks to add or populate a new Vintage Story version, or asks to update indexed API, asset, mod-reference, and web-reference sources for a new release.
+description: Project-local workflow for adding a newly released Vintage Story game version to this reference repository by creating a version project, populating versions/VERSION/API and versions/VERSION/Assets, decompiling VintagestoryAPI, VintagestoryLib, VSCreativeMod, VSEssentials, and VSSurvivalMod, downloading/decompiling current compatible reference mods, copying/indexing previous-version web documentation sources, and building the code, asset, and web indexes. Use when the user says "do new version", asks to add or populate a new Vintage Story version, or asks to update indexed API, asset, mod-reference, and web-reference sources for a new release.
 ---
 
 # Do New Version
@@ -19,7 +19,7 @@ This skill includes selected reference mod updates by invoking `new-version-mods
 - Stage downloaded archives, extracted game files, and temporary tools outside the kept reference tree, such as under a temp directory or `.codex/tmp/new-version/<version>/`.
 - Create `versions/<version>/VintageStory.Reference.<version>.csproj` and add it to `Vintage Story Reference.sln` under a matching `<version>` solution folder.
 - Keep the version wrapper project browse-only: disable default compile/resource items and include `version.catalog.json`, `API`, `Assets`, `mods`, and `Web` as `None` items.
-- Prefer the Windows dedicated server ZIP for decompilation inputs because it is smaller and contains `VintagestoryAPI.dll`, `VintagestoryLib.dll`, and `Mods/VSSurvivalMod.dll`.
+- Prefer the Windows dedicated server ZIP for decompilation inputs because it is smaller and contains `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll`.
 - Prefer the full Linux client archive for copying `Assets` because it extracts cleanly and includes the full client asset payload. Do not treat the server package's reduced `assets` folder as the final full asset copy.
 - Do not keep decompiler-generated `.sln` or `.slnx` files. Prefer avoiding solution generation; delete solution files if the decompiler creates them.
 - Keep generated `.csproj` files only as lightweight reference or IDE metadata, and scrub temporary or machine-specific `<HintPath>` values before keeping them.
@@ -39,6 +39,8 @@ For version `<version>`, populate:
 
 - `versions/<version>/API/VintagestoryAPI_decompiled_<version>`
 - `versions/<version>/API/VintagestoryLib_decompiled_<version>`
+- `versions/<version>/API/VSCreativeMod_decompiled_<version>`
+- `versions/<version>/API/VSEssentials_decompiled_<version>`
 - `versions/<version>/API/VSSurvivalMod_decompiled_<version>`
 - `versions/<version>/Assets`
 - `versions/<version>/mods`
@@ -73,6 +75,8 @@ Build locally under the tracked `Index` folder and keep out of Git by default:
 7. Extract the DLL package into the staging area and locate:
    - `VintagestoryAPI.dll`
    - `VintagestoryLib.dll`
+   - `Mods/VSCreativeMod.dll`
+   - `Mods/VSEssentials.dll`
    - `Mods/VSSurvivalMod.dll`
 8. Extract the full client package into the staging area and locate its `assets` folder. Copy that folder's contents into `versions/<version>/Assets`.
 9. Install or locate `ilspycmd` for decompilation. A temporary local tool install is acceptable.
@@ -91,7 +95,7 @@ ilspycmd --disable-updatecheck --nested-directories --use-varnames-from-pdb -p `
 12. Remove any `.sln` or `.slnx` files produced by the decompiler before keeping the output.
 13. Remove `<HintPath>` entries that point to temp directories, local package extraction folders, or other machine-specific paths.
 14. Validate the copied and decompiled source result:
-    - Each of the three expected flattened API wrapper folders exists.
+    - Each of the five expected flattened API wrapper folders exists.
     - Each folder contains substantial `.cs` source output.
     - No API wrapper contains a same-name child folder.
     - No `.sln` or `.slnx` files exist under `versions/<version>/API`.
@@ -125,4 +129,4 @@ python -B tools\reference-query.py --version <version> web --search "configlib-p
 
 ## Reporting
 
-When finishing, report the populated API, Assets, mods, and Web paths, the three assemblies decompiled, whether checksum verification was available, the selected mods downloaded or skipped, the copied web source count, the code-index, asset-index, and web-index count summaries, the wrapper project added to the solution, and which catalogs were updated.
+When finishing, report the populated API, Assets, mods, and Web paths, the five assemblies decompiled, whether checksum verification was available, the selected mods downloaded or skipped, the copied web source count, the code-index, asset-index, and web-index count summaries, the wrapper project added to the solution, and which catalogs were updated.

@@ -48,6 +48,7 @@ If sandbox permissions prevent reading this folder, ask the user to add the Vint
 - `versions/<game-version>/API`
   - Decompiled C# reference code for Vintage Story assemblies.
   - For `1.22.3`, this includes `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod`.
+  - For `1.22.4`, this includes `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod`.
   - Use this when answering API, vanilla behavior, class, method, interface, registration, and implementation questions.
 
 - `versions/<game-version>/Assets`
@@ -143,9 +144,9 @@ external documentation sources split into `87` sections. Treat those as sanity-c
 
 ## Additional Indexed Version: 1.22.4
 
-Vintage Story `1.22.4` has decompiled `VintagestoryAPI`, `VintagestoryLib`, and `VSSurvivalMod` sources, copied full
-client assets, selected reference mods, copied curated web sources, and code/asset/web indexes. Query it explicitly by
-version:
+Vintage Story `1.22.4` has decompiled `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and
+`VSSurvivalMod` sources, copied full client assets, selected reference mods, copied curated web sources, and
+code/asset/web indexes. Query it explicitly by version:
 
 ```powershell
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 asset --search copper --limit 20
@@ -156,8 +157,8 @@ python -B "$vsref\tools\reference-query.py" --version 1.22.4 web --list-sources
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 web --search "configlib-patches json" --limit 20
 ```
 
-Its asset index currently covers `22,070` files, including `11,035` JSON files, and its code index covers `4,726` C#
-files, `5,085` types, and `25,624` members. Its web index currently covers `4` copied source entries split into `87`
+Its asset index currently covers `22,070` files, including `11,035` JSON files, and its code index covers `5,301` C#
+files, `5,678` types, and `29,328` members. Its web index currently covers `4` copied source entries split into `87`
 sections. The selected `1.22.4` mod set was seeded from the `1.22.3` mod folders. BetterRuins has an exact Mod DB
 `1.22.4` release; the other selected mods use the newest Mod DB release tagged for the `1.22.x` line and should be
 treated as same-line reference fallbacks.
@@ -248,7 +249,7 @@ Use `code.sqlite` for API, decompiled vanilla code, selected decompiled mod code
 Important tables:
 
 - `source_roots`
-  - Indexed roots such as `VintagestoryAPI`, `VintagestoryLib`, `VSSurvivalMod`, and decompiled mod roots.
+  - Indexed roots such as `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, `VSSurvivalMod`, and decompiled mod roots.
 
 - `source_files`
   - One row per indexed `.cs` file.

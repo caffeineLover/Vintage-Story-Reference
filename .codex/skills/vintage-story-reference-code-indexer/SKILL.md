@@ -1,6 +1,6 @@
 ---
 name: vintage-story-reference-code-indexer
-description: Project-local workflow for building, refreshing, and using the Vintage Story Reference decompiled C# code index. Use when answering questions about VintagestoryAPI, VintagestoryLib, VSSurvivalMod, decompiled mods, symbols, types, methods, inheritance, references, or when the user asks to build or update the code index.
+description: Project-local workflow for building, refreshing, and using the Vintage Story Reference decompiled C# code index. Use when answering questions about VintagestoryAPI, VintagestoryLib, VSCreativeMod, VSEssentials, VSSurvivalMod, decompiled mods, symbols, types, methods, inheritance, references, or when the user asks to build or update the code index.
 ---
 
 # Vintage Story Reference Code Indexer
@@ -76,6 +76,8 @@ Index the built-in decompiled API trees:
 
 - `versions/<game-version>/API/VintagestoryAPI_decompiled_<game-version>`
 - `versions/<game-version>/API/VintagestoryLib_decompiled_<game-version>`
+- `versions/<game-version>/API/VSCreativeMod_decompiled_<game-version>`
+- `versions/<game-version>/API/VSEssentials_decompiled_<game-version>`
 - `versions/<game-version>/API/VSSurvivalMod_decompiled_<game-version>`
 
 These API wrapper folders should be flattened: source files, namespace folders, and the `.csproj` should live directly under each wrapper rather than under a single same-name child folder.
