@@ -15,6 +15,8 @@ Code must contain copious, descriptive comments at three distinct levels:
 3. Internal block-level comments
 
 Comments must explain purpose, responsibility, intent, lifecycle, relationships, assumptions, and non-obvious reasoning.
+Comments will have a row length of 120 characters.  If a word goes beyond 120 characters, put a line break and continue
+the comment on the next line.
 
 Comments must not merely restate names, parameter lists, return types, or visible syntax.  No "fluff".
 
