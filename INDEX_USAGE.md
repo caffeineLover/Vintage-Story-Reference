@@ -157,11 +157,11 @@ python -B "$vsref\tools\reference-query.py" --version 1.22.4 web --list-sources
 python -B "$vsref\tools\reference-query.py" --version 1.22.4 web --search "configlib-patches json" --limit 20
 ```
 
-Its asset index currently covers `22,070` files, including `11,035` JSON files, and its code index covers `5,301` C#
-files, `5,678` types, and `29,328` members. Its web index currently covers `4` copied source entries split into `87`
-sections. The selected `1.22.4` mod set was seeded from the `1.22.3` mod folders. BetterRuins has an exact Mod DB
-`1.22.4` release; the other selected mods use the newest Mod DB release tagged for the `1.22.x` line and should be
-treated as same-line reference fallbacks.
+Its asset index currently covers `22,091` files, including `11,056` JSON files, and its code index covers `5,310` C#
+files, `5,692` types, and `29,402` members. Its web index currently covers `4` copied source entries split into `87`
+sections. The selected `1.22.4` mod set was seeded from the `1.22.3` mod folders and extended with TentBag-Reworked
+`3.2.4`. BetterRuins has an exact Mod DB `1.22.4` release; TentBag-Reworked and the other non-exact selected mods use
+the newest Mod DB release tagged for the `1.22.x` line and should be treated as same-line reference fallbacks.
 
 ## Recommended Workflow
 

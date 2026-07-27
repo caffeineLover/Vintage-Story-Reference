@@ -4,6 +4,7 @@ Versioned reference repository for Vintage Story decompiled assemblies, extracte
 
 For AI-enabled projects that want to use this repository without scanning the full reference trees, see `INDEX_USAGE.md`.
 For the architecture and maintenance model, see `docs/ARCHITECTURE.md` and `docs/MAINTAINING_REFERENCE.md`.
+For the TentBag-Reworked player guide, see `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
 
 ## Versions
 

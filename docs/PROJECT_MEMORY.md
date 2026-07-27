@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-07-23
+Last updated: 2026-07-26
 
 ## Project overview
 
@@ -24,7 +24,7 @@ The working tree contains many untracked reference and index files. Treat those 
 
 ## Active work
 
-No active work is currently in progress. RPVoiceChat 2.5.8 assets, project-style C# source, and curated upstream docs have been added to the 1.22.3 indexes and verified.
+No active work is currently in progress. TentBag-Reworked 3.2.4 has been added to the 1.22.4 reference mods, decompiled, indexed, verified, and documented with a player guide that includes the bundled sample tent schematic behavior and WorldEdit usage commands.
 
 ## Durable technical knowledge
 
@@ -43,6 +43,8 @@ The Config Lib JSON API upstream source is the GitHub wiki page at `https://gith
 The VS Village upstream source is the Vintage Story Mod DB page at `https://mods.vintagestory.at/vsvillage`. The builder extracts the page's description tab via the `moddb_description` HTML scope so the searchable index focuses on gameplay/design-reference content and current Mod DB metadata instead of full site navigation or file tables.
 
 As of the 2026-07-14 RPVoiceChat rebuild, the 1.22.3 asset index contains `22,052` files and the web index contains `4` sources and `87` heading-based sections. As of the 2026-07-21 API flatten rebuild, the 1.22.3 code index contains `4,324` C# files, `4,465` types, and `21,242` members. Generated manifests under `versions/1.22.3/Index` remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
+
+As of the 2026-07-25 TentBag-Reworked rebuild, the 1.22.4 asset index contains `22,091` files, including `11,056` JSON files with `10,707` parsed successfully and `349` parse-error rows retained for path/category lookup. The 1.22.4 code index contains `5,310` C# files, `5,692` types, and `29,402` members across `16` source roots. Generated manifests under `versions/1.22.4/Index` remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
 
 RPVoiceChat 2.5.8 is indexed from `versions/1.22.3/mods/rpvoicechat_2.5.8`. Its asset root is `versions/1.22.3/mods/rpvoicechat_2.5.8/assets` and its C# source root is `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat`.
 
@@ -64,7 +66,13 @@ The project-local skill for reference mod population is `.codex/skills/new-versi
 
 The project-local skill for carrying curated web documentation forward is `.codex/skills/do-new-web`. Use it independently for `versions/<version>/Web` source copying, merging, refreshing, or indexing work, and invoke it from `do-new-version` before final validation so the new version has `web.sqlite` and `web.index.json` alongside its asset and code indexes. `versions/<version>/Web/sources.json` is curated version metadata and should be added to Git after it is created or merged; do not leave it only as an untracked local file.
 
-Vintage Story 1.22.4 selected reference mods were seeded from the 1.22.3 mod set on 2026-07-21. The target contains 13 unique mod ids under `versions/1.22.4/mods`: `A Panserbjorn Story Rebjorn (1.0.0)` for mod id `panserbjornrebjorn`, `allclasses_2.3.0`, `betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`, `jaunt_3.1.0`, `petai_5.1.1`, `primitivesurvival_5.0.6`, `rpvoicechat_2.5.8`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. `betterruins_0.6.3` was the only selected release with an exact Mod DB `1.22.4` tag; the rest are same-line `1.22.x` fallbacks because Mod DB did not publish an exact `1.22.4` tag for those mod ids at selection time. The selection/download report is `.codex/tmp/mod-updates/1.22.4/selected-releases.json`.
+Vintage Story 1.22.4 selected reference mods were seeded from the 1.22.3 mod set on 2026-07-21 and extended with TentBag-Reworked on 2026-07-25. The target contains 14 unique mod ids under `versions/1.22.4/mods`: `A Panserbjorn Story Rebjorn (1.0.0)` for mod id `panserbjornrebjorn`, `allclasses_2.3.0`, `betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`, `jaunt_3.1.0`, `petai_5.1.1`, `primitivesurvival_5.0.6`, `rpvoicechat_2.5.8`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. `betterruins_0.6.3` was the only selected release with an exact Mod DB `1.22.4` tag; TentBag-Reworked 3.2.4 and the other non-exact selected mods are same-line `1.22.x` fallbacks because Mod DB did not publish an exact `1.22.4` tag for those mod ids at selection time. The selection/download report is `.codex/tmp/mod-updates/1.22.4/selected-releases.json`.
+
+TentBag-Reworked 3.2.4 default player behavior: an Empty Tent Bag is crafted from one cloth, four rope, and four sticks; cloth color controls bag color. An empty bag packs a default 7x7x7 area above the top face of the clicked ground block and becomes a Packed Tent Bag. A packed bag unpacks above the clicked block and returns to an empty bag. Survival-mode pack and unpack actions consume satiety at the default `BuildEffort` value of `2` per saved non-air block. Defaults include packed-tent hologram preview, empty-bag grab-area preview, 90-degree rotation, waypoint creation on unpack, waypoint removal on pack, and banned blocks such as liquids, crops, ores, rocks, anvils, and forges. The player-facing guide is `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
+
+TentBag-Reworked also ships `assets/tentbagreworked/config/tent.json`, a `7 x 3 x 6` WorldEdit/BlockSchematic sample tent. `TentBagReworkedModSystem.EnsureTentSchematicExists` copies it to `<GamePaths.DataPath>/WorldEdit/tent.json` on server startup if the target file is absent. It is not a pre-packed tent bag or player-granted item; players/admins with WorldEdit can use it as a template and then pack it into a tent bag if desired.
+
+Vintage Story 1.22.4 WorldEdit requires creative mode and the `worldedit` privilege. Server-side schematic import loads filenames from the game/server data `WorldEdit` folder. For the TentBag-Reworked starter tent, a direct placement workflow is to mark a start/end point, then run `/we import tent.json BottomCenter`; `BottomCenter` centers the `7 x 3 x 6` schematic horizontally on the marker. The interactive import-tool workflow is `/we tool import`, `/we ims tent.json`, optional `/we imr 90` or `/we imflip`, then right-click or `/we apply`/`/we place`/`/we commit`.
 
 Vintage Story 1.22.4 web sources were copied from `versions/1.22.3/Web/sources.json` on 2026-07-21 and re-indexed into `versions/1.22.4/Index/web.sqlite`. The 1.22.4 web index contains the same 4 curated source slugs as 1.22.3, split into 87 sections: `configlib-json-api`, `vsvillage-moddb`, `rpvoicechat-server-administration`, and `rpvoicechat-github-readme`.
 
@@ -160,11 +168,15 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `versions/<version>/VintageStory.Reference.<version>.csproj` - Non-compiling Rider/MSBuild wrapper project that includes the version catalog, API, assets, mods, and Web source manifest as browseable `None` items.
 - `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
+- `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Player-facing usage guide for TentBag-Reworked 3.2.4 based on the indexed 1.22.4 reference mod files.
 - `versions/1.22.3/Index` - Tracked folder containing local generated SQLite indexes and manifests; only `Index/.gitignore` should be committed by default.
 - `versions/1.22.3/Web/sources.json` - Curated external web documentation source list.
 - `versions/1.22.4/API` - Decompiled 1.22.4 `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod` sources.
 - `versions/1.22.4/Assets` - Full copied 1.22.4 client assets from the Linux client archive.
 - `versions/1.22.4/mods` - Selected 1.22.4 reference mod set seeded from 1.22.3, with exact 1.22.4 Mod DB releases preferred and same-line 1.22.x fallbacks recorded when exact patch tags were unavailable.
+- `versions/1.22.4/mods/tentbagreworked_3.2.4` - TentBag-Reworked 3.2.4 reference mod folder containing assets, `TentBagReworked.dll`, and a decompiled `decompiled assembly/TentBagReworked` source root.
+- `versions/1.22.4/mods/tentbagreworked_3.2.4/assets/tentbagreworked/config/tent.json` - Bundled WorldEdit/BlockSchematic sample tent copied to game data `WorldEdit/tent.json` on server startup if absent.
+- `versions/1.22.4/mods/tentbagreworked_3.2.4/decompiled assembly/TentBagReworked/TentBagReworked/TentBagReworkedModSystem.cs` - Contains `EnsureTentSchematicExists`, the server-side copy path for the bundled sample tent.
 - `versions/1.22.4/Web/sources.json` - Copied curated external web documentation source manifest for the 1.22.4 web index.
 - `versions/1.22.4/Index/code.sqlite` - Generated 1.22.4 code index for the decompiled API sources.
 - `versions/1.22.4/Index/assets.sqlite` - Generated 1.22.4 asset index for the copied full client assets.
@@ -178,6 +190,26 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat/Networking/AudioPacket.cs` - RPVoiceChat network packet carrying the codec name with voice payload metadata.
 
 ## Session history
+
+### 2026-07-26
+
+- Investigated the bundled TentBag-Reworked `tent.json` after the player guide wording raised a question about a tent that comes with the mod.
+- Verified through the asset index and decompiled code that `TentBagReworkedModSystem.EnsureTentSchematicExists` copies `assets/tentbagreworked/config/tent.json` to game data `WorldEdit/tent.json` on server startup when that target file is missing.
+- Updated `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md` to clarify that the bundled file is a WorldEdit sample schematic, not a pre-packed Tent Bag, player-granted item, or extra survival recipe.
+- Researched Vintage Story 1.22.4 WorldEdit import behavior in `VSCreativeMod` and updated the guide with direct and preview workflows for using `tent.json`; the guide is now hard-wrapped at 120 columns.
+
+### 2026-07-25
+
+- Downloaded TentBag-Reworked 3.2.4 for target Vintage Story `1.22.4` from the official Mod DB API entry `https://mods.vintagestory.at/api/mod/tentbagreworked`.
+- Recorded the release as a same-line fallback because its Mod DB tags run through `1.22.3` and no exact `1.22.4` tag was published for the original TentBag-Reworked mod at selection time.
+- Saved the archive as `.codex/tmp/mod-updates/1.22.4/archives/TentBag Reworked v3.2.4.zip`; archive SHA256 is `072889AD0DDE0505F340A147835F7CC5DCF7449BE9FFDB583F33D74E0F16A217`.
+- Extracted and copied the mod to `versions/1.22.4/mods/tentbagreworked_3.2.4`.
+- Decompiled `TentBagReworked.dll` into `versions/1.22.4/mods/tentbagreworked_3.2.4/decompiled assembly/TentBagReworked`, producing `9` C# files.
+- Rebuilt the 1.22.4 code index; it now contains `5,310` C# files, `5,692` types, `29,402` members, and `16` source roots, including `tentbagreworked_3.2.4/decompiled assembly`.
+- Rebuilt the 1.22.4 asset index; it now contains `22,091` files, including `21` TentBag-Reworked asset files under the `tentbagreworked` domain.
+- Verified `tools/reference-query.py --version 1.22.4` returns TentBag-Reworked code results for `TentBagReworked` and asset results for `tentbagreworked`.
+- Added `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md`, a player-facing guide covering TentBag-Reworked crafting, packing, unpacking, hotkeys, satiety cost, banned blocks, placement failures, and server-config-dependent behavior.
+- Updated `README.md` to point at the TentBag-Reworked player guide.
 
 ### 2026-07-21
 
