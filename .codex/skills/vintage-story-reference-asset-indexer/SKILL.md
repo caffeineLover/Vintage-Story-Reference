@@ -50,6 +50,10 @@ The skill is project-local, but these artifacts are intended to be consumed by o
 5. Open only the source files identified by the query when exact JSON content is needed.
 6. If the index is missing or stale, ask whether to build or refresh it unless the user already requested indexing.
 
+When a top-level `class` or `entityClass` value must be traced into C#, prefer the unified wrapper's `class` or `xref`
+target. It performs a category-aware join against literal code-registration evidence and returns both asset and code
+paths. An empty result is not proof that the runtime relationship does not exist.
+
 ## Build Workflow
 
 When the user asks to build or refresh the index:
@@ -124,3 +128,4 @@ Before reporting that an index is ready, verify:
 - A path lookup query returns known files.
 - A text search query returns plausible candidates.
 - A recipe/block/item/patch query works if those categories exist.
+- A representative class cross-reference works when the matching code index has current registration data.

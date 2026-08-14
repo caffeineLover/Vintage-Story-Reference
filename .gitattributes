@@ -4,6 +4,7 @@
 *.dylib binary
 *.ogg binary
 *.pdb binary
+*.pdf binary
 *.png binary
 *.so binary
 *.ttf binary

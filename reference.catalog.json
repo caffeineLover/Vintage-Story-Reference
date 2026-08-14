@@ -5,19 +5,20 @@
   "documentation": {
     "overview": "README.md",
     "consumer_usage": "INDEX_USAGE.md",
+    "query_cookbook": "docs/QUERY_COOKBOOK.md",
     "architecture": "docs/ARCHITECTURE.md",
     "maintenance": "docs/MAINTAINING_REFERENCE.md",
     "project_memory": "docs/PROJECT_MEMORY.md"
   },
   "query_wrapper": {
     "path": "tools/reference-query.py",
-    "description": "Unified wrapper around the asset, code, and web query helpers."
+    "description": "Unified wrapper around asset, code, class-cross-reference, mod-manifest, and web query helpers."
   },
   "versions": {
     "1.22.6": {
       "path": "versions/1.22.6",
       "catalog": "versions/1.22.6/version.catalog.json",
-      "description": "Vintage Story 1.22.6 five-assembly API, asset, selected-mod/tool, web, code-index, asset-index, and web-index reference payload."
+      "description": "Vintage Story 1.22.6 API, asset, mod, web, indexed-code, and class-cross-reference payload."
     }
   },
   "prompt_catalog": {

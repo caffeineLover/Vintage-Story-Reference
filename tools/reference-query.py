@@ -2,11 +2,11 @@
 """
 Unified query entry point for the Vintage Story Reference repository.
 
-The individual asset, code, and web query helpers remain the source-specific
-interfaces. This wrapper reads the repository catalogs, resolves the requested
-game version and index database, and then delegates to the appropriate helper.
-It gives other agents one stable command shape while keeping the specialized
-query behavior in the existing tools.
+The individual asset, code, class-cross-reference, mod-manifest, and web query helpers remain the
+source-specific interfaces. This wrapper reads the repository catalogs,
+resolves the requested game version and data source, and then delegates to the
+appropriate helper. It gives other agents one stable command shape while
+keeping specialized query behavior in the existing tools.
 """
 
 import argparse
@@ -16,22 +16,45 @@ import sys
 from pathlib import Path
 
 
-INDEX_ALIASES = {
-    "asset": "asset",
-    "assets": "asset",
-    "code": "code",
-    "web": "web",
+QUERY_ALIASES = {
+    "asset": ("indexes", "asset"),
+    "assets": ("indexes", "asset"),
+    "code": ("indexes", "code"),
+    "class": ("cross_references", "classes"),
+    "classes": ("cross_references", "classes"),
+    "mod": ("manifests", "mods"),
+    "mods": ("manifests", "mods"),
+    "web": ("indexes", "web"),
+    "xref": ("cross_references", "classes"),
 }
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Query Vintage Story Reference indexes through one wrapper.")
+    parser = argparse.ArgumentParser(description="Query Vintage Story Reference sources through one wrapper.")
     parser.add_argument("--catalog", help="Path to reference.catalog.json; defaults to the repository root catalog.")
     parser.add_argument("--version", help="Vintage Story version to query. Defaults to the catalog default.")
     parser.add_argument("--list-versions", action="store_true", help="List game versions known to the root catalog.")
     parser.add_argument("--list-indexes", action="store_true", help="List indexes available for the selected version.")
-    parser.add_argument("index", nargs="?", help="Index to query: asset, code, or web.")
-    parser.add_argument("query_args", nargs=argparse.REMAINDER, help="Arguments passed through to the selected query helper.")
+    parser.add_argument(
+        "--list-cross-references",
+        action="store_true",
+        help="List query-time cross-references available for the selected version.",
+    )
+    parser.add_argument(
+        "--list-manifests",
+        action="store_true",
+        help="List curated manifests available for the selected version.",
+    )
+    parser.add_argument(
+        "source",
+        nargs="?",
+        help="Reference source to query: asset, code, class/xref, mod, or web.",
+    )
+    parser.add_argument(
+        "query_args",
+        nargs=argparse.REMAINDER,
+        help="Arguments passed through to the selected query helper.",
+    )
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
@@ -52,15 +75,24 @@ def main() -> int:
         list_indexes(version, version_catalog)
         return 0
 
-    if not args.index:
-        raise SystemExit("Specify an index to query, or use --list-versions / --list-indexes.")
+    if args.list_cross_references:
+        list_cross_references(version, version_catalog)
+        return 0
 
-    index_name = INDEX_ALIASES.get(args.index.lower())
-    if not index_name:
-        valid = ", ".join(sorted(INDEX_ALIASES))
-        raise SystemExit(f"Unknown index '{args.index}'. Valid values: {valid}")
+    if args.list_manifests:
+        list_manifests(version, version_catalog)
+        return 0
 
-    return run_query_helper(repo_root, version_catalog, index_name, args.query_args)
+    if not args.source:
+        raise SystemExit("Specify a source to query, or use a list option.")
+
+    query_target = QUERY_ALIASES.get(args.source.lower())
+    if not query_target:
+        valid = ", ".join(sorted(QUERY_ALIASES))
+        raise SystemExit(f"Unknown query source '{args.source}'. Valid values: {valid}")
+
+    collection_name, source_name = query_target
+    return run_query_helper(repo_root, version_catalog, collection_name, source_name, args.query_args)
 
 
 
@@ -101,30 +133,78 @@ def list_indexes(version: str, version_catalog: dict) -> None:
         print(f"{version} | {name} | database={database} | use_for={uses}")
 
 
+def list_cross_references(version: str, version_catalog: dict) -> None:
+    """Prints query-time relationships that combine two or more cataloged reference sources."""
 
-def run_query_helper(repo_root: Path, version_catalog: dict, index_name: str, query_args: list[str]) -> int:
-    indexes = version_catalog.get("indexes", {})
-    index = indexes.get(index_name)
-    if not index:
-        raise SystemExit(f"Index '{index_name}' is not configured for version {version_catalog.get('game_version')}.")
+    for name, cross_reference in sorted(version_catalog.get("cross_references", {}).items()):
+        inputs = ", ".join(cross_reference.get("inputs", {}).values())
+        uses = ", ".join(cross_reference.get("use_for", []))
+        print(f"{version} | {name} | inputs={inputs} | use_for={uses}")
 
-    script = repo_root / index["query_script"]
-    database = repo_root / index["database"]
+
+
+def list_manifests(version: str, version_catalog: dict) -> None:
+    """Prints tracked manifest sources separately from rebuildable SQLite indexes."""
+
+    for name, manifest in sorted(version_catalog.get("manifests", {}).items()):
+        path = manifest.get("manifest", "")
+        uses = ", ".join(manifest.get("use_for", []))
+        print(f"{version} | {name} | manifest={path} | use_for={uses}")
+
+
+
+def run_query_helper(
+    repo_root: Path,
+    version_catalog: dict,
+    collection_name: str,
+    source_name: str,
+    query_args: list[str],
+) -> int:
+    """Delegates a cataloged query source to its specialized helper without duplicating query behavior."""
+
+    sources = version_catalog.get(collection_name, {})
+    source = sources.get(source_name)
+    if not source:
+        raise SystemExit(
+            f"Query source '{source_name}' is not configured for version {version_catalog.get('game_version')}."
+        )
+
+    script = repo_root / source["query_script"]
     if not script.is_file():
         raise SystemExit(f"Query helper not found: {script}")
-    if not database.is_file():
-        raise SystemExit(f"Index database not found: {database}")
 
-    command = [
-        sys.executable,
-        "-B",
-        str(script),
-        "--db",
-        str(database),
-        *query_args,
-    ]
+    input_args = resolve_query_inputs(repo_root, source)
+    command = [sys.executable, "-B", str(script), *input_args, *query_args]
     result = subprocess.run(command, cwd=repo_root)
     return int(result.returncode)
+
+
+
+def resolve_query_inputs(repo_root: Path, source: dict) -> list[str]:
+    """Maps one or more cataloged inputs to the flags expected by a specialized query helper."""
+
+    configured_inputs = source.get("inputs", {})
+    if configured_inputs:
+        result = []
+        for flag, relative_path in configured_inputs.items():
+            input_path = repo_root / relative_path
+            if not input_path.is_file():
+                raise SystemExit(f"Query input not found: {input_path}")
+            result.extend([flag, str(input_path)])
+        return result
+
+    for key, flag in (("database", "--db"), ("manifest", "--manifest")):
+        relative_path = source.get(key)
+        if not relative_path:
+            continue
+
+        input_path = repo_root / relative_path
+        if not input_path.is_file():
+            raise SystemExit(f"Query input not found: {input_path}")
+        return [flag, str(input_path)]
+
+    raise SystemExit("Query source must configure inputs, a database, or a manifest path.")
+
 
 
 if __name__ == "__main__":

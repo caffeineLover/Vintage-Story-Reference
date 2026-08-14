@@ -24,7 +24,9 @@ Use `.codex/skills/do-new-version/SKILL.md` for the standard new-version workflo
    - `Index/`
 4. For the built-in API payload, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll` into flattened `API/<Assembly>_decompiled_<version>` folders. Do not keep `.sln` or `.slnx` files.
 5. Copy the full client `assets` contents into `Assets/`; do not use a reduced server-only asset folder as the final full asset payload.
-6. Download the newest compatible selected reference mods for the target version, normalize mod folders as `<modid>_<modversion>`, keep one latest compatible folder per mod id, and decompile managed .NET DLLs when present.
+6. Download the newest compatible selected reference mods for the target version, normalize mod folders as
+   `<modid>_<modversion>`, keep one latest compatible folder per mod id, decompile managed .NET DLLs when present, and
+   create `versions/<version>/mods.manifest.json` with tracked compatibility and provenance metadata.
 7. Copy or merge curated web source entries from the nearest previous version with `Web/sources.json`.
 8. Add `versions/<version>/version.catalog.json`.
 9. Add the version to `reference.catalog.json`.
@@ -64,9 +66,14 @@ Verify with targeted queries, for example:
 ```powershell
 python -B tools\reference-query.py --version <version> code --type ICoreAPI --limit 20
 python -B tools\reference-query.py --version <version> code --member RegisterBlockClass --limit 20
+python -B tools\reference-query.py --version <version> code --registration BlockDisplayCase --limit 20
+python -B tools\reference-query.py --version <version> class --asset-class BlockDisplayCase --limit 20
 ```
 
-The code index is conservative symbol metadata, not a compiler or full semantic model. For exact behavior, open the returned source file and inspect the relevant line range.
+The code builder also extracts supported calls with a literal registration key and `typeof(...)` value. The class
+cross-reference joins those calls to top-level asset `class` and `entityClass` facts. It remains conservative rather
+than inferring dynamic keys, helper-wrapped calls, factories, reflection, JSON inheritance, or runtime patches. For
+exact behavior, open the returned source and asset files.
 
 ## Adding Or Updating Mods
 
@@ -76,11 +83,23 @@ For new Vintage Story version folders, normalize mod folder names as `<modid>_<m
 
 After adding or updating a mod:
 
-1. Rebuild the asset index if the mod contains assets.
-2. Rebuild the code index if the mod contains decompiled C# source or a project-style source folder with a `.csproj`.
-3. Update `versions/<version>/version.catalog.json` if the change affects documented roots or summary counts.
-4. Update `INDEX_USAGE.md` if the list of indexed roots or consumer guidance changed.
-5. Update `docs/PROJECT_MEMORY.md` with durable notes, failed attempts, or risks.
+1. Add or update its entry in `versions/<version>/mods.manifest.json`. Record the mod id, version, folder, package
+   type, exact/fallback compatibility evidence, source URLs, retained asset/code/native-binary availability, and
+   whether an explicit license file is present.
+2. Verify the manifest has exactly one entry for every completed mod/tool folder and no entry pointing at a missing
+   folder.
+3. Rebuild the asset index if the mod contains assets.
+4. Rebuild the code index if the mod contains decompiled C# source or a project-style source folder with a `.csproj`.
+5. Update `versions/<version>/version.catalog.json` if the change affects documented roots, manifests, or summary
+   counts.
+6. Verify the manifest through `tools/reference-query.py`:
+
+```powershell
+python -B tools\reference-query.py --version <version> mod --mod-id <modid> --format json
+```
+
+7. Update `INDEX_USAGE.md` if the list of indexed roots or consumer guidance changed.
+8. Update `docs/PROJECT_MEMORY.md` with durable notes, failed attempts, or risks.
 
 ## Adding A Website
 
@@ -117,7 +136,7 @@ Update `versions/<version>/version.catalog.json` when:
 
 - an index path changes;
 - a build or query script path changes;
-- source manifests change;
+- source or mod manifests change;
 - summary counts change enough to make the catalog misleading.
 
 Catalogs are discovery aids. Do not copy large generated manifest details into them.
@@ -129,6 +148,7 @@ Update `INDEX_USAGE.md` when:
 - the current/default indexed version changes;
 - index paths or helper commands change;
 - available indexes change;
+- available tracked manifests change;
 - important indexed roots or web documentation sources change;
 - query examples should be revised.
 
@@ -143,8 +163,13 @@ Run the relevant checks before finishing:
 ```powershell
 python -B tools\reference-query.py --list-versions
 python -B tools\reference-query.py --version <version> --list-indexes
+python -B tools\reference-query.py --version <version> --list-cross-references
+python -B tools\reference-query.py --version <version> --list-manifests
+python -B tools\reference-query.py --version <version> mod --limit 5
 python -B tools\reference-query.py --version <version> asset --search copper --limit 5
 python -B tools\reference-query.py --version <version> code --type ICoreAPI --limit 5
+python -B tools\reference-query.py --version <version> code --registration BlockDisplayCase --limit 5
+python -B tools\reference-query.py --version <version> class --asset-class BlockDisplayCase --limit 5
 python -B tools\reference-query.py --version <version> web --list-sources
 git diff --check
 ```

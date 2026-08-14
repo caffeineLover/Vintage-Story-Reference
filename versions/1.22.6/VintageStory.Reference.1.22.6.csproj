@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Include="version.catalog.json" />
+    <None Include="mods.manifest.json" />
     <None Include="API\**\*" Exclude="API\**\bin\**;API\**\obj\**" />
     <None Include="Assets\**\*" />
     <None Include="mods\**\*" />

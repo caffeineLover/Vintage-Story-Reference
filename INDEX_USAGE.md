@@ -3,13 +3,14 @@
 This repository is a local reference library for AI-assisted Vintage Story modding work. Other projects should use it
 as a searchable reference source, not as a project to build or copy wholesale.
 
-Always query the SQLite indexes first. Do not recursively scan or read the full `Assets`, `API`, or `mods` trees unless
-an index cannot answer the question.
+Always query the SQLite indexes and tracked mod manifest first. Do not recursively scan or read the full `Assets`,
+`API`, or `mods` trees unless those query sources cannot answer the question.
 
 `INDEX_USAGE.md` is the handoff document for using this repository as a Vintage Story knowledge source. For a reusable
 AGENTS.md prompt that teaches other Codex-assisted projects this research workflow, use
 `prompts\Vintage Story Research\Add to AGENTS.md`. For reusable agent operating standards such as persistent project
 memory, coding standards, and project/Git hygiene, use the project-local prompt catalog under `prompts/`.
+For tested, task-shaped query sequences that cross multiple sources, use `docs/QUERY_COOKBOOK.md`.
 
 For machine-readable discovery, use `reference.catalog.json` and `versions/<game-version>/version.catalog.json`.
 For a single query entry point, prefer `tools/reference-query.py`; the source-specific query scripts remain available
@@ -30,11 +31,14 @@ Before scanning raw Vintage Story assets, mod assets, or decompiled C# source, q
 - Asset index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\Index\assets.sqlite
 - Code index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\Index\code.sqlite
 - Web documentation index: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\Index\web.sqlite
+- Mod manifest: E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\mods.manifest.json
 
 Use the helper query scripts:
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\reference-query.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\asset-index\query_asset_index.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\code-index\query_code_index.py
+- E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\cross-reference\query_class_cross_reference.py
+- E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\mod-manifest\query_mod_manifest.py
 - E:\Gaming\Vintage Story\mods\Vintage Story Reference\tools\web-index\query_web_index.py
 
 Keep result limits small. Open raw files only after an index returns candidate paths and line numbers. Treat the
@@ -66,6 +70,10 @@ trees.
   - Decompiled mod/tool source folders are included in the code index when present.
   - Simple VS Manager is an external-tool reference, not a normal in-game mod package.
 
+- `versions/1.22.6/mods.manifest.json`
+  - Tracked, queryable identity, compatibility, source-provenance, retained-content, and license-file metadata for the
+    16 selected mod/tool entries.
+
 - `versions/1.22.6/Web`
   - Curated external documentation source manifests.
   - These source lists feed the generated web documentation index.
@@ -84,11 +92,12 @@ trees.
 - `reference.catalog.json`
   - Root discovery catalog for available versions, docs, prompts, skills, and the query wrapper.
 
-- `tools/asset-index`, `tools/code-index`, and `tools/web-index`
-  - Scripts for building and querying the asset, code, and web indexes.
+- `tools/asset-index`, `tools/code-index`, `tools/cross-reference`, `tools/mod-manifest`, and `tools/web-index`
+  - Scripts for building/querying indexes and querying the tracked mod manifest.
 
 - `tools/reference-query.py`
-  - Unified wrapper that resolves the selected version and delegates to the asset, code, or web query helper.
+  - Unified wrapper that resolves the selected version and delegates to asset, code, class-cross-reference,
+    mod-manifest, or web query helpers.
 
 - `prompts`
   - Reusable agent prompt standards maintained with this repository.
@@ -134,25 +143,35 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\Index\web.s
 E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\Index\web.index.json
 ```
 
+Selected-mod manifest:
+
+```text
+E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\mods.manifest.json
+```
+
 The asset index currently covers `22,103` files, including `11,066` JSON files with `10,717` parsed successfully and
 `349` parse-error rows retained for path/category lookup. The code index currently covers `7,957` C# files, `9,016`
-types, and `38,277` members across `18` source roots. The web index currently covers `4` copied source entries split
-into `84` sections.
+types, `38,277` members, and `766` literal registrations across `18` source roots. The class cross-reference currently
+joins `674` asset rows across `386` distinct class keys. The web index covers `4` copied sources and `84` sections.
 
 ## Recommended Workflow
 
 1. Identify the Vintage Story version being targeted.
 2. Use `1.22.6` unless the consuming project explicitly requires a version this archive no longer retains.
-3. Read the matching manifests in `versions/1.22.6/Index`.
-4. Query `assets.sqlite` for asset questions or `code.sqlite` for C# questions.
-5. Query `web.sqlite` for curated external documentation such as Config Lib JSON API behavior, VS Village gameplay
+3. Read the matching generated manifests in `versions/1.22.6/Index`.
+4. Query `mods.manifest.json` first when selected third-party reference material may be relevant.
+5. Query `assets.sqlite` for asset questions or `code.sqlite` for C# questions.
+6. Query the `class` cross-reference when an asset `class` or `entityClass` should lead to its registration and C#
+   declaration.
+7. Query `web.sqlite` for curated external documentation such as Config Lib JSON API behavior, VS Village gameplay
    behavior, or RPVoiceChat administration and project docs.
-6. Use small limits, usually `10` to `50`.
-7. Open only the raw files returned by the index.
-8. For exact behavior, read the specific source file and line range returned by the code index.
-9. For exact JSON details, read the specific asset file returned by the asset index.
-10. For external documentation, inspect the source URL when current upstream behavior matters.
-11. If the index is missing, stale, or for the wrong game version, return to this repository and refresh the index.
+8. Use small limits, usually `10` to `50`.
+9. Open only the raw files returned by the query source.
+10. For exact behavior, read the specific source file and line range returned by the code index.
+11. For exact JSON details, read the specific asset file returned by the asset index.
+12. For external documentation, inspect the source URL when current upstream behavior matters.
+13. If an index or manifest is missing, stale, or for the wrong game version, return to this repository and refresh
+    the reference metadata.
 
 ## Access From Another Workspace
 
@@ -167,8 +186,12 @@ Then call query scripts by absolute path:
 ```powershell
 python -B "$vsref\tools\reference-query.py" --list-versions
 python -B "$vsref\tools\reference-query.py" --version 1.22.6 --list-indexes
+python -B "$vsref\tools\reference-query.py" --version 1.22.6 --list-cross-references
+python -B "$vsref\tools\reference-query.py" --version 1.22.6 --list-manifests
 python -B "$vsref\tools\reference-query.py" --version 1.22.6 asset --search copper --limit 20
 python -B "$vsref\tools\reference-query.py" --version 1.22.6 code --type ICoreAPI --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.6 class --asset-class BlockDisplayCase --limit 20
+python -B "$vsref\tools\reference-query.py" --version 1.22.6 mod --compatibility exact --limit 20
 python -B "$vsref\tools\reference-query.py" --version 1.22.6 web --search "conditional patches" --limit 20
 ```
 
@@ -177,6 +200,11 @@ The source-specific helpers are also available:
 ```powershell
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.6\Index\assets.sqlite" --search copper --limit 20
 python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.6\Index\code.sqlite" --type ICoreAPI --limit 20
+python -B "$vsref\tools\cross-reference\query_class_cross_reference.py" `
+  --asset-db "$vsref\versions\1.22.6\Index\assets.sqlite" `
+  --code-db "$vsref\versions\1.22.6\Index\code.sqlite" `
+  --asset-class BlockDisplayCase --limit 20
+python -B "$vsref\tools\mod-manifest\query_mod_manifest.py" --manifest "$vsref\versions\1.22.6\mods.manifest.json" --compatibility exact --limit 20
 python -B "$vsref\tools\web-index\query_web_index.py" --db "$vsref\versions\1.22.6\Index\web.sqlite" --search "conditional patches" --limit 20
 ```
 
@@ -209,7 +237,7 @@ $vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.6\Index\assets.sqlite" --search copper --limit 20
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.6\Index\assets.sqlite" --category recipes --limit 20
 python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.6\Index\assets.sqlite" --domain survival --category blocktypes --limit 20
-python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.6\Index\assets.sqlite" --fact-key output --fact-value ingot-copper --limit 20
+python -B "$vsref\tools\asset-index\query_asset_index.py" --db "$vsref\versions\1.22.6\Index\assets.sqlite" --fact-key output --fact-value ingot-brass --limit 20
 ```
 
 The asset manifest records all indexed asset roots, including `versions\1.22.6\Assets` and mod roots with `assets`
@@ -218,6 +246,34 @@ read binary contents into AI context.
 
 Some Vintage Story JSON uses JSON-like syntax that may not parse as strict JSON. The asset index still keeps rows for
 parse-error files in `assets`; open the raw file only when the specific file matters.
+
+## Mod Manifest
+
+Use `mods.manifest.json` to select and scope third-party reference material before querying mod assets or decompiled
+code. Unlike the generated SQLite manifests under `Index`, this is a tracked, curated source file.
+
+Each entry records:
+
+- `mod_id`, display name, version, package type, and retained folder;
+- exact, same-line-fallback, or external-tool compatibility status plus Mod DB release tags;
+- Mod DB/source URLs, local metadata path, release id/timestamp when available, and archive SHA-256;
+- whether the retained folder has assets, decompiled code, indexed code-root names, or native binaries;
+- whether an explicit license file was found and the scope of that observation.
+
+Mod-manifest query examples:
+
+```powershell
+$vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
+
+python -B "$vsref\tools\mod-manifest\query_mod_manifest.py" --manifest "$vsref\versions\1.22.6\mods.manifest.json" --list
+python -B "$vsref\tools\mod-manifest\query_mod_manifest.py" --manifest "$vsref\versions\1.22.6\mods.manifest.json" --mod-id tentbagreworked --format json
+python -B "$vsref\tools\mod-manifest\query_mod_manifest.py" --manifest "$vsref\versions\1.22.6\mods.manifest.json" --compatibility exact
+python -B "$vsref\tools\mod-manifest\query_mod_manifest.py" --manifest "$vsref\versions\1.22.6\mods.manifest.json" --has-assets yes --has-code yes
+python -B "$vsref\tools\mod-manifest\query_mod_manifest.py" --manifest "$vsref\versions\1.22.6\mods.manifest.json" --has-native-binaries yes
+```
+
+The same filters work through `tools/reference-query.py` with the `mod` or `mods` target. A missing license file does
+not prove that an upstream project lacks a license; verify upstream licensing before reusing third-party material.
 
 ## Code Index
 
@@ -244,6 +300,10 @@ Important tables:
 - `references_hint`
   - Token-based reference hints. Useful for narrowing candidates, not a reliable call graph.
 
+- `registrations`
+  - Literal supported registration calls with the registration key, `typeof(...)` type, call-site line, compact
+    evidence, and an optional link to the uniquely resolved type declaration.
+
 - `code_text`
   - Full-text search table over compact symbol metadata.
 
@@ -254,6 +314,10 @@ $vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
 
 python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.6\Index\code.sqlite" --type ICoreAPI --limit 20
 python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.6\Index\code.sqlite" --member RegisterBlockClass --limit 20
+python -B "$vsref\tools\code-index\query_code_index.py" `
+  --db "$vsref\versions\1.22.6\Index\code.sqlite" `
+  --registration BlockDisplayCase --format json --limit 20
+python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.6\Index\code.sqlite" --reference ICoreAPI --root VSEssentials --limit 20
 python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.6\Index\code.sqlite" --base BlockEntity --limit 20
 python -B "$vsref\tools\code-index\query_code_index.py" --db "$vsref\versions\1.22.6\Index\code.sqlite" --root VSSurvivalMod --search Firepit --limit 20
 ```
@@ -282,6 +346,27 @@ Current code roots include:
 The code index is a conservative symbol index, not a compiler. It is good for finding likely files, declarations,
 signatures, inheritance, and line numbers. For exact control flow or implementation details, open the returned source
 file and inspect the relevant lines.
+
+## Class Cross-Reference
+
+Use the `class`, `classes`, or `xref` wrapper target to join top-level asset class facts to literal registration calls.
+The result identifies the asset, registration key and method, registration call site, registered type, and resolved C#
+declaration when available:
+
+```powershell
+$vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
+
+python -B "$vsref\tools\reference-query.py" --version 1.22.6 class `
+  --asset-class BlockDisplayCase --limit 20
+
+python -B "$vsref\tools\reference-query.py" --version 1.22.6 xref `
+  --asset-class tentbagreworked.itemtentbag --format json --limit 20
+```
+
+The join is category-aware: block `class`, item `class`, entity `class`, and block `entityClass` values are matched only
+to their corresponding registries. It does not infer dynamic keys, helper-wrapped calls, factories, reflection, JSON
+inheritance, or runtime patches. An empty result means no supported evidence pair was indexed, not that no relationship
+exists. Open the returned JSON and C# paths before making an exact behavioral claim.
 
 ## Web Documentation Index
 
@@ -355,6 +440,8 @@ E:\Gaming\Vintage Story\mods\Vintage Story Reference
 - Do not treat `NOTES.md` as project metadata.
 - Do not assume this archive can answer behavior for game versions that are no longer retained.
 - Do not treat `references_hint` as a complete call graph.
+- Do not treat literal `registrations` or class cross-references as an exhaustive runtime registry.
+- Do not treat `license.file_present: false` as proof that an upstream project has no license.
 - Do not treat decompiled source as build-ready project source.
 - Do not treat web documentation index entries as live upstream content; they are dated index records.
 
@@ -365,6 +452,7 @@ return to this Vintage Story Reference repository and use the project-local inde
 
 - `index assets`
 - `index reference code`
+- `.codex/skills/new-version-mods/SKILL.md` for selected-mod updates and `mods.manifest.json` maintenance
 - `python -B tools\web-index\build_web_index.py --version 1.22.6`
 
 After refreshing, other projects should reread this file and the relevant manifests before querying.

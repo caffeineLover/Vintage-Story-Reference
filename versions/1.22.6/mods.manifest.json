@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "game_version": "1.22.6",
+  "last_updated": "2026-08-14",
+  "purpose": "Curated provenance, compatibility, content, and licensing metadata for selected reference mods and tools.",
+  "compatibility_statuses": {
+    "exact": "The selected Mod DB release explicitly lists Vintage Story 1.22.6.",
+    "same-line-fallback": "The selected release is from the 1.22.x line but does not explicitly list Vintage Story 1.22.6.",
+    "external-tool": "The entry is a reference tool rather than an in-game mod, so game-version compatibility tags do not apply."
+  },
+  "license_status_note": "file_present only reports whether an explicit license file exists in the retained reference folder. It is not a legal conclusion about upstream licensing.",
+  "mods": [
+    {
+      "mod_id": "allclasses",
+      "name": "Allclasses",
+      "version": "2.3.1",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/allclasses_2.3.1",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.5"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/allclasses",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/allclasses",
+        "local_metadata": "versions/1.22.6/mods/allclasses_2.3.1/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 51259,
+        "published_at_mod_db": "2026-07-30 20:51:36",
+        "archive_sha256": "FB310C518CC9838F8251CEFDEF9DEE9C9EC3C0705155B2B51C71ED77EAE4B940"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "allclasses_2.3.1/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "bettererprospecting",
+      "name": "BetterEr Prospecting",
+      "version": "3.4.5",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/bettererprospecting_3.4.5",
+      "compatibility": {
+        "status": "exact",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3",
+          "1.22.4",
+          "1.22.5",
+          "1.22.6"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/bettererprospecting",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/bettererprospecting",
+        "local_metadata": "versions/1.22.6/mods/bettererprospecting_3.4.5/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 52310,
+        "published_at_mod_db": "2026-08-09 13:03:58",
+        "archive_sha256": "BA645FE026918178CF10E74A9981F47619BA2C1007FE48C4A6C27A32F2C77719"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "bettererprospecting_3.4.5/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "betterruins",
+      "name": "BetterRuins",
+      "version": "0.6.3",
+      "package_type": "content",
+      "folder": "versions/1.22.6/mods/betterruins_0.6.3",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3",
+          "1.22.4",
+          "1.22.5"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/betterruins",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/betterruins",
+        "local_metadata": "versions/1.22.6/mods/betterruins_0.6.3/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 45652,
+        "published_at_mod_db": "2026-06-13 11:54:42",
+        "archive_sha256": "8B2E20761B8CAD72BE3F521CE073B9FAB8F959F2599E4A3AF6479C06C58CCA00"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": false,
+        "code_roots": [],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "bunnypet",
+      "name": "Pet Bunny",
+      "version": "1.0.4",
+      "package_type": "content",
+      "folder": "versions/1.22.6/mods/bunnypet_1.0.4",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/bunnypet",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/bunnypet",
+        "local_metadata": "versions/1.22.6/mods/bunnypet_1.0.4/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 48842,
+        "published_at_mod_db": "2026-07-12 09:08:56",
+        "archive_sha256": "1693DED07911E0190B482917F15C1E4EBF5A4F82043B1AA8BA79C4D589999ACB"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": false,
+        "code_roots": [],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "cats",
+      "name": "Cats",
+      "version": "5.0.1",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/cats_5.0.1",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/cats",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/cats",
+        "local_metadata": "versions/1.22.6/mods/cats_5.0.1/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 39585,
+        "published_at_mod_db": "2026-04-28 12:52:50",
+        "archive_sha256": "877D99963C6C5CA77899B3815E664C77621B58A28457F4D24B616161ED475855"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "cats_5.0.1/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "configlib",
+      "name": "Config lib",
+      "version": "1.12.0",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/configlib_1.12.0",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0-pre.1",
+          "1.22.0-pre.2",
+          "1.22.0-pre.3",
+          "1.22.0-pre.4",
+          "1.22.0-pre.5",
+          "1.22.0-rc.1",
+          "1.22.0-rc.2",
+          "1.22.0-rc.3",
+          "1.22.0-rc.4",
+          "1.22.0-rc.5",
+          "1.22.0-rc.6",
+          "1.22.0-rc.7",
+          "1.22.0-rc.8",
+          "1.22.0-rc.9",
+          "1.22.0-rc.10",
+          "1.22.0",
+          "1.22.1"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/configlib",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/configlib",
+        "local_metadata": "versions/1.22.6/mods/configlib_1.12.0/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 39980,
+        "published_at_mod_db": "2026-05-01 12:03:34",
+        "archive_sha256": "7376D892EE4B9DC8D435E4B4B32E964773E770D5F6EC01F2C913EF49B729D9FC"
+      },
+      "reference_content": {
+        "has_assets": false,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "configlib_1.12.0/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "critcherscalculator",
+      "name": "Critcher's Calculator",
+      "version": "1.2.3",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/critcherscalculator_1.2.3",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.2",
+          "1.22.3"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/calculator",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/critcherscalculator",
+        "local_metadata": "versions/1.22.6/mods/critcherscalculator_1.2.3/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 44120,
+        "published_at_mod_db": "2026-05-31 19:52:17",
+        "archive_sha256": "E9E3C54C1E7830AEEFF32D671C21BC9998C9B80D5F772734D14801CD60D9026C"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "critcherscalculator_1.2.3/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "jaunt",
+      "name": "Jaunt: Extended Riding System",
+      "version": "3.1.0",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/jaunt_3.1.0",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/jaunt",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/jaunt",
+        "local_metadata": "versions/1.22.6/mods/jaunt_3.1.0/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 49279,
+        "published_at_mod_db": "2026-07-15 09:05:53",
+        "archive_sha256": "3FDCA81A752421CBEC5AFABA5EE636E231DB8BABDED404704F2483B3B31DA328"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "jaunt_3.1.0/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "panserbjornrebjorn",
+      "name": "A Panserbjørn Story: Rebjørn",
+      "version": "1.0.0",
+      "package_type": "content",
+      "folder": "versions/1.22.6/mods/panserbjornrebjorn_1.0.0",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0-pre.1",
+          "1.22.0-pre.2",
+          "1.22.0-pre.3",
+          "1.22.0-pre.4",
+          "1.22.0-pre.5",
+          "1.22.0-rc.1",
+          "1.22.0-rc.2",
+          "1.22.0-rc.3",
+          "1.22.0-rc.4",
+          "1.22.0-rc.5",
+          "1.22.0-rc.6",
+          "1.22.0-rc.7",
+          "1.22.0-rc.8",
+          "1.22.0-rc.9",
+          "1.22.0-rc.10",
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/panserbjornrebjorn",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/panserbjornrebjorn",
+        "local_metadata": "versions/1.22.6/mods/panserbjornrebjorn_1.0.0/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 46629,
+        "published_at_mod_db": "2026-06-20 21:24:32",
+        "archive_sha256": "4DA5A6C62B524A607CB3792EA69061054A71404AD95D5F6A28E5F6F2A7D32CB0"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": false,
+        "code_roots": [],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "petai",
+      "name": "Pet AI",
+      "version": "5.1.1",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/petai_5.1.1",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/petai",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/petai",
+        "local_metadata": "versions/1.22.6/mods/petai_5.1.1/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 40957,
+        "published_at_mod_db": "2026-05-08 08:49:07",
+        "archive_sha256": "001CAB7182A22721C47AA40DE4995AAFAC47C5936E3218E71FC864ACB5EA5E19"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "petai_5.1.1/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "primitivesurvival",
+      "name": "Primitive Survival",
+      "version": "5.1.0",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/primitivesurvival_5.1.0",
+      "compatibility": {
+        "status": "exact",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0-pre.1",
+          "1.22.0-pre.2",
+          "1.22.0-pre.3",
+          "1.22.0-pre.4",
+          "1.22.0-pre.5",
+          "1.22.0-rc.1",
+          "1.22.0-rc.2",
+          "1.22.0-rc.3",
+          "1.22.0-rc.4",
+          "1.22.0-rc.5",
+          "1.22.0-rc.6",
+          "1.22.0-rc.7",
+          "1.22.0-rc.8",
+          "1.22.0-rc.9",
+          "1.22.0-rc.10",
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3",
+          "1.22.4",
+          "1.22.5",
+          "1.22.6"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/primitivesurvival",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/primitivesurvival",
+        "local_metadata": "versions/1.22.6/mods/primitivesurvival_5.1.0/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 51594,
+        "published_at_mod_db": "2026-08-02 15:31:06",
+        "archive_sha256": "551F71E882BD5D9725120652FBB6CEEFAF68743572F7FDB0D73054A6705184EA"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "primitivesurvival_5.1.0/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "rpvoicechat",
+      "name": "RP Voice Chat",
+      "version": "2.5.8",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/rpvoicechat_2.5.8",
+      "compatibility": {
+        "status": "exact",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3",
+          "1.22.4",
+          "1.22.5",
+          "1.22.6"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/rpvoicechat",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/rpvoicechat",
+        "local_metadata": "versions/1.22.6/mods/rpvoicechat_2.5.8/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 48727,
+        "published_at_mod_db": "2026-07-11 09:10:40",
+        "archive_sha256": "4600C1E70244D174D3ED5E1361DF113287B9A62B7FB174F3C8521D4FAB2D8F3C"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "rpvoicechat_2.5.8/decompiled assemblies"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "simplevsmanager",
+      "name": "Simple VS Manager",
+      "version": "2.3.0",
+      "package_type": "externaltool",
+      "folder": "versions/1.22.6/mods/simplevsmanager_2.3.0",
+      "compatibility": {
+        "status": "external-tool",
+        "target_game_version": "1.22.6",
+        "release_tags": []
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/simplevsmanager",
+        "source_repository": "https://github.com/Interzoneism/Simple-Mod-Manager",
+        "local_metadata": "versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md"
+      },
+      "release": {
+        "published_at_mod_db": "2026-08-09 21:11:02",
+        "archive_sha256": "71F7F9F91A6DCC234ADE5BF095FA34FE2D043AE0DBA92FAEFCF3C2D9EC2AF7F8"
+      },
+      "reference_content": {
+        "has_assets": false,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "simplevsmanager_2.3.0/decompiled assemblies"
+        ],
+        "has_native_binaries": true
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-release-or-upstream-repository"
+      }
+    },
+    {
+      "mod_id": "tentbagreworked",
+      "name": "TentBag Reworked",
+      "version": "3.2.4",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/tentbagreworked_3.2.4",
+      "compatibility": {
+        "status": "exact",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0-pre.1",
+          "1.22.0-pre.2",
+          "1.22.0-pre.3",
+          "1.22.0-pre.4",
+          "1.22.0-pre.5",
+          "1.22.0-rc.1",
+          "1.22.0-rc.2",
+          "1.22.0-rc.3",
+          "1.22.0-rc.4",
+          "1.22.0-rc.5",
+          "1.22.0-rc.6",
+          "1.22.0-rc.7",
+          "1.22.0-rc.8",
+          "1.22.0-rc.9",
+          "1.22.0-rc.10",
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3",
+          "1.22.4",
+          "1.22.5",
+          "1.22.6"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/tentbagreworked",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/tentbagreworked",
+        "local_metadata": "versions/1.22.6/mods/tentbagreworked_3.2.4/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 49890,
+        "published_at_mod_db": "2026-07-20 07:50:23",
+        "archive_sha256": "072889AD0DDE0505F340A147835F7CC5DCF7449BE9FFDB583F33D74E0F16A217"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "tentbagreworked_3.2.4/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "vsimgui",
+      "name": "Dear ImGui",
+      "version": "1.2.7",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/vsimgui_1.2.7",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0-pre.1",
+          "1.22.0-pre.2",
+          "1.22.0-pre.3",
+          "1.22.0-pre.4",
+          "1.22.0-pre.5",
+          "1.22.0-rc.1",
+          "1.22.0-rc.2",
+          "1.22.0-rc.3",
+          "1.22.0-rc.4",
+          "1.22.0-rc.5",
+          "1.22.0-rc.6",
+          "1.22.0-rc.7",
+          "1.22.0-rc.8",
+          "1.22.0-rc.9",
+          "1.22.0-rc.10",
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/imgui",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/vsimgui",
+        "local_metadata": "versions/1.22.6/mods/vsimgui_1.2.7/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 45264,
+        "published_at_mod_db": "2026-06-09 22:31:45",
+        "archive_sha256": "27CB87DE02034A97D154EA2052687AA2C015870BD1ED0BB7A01B813FA57558E3"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "vsimgui_1.2.7/decompiled assemblies"
+        ],
+        "has_native_binaries": true
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "wolftaming",
+      "name": "Wolf taming",
+      "version": "5.0.1",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/wolftaming_5.0.1",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/wolftaming",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/wolftaming",
+        "local_metadata": "versions/1.22.6/mods/wolftaming_5.0.1/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 39584,
+        "published_at_mod_db": "2026-04-28 12:52:31",
+        "archive_sha256": "8B61827DEF64E122D7B64BF338513F8995342A1786721D29CCE26CB070D8C455"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "wolftaming_5.0.1/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    }
+  ]
+}

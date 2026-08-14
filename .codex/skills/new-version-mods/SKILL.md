@@ -29,6 +29,8 @@ Use this workflow as part of `do-new-version` when creating a new Vintage Story 
 - Do not silently omit a seeded mod. If no exact or same-line compatible current release is found for the target game version, report it as skipped with the evidence checked.
 - Treat `NOTES.md` as personal user notes, not authoritative metadata.
 - Prefer `README.md`, project files, `modinfo.json`, and folder names for reference metadata.
+- Create or update the tracked `versions/<game-version>/mods.manifest.json`; do not leave compatibility and provenance
+  available only in ignored `.codex/tmp` staging reports.
 
 ## Version Selection
 
@@ -53,7 +55,13 @@ Determine the target Vintage Story version in this order:
 10. If DLLs are present, decompile managed .NET DLLs before placing the update in `versions/<game-version>/mods`. Prefer decompiling mod-owned DLLs first, but do not skip bundled managed dependency DLLs unless the user explicitly limits scope. Detect and report native/non-.NET DLLs instead of treating them as C# decompilation failures.
 11. Place decompiled output in a clearly named folder inside the updated mod folder, such as `decompiled assembly`, `decompiled assemblies`, or `<dll-name> - decompiled`. Do not overwrite an existing decompiled output folder; choose a unique suffix if needed.
 12. Place the completed update in `versions/<game-version>/mods/<modid>_<modversion>`, using the canonical mod id and selected release version. Do not create a second folder for the same mod id in the target version.
-13. Summarize seeded version if any, old version, new version, exact or same-line compatibility status, source URL, destination folder, staged archive path, extraction path, DLLs decompiled, decompiled output paths, and any seeded mods skipped because no compatible target-version or same-line release was found.
+13. Create or update `versions/<game-version>/mods.manifest.json`. Give every completed mod/tool folder exactly one
+    entry recording mod id, name, version, package type, folder, exact/fallback compatibility evidence, source URLs,
+    release provenance, asset/code/native-binary availability, indexed code-root names, and explicit license-file
+    presence. Keep the manifest tracked and reviewable.
+14. Summarize seeded version if any, old version, new version, exact or same-line compatibility status, source URL,
+    destination folder, staged archive path, extraction path, DLLs decompiled, decompiled output paths, and any seeded
+    mods skipped because no compatible target-version or same-line release was found.
 
 ## Decompilation
 
@@ -80,5 +88,7 @@ Before saying an update is ready, verify:
 - The target version has only one completed folder per mod id.
 - The destination folder uses normalized `<modid>_<modversion>` naming unless a user explicitly requested a different name for that version.
 - Existing mod folders remain untouched.
+- `mods.manifest.json` has one entry per completed mod/tool folder, points only at existing paths, and distinguishes
+  exact releases, same-line fallbacks, and external tools.
 
 If any check fails, leave all files in staging, do not copy into `versions/<game-version>/mods`, and report the issue.

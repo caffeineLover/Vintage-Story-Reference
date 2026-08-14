@@ -12,6 +12,7 @@ This repository is a searchable reference archive for AI-assisted Vintage Story 
 
 - `README.md` gives a short human overview and points to the right next documents.
 - `INDEX_USAGE.md` is the concrete consumer guide for the current archive layout, index paths, query commands, tables, and limitations.
+- `docs/QUERY_COOKBOOK.md` provides task-shaped, cross-index answer recipes for common modding research.
 - `docs/ARCHITECTURE.md` explains how the repository's moving parts relate to each other.
 - `docs/MAINTAINING_REFERENCE.md` explains how to add and refresh reference material.
 - `docs/PROJECT_MEMORY.md` records durable project history, decisions, risks, and verified commands.
@@ -28,6 +29,8 @@ This repository is a searchable reference archive for AI-assisted Vintage Story 
 - `reference.catalog.json` is the root machine-readable discovery catalog.
 - `versions/<version>/version.catalog.json` is the version-specific discovery catalog.
 - Generated index manifests under `versions/<version>/Index/*.index.json` remain the source of truth for exact generated timestamps, detailed counts, roots, and limitations.
+- `versions/<version>/mods.manifest.json` is tracked, curated metadata for selected mod identity, compatibility,
+  provenance, retained content, and license-file presence.
 - Source manifests such as `versions/<version>/Web/sources.json` record curated external inputs.
 
 Catalogs should point to existing manifests, scripts, prompts, and skills. They should not duplicate large generated details that already live in generated index manifests.
@@ -42,6 +45,8 @@ not assume those older payloads are present on disk.
 - `tools/reference-query.py` is the preferred consumer entry point when an agent wants one stable command shape.
 - `tools/asset-index/` builds and queries the asset SQLite index.
 - `tools/code-index/` builds and queries the decompiled C# code SQLite index.
+- `tools/cross-reference/` joins compatible facts from independently generated asset and code indexes at query time.
+- `tools/mod-manifest/` queries the tracked selected-mod manifest.
 - `tools/web-index/` builds and queries the curated external documentation SQLite index.
 
 The wrapper delegates to the specialized query helpers. It should stay thin so the source-specific scripts remain the place where index-specific query behavior lives.
@@ -57,10 +62,13 @@ versions/<version>/
   mods/
   Web/
   Index/
+  mods.manifest.json
   version.catalog.json
 ```
 
-The `API`, `Assets`, and `mods` folders are raw reference material. Agents should not scan them broadly. The `Index` folder is the normal entry point for research.
+The `API`, `Assets`, and `mods` folders are raw reference material. Agents should not scan them broadly. The `Index`
+folder is the normal entry point for asset, code, and web research; `mods.manifest.json` is the normal entry point for
+selecting and scoping third-party reference material.
 
 Version folders may also have a browse-only `VintageStory.Reference.<version>.csproj` so IDEs can navigate the
 reference payload. Those wrapper projects are not buildable game or mod projects; they exist to make the raw reference
@@ -71,7 +79,7 @@ trees visible to editors without compiling decompiled Vintage Story source.
 The repository keeps curated source material and rebuildable generated artifacts separate:
 
 - Retained source/reference material includes version catalogs, API decompiles, copied client assets, selected
-  reference mods/tools, curated web source manifests, prompt files, skills, and index/query tools.
+  reference mods/tools, curated mod and web source manifests, prompt files, skills, and index/query tools.
 - Rebuildable generated material includes SQLite databases and generated index manifests under
   `versions/<version>/Index`.
 - Each `Index` folder should be represented in Git by its local `.gitignore`; generated `.sqlite` and `.index.json`
@@ -81,10 +89,14 @@ This boundary matters because the asset indexes can exceed normal GitHub file li
 manifests and build scripts are small enough to review and reproduce from a clean checkout plus the documented source
 archives.
 
-## Index Types
+## Index And Manifest Types
 
 - Asset index: searchable metadata and extracted facts for assets, JSON, recipes, shapes, textures, lang files, worldgen, and patches.
-- Code index: conservative symbol metadata for decompiled C# source, including types, members, inheritance, and source locations.
+- Code index: conservative symbol metadata plus evidence-backed literal registration calls for decompiled C# source.
+- Class cross-reference: a query-time, category-aware join from asset `class` and `entityClass` facts to literal code
+  registrations and uniquely resolved type declarations. It is not a separate generated database.
+- Mod manifest: curated identity, release compatibility, source provenance, retained asset/code availability, native
+  binary presence, and license-file presence for selected reference mods and tools.
 - Web index: curated external documentation converted into searchable sections.
 
 Indexes are locators and summaries. Exact behavior still requires opening the specific raw source, asset, or upstream page identified by an index result.

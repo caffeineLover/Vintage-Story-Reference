@@ -18,6 +18,8 @@ The goal is to save memory, time, and AI credits by querying a compact local SQL
 - Do not store full source files in the index. Store symbols, signatures, paths, line numbers, and compact searchable text.
 - Do not store indexes under `.codex/tmp`; use stable versioned index artifacts under `versions/<game-version>/Index`.
 - Treat `NOTES.md` as personal user notes, not authoritative metadata.
+- Treat literal registration rows as strong navigation evidence, not an exhaustive runtime registry. Dynamic keys,
+  helper wrappers, factories, reflection, and patches may not be represented.
 - Do not treat the index as the source of truth when exact implementation matters; use it to find candidate files and line numbers, then open the specific source files.
 - Keep query result sets small. Prefer symbol names, paths, line numbers, and short signatures over dumping source.
 
@@ -46,7 +48,7 @@ The skill is project-local, but these artifacts are intended to be consumed by o
 1. Resolve the target game version.
 2. Check for `versions/<game-version>/Index/code.sqlite` and `code.index.json`.
 3. If the index exists, inspect the manifest for schema version, source roots, indexed file counts, and stale status.
-4. Query SQLite first for symbols, signatures, inheritance, or references.
+4. Query SQLite first for symbols, signatures, inheritance, literal registrations, or references.
 5. Open only the source files and line ranges identified by the query when exact implementation details are needed.
 6. If the index is missing or stale, ask whether to build or refresh it unless the user already requested indexing.
 
@@ -92,6 +94,8 @@ Use SQLite. Include these concepts even if table names evolve:
 - `types`: full name, namespace, name, kind, accessibility, source file, start line, end line, base type, implemented interfaces, attributes.
 - `members`: containing type, member kind, name, signature, return type, accessibility, static/abstract/virtual/override flags, source file, start line, end line, attributes.
 - `references`: conservative symbol references from member bodies when feasible, with source file and line.
+- `registrations`: supported calls with a literal registration key and `typeof(...)` value, their method/kind, call
+  site, evidence text, and an optional unambiguous link to the registered type declaration.
 - `code_text`: SQLite FTS table over compact fields such as type names, member names, full names, signatures, attributes, base types, interface names, and selected comments.
 - `index_meta`: schema version, generated time, source roots, file counts, symbol counts, parser mode, and tool version.
 
@@ -108,6 +112,11 @@ Use the index for:
 - finding classes with a base type, interface, attribute, or method name;
 - finding likely code locations before opening source;
 - comparing API, library, survival mod, and decompiled mod symbols.
+- querying conservative `references_hint` tokens with `--reference` when a bounded identifier hint can narrow a
+  candidate set.
+- querying registration keys, kinds, methods, registered types, call sites, and resolved declarations with
+  `--registration`, `--registration-kind`, or `--registration-method`.
+- joining top-level asset `class` and `entityClass` facts through the wrapper's `class`/`xref` target.
 
 Avoid broad recursive `rg` over all `.cs` files unless the index is missing, stale, or cannot answer the question.
 
@@ -143,4 +152,6 @@ Before reporting that a code index is ready, verify:
 - A type-name query returns a known API type.
 - A member query returns methods or properties for a known type.
 - A full-text query returns plausible candidates.
+- A literal registration query returns its call site and resolved type declaration.
+- A representative `class` cross-reference returns both asset and C# evidence.
 - Opening a reported file and line number reaches the expected declaration.

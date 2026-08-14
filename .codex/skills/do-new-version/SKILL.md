@@ -18,7 +18,8 @@ This skill includes selected reference mod updates by invoking `new-version-mods
 - Do not overwrite an existing `versions/<version>/API` or `versions/<version>/Assets` payload without explicit user approval.
 - Stage downloaded archives, extracted game files, and temporary tools outside the kept reference tree, such as under a temp directory or `.codex/tmp/new-version/<version>/`.
 - Create `versions/<version>/VintageStory.Reference.<version>.csproj` and add it to `Vintage Story Reference.sln` under a matching `<version>` solution folder.
-- Keep the version wrapper project browse-only: disable default compile/resource items and include `version.catalog.json`, `API`, `Assets`, `mods`, and `Web` as `None` items.
+- Keep the version wrapper project browse-only: disable default compile/resource items and include
+  `version.catalog.json`, `mods.manifest.json`, `API`, `Assets`, `mods`, and `Web` as `None` items.
 - Prefer the Windows dedicated server ZIP for decompilation inputs because it is smaller and contains `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll`.
 - Prefer the full Linux client archive for copying `Assets` because it extracts cleanly and includes the full client asset payload. Do not treat the server package's reduced `assets` folder as the final full asset copy.
 - Do not keep decompiler-generated `.sln` or `.slnx` files. Prefer avoiding solution generation; delete solution files if the decompiler creates them.
@@ -30,7 +31,8 @@ This skill includes selected reference mod updates by invoking `new-version-mods
 - Build or refresh `versions/<version>/Index/assets.sqlite` and `versions/<version>/Index/assets.index.json` after copying assets and adding mod assets.
 - Build or refresh `versions/<version>/Index/web.sqlite` and `versions/<version>/Index/web.index.json` after copying `versions/<version>/Web/sources.json`.
 - Track `versions/<version>/Index/.gitignore` so the `Index` folder exists in Git, but do not stage or commit index SQLite databases or generated index manifests unless the user explicitly asks and a large-file strategy such as Git LFS has been confirmed.
-- Do not report a new version as ready until representative code-index, asset-index, and web-index queries succeed.
+- Do not report a new version as ready until representative mod-manifest, code-index, asset-index, and web-index
+  queries succeed.
 - Update `docs/PROJECT_MEMORY.md` before finishing the work session.
 
 ## Expected Layout
@@ -44,6 +46,7 @@ For version `<version>`, populate:
 - `versions/<version>/API/VSSurvivalMod_decompiled_<version>`
 - `versions/<version>/Assets`
 - `versions/<version>/mods`
+- `versions/<version>/mods.manifest.json`
 - `versions/<version>/Web`
 - `versions/<version>/VintageStory.Reference.<version>.csproj`
 
@@ -51,7 +54,8 @@ Each API wrapper folder should contain the matching `.csproj`, namespace folders
 
 The `Assets` folder should contain the release asset domains directly, normally including `creative`, `game`, and `survival`.
 
-The version wrapper `.csproj` should include the reference payload as browseable `None` items, including `Web`, and should not compile decompiled game sources.
+The version wrapper `.csproj` should include the reference payload as browseable `None` items, including
+`mods.manifest.json` and `Web`, and should not compile decompiled game sources.
 
 Build locally under the tracked `Index` folder and keep out of Git by default:
 
@@ -101,7 +105,10 @@ ilspycmd --disable-updatecheck --nested-directories --use-varnames-from-pdb -p `
     - No `.sln` or `.slnx` files exist under `versions/<version>/API`.
     - No kept `.csproj` file contains temp extraction paths.
     - `versions/<version>/Assets` contains the full asset domains directly.
-15. Read and follow `.codex/skills/new-version-mods/SKILL.md` to download the newest compatible selected reference mods for the target game version, place exactly one normalized `<modid>_<modversion>` folder per mod id under `versions/<version>/mods`, and decompile managed .NET DLLs when present.
+15. Read and follow `.codex/skills/new-version-mods/SKILL.md` to download the newest compatible selected reference
+    mods for the target game version, place exactly one normalized `<modid>_<modversion>` folder per mod id under
+    `versions/<version>/mods`, decompile managed .NET DLLs when present, and create the tracked
+    `versions/<version>/mods.manifest.json`.
 16. Read and follow `.codex/skills/do-new-web/SKILL.md` to copy the previous version's curated web sources into `versions/<version>/Web/sources.json`, add that source manifest to Git, and build the web index.
 17. Build the code and asset indexes:
 
@@ -110,16 +117,25 @@ python -B tools\code-index\build_code_index.py --version <version>
 python -B tools\asset-index\build_asset_index.py --version <version>
 ```
 
-18. Create or update `versions/<version>/version.catalog.json` so the `code`, `asset`, and `web` indexes point at the new SQLite databases, manifests, source manifests, build scripts, and query scripts. Add the new version to `reference.catalog.json`. Do not mark the new version as the default unless the user asks.
+18. Create or update `versions/<version>/version.catalog.json` so the `code`, `asset`, and `web` indexes point at the
+    new SQLite databases, manifests, source manifests, build scripts, and query scripts; the `mods` manifest points at
+    `mods.manifest.json`; and the `classes` cross-reference supplies `--asset-db` and `--code-db` inputs to
+    `tools/cross-reference/query_class_cross_reference.py`. Add the version to `reference.catalog.json`. Do not mark
+    it as the default unless the user asks.
 19. Validate the solution and indexes with representative queries. Prefer the unified wrapper after catalogs are updated:
 
 ```powershell
 dotnet sln "Vintage Story Reference.sln" list
 python -B tools\reference-query.py --version <version> --list-indexes
+python -B tools\reference-query.py --version <version> --list-cross-references
+python -B tools\reference-query.py --version <version> --list-manifests
+python -B tools\reference-query.py --version <version> mod --limit 5
 python -B tools\reference-query.py --version <version> asset --search copper --limit 5
 python -B tools\reference-query.py --version <version> asset --category recipes --limit 5
 python -B tools\reference-query.py --version <version> code --type ICoreAPI --limit 5
 python -B tools\reference-query.py --version <version> code --member StartServer --limit 5
+python -B tools\reference-query.py --version <version> code --registration BlockDisplayCase --limit 5
+python -B tools\reference-query.py --version <version> class --asset-class BlockDisplayCase --limit 5
 python -B tools\reference-query.py --version <version> code --search BlockEntity --limit 5
 python -B tools\reference-query.py --version <version> web --list-sources
 python -B tools\reference-query.py --version <version> web --search "configlib-patches json" --limit 5

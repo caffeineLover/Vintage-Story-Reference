@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Builds the compact SQLite index used to navigate decompiled Vintage Story C# sources.
+
+The index deliberately favors evidence-backed navigation over full program analysis. In addition to declarations and
+bounded reference hints, it records literal Vintage Story class-registration calls and resolves their ``typeof``
+arguments to an indexed declaration only when one best candidate can be identified.
+"""
+
 import argparse
 import datetime as dt
 import hashlib
@@ -10,8 +18,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-SCHEMA_VERSION = 1
-TOOL_VERSION = "1.0.1"
+SCHEMA_VERSION = 2
+TOOL_VERSION = "1.1.0"
 PARSER_MODE = "conservative-regex"
 
 TYPE_RE = re.compile(
@@ -50,6 +58,28 @@ EVENT_RE = re.compile(
     r"(?P<name>[A-Za-z_][A-Za-z0-9_`]*)"
 )
 TOKEN_RE = re.compile(r"\b[A-Za-z_][A-Za-z0-9_`]*\b")
+REGISTRATION_METHOD_KINDS = {
+    "RegisterBlockClass": "block",
+    "RegisterItemClass": "item",
+    "RegisterBlockEntityClass": "block_entity",
+    "RegisterBlockBehaviorClass": "block_behavior",
+    "RegisterCollectibleBehaviorClass": "collectible_behavior",
+    "RegisterBlockEntityBehaviorClass": "block_entity_behavior",
+    "RegisterEntityBehaviorClass": "entity_behavior",
+    "RegisterEntity": "entity",
+    "RegisterEntityRendererClass": "entity_renderer",
+    "RegisterInventoryClass": "inventory",
+}
+REGISTRATION_CALL_RE = re.compile(
+    r"\b(?P<method>" + "|".join(sorted(REGISTRATION_METHOD_KINDS, key=len, reverse=True)) + r")\s*"
+    r"\(\s*\"(?P<key>(?:\\.|[^\"\\])*)\"\s*,\s*typeof\s*\(\s*(?P<type>[^()]+?)\s*\)\s*\)",
+    re.MULTILINE,
+)
+COMMENT_OR_LITERAL_RE = re.compile(
+    r'(?P<string>@"(?:[^"]|"")*"|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\')'
+    r"|(?P<comment>//[^\r\n]*|/\*.*?\*/)",
+    re.DOTALL,
+)
 ACCESS = {"public", "protected", "internal", "private"}
 MEMBER_KEYWORDS = {
     "if",
@@ -107,6 +137,18 @@ class MemberDecl:
     attributes: str
 
 
+@dataclass
+class RegistrationDecl:
+    """Holds one literal registration call and its source evidence before it is written to SQLite."""
+
+    method_name: str
+    registration_kind: str
+    registration_key: str
+    type_name: str
+    line: int
+    evidence: str
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build the Vintage Story Reference C# code SQLite index.")
     parser.add_argument("--version", required=True, help="Vintage Story version folder, e.g. 1.22.3")
@@ -140,6 +182,8 @@ def main() -> int:
         "types": 0,
         "members": 0,
         "references": 0,
+        "registrations": 0,
+        "registration_types_resolved": 0,
         "parse_errors": 0,
     }
     root_counts: dict[str, int] = {}
@@ -169,6 +213,7 @@ def main() -> int:
                     strong_hash=args.strong_hash,
                 )
 
+        stats["registration_types_resolved"] = resolve_registration_types(conn)
         conn.commit()
         write_meta(conn, version, version_root, source_roots, stats)
         conn.commit()
@@ -200,6 +245,9 @@ def main() -> int:
         "limitations": [
             "Uses conservative regex extraction instead of a full C# parser.",
             "Symbol declarations, signatures, inheritance, and line numbers are indexed.",
+            "Registration extraction requires a supported Register* call with a literal key and typeof(...) value.",
+            "Dynamic, helper-wrapped, factory-based, and reflection-based registrations are not inferred.",
+            "Registered types are linked to declarations only when one best indexed candidate can be identified.",
             "References are token-based hints, not a reliable call graph.",
             "Open source files for exact implementation details.",
         ],
@@ -207,7 +255,10 @@ def main() -> int:
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     print(f"Indexed {stats['source_files']} C# files into {db_path}")
-    print(f"Types: {stats['types']}; members: {stats['members']}; references: {stats['references']}")
+    print(
+        f"Types: {stats['types']}; members: {stats['members']}; references: {stats['references']}; "
+        f"registrations: {stats['registrations']}"
+    )
     print(f"Manifest: {manifest_path}")
     return 0
 
@@ -336,6 +387,32 @@ def create_schema(conn: sqlite3.Connection) -> None:
 
         CREATE INDEX idx_references_token ON references_hint(token);
 
+        CREATE TABLE registrations (
+            id INTEGER PRIMARY KEY,
+            file_id INTEGER NOT NULL,
+            root_id INTEGER NOT NULL,
+            containing_type_id INTEGER,
+            member_id INTEGER,
+            registered_type_id INTEGER,
+            method_name TEXT NOT NULL,
+            registration_kind TEXT NOT NULL,
+            registration_key TEXT NOT NULL,
+            type_name TEXT NOT NULL,
+            line INTEGER NOT NULL,
+            evidence TEXT NOT NULL,
+            FOREIGN KEY(file_id) REFERENCES source_files(id),
+            FOREIGN KEY(root_id) REFERENCES source_roots(id),
+            FOREIGN KEY(containing_type_id) REFERENCES types(id),
+            FOREIGN KEY(member_id) REFERENCES members(id),
+            FOREIGN KEY(registered_type_id) REFERENCES types(id)
+        );
+
+        CREATE INDEX idx_registrations_key ON registrations(registration_key);
+        CREATE INDEX idx_registrations_type ON registrations(type_name);
+        CREATE INDEX idx_registrations_kind ON registrations(registration_kind);
+        CREATE INDEX idx_registrations_containing_type ON registrations(containing_type_id);
+        CREATE INDEX idx_registrations_registered_type ON registrations(registered_type_id);
+
         CREATE VIRTUAL TABLE code_text USING fts5(
             rel_path,
             root_name,
@@ -367,6 +444,8 @@ def write_meta(conn: sqlite3.Connection, version: str, version_root: Path, sourc
         "types": str(stats["types"]),
         "members": str(stats["members"]),
         "references": str(stats["references"]),
+        "registrations": str(stats["registrations"]),
+        "registration_types_resolved": str(stats["registration_types_resolved"]),
     }
     conn.executemany("INSERT INTO index_meta(key, value) VALUES (?, ?)", values.items())
 
@@ -411,7 +490,10 @@ def index_source_file(
     parse_errors: list[dict[str, str]],
     strong_hash: bool,
 ) -> None:
-    root_id = conn.execute("SELECT id FROM source_roots WHERE rel_path = ?", (root.path.relative_to(repo_root).as_posix(),)).fetchone()[0]
+    root_id = conn.execute(
+        "SELECT id FROM source_roots WHERE rel_path = ?",
+        (root.path.relative_to(repo_root).as_posix(),),
+    ).fetchone()[0]
     rel_path = path.relative_to(repo_root).as_posix()
     stat = path.stat()
     stats["source_files"] += 1
@@ -439,11 +521,21 @@ def index_source_file(
         INSERT INTO source_files(root_id, rel_path, namespace_hint, size, mtime_ns, signature, parse_status)
         VALUES (?, ?, ?, ?, ?, ?, ?)
         """,
-        (root_id, rel_path, namespace_hint, stat.st_size, stat.st_mtime_ns, file_signature(path, stat, strong_hash), parse_status),
+        (
+            root_id,
+            rel_path,
+            namespace_hint,
+            stat.st_size,
+            stat.st_mtime_ns,
+            file_signature(path, stat, strong_hash),
+            parse_status,
+        ),
     )
     file_id = cur.lastrowid
 
     symbol_text_parts = [rel_path, root.name, namespace_hint or ""]
+    type_locations: list[tuple[int, int, int]] = []
+    member_locations: list[tuple[int, int, int]] = []
     for decl in declarations:
         base_type, interfaces = split_bases(decl.bases)
         accessibility = accessibility_from_modifiers(decl.modifiers)
@@ -470,6 +562,7 @@ def index_source_file(
             ),
         )
         type_id = type_cur.lastrowid
+        type_locations.append((decl.start_line, decl.end_line, type_id))
         stats["types"] += 1
         kind_counts[decl.kind] = kind_counts.get(decl.kind, 0) + 1
         symbol_text_parts.extend([decl.name, decl.full_name, decl.kind, decl.modifiers, decl.bases, decl.attributes])
@@ -499,8 +592,18 @@ def index_source_file(
                 ),
             )
             member_id = member_cur.lastrowid
+            member_locations.append((member.start_line, member.end_line, member_id))
             stats["members"] += 1
-            symbol_text_parts.extend([member.name, member.kind, member.signature, member.return_type, member.modifiers, member.attributes])
+            symbol_text_parts.extend(
+                [
+                    member.name,
+                    member.kind,
+                    member.signature,
+                    member.return_type,
+                    member.modifiers,
+                    member.attributes,
+                ]
+            )
 
             for token, line_no in reference_tokens(lines, member.start_line, member.end_line):
                 conn.execute(
@@ -508,6 +611,41 @@ def index_source_file(
                     (file_id, member_id, token, line_no),
                 )
                 stats["references"] += 1
+
+    # Registration calls are file-level evidence. Associate each call with the narrowest parsed member that contains
+    # its line, but retain the call even when conservative member parsing cannot identify its enclosing method.
+    for registration in extract_registration_calls(text):
+        containing_type_id = find_narrowest_span_id(registration.line, type_locations)
+        member_id = find_containing_member_id(registration.line, member_locations)
+        conn.execute(
+            """
+            INSERT INTO registrations(
+                file_id, root_id, containing_type_id, member_id, method_name, registration_kind, registration_key,
+                type_name, line, evidence
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                file_id,
+                root_id,
+                containing_type_id,
+                member_id,
+                registration.method_name,
+                registration.registration_kind,
+                registration.registration_key,
+                registration.type_name,
+                registration.line,
+                registration.evidence,
+            ),
+        )
+        stats["registrations"] += 1
+        symbol_text_parts.extend(
+            [
+                registration.method_name,
+                registration.registration_key,
+                registration.type_name,
+            ]
+        )
 
     conn.execute(
         "INSERT INTO code_text(rowid, rel_path, root_name, namespace, symbol_text) VALUES (?, ?, ?, ?, ?)",
@@ -848,6 +986,122 @@ def reference_tokens(lines: list[str], start_line: int, end_line: int):
                 return
 
 
+def extract_registration_calls(text: str) -> list[RegistrationDecl]:
+    """Extracts only supported registration calls whose key and concrete type are explicit in source."""
+
+    clean_text = strip_comments_preserve_layout(text)
+    registrations = []
+    for match in REGISTRATION_CALL_RE.finditer(clean_text):
+        method_name = match.group("method")
+        registrations.append(
+            RegistrationDecl(
+                method_name=method_name,
+                registration_kind=REGISTRATION_METHOD_KINDS[method_name],
+                registration_key=decode_csharp_string(match.group("key")),
+                type_name=normalize_registered_type(match.group("type")),
+                line=clean_text.count("\n", 0, match.start()) + 1,
+                evidence=normalize_space(match.group(0)),
+            )
+        )
+    return registrations
+
+
+def strip_comments_preserve_layout(text: str) -> str:
+    """Masks comments while preserving strings, character literals, offsets, and line numbers for evidence."""
+
+    def replace_match(match: re.Match) -> str:
+        if match.group("string") is not None:
+            return match.group(0)
+
+        # Newlines remain intact so extracted locations still address the original decompiled source file.
+        return "".join("\n" if char == "\n" else "\r" if char == "\r" else " " for char in match.group(0))
+
+    return COMMENT_OR_LITERAL_RE.sub(replace_match, text)
+
+
+def decode_csharp_string(value: str) -> str:
+    """Decodes the small escape subset relevant to registration identifiers without evaluating arbitrary text."""
+
+    replacements = {
+        r"\"": '"',
+        r"\\": "\\",
+        r"\n": "\n",
+        r"\r": "\r",
+        r"\t": "\t",
+    }
+    return re.sub(r'\\["\\nrt]', lambda match: replacements.get(match.group(0), match.group(0)), value)
+
+
+def normalize_registered_type(value: str) -> str:
+    """Normalizes harmless decompiler formatting while retaining the source-level type identity."""
+
+    return normalize_space(value).removeprefix("global::")
+
+
+def find_containing_member_id(line: int, member_locations: list[tuple[int, int, int]]) -> int | None:
+    """Returns the narrowest indexed member spanning a registration line, avoiding guesses when none spans it."""
+
+    return find_narrowest_span_id(line, member_locations)
+
+
+def find_narrowest_span_id(line: int, locations: list[tuple[int, int, int]]) -> int | None:
+    """Selects the most specific indexed declaration range containing a source line."""
+
+    candidates = [location for location in locations if location[0] <= line <= location[1]]
+    if not candidates:
+        return None
+    return min(candidates, key=lambda location: location[1] - location[0])[2]
+
+
+def resolve_registration_types(conn: sqlite3.Connection) -> int:
+    """Links registration ``typeof`` values to declarations only when scoring produces one unambiguous winner."""
+
+    registrations = conn.execute(
+        """
+        SELECT reg.id, reg.root_id, reg.type_name, f.namespace_hint
+        FROM registrations reg
+        JOIN source_files f ON f.id = reg.file_id
+        """
+    ).fetchall()
+    resolved = 0
+
+    for registration_id, root_id, type_name, namespace_hint in registrations:
+        simple_name = type_name.rsplit(".", 1)[-1]
+        candidates = conn.execute(
+            """
+            SELECT id, root_id, namespace, name, full_name
+            FROM types
+            WHERE lower(name) = lower(?) OR lower(full_name) = lower(?)
+            """,
+            (simple_name, type_name),
+        ).fetchall()
+        scored = []
+        for candidate in candidates:
+            candidate_id, candidate_root_id, namespace, name, full_name = candidate
+            score = 0
+            if full_name.casefold() == type_name.casefold():
+                score += 100
+            if candidate_root_id == root_id:
+                score += 30
+            if namespace_hint and (namespace or "").casefold() == namespace_hint.casefold():
+                score += 20
+            if name.casefold() == simple_name.casefold():
+                score += 10
+            scored.append((score, candidate_id))
+
+        scored.sort(reverse=True)
+        if not scored or (len(scored) > 1 and scored[0][0] == scored[1][0]):
+            continue
+
+        conn.execute(
+            "UPDATE registrations SET registered_type_id = ? WHERE id = ?",
+            (scored[0][1], registration_id),
+        )
+        resolved += 1
+
+    return resolved
+
+
 def file_signature(path: Path, stat: os.stat_result, strong_hash: bool) -> str:
     if strong_hash:
         h = hashlib.sha256()
@@ -889,6 +1143,7 @@ def validate_db(db_path: Path) -> None:
         conn.execute("SELECT COUNT(*) FROM source_files").fetchone()
         conn.execute("SELECT COUNT(*) FROM types").fetchone()
         conn.execute("SELECT COUNT(*) FROM members").fetchone()
+        conn.execute("SELECT COUNT(*) FROM registrations").fetchone()
         conn.execute("SELECT value FROM index_meta WHERE key = 'schema_version'").fetchone()
     finally:
         conn.close()

@@ -17,6 +17,20 @@ RPVoiceChat GitHub README are indexed as curated external documentation for 1.22
 `versions/1.22.6/Web/sources.json`; the generated SQLite index is `versions/1.22.6/Index/web.sqlite`; the generated
 manifest is `versions/1.22.6/Index/web.index.json`.
 
+Selected reference-mod metadata is tracked in `versions/1.22.6/mods.manifest.json`. It contains one entry for every
+retained mod/tool folder and records identity, version, exact/fallback compatibility, source provenance, retained
+asset/code availability, native-binary presence, indexed code roots, and explicit license-file presence. Query it
+through `tools/mod-manifest/query_mod_manifest.py` or the `mod` target in `tools/reference-query.py`.
+
+`docs/QUERY_COOKBOOK.md` provides tested, task-shaped workflows for block/item lookup, asset-to-code tracing, class
+registration research, recipe input/output lookup, vanilla-versus-mod comparison, mod provenance, and curated web
+documentation.
+
+The code-index schema is now version `2`. Its `registrations` table stores supported literal Vintage Story
+registration calls, their call-site evidence, containing type, and an unambiguous registered-type declaration link
+when available. `tools/cross-reference/query_class_cross_reference.py` joins top-level asset `class` and `entityClass`
+facts to that evidence at query time; the unified wrapper exposes the join as `class`, `classes`, or `xref`.
+
 The repository also contains a root-level `prompts/` catalog for reusable Codex agent operating standards and reference-research workflows. Current prompt bundles cover persistent project memory, Vintage Story mod coding standards, project/Git hygiene, and Vintage Story research. `AGENTS.md` intentionally points at these project-local prompt files instead of the older sibling `Shared Agent Skills` folder.
 
 The repository now has machine-readable discovery catalogs. `reference.catalog.json` is the root catalog for docs, prompts, skills, tools, and available versions. Each version should have `versions/<version>/version.catalog.json` for version-specific reference roots, indexes, manifests, and query/build scripts.
@@ -41,18 +55,39 @@ user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
 
-No active work is currently in progress. Vintage Story 1.22.6 has been added with API sources, full assets, selected
-reference mods, copied web sources, indexes, catalogs, and a browse-only solution wrapper.
+No active work is currently in progress. Vintage Story 1.22.6 has API sources, full assets, selected reference mods,
+a tracked mod manifest, copied web sources, indexes, catalogs, literal registration evidence, class cross-references,
+a cross-index query cookbook, and a browse-only solution wrapper.
 
 ## Durable technical knowledge
 
-Agents should query the SQLite indexes before reading raw reference trees. Asset questions should start with `assets.sqlite`; C# and symbol questions should start with `code.sqlite`; curated external documentation questions should start with `web.sqlite` once present.
+Agents should query the SQLite indexes and tracked mod manifest before reading raw reference trees. Asset questions
+should start with `assets.sqlite`; C# and symbol questions should start with `code.sqlite`; selected-mod provenance and
+compatibility questions should start with `mods.manifest.json`; curated external documentation questions should start
+with `web.sqlite`.
 
 PetAI 5.1.1 does not register a Vintage Story slash/chat command for setting pet obedience. Its `EntityBehaviorReceiveCommand.SetCommand` handles PetAI pet commands (`SIMPLE`, `COMPLEX`, and `AGGRESSIONLEVEL`) and gates command execution against `EntityBehaviorTameable.Obedience` using each command's `minObedience`, but does not mutate obedience. Obedience is stored in `domesticationstatus.obedience` by `EntityBehaviorTameable`; it is set to `1f` by the `magicbone` path, increased by accepted taming items and petting, and decreased by the disobedience tick.
 
 Vintage Story 1.22.4 `Vintagestory.Common.ModCompilationContext` includes `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll` in the built-in Roslyn reference set used when compiling source-code mods. The decompiled `VSSurvivalMod.csproj` also references both `VSEssentials` and `VSCreativeMod`.
 
-For routine consumer queries, prefer `tools/reference-query.py`. It reads the catalogs, resolves the selected version, and delegates to the existing source-specific query helpers. The asset, code, and web query scripts remain the source-specific interfaces and should not be duplicated inside the wrapper.
+For routine consumer queries, prefer `tools/reference-query.py`. It reads the catalogs, resolves the selected version,
+and delegates to the existing source-specific query helpers. It supports asset, code, mod/mods, and web targets;
+`--list-manifests` discovers curated manifests. The source-specific scripts remain the specialized interfaces and
+should not be duplicated inside the wrapper.
+
+The 1.22.6 mod manifest has `16` entries: `4` exact 1.22.6 Mod DB releases, `11` same-line fallbacks, and `1` external
+tool. All 16 manifest folders exist, every indexed code-root name in the manifest matches `code.index.json`, and no
+explicit `LICENSE*` or `COPYING*` file is present in the retained mod folders. License-file absence is only a package
+observation, not a legal conclusion about upstream licensing.
+
+`tools/code-index/query_code_index.py --reference` exposes the existing conservative `references_hint` table. These
+results are bounded identifier hints, not a complete call graph; an empty result does not prove a symbol is unused.
+
+The 1.22.6 schema-2 code index contains `766` supported literal registrations: `256` block, `114` item, `139` block
+entity, `65` block behavior, `23` collectible behavior, `52` block-entity behavior, `65` entity behavior, `40` entity,
+`5` entity-renderer, and `7` inventory registrations. All 766 currently resolve to one best indexed type declaration.
+The category-aware class join produces `674` asset rows across `386` distinct class keys: `378` block rows, `109` item
+rows, `54` entity rows, and `133` block-entity rows.
 
 Other Codex-assisted projects should read `INDEX_USAGE.md` when they need to use this repository as a Vintage Story knowledge source. They can paste `prompts/Vintage Story Research/Add to AGENTS.md` into their own `AGENTS.md` to learn the index-first research workflow. They should read or adopt the other files under `prompts/` when they need the user's agent operating standards.
 
@@ -168,6 +203,17 @@ The drop-in `prompts/Vintage Story Research/Add to AGENTS.md` snippet should sta
 
 Architecture decision: keep consumer docs, maintainer docs, catalogs, scripts, and prompts separate. `README.md` remains a short overview; `INDEX_USAGE.md` is the current concrete consumer map; `docs/ARCHITECTURE.md` explains the system shape; `docs/MAINTAINING_REFERENCE.md` explains maintenance workflows; catalogs are small machine-readable pointers; generated manifests remain the detailed generated-index source of truth.
 
+Architecture decision: selected-mod provenance belongs in a tracked per-version JSON manifest rather than another
+generated SQLite database. Compatibility and source selection require curation and must survive a clean clone;
+asset/code facts remain in rebuildable SQLite indexes. `version.catalog.json` exposes the manifest separately from
+`indexes`, while the unified wrapper hides that storage distinction behind the `mod` query target.
+
+Architecture decision: literal registration evidence belongs in `code.sqlite`, while asset-to-registration links are
+computed at query time instead of stored in a fourth generated database. This keeps asset and code rebuilds
+independent, avoids duplicated relationship state, and lets version catalogs describe the two required inputs. The
+join is category-aware so identical strings are compared only against the correct block, item, entity, or block-entity
+registry.
+
 ## External interfaces and integrations
 
 The web index source manifest is `versions/<version>/Web/sources.json`. Each source entry includes a public page URL, raw fetch URL, title, source type, applicability notes, and last-known edit date when available. For new versions, `do-new-web` copies or merges every source entry from the nearest previous version's source manifest before rebuilding the target `web.sqlite`.
@@ -176,23 +222,63 @@ The RPVoiceChat Server Administration upstream source is `https://github.com/Rid
 
 ## Known failed approaches
 
-No failed approaches have been recorded yet.
+`dotnet clean "Vintage Story Reference.sln" --no-restore` fails under the installed .NET 10 SDK with
+`MSB1001: Unknown switch`. `dotnet clean "Vintage Story Reference.sln"` succeeds and removes the generated build
+outputs.
 
 ## Bugs, risks, and limitations
 
 The web index is a dated snapshot of fetched upstream content. If current documentation matters, rebuild the index or check the upstream URL.
 
-The working tree currently has many untracked files that appear to be reference payloads or generated indexes. Do not assume a clean Git state.
+`docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.pdf` is tracked as an intentional binary documentation
+artifact. The user explicitly requested that every pending project file, including this previously untracked PDF, be
+committed on 2026-08-14. Treat the Markdown guide as the editable source and do not regenerate the PDF casually.
 
 The asset index rebuild for 1.22.3 can take longer than two minutes. On 2026-07-14 it timed out at a 120-second command limit but succeeded with a 300-second limit in about 220 seconds.
 
-The 1.22.4 API source, full client assets, selected mod references, copied web sources, code index, asset index, and web index exist and are cataloged. Consumers should explicitly pass `--version 1.22.4` for 1.22.4 API/code/asset/web queries; 1.22.3 remains the default version.
+The mod manifest is curated metadata and can become stale when mod folders change. Every mod update and new-version
+workflow must update it and verify one entry per retained mod/tool folder.
+
+Registration extraction is intentionally incomplete. It requires a supported registration method with a literal
+string key and `typeof(...)` value. Dynamic keys, helper-wrapped calls, factories, reflection, JSON inheritance, and
+runtime patches are not inferred. Empty registration or class-cross-reference results do not prove that no runtime
+relationship exists.
 
 ## Open questions
 
 No open technical questions are currently recorded.
 
 ## Testing and verification
+
+Current 1.22.6 verification performed on 2026-08-14:
+
+```powershell
+dotnet build "Vintage Story Reference.sln" --no-restore
+python -B tools\reference-query.py --list-versions
+python -B tools\reference-query.py --version 1.22.6 --list-indexes
+python -B tools\reference-query.py --version 1.22.6 --list-manifests
+python -B tools\reference-query.py --version 1.22.6 mod --compatibility exact --limit 10
+python -B tools\reference-query.py --version 1.22.6 mod --has-native-binaries yes --limit 10
+python -B tools\reference-query.py --version 1.22.6 asset --fact-key output --fact-value ingot-brass --limit 2
+python -B tools\reference-query.py --version 1.22.6 code --type BlockDisplayCase --limit 2
+python -B tools\reference-query.py --version 1.22.6 code --registration BlockDisplayCase --limit 2
+python -B tools\reference-query.py --version 1.22.6 class --asset-class BlockDisplayCase --limit 2
+python -B tools\reference-query.py --version 1.22.6 code --reference ICoreAPI --root VSEssentials --limit 2
+python -B tools\reference-query.py --version 1.22.6 web --source configlib-json-api --search "conditional patches" --limit 2
+git diff --check
+```
+
+The solution build succeeded with zero warnings and errors. Manifest validation confirmed `16` entries for `16`
+folders, unique mod ids/folders, matching `modinfo.json` ids and versions, matching asset flags, and valid code roots.
+The representative asset, code, mod, and web queries returned expected candidates. `git diff --check` returned only
+the repository's expected LF-to-CRLF working-copy warnings.
+
+Schema-2 registration validation confirmed SQLite integrity, `766` unique call-site rows, containing-type and
+registered-type links for all 766 rows, no duplicate evidence tuples, valid source paths/lines, and a class join of
+`674` rows across `386` distinct keys. Synthetic extraction confirmed commented and dynamic-key calls are excluded
+while multiline literal calls retain the correct starting line. Wrapper aliases, text/JSON output, backward-compatible
+asset/code/mod/web queries, and a zero-warning, zero-error solution build all succeeded. `dotnet clean` then removed
+the generated build outputs.
 
 Useful verification for the web index:
 
@@ -222,26 +308,36 @@ On 2026-07-14, those commands succeeded. After the RPVoiceChat rebuild, `git dif
 ## Useful commands
 
 ```powershell
-python -B tools\asset-index\query_asset_index.py --db versions\1.22.3\Index\assets.sqlite --search copper --limit 20
-python -B tools\code-index\query_code_index.py --db versions\1.22.3\Index\code.sqlite --type ICoreAPI --limit 20
-python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqlite --search "configlib-patches json" --limit 20
+python -B tools\reference-query.py --version 1.22.6 mod --mod-id tentbagreworked --format json
+python -B tools\reference-query.py --version 1.22.6 asset --search copper --limit 20
+python -B tools\reference-query.py --version 1.22.6 code --type ICoreAPI --limit 20
+python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patches json" --limit 20
 ```
 
 ## Important files and code paths
 
 - `INDEX_USAGE.md` - Instructions for other AI-enabled projects that consume this reference repository.
+- `docs/QUERY_COOKBOOK.md` - Tested, task-shaped and cross-index query recipes for common Vintage Story research.
 - `tools/asset-index` - Asset index builder and query helper.
 - `tools/code-index` - Decompiled C# code index builder and query helper.
+- `tools/cross-reference/query_class_cross_reference.py` - Category-aware query-time join from asset class facts to
+  literal C# registrations and resolved type declarations.
+- `tools/mod-manifest/query_mod_manifest.py` - Query helper for tracked selected-mod compatibility and provenance.
 - `tools/web-index` - Curated external documentation index builder and query helper.
 - `tools/reference-query.py` - Unified query wrapper that resolves catalog paths and delegates to source-specific query helpers.
 - `prompts` - Reusable Codex agent prompt standards for project memory, coding standards, project/Git hygiene, and Vintage Story research.
 - `.codex/skills` - Project-local Codex skills for indexing assets, indexing decompiled C# code, and updating reference mod folders.
 - `reference.catalog.json` - Root machine-readable discovery catalog. The default and only listed version is `1.22.6`.
 - `versions/1.22.6/version.catalog.json` - Version-specific discovery catalog for the retained 1.22.6 reference payload.
-- `versions/1.22.6/VintageStory.Reference.1.22.6.csproj` - Non-compiling Rider/MSBuild wrapper project that includes the version catalog, API, assets, mods, and Web source manifest as browseable `None` items.
+- `versions/1.22.6/mods.manifest.json` - Tracked selected-mod/tool identity, compatibility, provenance, content, code-root,
+  native-binary, and license-file metadata.
+- `versions/1.22.6/VintageStory.Reference.1.22.6.csproj` - Non-compiling Rider/MSBuild wrapper project that includes
+  the version and mod catalogs, API, assets, mods, and Web source manifest as browseable `None` items.
 - `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
 - `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Player-facing usage guide for TentBag-Reworked 3.2.4 based on the indexed 1.22.6 reference mod files.
+- `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.pdf` - Intentional binary distribution copy of the
+  TentBag-Reworked player guide; the Markdown file remains its editable source.
 - `docs/mods/Betterer Prospecting/BETTERER_PROSPECTING_SETTINGS.md` - Betterer Prospecting settings reference focused on `ReprospectParellelism`, `BoreholeScansStone`, and `BoreholeDmg`.
 - `versions/1.22.6/API` - Decompiled 1.22.6 `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`,
   `VSEssentials`, and `VSSurvivalMod` sources.
@@ -286,6 +382,37 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 ## Session history
 
 ### 2026-08-14
+
+- At the user's explicit request to commit every pending file, classified the previously untracked TentBag player-guide
+  PDF as an intentional documentation artifact, added the PDF binary attribute, and included it in the repository.
+
+- Upgraded `tools/code-index/build_code_index.py` to schema `2` and added the `registrations` table for supported
+  literal `Register*` calls with string keys and `typeof(...)` values. Calls retain method/kind, containing type,
+  source line, compact evidence, and an unambiguous registered-type declaration link when available.
+- Added `tools/cross-reference/query_class_cross_reference.py` and exposed it through `tools/reference-query.py` as
+  `class`, `classes`, and `xref`. The join maps top-level block/item/entity `class` and block `entityClass` facts to
+  the appropriate registry and supports text or JSON output.
+- Rebuilt the local generated 1.22.6 code index: `7,957` files, `9,016` types, `38,277` members, `47,032` bounded
+  reference hints, and `766` literal registrations. All 766 registered types resolved; the class join returned `674`
+  asset rows across `386` distinct keys.
+- Updated catalogs, consumer/architecture/maintenance docs, query cookbook, Vintage Story Research prompt, and the
+  code-indexer, asset-indexer, and new-version skills so other projects and future versions discover and validate the
+  relationship query.
+
+- Added tracked `versions/1.22.6/mods.manifest.json` with one curated entry for each of the 16 retained mod/tool
+  folders. The manifest records exact/fallback compatibility, source URLs, release provenance and hashes, retained
+  assets/code, code-root names, native binaries, and explicit license-file presence.
+- Added `tools/mod-manifest/query_mod_manifest.py` and extended `tools/reference-query.py` with `mod`/`mods` query
+  targets plus `--list-manifests`. Added `--reference` to the code query helper to expose existing conservative
+  `references_hint` rows.
+- Added `docs/QUERY_COOKBOOK.md` with tested query sequences for blocks/items, asset-to-code tracing, class
+  registration, recipe input/output, vanilla-versus-mod comparison, mod provenance, and web documentation.
+- Updated catalogs, consumer/architecture/maintenance docs, the Vintage Story Research prompt, and the
+  `new-version-mods`, `do-new-version`, and code-indexer skills so future versions create, catalog, query, and validate
+  the tracked mod manifest.
+- Verified the manifest against all 16 retained folders, `modinfo.json` ids/versions, asset-folder presence, and the 18
+  code-index roots. Verified representative cookbook queries and a zero-warning, zero-error solution build. Preserved
+  the pre-existing untracked TentBag player-guide PDF.
 
 - Removed `versions/1.22.3` and `versions/1.22.4` at the user's request after verifying both resolved paths were
   under the repository's `versions` directory.
