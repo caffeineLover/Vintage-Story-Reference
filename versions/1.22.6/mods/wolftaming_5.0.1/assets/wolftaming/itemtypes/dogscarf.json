@@ -1,0 +1,141 @@
+{
+	"code": "dogscarf",
+	"shape": {
+		"base": "collar/dog-wolf/scarf"
+	},
+	"attributes": {
+		"attachableToEntity": {
+			"categoryCode": "collar-dog",
+			"attachedShapeBySlotCode": {
+				"collar-wolf": {
+					"base": "wolftaming:collar/dog-wolf/scarf"
+				},
+				"collar-hunting": {
+					"base": "wolftaming:collar/dog-wolf/scarf"
+				},
+				"collar-shepherd": {
+					"base": "wolftaming:collar/dog-wolf/scarf"
+				},
+				"collar-peach": {
+					"base": "wolftaming:collar/dog-wolf/scarf"
+				},
+				"collar-corgi": {
+					"base": "wolftaming:collar/dog-corgi/scarf"
+				}
+			}
+		},
+		"handbook": {
+			"groupBy": [
+				"dogscarf-*"
+			]
+		}
+	},
+	"maxstacksize": 1,
+	"variantgroups": [
+		{
+			"code": "color",
+			"states": [
+				"blue",
+				"red",
+				"orange",
+				"green",
+				"brown",
+				"black",
+				"purple",
+				"pink",
+				"yellow",
+				"white",
+				"plain",
+				"gray"
+			]
+		}
+	],
+	"textures": {
+		"color": {
+			"base": "game:block/cloth/linen/{color}"
+		}
+	},
+	"creativeinventory": {
+		"general": [
+			"*"
+		],
+		"items": [
+			"*"
+		],
+		"clothing": [
+			"*"
+		]
+	},
+	"guiTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 45,
+			"z": -45
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0.4
+		},
+		"scale": 2
+	},
+	"groundTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": 90
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 3.5
+	},
+	"fpHandTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": -45
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 2.41
+	},
+	"tpHandTransform": {
+		"translation": {
+			"x": 0,
+			"y": -0.5,
+			"z": 0
+		},
+		"rotation": {
+			"x": 1,
+			"y": 57,
+			"z": 18
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 0.65
+	}
+}

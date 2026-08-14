@@ -1,0 +1,223 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"shoes": [16,16],
+		"beggar": [16,16],
+		"celtic-wanderer": [16,16],
+		"latvian-shoes": [16,16]
+	},
+	"textures": {
+		"latvian-shoes": "entity/humanoid/seraphclothes/foot/midsummer"
+	},
+	"elements": [
+		{
+			"name": "shoeR",
+			"stepParentName": "LowerFootR",
+			"from": [ -0.15, -0.1, -0.15 ],
+			"to": [ 4.15, 0.4, 3.15 ],
+			"autoUnwrap": false,
+			"uv": [ 0.0, 0.5 ],
+			"rotationOrigin": [ -0.1, -0.1, -0.1 ],
+			"faces": {
+				"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 15.5, 4.0, 16.0 ] },
+				"east": { "texture": "#latvian-shoes", "uv": [ 11.0, 15.5, 14.0, 16.0 ] },
+				"south": { "texture": "#latvian-shoes", "uv": [ 7.0, 15.5, 11.0, 16.0 ] },
+				"west": { "texture": "#latvian-shoes", "uv": [ 4.0, 15.5, 7.0, 16.0 ] },
+				"up": { "texture": "#latvian-shoes", "uv": [ 0.0, 0.0, 4.0, 3.0 ] },
+				"down": { "texture": "#latvian-shoes", "uv": [ 0.0, 3.5, 4.0, 6.5 ] }
+			},
+			"children": [
+				{
+					"name": "wrapR",
+					"from": [ 0.05, 0.5, 0.05 ],
+					"to": [ 4.25, 3.5, 3.25 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 5.0 ],
+					"rotationOrigin": [ 0.0, 0.5, 2.0 ],
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 11.5, 4.0, 14.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 11.0, 11.5, 14.0, 14.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 7.0, 11.5, 11.0, 14.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 4.0, 11.5, 7.0, 14.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 9.0, 0.0, 12.0, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoefrontR",
+					"from": [ 0.0, 0.5, -0.1 ],
+					"to": [ 0.5, 1.5, 3.4 ],
+					"autoUnwrap": false,
+					"uv": [ 6.0, 2.0 ],
+					"rotationOrigin": [ 0.5, 0.5, 2.0 ],
+					"rotationZ": 13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 14.5, 0.5, 15.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 11.0, 14.5, 14.5, 15.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 7.5, 14.5, 8.0, 15.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 7.5, 14.5, 11.0, 15.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 9.0, 5.0, 12.5, 5.5 ], "rotation": 90 },
+						"down": { "texture": "#latvian-shoes", "uv": [ 12.5, 15.5, 16.0, 16.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoebackR",
+					"from": [ 3.8, 0.5, -0.1 ],
+					"to": [ 4.3, 1.5, 3.4 ],
+					"autoUnwrap": false,
+					"uv": [ 0.5, 14.0 ],
+					"rotationOrigin": [ 3.8, 0.5, 2.0 ],
+					"rotationZ": -13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 0.5, 14.5, 1.0, 15.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 1.0, 14.5, 4.5, 15.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 4.5, 14.5, 5.0, 15.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 5.0, 14.5, 8.5, 15.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 10.5, 5.0, 14.0, 5.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 4.0, 15.5, 7.5, 16.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoeNR",
+					"from": [ -0.1, 0.5, 0.0 ],
+					"to": [ 4.4, 1.5, 0.5 ],
+					"autoUnwrap": false,
+					"uv": [ 6.0, 14.0 ],
+					"rotationOrigin": [ 2.0, 0.5, 0.5 ],
+					"rotationX": -13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 6.0, 14.5, 10.5, 15.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 10.5, 14.5, 11.0, 15.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 11.0, 14.5, 15.5, 15.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 15.5, 14.5, 16.0, 15.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 9.0, 4.5, 13.5, 5.0 ] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 0.0, 15.5, 4.5, 16.0 ] }
+					}
+				},
+				{
+					"name": "shoeSR",
+					"from": [ -0.1, 0.5, 2.8 ],
+					"to": [ 4.4, 1.5, 3.3 ],
+					"autoUnwrap": false,
+					"uv": [ 6.0, 14.0 ],
+					"rotationOrigin": [ 2.0, 0.5, 2.8 ],
+					"rotationX": 13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 6.0, 14.5, 10.5, 15.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 10.5, 14.5, 11.0, 15.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 11.0, 14.5, 15.5, 15.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 15.5, 14.5, 16.0, 15.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 9.0, 4.5, 13.5, 5.0 ] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 0.0, 15.5, 4.5, 16.0 ] }
+					}
+				}
+			]
+		},
+		{
+			"name": "shoeL",
+			"stepParentName": "LowerFootL",
+			"from": [ -0.15, -0.1, -0.15 ],
+			"to": [ 4.15, 0.4, 3.15 ],
+			"autoUnwrap": false,
+			"uv": [ 0.0, 0.5 ],
+			"rotationOrigin": [ -0.1, -0.1, -0.1 ],
+			"faces": {
+				"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 10.5, 4.0, 11.0 ] },
+				"east": { "texture": "#latvian-shoes", "uv": [ 11.0, 10.5, 14.0, 11.0 ] },
+				"south": { "texture": "#latvian-shoes", "uv": [ 7.0, 10.5, 11.0, 11.0 ] },
+				"west": { "texture": "#latvian-shoes", "uv": [ 4.0, 10.5, 7.0, 11.0 ] },
+				"up": { "texture": "#latvian-shoes", "uv": [ 4.5, 0.0, 8.5, 3.0 ] },
+				"down": { "texture": "#latvian-shoes", "uv": [ 4.5, 3.5, 8.5, 6.5 ], "rotation": 180 }
+			},
+			"children": [
+				{
+					"name": "wrapL",
+					"from": [ 0.05, 0.5, 0.05 ],
+					"to": [ 4.25, 3.5, 3.25 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 9.0 ],
+					"rotationOrigin": [ 0.1, 0.5, 0.0 ],
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 6.5, 4.0, 9.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 11.0, 6.5, 14.0, 9.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 7.0, 6.5, 11.0, 9.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 4.0, 6.5, 7.0, 9.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 12.5, 0.0, 15.5, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoebackL",
+					"from": [ 3.8, 0.5, -0.1 ],
+					"to": [ 4.3, 1.5, 3.4 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 3.8, 0.5, 1.5 ],
+					"rotationZ": -13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 9.5, 0.5, 10.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 12.5, 9.5, 16.0, 10.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 8.5, 9.5, 9.0, 10.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 0.0, 9.5, 3.5, 10.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 12.0, 5.0, 15.5, 5.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 0.5, 10.5, 4.0, 11.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoefrontL",
+					"from": [ 0.0, 0.5, -0.1 ],
+					"to": [ 0.5, 1.5, 3.4 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 0.5, 0.5, 1.5 ],
+					"rotationZ": 13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 0.0, 9.5, 0.5, 10.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 9.0, 9.5, 12.5, 10.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 7.5, 9.5, 8.0, 10.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 4.0, 9.5, 7.5, 10.5 ] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 11.5, 4.5, 15.0, 5.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 12.5, 10.5, 16.0, 11.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoeNL",
+					"from": [ -0.1, 0.5, 0.0 ],
+					"to": [ 4.4, 1.5, 0.5 ],
+					"autoUnwrap": false,
+					"uv": [ 8.0, 4.5 ],
+					"rotationOrigin": [ 2.0, 0.5, 0.5 ],
+					"rotationX": -13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 2.0, 9.5, 6.5, 10.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 14.5, 9.5, 15.0, 10.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 5.5, 9.5, 10.0, 10.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 0.5, 9.5, 1.0, 10.5 ], "windMode": [-1,-1,-1,-1] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 11.0, 4.5, 15.5, 5.0 ] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 3.5, 10.5, 8.0, 11.0 ], "windMode": [-1,-1,-1,-1] }
+					}
+				},
+				{
+					"name": "shoeSL",
+					"from": [ -0.1, 0.5, 2.8 ],
+					"to": [ 4.4, 1.5, 3.3 ],
+					"autoUnwrap": false,
+					"uv": [ 8.0, 4.5 ],
+					"rotationOrigin": [ 2.0, 0.5, 2.8 ],
+					"rotationX": 13.0,
+					"faces": {
+						"north": { "texture": "#latvian-shoes", "uv": [ 2.0, 9.5, 6.5, 10.5 ] },
+						"east": { "texture": "#latvian-shoes", "uv": [ 14.5, 9.5, 15.0, 10.5 ] },
+						"south": { "texture": "#latvian-shoes", "uv": [ 5.5, 9.5, 10.0, 10.5 ] },
+						"west": { "texture": "#latvian-shoes", "uv": [ 0.5, 9.5, 1.0, 10.5 ], "windMode": [-1,-1,-1,-1] },
+						"up": { "texture": "#latvian-shoes", "uv": [ 9.0, 4.5, 13.5, 5.0 ] },
+						"down": { "texture": "#latvian-shoes", "uv": [ 9.0, 10.5, 13.5, 11.0 ], "windMode": [-1,-1,-1,-1] }
+					}
+				}
+			]
+		}
+	]}

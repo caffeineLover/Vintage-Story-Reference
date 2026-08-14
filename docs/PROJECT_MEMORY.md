@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-07-26
+Last updated: 2026-08-14
 
 ## Project overview
 
@@ -8,23 +8,41 @@ Vintage Story Reference is a local reference library for AI-assisted Vintage Sto
 
 ## Current state
 
-The repository currently documents Vintage Story `1.22.3` as the default fully indexed version. Existing asset and code index tooling lives under `tools/asset-index` and `tools/code-index`, with generated index artifacts under `versions/1.22.3/Index`.
+The repository currently retains Vintage Story `1.22.6` as the only indexed reference version. Existing asset, code,
+and web index tooling lives under `tools/asset-index`, `tools/code-index`, and `tools/web-index`, with generated index
+artifacts under `versions/1.22.6/Index`.
 
-The Config Lib JSON API GitHub wiki page, VS Village Mod DB page, RPVoiceChat Server Administration wiki page, and RPVoiceChat GitHub README are indexed as curated external documentation. The source manifest is `versions/1.22.3/Web/sources.json`; the generated SQLite index is `versions/1.22.3/Index/web.sqlite`; the generated manifest is `versions/1.22.3/Index/web.index.json`; query tooling is under `tools/web-index`.
+The Config Lib JSON API GitHub wiki page, VS Village Mod DB page, RPVoiceChat Server Administration wiki page, and
+RPVoiceChat GitHub README are indexed as curated external documentation for 1.22.6. The source manifest is
+`versions/1.22.6/Web/sources.json`; the generated SQLite index is `versions/1.22.6/Index/web.sqlite`; the generated
+manifest is `versions/1.22.6/Index/web.index.json`.
 
 The repository also contains a root-level `prompts/` catalog for reusable Codex agent operating standards and reference-research workflows. Current prompt bundles cover persistent project memory, Vintage Story mod coding standards, project/Git hygiene, and Vintage Story research. `AGENTS.md` intentionally points at these project-local prompt files instead of the older sibling `Shared Agent Skills` folder.
 
 The repository now has machine-readable discovery catalogs. `reference.catalog.json` is the root catalog for docs, prompts, skills, tools, and available versions. Each version should have `versions/<version>/version.catalog.json` for version-specific reference roots, indexes, manifests, and query/build scripts.
 
-The `versions/1.22.4/API` tree is populated with decompiled `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod` sources. Decompiled API trees intentionally use flattened assembly wrapper folders and do not keep `.sln` files. The `1.22.3` API tree was intentionally not backfilled with `VSCreativeMod` or `VSEssentials` because active targeting has moved to `1.22.4` and future `1.22.5`. The `1.22.4` version folder has copied full client assets, selected reference mods, copied curated web sources, plus code, asset, and web indexes. The root solution now contains a `VintageStory.Reference.1.22.4` wrapper project for browsing the `1.22.4` payload in Rider.
+The `versions/1.22.6/API` tree is populated with decompiled `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`,
+`VSEssentials`, and `VSSurvivalMod` sources. Decompiled API trees intentionally use flattened assembly wrapper folders
+and do not keep `.sln` files. The 1.22.6 version folder has copied full client assets, selected reference mods/tools,
+copied curated web sources, plus code, asset, and web indexes. The root solution contains only the browse-only wrapper
+project for `1.22.6`.
 
-Generated files inside `versions/<version>/Index` are local rebuildable output and should not be staged or pushed by default. Each `Index` folder should exist in Git via a tracked `versions/<version>/Index/.gitignore` file that ignores every generated file below it. `versions/1.22.4/Index/assets.sqlite` is over GitHub's normal 100 MB file limit. Commit curated source manifests such as `versions/<version>/Web/sources.json`, not the generated SQLite indexes, unless the user explicitly chooses a large-file strategy.
+Generated files inside `versions/<version>/Index` are local rebuildable output and should not be staged or pushed by
+default. Each `Index` folder should exist in Git via a tracked `versions/<version>/Index/.gitignore` file that ignores
+every generated file below it. `versions/1.22.6/Index/assets.sqlite` is over GitHub's normal 100 MB file limit. Commit
+curated source manifests such as `versions/<version>/Web/sources.json`, not the generated SQLite indexes, unless the
+user explicitly chooses a large-file strategy.
 
-The working tree contains many untracked reference and index files. Treat those as existing user/reference material unless the user explicitly asks to clean or commit them.
+The `versions/1.22.3` and `versions/1.22.4` payloads were removed on 2026-08-14 at the user's request. Historical
+memory entries still mention them as provenance, but current consumers should not query or open those version paths.
+
+The working tree may contain untracked temporary staging files under `.codex/tmp`. Treat those as existing
+user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
 
-No active work is currently in progress. TentBag-Reworked 3.2.4 has been added to the 1.22.4 reference mods, decompiled, indexed, verified, and documented with a player guide that includes the bundled sample tent schematic behavior and WorldEdit usage commands.
+No active work is currently in progress. Vintage Story 1.22.6 has been added with API sources, full assets, selected
+reference mods, copied web sources, indexes, catalogs, and a browse-only solution wrapper.
 
 ## Durable technical knowledge
 
@@ -42,19 +60,47 @@ The Config Lib JSON API upstream source is the GitHub wiki page at `https://gith
 
 The VS Village upstream source is the Vintage Story Mod DB page at `https://mods.vintagestory.at/vsvillage`. The builder extracts the page's description tab via the `moddb_description` HTML scope so the searchable index focuses on gameplay/design-reference content and current Mod DB metadata instead of full site navigation or file tables.
 
-As of the 2026-07-14 RPVoiceChat rebuild, the 1.22.3 asset index contains `22,052` files and the web index contains `4` sources and `87` heading-based sections. As of the 2026-07-21 API flatten rebuild, the 1.22.3 code index contains `4,324` C# files, `4,465` types, and `21,242` members. Generated manifests under `versions/1.22.3/Index` remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
+The retired 1.22.3 and 1.22.4 payloads are no longer available on disk. Use current 1.22.6 indexes for new work, and
+use Git history only if old-version provenance is required.
 
-As of the 2026-07-25 TentBag-Reworked rebuild, the 1.22.4 asset index contains `22,091` files, including `11,056` JSON files with `10,707` parsed successfully and `349` parse-error rows retained for path/category lookup. The 1.22.4 code index contains `5,310` C# files, `5,692` types, and `29,402` members across `16` source roots. Generated manifests under `versions/1.22.4/Index` remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
+As of the 2026-08-10 Simple VS Manager addition, the 1.22.6 asset index contains `22,103` files, including `11,066`
+JSON files with `10,717` parsed successfully and `349` parse-error rows retained for path/category lookup. The 1.22.6
+code index contains `7,957` C# files, `9,016` types, and `38,277` members across `18` source roots. The 1.22.6 web
+index contains `4` copied source entries split into `84` sections. Generated manifests under `versions/1.22.6/Index`
+remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
 
-RPVoiceChat 2.5.8 is indexed from `versions/1.22.3/mods/rpvoicechat_2.5.8`. Its asset root is `versions/1.22.3/mods/rpvoicechat_2.5.8/assets` and its C# source root is `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat`.
+RPVoiceChat 2.5.8 is indexed from `versions/1.22.6/mods/rpvoicechat_2.5.8`. Its asset root is
+`versions/1.22.6/mods/rpvoicechat_2.5.8/assets`, and its C# source root is
+`versions/1.22.6/mods/rpvoicechat_2.5.8/decompiled assemblies/RPVoiceChat`.
 
-For Opus voice-chat implementation research, start with the code index root `rpvoicechat_2.5.8/RPVoiceChat`. Useful indexed symbols and paths include `RPVoiceChat.Audio.OpusCodec` at `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat/Audio/OpusCodec.cs`, `RPVoiceChat.Audio.MicrophoneManager`, `RPVoiceChat.Audio.PlayerAudioSource`, and `RPVoiceChat.Networking.AudioPacket.Codec`. Verified source behavior: `MicrophoneManager` defaults capture to `Opus`; the world config toggle `encode-audio` chooses `Opus` versus `Dummy`; `PlayerAudioSource` constructs `OpusCodec` when packet codec names `Opus`; `AudioPacket` carries a `Codec` property; `OpusCodec` uses Concentus `OpusCodecFactory`, `OPUS_APPLICATION_VOIP`, voice signal mode, SILK-only mode, VBR, and separate normal/broadcast bitrate settings.
+For Opus voice-chat implementation research, start with the code index root
+`rpvoicechat_2.5.8/decompiled assemblies`. Useful indexed symbols and paths include `RPVoiceChat.Audio.OpusCodec` at
+`versions/1.22.6/mods/rpvoicechat_2.5.8/decompiled assemblies/RPVoiceChat/RPVoiceChat/Audio/OpusCodec.cs`,
+`RPVoiceChat.Audio.MicrophoneManager`, `RPVoiceChat.Audio.PlayerAudioSource`, and
+`RPVoiceChat.Networking.AudioPacket.Codec`. Verified source behavior: `MicrophoneManager` defaults capture to `Opus`;
+the world config toggle `encode-audio` chooses `Opus` versus `Dummy`; `PlayerAudioSource` constructs `OpusCodec` when
+packet codec names `Opus`; `AudioPacket` carries a `Codec` property; `OpusCodec` uses Concentus `OpusCodecFactory`,
+`OPUS_APPLICATION_VOIP`, voice signal mode, SILK-only mode, VBR, and separate normal/broadcast bitrate settings.
 
 RPVoiceChat upstream documentation sources are now indexed as `rpvoicechat-server-administration` and `rpvoicechat-github-readme`. The Server Administration page covers server config path `ModConfig/RPVoiceChat/rpvoicechat-server.json`, network settings, codec bitrate settings, communication systems, sound-emitting object ranges, and `/rpvc` admin commands. The README records project overview, usage/configuration entry points, developer documentation links, and Opus/RNNoise licensing notes.
 
 Vintage Story 1.22.4 API sources were produced from the public Windows dedicated server ZIP `vs_server_win-x64_1.22.4.zip` from the Vintage Story CDN. The downloaded ZIP was verified against MD5 `162941f6a5d6dbc576cce700f50d16bf`. Decompilation used `ilspycmd` `10.1.1.8388` with `--nested-directories`, `--use-varnames-from-pdb`, and reference paths to the extracted server root, `Lib`, and `Mods`. The transient temp-derived `<HintPath>` entries in the generated SDK-style `.csproj` files were removed before keeping the output. The 1.22.4 API wrappers are flattened, so files live directly under `VintagestoryAPI_decompiled_1.22.4`, `VintagestoryLib_decompiled_1.22.4`, `VSCreativeMod_decompiled_1.22.4`, `VSEssentials_decompiled_1.22.4`, and `VSSurvivalMod_decompiled_1.22.4`.
 
 Vintage Story 1.22.4 full assets were copied from the public Linux client archive `vs_client_linux-x64_1.22.4.tar.gz` from the Vintage Story CDN. The downloaded archive was verified against MD5 `c7d943c25de23f5055e485d86b01aaf8`. The Windows dedicated server package contains a reduced `assets` folder; do not use server-only assets as the final full `versions/<version>/Assets` payload.
+
+Vintage Story 1.22.6 API sources were produced from the public Windows dedicated server ZIP
+`vs_server_win-x64_1.22.6.zip` from the Vintage Story CDN. The downloaded ZIP was verified against MD5
+`59e0aeaa213359025d51e67f26f7f255`. Decompilation used `ilspycmd` `10.1.1.8388` with `--nested-directories`,
+`--use-varnames-from-pdb`, and reference paths to the extracted server root, `Lib`, and `Mods`. Transient temp-derived
+`<HintPath>` entries were removed before keeping the output. The 1.22.6 API wrappers are flattened under
+`VintagestoryAPI_decompiled_1.22.6`, `VintagestoryLib_decompiled_1.22.6`,
+`VSCreativeMod_decompiled_1.22.6`, `VSEssentials_decompiled_1.22.6`, and
+`VSSurvivalMod_decompiled_1.22.6`.
+
+Vintage Story 1.22.6 full assets were copied from the public Linux client archive
+`vs_client_linux-x64_1.22.6.tar.gz` from the Vintage Story CDN. The downloaded archive was verified against MD5
+`c00c436cab612b436747b4bb5f39049b`. The Windows dedicated server package contains a reduced `assets` folder; do not
+use server-only assets as the final full `versions/<version>/Assets` payload.
 
 Rider/JetBrains `no index` labels on version folders refer to IDE solution/project indexing, not the repository's SQLite reference indexes. On 2026-07-21, `versions/1.22.4/VintageStory.Reference.1.22.4.csproj` was added and nested under a `1.22.4` solution folder beside the existing `1.22.3` wrapper. Version wrapper projects disable default compile/resource items and include `version.catalog.json`, `API`, `Assets`, `mods`, and `Web` as `None` items so Rider can browse the reference payload without compiling decompiled game sources. If Rider still displays stale `no index` labels after this change, reload the solution or refresh IDE indexes.
 
@@ -66,15 +112,43 @@ The project-local skill for reference mod population is `.codex/skills/new-versi
 
 The project-local skill for carrying curated web documentation forward is `.codex/skills/do-new-web`. Use it independently for `versions/<version>/Web` source copying, merging, refreshing, or indexing work, and invoke it from `do-new-version` before final validation so the new version has `web.sqlite` and `web.index.json` alongside its asset and code indexes. `versions/<version>/Web/sources.json` is curated version metadata and should be added to Git after it is created or merged; do not leave it only as an untracked local file.
 
-Vintage Story 1.22.4 selected reference mods were seeded from the 1.22.3 mod set on 2026-07-21 and extended with TentBag-Reworked on 2026-07-25. The target contains 14 unique mod ids under `versions/1.22.4/mods`: `A Panserbjorn Story Rebjorn (1.0.0)` for mod id `panserbjornrebjorn`, `allclasses_2.3.0`, `betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`, `jaunt_3.1.0`, `petai_5.1.1`, `primitivesurvival_5.0.6`, `rpvoicechat_2.5.8`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. `betterruins_0.6.3` was the only selected release with an exact Mod DB `1.22.4` tag; TentBag-Reworked 3.2.4 and the other non-exact selected mods are same-line `1.22.x` fallbacks because Mod DB did not publish an exact `1.22.4` tag for those mod ids at selection time. The selection/download report is `.codex/tmp/mod-updates/1.22.4/selected-releases.json`.
+Vintage Story 1.22.4 selected reference mods were seeded from the 1.22.3 mod set on 2026-07-21 and extended with TentBag-Reworked on 2026-07-25 and Betterer Prospecting on 2026-08-10. The target contains 15 unique mod ids under `versions/1.22.4/mods`: `A Panserbjorn Story Rebjorn (1.0.0)` for mod id `panserbjornrebjorn`, `allclasses_2.3.0`, `bettererprospecting_3.4.5`, `betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`, `jaunt_3.1.0`, `petai_5.1.1`, `primitivesurvival_5.0.6`, `rpvoicechat_2.5.8`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. `betterruins_0.6.3` was the only selected release with an exact Mod DB `1.22.4` tag; Betterer Prospecting 3.4.5 declares a `game` dependency of `1.22.0`, and TentBag-Reworked 3.2.4 and the other non-exact selected mods are same-line `1.22.x` fallbacks because Mod DB did not publish an exact `1.22.4` tag for those mod ids at selection time. The earlier seeded selection/download report is `.codex/tmp/mod-updates/1.22.4/selected-releases.json`; Betterer Prospecting was added later from a local ZIP and is documented in the 2026-08-10 session entry.
 
-TentBag-Reworked 3.2.4 default player behavior: an Empty Tent Bag is crafted from one cloth, four rope, and four sticks; cloth color controls bag color. An empty bag packs a default 7x7x7 area above the top face of the clicked ground block and becomes a Packed Tent Bag. A packed bag unpacks above the clicked block and returns to an empty bag. Survival-mode pack and unpack actions consume satiety at the default `BuildEffort` value of `2` per saved non-air block. Defaults include packed-tent hologram preview, empty-bag grab-area preview, 90-degree rotation, waypoint creation on unpack, waypoint removal on pack, and banned blocks such as liquids, crops, ores, rocks, anvils, and forges. The player-facing guide is `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
+Vintage Story 1.22.6 selected reference mods were seeded from the 1.22.4 mod set on 2026-08-10. The target contains 16
+unique reference entries under `versions/1.22.6/mods`: `allclasses_2.3.1`, `bettererprospecting_3.4.5`,
+`betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`,
+`jaunt_3.1.0`, `panserbjornrebjorn_1.0.0`, `petai_5.1.1`, `primitivesurvival_5.1.0`, `rpvoicechat_2.5.8`,
+`simplevsmanager_2.3.0`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. Betterer Prospecting
+3.4.5, Primitive Survival 5.1.0, RPVoiceChat 2.5.8, and TentBag-Reworked 3.2.4 had exact Mod DB `1.22.6` releases.
+The other selected mods are same-line `1.22.x` fallbacks. Simple VS Manager 2.3.0 is a Mod DB `externaltool`, not a
+normal game mod package; it has no `modinfo.json` or game-version tag and was added for mod-manager workflow research.
+The original selected-mod selection/download/decompilation report is `.codex/tmp/mod-updates/1.22.6/selected-releases.json`;
+Simple VS Manager provenance is recorded in `versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md`.
+
+TentBag-Reworked 3.2.4 default player behavior: an Empty Tent Bag is crafted from one cloth, four rope, and four sticks; cloth color controls bag color. An empty bag packs a default 7x7x7 area above the top face of the clicked ground block and becomes a Packed Tent Bag. A packed bag unpacks above the clicked block and returns to an empty bag. Survival-mode pack and unpack actions consume satiety at the default `BuildEffort` value of `2` per saved non-air block. Defaults include packed-tent hologram preview, empty-bag grab-area preview, 90-degree rotation, waypoint creation on unpack, waypoint removal on pack, and banned blocks such as liquids, crops, ores, rocks, anvils, and forges. The player-facing guide is `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
 
 TentBag-Reworked also ships `assets/tentbagreworked/config/tent.json`, a `7 x 3 x 6` WorldEdit/BlockSchematic sample tent. `TentBagReworkedModSystem.EnsureTentSchematicExists` copies it to `<GamePaths.DataPath>/WorldEdit/tent.json` on server startup if the target file is absent. It is not a pre-packed tent bag or player-granted item; players/admins with WorldEdit can use it as a template and then pack it into a tent bag if desired.
 
-Vintage Story 1.22.4 WorldEdit requires creative mode and the `worldedit` privilege. Server-side schematic import loads filenames from the game/server data `WorldEdit` folder. For the TentBag-Reworked starter tent, a direct placement workflow is to mark a start/end point, then run `/we import tent.json BottomCenter`; `BottomCenter` centers the `7 x 3 x 6` schematic horizontally on the marker. The interactive import-tool workflow is `/we tool import`, `/we ims tent.json`, optional `/we imr 90` or `/we imflip`, then right-click or `/we apply`/`/we place`/`/we commit`.
+Vintage Story 1.22.6 WorldEdit requires creative mode and the `worldedit` privilege. Server-side schematic import loads filenames from the game/server data `WorldEdit` folder. For the TentBag-Reworked starter tent, a direct placement workflow is to mark a start/end point, then run `/we import tent.json BottomCenter`; `BottomCenter` centers the `7 x 3 x 6` schematic horizontally on the marker. The interactive import-tool workflow is `/we tool import`, `/we ims tent.json`, optional `/we imr 90` or `/we imflip`, then right-click or `/we apply`/`/we place`/`/we commit`.
 
 Vintage Story 1.22.4 web sources were copied from `versions/1.22.3/Web/sources.json` on 2026-07-21 and re-indexed into `versions/1.22.4/Index/web.sqlite`. The 1.22.4 web index contains the same 4 curated source slugs as 1.22.3, split into 87 sections: `configlib-json-api`, `vsvillage-moddb`, `rpvoicechat-server-administration`, and `rpvoicechat-github-readme`.
+
+Vintage Story 1.22.6 web sources were copied from `versions/1.22.4/Web/sources.json` on 2026-08-10 and re-indexed into
+`versions/1.22.6/Index/web.sqlite`. The 1.22.6 web index contains the same 4 curated source slugs, split into 84
+sections: `configlib-json-api`, `vsvillage-moddb`, `rpvoicechat-server-administration`, and
+`rpvoicechat-github-readme`.
+
+Vintage Story 1.22.4 display cases (`displaycase` and `talldisplaycase`) were verified to use `BlockDisplayCase`,
+`DisplayCase`, and the `UnstableFalling` behavior. Their JSON set `sidesolid: { all: false }`, so the default
+`Block.CanAttachBlockAt` returned false for the top face. Re-query 1.22.6 before applying this to current work; the
+old 1.22.4 payload has been retired.
+
+Betterer Prospecting 3.4.5 settings verified on 2026-08-10: `BoreholeScansStone` defaults false and controls whether Borehole mode adds rock/stone results after ore checks; `BoreholeDmg` is the durability cost returned by a valid Borehole sample, although `ModConfig` initializes it to `2` while the Config Lib manifest advertises default `4`; `ReprospectParellelism` is intentionally misspelled in the mod assets and controls `Parallel.ForEachAsync` concurrency for `/btrpr reprospect`, using the explicit value when greater than zero or `Environment.ProcessorCount / 4` when set to zero.
+
+For Betterer Prospecting 3.4.5, when `ProximitySearchRadius = 5`, the balanced companion value is
+`BoreholeRadius = 5`: Proximity scans a radius-5 sphere, while Borehole scans a vertical cylinder with a horizontal
+radius. Radius 5 checks 81 horizontal cells per Y layer; the bundled default radius 8 checks 197 cells per layer, about
+2.43 times as many before accounting for Borehole mode's full downward depth.
 
 ## Architecture and design decisions
 
@@ -162,34 +236,152 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
 - `tools/reference-query.py` - Unified query wrapper that resolves catalog paths and delegates to source-specific query helpers.
 - `prompts` - Reusable Codex agent prompt standards for project memory, coding standards, project/Git hygiene, and Vintage Story research.
 - `.codex/skills` - Project-local Codex skills for indexing assets, indexing decompiled C# code, and updating reference mod folders.
-- `reference.catalog.json` - Root machine-readable discovery catalog.
-- `versions/1.22.3/version.catalog.json` - Version-specific discovery catalog for the 1.22.3 reference payload.
-- `versions/1.22.4/version.catalog.json` - Version-specific discovery catalog for the 1.22.4 API/asset/code-index/asset-index payload.
-- `versions/<version>/VintageStory.Reference.<version>.csproj` - Non-compiling Rider/MSBuild wrapper project that includes the version catalog, API, assets, mods, and Web source manifest as browseable `None` items.
+- `reference.catalog.json` - Root machine-readable discovery catalog. The default and only listed version is `1.22.6`.
+- `versions/1.22.6/version.catalog.json` - Version-specific discovery catalog for the retained 1.22.6 reference payload.
+- `versions/1.22.6/VintageStory.Reference.1.22.6.csproj` - Non-compiling Rider/MSBuild wrapper project that includes the version catalog, API, assets, mods, and Web source manifest as browseable `None` items.
 - `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
-- `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Player-facing usage guide for TentBag-Reworked 3.2.4 based on the indexed 1.22.4 reference mod files.
-- `versions/1.22.3/Index` - Tracked folder containing local generated SQLite indexes and manifests; only `Index/.gitignore` should be committed by default.
-- `versions/1.22.3/Web/sources.json` - Curated external web documentation source list.
-- `versions/1.22.4/API` - Decompiled 1.22.4 `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod` sources.
-- `versions/1.22.4/Assets` - Full copied 1.22.4 client assets from the Linux client archive.
-- `versions/1.22.4/mods` - Selected 1.22.4 reference mod set seeded from 1.22.3, with exact 1.22.4 Mod DB releases preferred and same-line 1.22.x fallbacks recorded when exact patch tags were unavailable.
-- `versions/1.22.4/mods/tentbagreworked_3.2.4` - TentBag-Reworked 3.2.4 reference mod folder containing assets, `TentBagReworked.dll`, and a decompiled `decompiled assembly/TentBagReworked` source root.
-- `versions/1.22.4/mods/tentbagreworked_3.2.4/assets/tentbagreworked/config/tent.json` - Bundled WorldEdit/BlockSchematic sample tent copied to game data `WorldEdit/tent.json` on server startup if absent.
-- `versions/1.22.4/mods/tentbagreworked_3.2.4/decompiled assembly/TentBagReworked/TentBagReworked/TentBagReworkedModSystem.cs` - Contains `EnsureTentSchematicExists`, the server-side copy path for the bundled sample tent.
-- `versions/1.22.4/Web/sources.json` - Copied curated external web documentation source manifest for the 1.22.4 web index.
-- `versions/1.22.4/Index/code.sqlite` - Generated 1.22.4 code index for the decompiled API sources.
-- `versions/1.22.4/Index/assets.sqlite` - Generated 1.22.4 asset index for the copied full client assets.
-- `versions/1.22.4/Index/web.sqlite` - Generated 1.22.4 web documentation index copied from the 1.22.3 web source manifest and fetched on 2026-07-21.
-- `.codex/skills/do-new-version` - Project-local Codex skill for creating a new version wrapper project, API tree, Assets tree, selected mods tree, copied web source manifest, and corresponding code/asset/web indexes from official Vintage Story release packages and carried-forward curated sources.
+- `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Player-facing usage guide for TentBag-Reworked 3.2.4 based on the indexed 1.22.6 reference mod files.
+- `docs/mods/Betterer Prospecting/BETTERER_PROSPECTING_SETTINGS.md` - Betterer Prospecting settings reference focused on `ReprospectParellelism`, `BoreholeScansStone`, and `BoreholeDmg`.
+- `versions/1.22.6/API` - Decompiled 1.22.6 `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`,
+  `VSEssentials`, and `VSSurvivalMod` sources.
+- `versions/1.22.6/Assets` - Full copied 1.22.6 client assets from the Linux client archive.
+- `versions/1.22.6/mods` - Selected 1.22.6 reference mod/tool set, with exact 1.22.6 Mod DB releases preferred and
+  same-line 1.22.x fallbacks recorded when exact patch tags were unavailable.
+- `versions/1.22.6/mods/bettererprospecting_3.4.5` - Betterer Prospecting 3.4.5 reference mod folder containing
+  assets, `BetterErProspecting.dll`, and a decompiled `decompiled assembly/BetterErProspecting` source root.
+- `versions/1.22.6/mods/bettererprospecting_3.4.5/assets/bettererprospecting/config/configlib-patches.json` -
+  Config Lib setting manifest for Betterer Prospecting.
+- `versions/1.22.6/mods/bettererprospecting_3.4.5/decompiled assembly/BetterErProspecting/BetterErProspecting/BetterErProspect.cs` -
+  Main Betterer Prospecting `ModSystem` that registers the replacement prospecting pick item class and Harmony patch categories.
+- `versions/1.22.6/mods/tentbagreworked_3.2.4` - TentBag-Reworked 3.2.4 reference mod folder containing assets,
+  `TentBagReworked.dll`, and a decompiled `decompiled assembly/TentBagReworked` source root.
+- `versions/1.22.6/mods/tentbagreworked_3.2.4/assets/tentbagreworked/config/tent.json` - Bundled
+  WorldEdit/BlockSchematic sample tent copied to game data `WorldEdit/tent.json` on server startup if absent.
+- `versions/1.22.6/mods/tentbagreworked_3.2.4/decompiled assembly/TentBagReworked/TentBagReworked/TentBagReworkedModSystem.cs` -
+  Contains `EnsureTentSchematicExists`, the server-side copy path for the bundled sample tent.
+- `versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md` - Provenance and licensing-status note for the
+  Simple VS Manager external-tool reference, including archive hash and single-file bundle extraction details.
+- `versions/1.22.6/mods/simplevsmanager_2.3.0/decompiled assemblies/Simple VS Manager` - Decompiled application
+  assembly for Simple VS Manager 2.3.0; start here for Ultimate Mod Manager workflow comparisons.
+- `versions/1.22.6/mods/rpvoicechat_2.5.8/decompiled assemblies/RPVoiceChat/RPVoiceChat/Audio/OpusCodec.cs` -
+  RPVoiceChat's Concentus/Opus codec implementation.
+- `versions/1.22.6/mods/rpvoicechat_2.5.8/decompiled assemblies/RPVoiceChat/RPVoiceChat/Audio/MicrophoneManager.cs` -
+  RPVoiceChat client capture path that selects `Opus` or `Dummy` based on `encode-audio`.
+- `versions/1.22.6/mods/rpvoicechat_2.5.8/decompiled assemblies/RPVoiceChat/RPVoiceChat/Audio/PlayerAudioSource.cs` -
+  RPVoiceChat playback path that constructs the matching codec for incoming packets.
+- `versions/1.22.6/mods/rpvoicechat_2.5.8/decompiled assemblies/RPVoiceChat/RPVoiceChat/Networking/AudioPacket.cs` -
+  RPVoiceChat network packet carrying the codec name with voice payload metadata.
+- `versions/1.22.6/Web/sources.json` - Curated external web documentation source manifest for the 1.22.6 web index.
+- `versions/1.22.6/Index/code.sqlite` - Generated 1.22.6 code index for the decompiled API and selected mod/tool sources.
+- `versions/1.22.6/Index/assets.sqlite` - Generated 1.22.6 asset index for the copied full client assets and selected
+  mod assets.
+- `versions/1.22.6/Index/web.sqlite` - Generated 1.22.6 web documentation index.
+- `.codex/skills/do-new-version` - Project-local Codex skill for creating a new version wrapper project, API tree,
+  Assets tree, selected mods tree, copied web source manifest, and corresponding code/asset/web indexes from official
+  Vintage Story release packages and carried-forward curated sources.
 - `.codex/skills/do-new-web` - Project-local Codex skill for copying/merging previous-version curated web sources and building `web.sqlite`/`web.index.json` under `versions/<version>/Index`.
 - `.codex/skills/new-version-mods` - Project-local Codex skill for downloading, staging, extracting, and decompiling selected compatible reference mods under `versions/<version>/mods`.
-- `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat/Audio/OpusCodec.cs` - RPVoiceChat's Concentus/Opus codec implementation.
-- `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat/Audio/MicrophoneManager.cs` - RPVoiceChat client capture path that selects `Opus` or `Dummy` based on `encode-audio`.
-- `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat/Audio/PlayerAudioSource.cs` - RPVoiceChat playback path that constructs the matching codec for incoming packets.
-- `versions/1.22.3/mods/rpvoicechat_2.5.8/RPVoiceChat/Networking/AudioPacket.cs` - RPVoiceChat network packet carrying the codec name with voice payload metadata.
 
 ## Session history
+
+### 2026-08-14
+
+- Removed `versions/1.22.3` and `versions/1.22.4` at the user's request after verifying both resolved paths were
+  under the repository's `versions` directory.
+- Removed the 1.22.3 and 1.22.4 wrapper projects from `Vintage Story Reference.sln`; `dotnet sln list` now reports
+  only `versions\1.22.6\VintageStory.Reference.1.22.6.csproj`.
+- Updated `reference.catalog.json` so `default_game_version` is `1.22.6` and the only advertised version is 1.22.6.
+- Rewrote `INDEX_USAGE.md` as a 1.22.6-only consumer guide. Other projects should now query only
+  `versions/1.22.6/Index/assets.sqlite`, `code.sqlite`, and `web.sqlite`.
+- Updated `README.md`, `versions/1.22.6/version.catalog.json`, the Betterer Prospecting settings note, and the
+  TentBag-Reworked player guide so current-facing docs no longer point at removed 1.22.3 or 1.22.4 payloads.
+- Left historical project-memory entries about 1.22.3 and 1.22.4 intact as provenance; they are no longer live
+  reference paths.
+- Updated `docs/ARCHITECTURE.md` to make the root catalog's default-version role explicit, record that 1.22.6 is the
+  only retained indexed version as of 2026-08-14, describe browse-only version wrapper projects, and document the
+  boundary between retained source/reference material and rebuildable generated index artifacts.
+- Verified `tools/reference-query.py --list-versions` reports `1.22.6 (default)` and
+  `tools/reference-query.py --version 1.22.6 --list-indexes` resolves asset, code, and web indexes after the
+  architecture update.
+- Staged the 1.22.6-only cleanup for commit: removed tracked 1.22.3 and 1.22.4 payloads, added the 1.22.6 payload,
+  kept only `versions/1.22.6/Index/.gitignore` from the generated index folder, added the asset/code/web index tool
+  scripts referenced by the catalogs, and added `.codex/tmp/` to `.gitignore` so local decompiler/download caches stay
+  untracked. `git config core.longpaths true` was set locally because a Config Lib decompiled regex-generator path
+  exceeded the default Windows Git path limit during staging.
+- Left `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.pdf` and `tools/panserbjornrebjorn_1.0.0` untracked
+  because they appear to be generated or misplaced local reference material, not required 1.22.6 commit content.
+
+### 2026-08-10
+
+- Created `versions/1.22.6` without creating a new Git branch, per the user's direction, and added
+  `versions/1.22.6/VintageStory.Reference.1.22.6.csproj` to `Vintage Story Reference.sln` under a `1.22.6` solution
+  folder.
+- Verified official Vintage Story 1.22.6 stable release availability from the Vintage Story news post dated
+  2026-07-31 and confirmed the CDN endpoints for `vs_server_win-x64_1.22.6.zip` and
+  `vs_client_linux-x64_1.22.6.tar.gz`.
+- Downloaded the 1.22.6 Windows server ZIP and Linux client archive to `.codex/tmp/new-version/1.22.6/downloads`;
+  verified MD5 `59e0aeaa213359025d51e67f26f7f255` for the server ZIP and
+  `c00c436cab612b436747b4bb5f39049b` for the client archive.
+- Copied full 1.22.6 client assets into `versions/1.22.6/Assets`, with `creative`, `game`, and `survival` asset
+  domains present directly under the target folder.
+- Decompiled `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and
+  `Mods/VSSurvivalMod.dll` with `ilspycmd` `10.1.1.8388` into flattened 1.22.6 API wrapper folders. Removed generated
+  temp `<HintPath>` entries and verified no `.sln` or `.slnx` files remain under `versions/1.22.6/API`.
+- Populated `versions/1.22.6/mods` from the 1.22.4 seed set. The initial seeded set had 15 unique mod ids. Exact
+  1.22.6 Mod DB releases were used for Betterer Prospecting 3.4.5, Primitive Survival 5.1.0, RPVoiceChat 2.5.8, and
+  TentBag-Reworked 3.2.4; the other selected mods are same-line `1.22.x` fallbacks recorded in
+  `.codex/tmp/mod-updates/1.22.6/selected-releases.json`.
+- Decompiled managed DLLs for the selected 1.22.6 code mods using `.codex/tmp/decompiler/VsReferenceDecompiler.csproj`.
+  Native/non-.NET DLLs, such as VSImGui native Windows DLLs, were left as binaries and reported in the generated mod
+  selection report.
+- Copied `versions/1.22.4/Web/sources.json` to `versions/1.22.6/Web/sources.json`, staged that curated source manifest
+  with Git, built `versions/1.22.6/Index/web.sqlite`, and staged `versions/1.22.6/Index/.gitignore` while leaving
+  generated index outputs ignored.
+- Built `versions/1.22.6/Index/code.sqlite`; after the later Simple VS Manager addition it contains `7,957` C# files,
+  `9,016` types, `38,277` members, and `18` source roots.
+- Built `versions/1.22.6/Index/assets.sqlite`; it contains `22,103` files, including `11,066` JSON files with
+  `10,717` parsed successfully and `349` parse-error rows retained for path/category lookup.
+- Built `versions/1.22.6/Index/web.sqlite`; it contains `4` sources and `84` sections.
+- Updated `versions/1.22.6/version.catalog.json`, `reference.catalog.json`, `README.md`, and `INDEX_USAGE.md` so
+  `tools/reference-query.py` discovers 1.22.6 and lists its asset, code, and web indexes.
+- Verified `dotnet sln "Vintage Story Reference.sln" list`, `tools/reference-query.py --list-versions`,
+  `tools/reference-query.py --version 1.22.6 --list-indexes`, representative asset searches for copper and recipes,
+  code queries for `ICoreAPI`, `RegisterBlockClass`, and `BlockEntity`, and web queries for source listing,
+  Config Lib patches, and RPVoiceChat bitrate documentation.
+- Added Simple VS Manager 2.3.0 to `versions/1.22.6/mods/simplevsmanager_2.3.0` as a Mod DB `externaltool`
+  reference for Ultimate Mod Manager research. The official page identifies it as a manager/launcher with Mod DB
+  search, updates, shared modlists, and game profiles rather than a normal in-game mod.
+- Downloaded `Simple VS Manager 2.3.0.zip` to `.codex/tmp/mod-updates/1.22.6/archives`; archive SHA256 is
+  `71F7F9F91A6DCC234ADE5BF095FA34FE2D043AE0DBA92FAEFCF3C2D9EC2AF7F8`.
+- Extracted the single-file .NET bundle from `Simple VS Manager.exe` without running it. The embedded bundle contained
+  12 managed assemblies, 6 native libraries, `Simple VS Manager.deps.json`, and `Simple VS Manager.runtimeconfig.json`.
+- Decompiled the 12 managed assemblies into
+  `versions/1.22.6/mods/simplevsmanager_2.3.0/decompiled assemblies`, producing `2,624` C# files. Native libraries
+  such as qpdf, QuestPdfSkia, zlib, libgcc, libstdc++, and libwinpthread were preserved as binaries only.
+- Added `versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md` because the archive has no `modinfo.json`
+  and no explicit license file; the GitHub license API returned 404 on 2026-08-10.
+- Rebuilt and validated the 1.22.6 code index after adding Simple VS Manager. It now returns results for
+  `SimpleVsManager.Cloud.FirebaseModlistStore` and `VintageStoryModManager.Views.MainWindow`.
+- Rebuilt the 1.22.6 asset index after adding Simple VS Manager; counts remained `22,103` files, including `11,066`
+  JSON files with `10,717` parsed successfully and `349` parse-error rows.
+
+- Consumed local archive `versions/1.22.4/mods/bettererprospecting_3.4.5.zip` for target Vintage Story `1.22.4`; archive SHA256 is `BA645FE026918178CF10E74A9981F47619BA2C1007FE48C4A6C27A32F2C77719`.
+- Extracted the archive to `.codex/tmp/mod-updates/1.22.4/extracted/bettererprospecting_3.4.5` and copied it to `versions/1.22.4/mods/bettererprospecting_3.4.5`. The `modinfo.json` declares mod id `bettererprospecting`, version `3.4.5`, type `code`, side `Universal`, and game dependency `1.22.0`.
+- Preserved a staged archive copy at `.codex/tmp/mod-updates/1.22.4/archives/bettererprospecting_3.4.5.zip`. The original ZIP under `versions/1.22.4/mods` was left in place because deletion was not requested.
+- Decompiled `BetterErProspecting.dll` into `versions/1.22.4/mods/bettererprospecting_3.4.5/decompiled assembly/BetterErProspecting`, producing `22` C# files.
+- Rebuilt the 1.22.4 code index; it now contains `5,332` C# files, `5,714` types, `29,464` members, and `17` source roots, including `bettererprospecting_3.4.5/decompiled assembly`.
+- Rebuilt the 1.22.4 asset index; it now contains `22,100` files, including `9` Betterer Prospecting asset files under the `bettererprospecting` domain.
+- Verified `tools/reference-query.py --version 1.22.4` returns Betterer Prospecting code results for `BetterErProspecting` and asset results for the `bettererprospecting` domain.
+- Investigated Betterer Prospecting settings `ReprospectParellelism`, `BoreholeScansStone`, and `BoreholeDmg` using the 1.22.4 code and asset indexes, then confirmed exact behavior in the decompiled mod code and Config Lib assets.
+- Added `docs/mods/Betterer Prospecting/BETTERER_PROSPECTING_SETTINGS.md`, documenting the three settings, the Borehole mode scan path, the `BoreholeDmg` default mismatch between `ModConfig` and Config Lib, and the `ReprospectParellelism` spelling/concurrency behavior.
+- Updated the Betterer Prospecting settings reference with the `BoreholeRadius = 5` recommendation when
+  `ProximitySearchRadius = 5`, including the scan-shape reasoning and per-layer radius cost comparison.
+
+### 2026-07-28
+
+- Investigated why Vintage Story 1.22.4 display cases cannot be stacked directly. Queried the 1.22.4 asset and code indexes, then inspected `survival/blocktypes/wood/displaycase.json`, `displaycase-tall.json`, `BlockDisplayCase`, `BlockBehaviorUnstableFalling`, and base `Block.CanAttachBlockAt`.
+- Confirmed the blocker is not display-case inventory code. Vanilla display case JSON marks all sides non-solid and adds `UnstableFalling`; the falling placement check requires the block below to allow attachment on its top face and fails with `requiresolidground` when placing a display case on another display case.
 
 ### 2026-07-26
 

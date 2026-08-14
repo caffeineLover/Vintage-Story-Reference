@@ -1,0 +1,188 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Vintagestory.API.Client;
+using Vintagestory.API.Config;
+
+namespace Vintagestory.API.Common;
+
+/// <summary>
+/// Represents an in game Item of Vintage Story
+/// </summary>
+public class Item : CollectibleObject
+{
+	/// <summary>
+	/// The unique number of the item, dynamically assigned by the game
+	/// </summary>
+	public int ItemId;
+
+	/// <summary>
+	/// The item's shape. Null for automatic shape based on the texture.
+	/// </summary>
+	public CompositeShape Shape;
+
+	/// <summary>
+	/// Default textures to be used for this item. The Dictionary keys are the texture short names, as referenced in this item's shape ShapeElementFaces
+	/// <br />(may be null on clients, prior to receipt of server assets)
+	/// <br />Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
+	/// </summary>
+	public Dictionary<string, CompositeTexture> Textures = new Dictionary<string, CompositeTexture>();
+
+	/// <summary>
+	/// The unique number of the item, dynamically assigned by the game
+	/// </summary>
+	public override int Id => ItemId;
+
+	/// <summary>
+	/// The type of the collectible object
+	/// </summary>
+	public override EnumItemClass ItemClass => EnumItemClass.Item;
+
+	/// <summary>
+	/// Returns the first texture in Textures
+	/// </summary>
+	public CompositeTexture FirstTexture
+	{
+		get
+		{
+			if (Textures != null && Textures.Count != 0)
+			{
+				return Textures.First().Value;
+			}
+			return null;
+		}
+	}
+
+	/// <summary>
+	/// Instantiate a new item with null model transforms; ItemTypeNet will add default transforms client-side if they are null in the ItemType packet; transforms should not be needed on a server
+	/// </summary>
+	public Item()
+	{
+	}
+
+	/// <summary>
+	/// Instantiates a new item with given item id and stacksize = 1
+	/// </summary>
+	/// <param name="itemId"></param>
+	public Item(int itemId)
+	{
+		ItemId = itemId;
+		MaxStackSize = 1;
+	}
+
+	/// <summary>
+	/// Called by the inventory system when you hover over an item stack. This is the text that is getting displayed.
+	/// </summary>
+	/// <param name="inSlot"></param>
+	/// <param name="dsc"></param>
+	/// <param name="world"></param>
+	/// <param name="withDebugInfo"></param>
+	public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+	{
+		ItemStack stack = inSlot.Itemstack;
+		byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
+		dsc.Append((!withDebugInfo) ? "" : ((lightHsv[2] > 0) ? (Lang.Get("light-hsv") + lightHsv[0] + ", " + lightHsv[1] + ", " + lightHsv[2] + "\n") : ""));
+		dsc.Append(withDebugInfo ? "" : ((lightHsv[2] > 0) ? (Lang.Get("light-level") + lightHsv[2] + "\n") : ""));
+		base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+	}
+
+	/// <summary>
+	/// Should return a random pixel within the items/blocks texture
+	/// </summary>
+	/// <param name="capi"></param>
+	/// <param name="stack"></param>
+	/// <returns></returns>
+	public override int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
+	{
+		if (Textures == null || Textures.Count == 0)
+		{
+			return 0;
+		}
+		BakedCompositeTexture tex = ((ParticlesTextureCode != null) ? Textures[ParticlesTextureCode].Baked : Textures?.First().Value?.Baked);
+		if (tex != null)
+		{
+			return capi.ItemTextureAtlas.GetRandomColor(tex.TextureSubId);
+		}
+		return 0;
+	}
+
+	/// <summary>
+	/// Creates a deep copy of the item
+	/// </summary>
+	/// <returns></returns>
+	public Item Clone()
+	{
+		Item cloned = (Item)MemberwiseClone();
+		cloned.Code = Code.Clone();
+		if (MiningSpeed != null)
+		{
+			cloned.MiningSpeed = new Dictionary<EnumBlockMaterial, float>(MiningSpeed);
+		}
+		cloned.Textures = new Dictionary<string, CompositeTexture>();
+		if (Textures != null)
+		{
+			foreach (KeyValuePair<string, CompositeTexture> val in Textures)
+			{
+				cloned.Textures[val.Key] = val.Value.Clone();
+			}
+		}
+		if (Shape != null)
+		{
+			cloned.Shape = Shape.Clone();
+		}
+		if (Attributes != null)
+		{
+			cloned.Attributes = Attributes.Clone();
+		}
+		if (CombustibleProps != null)
+		{
+			cloned.CombustibleProps = CombustibleProps.Clone();
+		}
+		if (NutritionProps != null)
+		{
+			cloned.NutritionProps = NutritionProps.Clone();
+		}
+		if (GrindingProps != null)
+		{
+			cloned.GrindingProps = GrindingProps.Clone();
+		}
+		return cloned;
+	}
+
+	internal void CheckTextures(ILogger logger)
+	{
+		List<string> toRemove = null;
+		int i = 0;
+		foreach (KeyValuePair<string, CompositeTexture> val in Textures)
+		{
+			if (val.Value.Base == null)
+			{
+				logger.Error("The texture definition {0} for #{2} in item with code {1} is invalid. The base property is null. Will skip.", i, Code, val.Key);
+				if (toRemove == null)
+				{
+					toRemove = new List<string>();
+				}
+				toRemove.Add(val.Key);
+			}
+			i++;
+		}
+		if (toRemove == null)
+		{
+			return;
+		}
+		foreach (string val2 in toRemove)
+		{
+			Textures.Remove(val2);
+		}
+	}
+
+	public virtual void FreeRAMServer()
+	{
+		Textures = null;
+		GuiTransform = null;
+		FpHandTransform = null;
+		TpHandTransform = null;
+		TpOffHandTransform = null;
+		GroundTransform = null;
+	}
+}

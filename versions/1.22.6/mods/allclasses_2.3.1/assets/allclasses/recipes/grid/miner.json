@@ -1,0 +1,182 @@
+[
+{
+	"ingredientPattern": "H_,PR",
+	"requiresTrait": "prospector",
+	"ingredients": {
+		"P": { "type": "item", "code": "game:metalplate-copper", "quantity": 1  },
+		"R": { "type": "item", "code": "game:rod-copper", "quantity": 1  },
+		"H": { "type": "item", "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10 }
+	},
+	"width": 2,
+	"height": 2,
+	"averageDurability": false,
+	"output": { "type": "block", "code": "allclasses:metalpan-copper", "quantity": 1  }
+},
+  {
+    "ingredientPattern": "H,P,M",
+    "requiresTrait": "prospector",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-tinbronze",
+        "quantity": 1
+      },
+      "M": {
+        "type": "block",
+        "code": "allclasses:metalpan-copper",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpan-tinbronze",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "H,P,M",
+    "requiresTrait": "prospector",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-iron",
+        "quantity": 1
+      },
+      "M": {
+        "type": "block",
+        "code": "allclasses:metalpan-tinbronze",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpan-iron",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "_B_,WFT,_P_",
+    "requiresTrait": "prospector",
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:bone",
+        "quantity": 1
+      },
+      "W": {
+        "type": "item",
+        "code": "game:firewood",
+        "quantity": 4
+      },
+      "T": {
+        "type": "item",
+        "code": "game:flaxtwine",
+        "quantity": 1
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered",
+        "quantity": 2
+      },
+      "P": {
+        "type": "block",
+        "code": "game:flowerpot-*-fired",
+        "allowedVariants": [
+					"blue",
+					"fire",
+					"black",
+					"brown",
+					"cream",
+					"gray",
+					"orange",
+					"red",
+					"tan"
+				],
+        "quantity": 1
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "allclasses:primitivemininglantern-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "B_,FT,M_",
+    "requiresTrait": "prospector",
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:metalplate-brass",
+        "quantity": 1
+      },
+      "M": {
+        "type": "item",
+        "code": "game:metalplate-molybdochalkos",
+        "quantity": 1
+      },
+      "F": {
+        "type": "item",
+        "code": "game:fat-rendered",
+        "quantity": 2
+      },
+      "T": {
+        "type": "item",
+        "code": "game:flaxtwine",
+        "quantity": 1
+      }
+    },
+    "width": 2,
+    "height": 3,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalmininglantern-north",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "CBF,_P_",
+    "requiresTrait": "prospector",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:powder-sulfur", "quantity": 4 },
+      "B": { "type": "item", "code": "game:blastingpowder", "quantity": 4 },
+      "C": { "type": "item", "code": "game:flaxtwine" },
+      "F": { "type": "block", "code": "game:linen-*" }
+    },
+    "name": "bomb-stone",
+    "width": 3,
+    "height": 2,
+    "shapeless": true,
+    "output": { "type": "block", "code": "game:bomb-stone", "quantity": 8  }
+  },
+  {
+    "ingredientPattern": "SSS,SPC,CCC",
+    "requiresTrait": "prospector",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:saltpeter", "quantity": 1 },
+    "P": { "type": "item", "code": "game:rot", "quantity": 16 },
+      "C": { "type": "item", "code": "game:charcoal", "quantity": 1 }
+    },
+    "width": 3,
+    "height": 3,
+    "recipeGroup": 2,
+    "shapeless": false,
+    "output": { "type": "item", "code": "game:blastingpowder", "quantity": 4 }
+  }
+]

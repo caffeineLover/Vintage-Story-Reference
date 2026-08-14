@@ -32,6 +32,11 @@ This repository is a searchable reference archive for AI-assisted Vintage Story 
 
 Catalogs should point to existing manifests, scripts, prompts, and skills. They should not duplicate large generated details that already live in generated index manifests.
 
+The root catalog's `default_game_version` is the version that ordinary consumers should query when they do not have a
+stronger target-version requirement. As of 2026-08-14, `1.22.6` is the only retained indexed version in the repository.
+Older version references may remain in project history and memory for provenance, but current research workflows should
+not assume those older payloads are present on disk.
+
 ## Tool Roles
 
 - `tools/reference-query.py` is the preferred consumer entry point when an agent wants one stable command shape.
@@ -56,6 +61,25 @@ versions/<version>/
 ```
 
 The `API`, `Assets`, and `mods` folders are raw reference material. Agents should not scan them broadly. The `Index` folder is the normal entry point for research.
+
+Version folders may also have a browse-only `VintageStory.Reference.<version>.csproj` so IDEs can navigate the
+reference payload. Those wrapper projects are not buildable game or mod projects; they exist to make the raw reference
+trees visible to editors without compiling decompiled Vintage Story source.
+
+## Source And Generated Boundaries
+
+The repository keeps curated source material and rebuildable generated artifacts separate:
+
+- Retained source/reference material includes version catalogs, API decompiles, copied client assets, selected
+  reference mods/tools, curated web source manifests, prompt files, skills, and index/query tools.
+- Rebuildable generated material includes SQLite databases and generated index manifests under
+  `versions/<version>/Index`.
+- Each `Index` folder should be represented in Git by its local `.gitignore`; generated `.sqlite` and `.index.json`
+  files should remain local unless the maintainer explicitly chooses a large-file publishing strategy.
+
+This boundary matters because the asset indexes can exceed normal GitHub file limits, while the underlying source
+manifests and build scripts are small enough to review and reproduce from a clean checkout plus the documented source
+archives.
 
 ## Index Types
 

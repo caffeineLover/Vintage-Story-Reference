@@ -1,0 +1,6 @@
+{
+  "code": "texturerot",
+  "textures": {
+    "baitmaterial": { "base": "item/fishing/rot" }
+   }
+}

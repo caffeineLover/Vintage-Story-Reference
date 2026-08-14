@@ -1,0 +1,479 @@
+[
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:vegetable-carrot",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-carrot",
+			"quantity": 1
+		},
+		"H": {
+			"type": "item",
+			"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+		  }
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:grain-flax",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-flax",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:vegetable-onion",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-onion",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:grain-spelt",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-spelt",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:vegetable-turnip",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-turnip",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:vegetable-parsnip",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-parsnip",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:grain-rice",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-rice",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:grain-rye",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-rye",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:legume-soybean",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-soybean",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:vegetable-cabbage",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-cabbage",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "block",
+				"code": "game:pineapple",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-pineapple",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:rawcassava-raw",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-cassava",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:grain-amaranth",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-amaranth",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:legume-peanut",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-peanut",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,S",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:grain-sunflower",
+				"quantity": 5
+			},
+			"H": {
+				"type": "item",
+				"tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 5
+			  }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-sunflower",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "SW",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "block",
+				"code": "game:pumpkin-fruit-4",
+				"quantity": 2
+			},
+			"W": {
+				"type": "item",
+				"tags": ["tool-saw"], "isTool": true, "toolDurabilityCost": 2
+			}
+		},
+		"width": 2,
+		"height": 1,
+		"recipeGroup": 2,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "game:seeds-pumpkin",
+			"quantity": 4
+		}
+	},
+	{
+		"ingredientPattern": "BCT,CSC,TCB",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"S": {
+				"type": "block",
+				"code": "game:soil-medium-none",
+				"quantity": 1
+			},
+			"C": {
+				"type": "item",
+				"code": "game:compost",
+				"quantity": 1
+			},
+			"B": {
+				"type": "item",
+				"code": "game:bonemeal",
+				"quantity": 1
+			},
+			"T": {
+				"type": "item",
+				"code": "game:saltpeter",
+				"quantity": 1
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": true,
+		"output": {
+			"type": "block",
+			"code": "game:soil-compost-none",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "BGB,GCG,SGS",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"C": {
+				"type": "item",
+				"code": "game:compost",
+				"quantity": 2
+			},
+			"B": {
+				"type": "item",
+				"code": "game:bonemeal"
+			},
+			"G": {
+				"type": "item",
+				"code": "game:drygrass"
+			},
+			"S": {
+				"type": "item",
+				"code": "game:saltpeter"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "allclasses:basicbooster",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "SGP,GCG,BGX",
+		"requiresTrait": "pioneer",
+		"ingredients": {
+			"C": {
+				"type": "item",
+				"code": "game:compost",
+				"quantity": 2
+			},
+			"B": {
+				"type": "item",
+				"code": "game:bonemeal"
+			},
+			"P": {
+				"type": "item",
+				"code": "game:ore-phosphorite"
+			},
+			"G": {
+				"type": "item",
+				"code": "game:drygrass"
+			},
+			"X": {
+				"type": "item",
+				"code": "game:powder-sulfur"
+			},
+			"S": {
+				"type": "item",
+				"code": "game:potash"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": true,
+		"output": {
+			"type": "item",
+			"code": "allclasses:qualitybooster",
+			"quantity": 1
+		}
+	}
+]

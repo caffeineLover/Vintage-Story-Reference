@@ -3,7 +3,7 @@
 TentBag-Reworked adds a craftable tent bag that can pack a small built structure into an item, then place it again
 later. It is meant for portable camps, tents, and other compact travel builds.
 
-This guide describes the default behavior in TentBag-Reworked `3.2.4` as indexed for Vintage Story `1.22.4`. Server
+This guide describes the default behavior in TentBag-Reworked `3.2.4` as indexed for Vintage Story `1.22.6`. Server
 configuration can change the capture size, hunger cost, banned blocks, waypoint behavior, and some placement rules.
 
 ## Crafting
@@ -165,7 +165,7 @@ If TentBag-Reworked behaves differently from this guide, check with the server o
 
 This guide was written from the local indexed TentBag-Reworked `3.2.4` reference files.
 
-TentBag-Reworked source files under `versions/1.22.4/mods/tentbagreworked_3.2.4/`:
+TentBag-Reworked source files under `versions/1.22.6/mods/tentbagreworked_3.2.4/`:
 
 - `assets/tentbagreworked/itemtypes/tentbagreworked.json`
 - `assets/tentbagreworked/recipes/grid/tentbagreworked.json`
@@ -177,10 +177,10 @@ TentBag-Reworked source files under `versions/1.22.4/mods/tentbagreworked_3.2.4/
 - `decompiled assembly/TentBagReworked/TentBagReworked/Config/TentBagReworkedConfig.cs`
 - `decompiled assembly/TentBagReworked/TentBagReworked/Util/TentArea.cs`
 
-WorldEdit source files under `versions/1.22.4/API/`:
+WorldEdit source files under `versions/1.22.6/API/`:
 
-- `VSCreativeMod_decompiled_1.22.4/Vintagestory/ServerMods/WorldEdit/WorldEdit.cs`
-- `VSCreativeMod_decompiled_1.22.4/Vintagestory/ServerMods/WorldEdit/WorldEditWorkspace.cs`
-- `VSCreativeMod_decompiled_1.22.4/Vintagestory/ServerMods/WorldEdit/ImportTool.cs`
-- `VintagestoryAPI_decompiled_1.22.4/Vintagestory/API/Common/BlockSchematic.cs`
-- `VintagestoryAPI_decompiled_1.22.4/Vintagestory/API/Common/EnumOrigin.cs`
+- `VSCreativeMod_decompiled_1.22.6/Vintagestory/ServerMods/WorldEdit/WorldEdit.cs`
+- `VSCreativeMod_decompiled_1.22.6/Vintagestory/ServerMods/WorldEdit/WorldEditWorkspace.cs`
+- `VSCreativeMod_decompiled_1.22.6/Vintagestory/ServerMods/WorldEdit/ImportTool.cs`
+- `VintagestoryAPI_decompiled_1.22.6/Vintagestory/API/Common/BlockSchematic.cs`
+- `VintagestoryAPI_decompiled_1.22.6/Vintagestory/API/Common/EnumOrigin.cs`

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "game_version": "1.22.6",
+  "version_root": "versions/1.22.6",
+  "purpose": "Version-specific discovery catalog for Vintage Story 1.22.6 reference material.",
+  "reference_roots": {
+    "api": "versions/1.22.6/API",
+    "assets": "versions/1.22.6/Assets",
+    "mods": "versions/1.22.6/mods",
+    "web_sources": "versions/1.22.6/Web"
+  },
+  "indexes": {
+    "asset": {
+      "database": "versions/1.22.6/Index/assets.sqlite",
+      "manifest": "versions/1.22.6/Index/assets.index.json",
+      "build_script": "tools/asset-index/build_asset_index.py",
+      "query_script": "tools/asset-index/query_asset_index.py",
+      "use_for": [
+        "assets",
+        "JSON",
+        "recipes",
+        "blocks",
+        "items",
+        "textures",
+        "shapes",
+        "lang files",
+        "worldgen",
+        "patches"
+      ]
+    },
+    "code": {
+      "database": "versions/1.22.6/Index/code.sqlite",
+      "manifest": "versions/1.22.6/Index/code.index.json",
+      "build_script": "tools/code-index/build_code_index.py",
+      "query_script": "tools/code-index/query_code_index.py",
+      "use_for": [
+        "API symbols",
+        "decompiled C#",
+        "types",
+        "methods",
+        "members",
+        "inheritance",
+        "source locations"
+      ]
+    },
+    "web": {
+      "database": "versions/1.22.6/Index/web.sqlite",
+      "manifest": "versions/1.22.6/Index/web.index.json",
+      "source_manifest": "versions/1.22.6/Web/sources.json",
+      "build_script": "tools/web-index/build_web_index.py",
+      "query_script": "tools/web-index/query_web_index.py",
+      "use_for": [
+        "curated external documentation",
+        "Config Lib JSON API behavior",
+        "indexed mod overview pages",
+        "RPVoiceChat server and project documentation"
+      ]
+    }
+  },
+  "current_index_summary": {
+    "asset_files": 22103,
+    "code_files": 7957,
+    "code_types": 9016,
+    "code_members": 38277,
+    "selected_mods": 16,
+    "web_sources": 4,
+    "web_sections": 84
+  },
+  "notes": [
+    "This is the only retained Vintage Story reference version. It has decompiled built-in API sources for VintagestoryAPI, VintagestoryLib, VSCreativeMod, VSEssentials, and VSSurvivalMod, copied full client assets, selected reference mods and tools, copied curated web sources, a code index, an asset index, and a web index.",
+    "Betterer Prospecting 3.4.5, Primitive Survival 5.1.0, RPVoiceChat 2.5.8, and TentBag-Reworked 3.2.4 had exact Mod DB 1.22.6 releases. The other selected mods use the newest same-line 1.22.x release as a documented fallback; see .codex/tmp/mod-updates/1.22.6/selected-releases.json for the release evidence.",
+    "Simple VS Manager 2.3.0 was added as a Mod DB external-tool reference for mod-manager workflow research. It is not a normal game mod package, has no modinfo.json, and is documented at versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md.",
+    "Curated web sources were copied forward from earlier curated manifests and re-indexed for 1.22.6.",
+    "Generated index manifests remain the source of truth for exact generated-at timestamps, roots, and detailed counts.",
+    "Query indexes before opening raw files."
+  ]
+}

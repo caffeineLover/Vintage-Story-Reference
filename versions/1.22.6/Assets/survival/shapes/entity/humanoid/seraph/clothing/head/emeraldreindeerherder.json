@@ -1,0 +1,104 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"allAngles": false,
+		"entityTextureMode": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"lapland-cap": [16,16]
+	},
+	"textures": {
+		"lapland-cap": "entity/humanoid/seraphclothes/head/lapland-cap"
+	},
+	"elements": [
+		{
+			"name": "hidehat",
+			"stepParentName": "Head",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 5.5, 5.0, 5.0 ],
+			"uv": [ 0.0, 0.0 ],
+			"rotationOrigin": [ 3.0, 3.0, 2.5 ],
+			"faces": {
+				"north": { "texture": "#null", "uv": [ 0.0, 5.0, 5.5, 10.0 ], "enabled": false },
+				"east": { "texture": "#null", "uv": [ 5.5, 5.0, 10.5, 10.0 ], "enabled": false },
+				"south": { "texture": "#null", "uv": [ 10.5, 5.0, 16.0, 10.0 ], "enabled": false },
+				"west": { "texture": "#null", "uv": [ 16.0, 5.0, 21.0, 10.0 ], "enabled": false },
+				"up": { "texture": "#null", "uv": [ 0.0, 0.0, 5.5, 5.0 ], "enabled": false },
+				"down": { "texture": "#null", "uv": [ 5.5, 0.0, 11.0, 5.0 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "cap",
+					"from": [ 0.7, 0.3, -0.2 ],
+					"to": [ 5.7, 5.2, 5.2 ],
+					"unwrapMode": 4,
+					"autoUnwrap": false,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 0.5, 3.5, 2.5 ],
+					"faces": {
+						"north": { "texture": "#lapland-cap", "uv": [ 0.0, 5.0, 5.0, 9.5 ] },
+						"east": { "texture": "#lapland-cap", "uv": [ 10.0, 9.5, 15.0, 14.0 ] },
+						"south": { "texture": "#lapland-cap", "uv": [ 10.0, 5.0, 15.0, 9.5 ] },
+						"west": { "texture": "#lapland-cap", "uv": [ 5.0, 5.0, 10.0, 9.5 ] },
+						"up": { "texture": "#lapland-cap", "uv": [ 5.0, 0.0, 10.0, 5.0 ], "rotation": 90 },
+						"down": { "texture": "#lapland-cap", "uv": [ 5.0, 9.5, 10.0, 14.5 ], "rotation": 90 }
+					},
+					"children": [
+						{
+							"name": "forehead",
+							"from": [ -1.0, 3.26, 0.0 ],
+							"to": [ 0.0, 4.91, 5.4 ],
+							"unwrapMode": 4,
+							"autoUnwrap": false,
+							"uv": [ 4.5, 4.5 ],
+							"rotationOrigin": [ 0.0, 5.0, 2.7 ],
+							"faces": {
+								"north": { "texture": "#lapland-cap", "uv": [ 4.5, 5.0, 5.5, 6.5 ] },
+								"east": { "texture": "#null", "uv": [ 0.5, 5.0, 5.5, 6.5 ], "enabled": false },
+								"south": { "texture": "#lapland-cap", "uv": [ 10.0, 5.0, 11.0, 6.5 ] },
+								"west": { "texture": "#lapland-cap", "uv": [ 0.0, 10.0, 5.0, 11.5 ] },
+								"up": { "texture": "#lapland-cap", "uv": [ 5.0, 4.5, 10.0, 5.5 ], "rotation": 270 },
+								"down": { "texture": "#lapland-cap", "uv": [ 5.0, 6.5, 10.0, 7.5 ], "rotation": 90 }
+							}
+						}
+					]
+				},
+				{
+					"name": "R",
+					"from": [ 2.0, -0.4, -0.2 ],
+					"to": [ 4.0, 3.6, 0.3 ],
+					"unwrapMode": 1,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 3.0, 3.6, -0.2 ],
+					"rotationX": 5.0,
+					"faces": {
+						"north": { "texture": "#lapland-cap", "uv": [ 0.5, 0.0, 2.5, 4.0 ] },
+						"east": { "texture": "#lapland-cap", "uv": [ 0.0, 0.0, 0.5, 4.0 ] },
+						"south": { "texture": "#lapland-cap", "uv": [ 3.0, 0.0, 5.0, 4.0 ] },
+						"west": { "texture": "#lapland-cap", "uv": [ 2.5, 0.0, 3.0, 4.0 ] },
+						"up": { "texture": "#null", "uv": [ 0.5, 0.0, 2.5, 0.5 ], "rotation": 180, "enabled": false },
+						"down": { "texture": "#lapland-cap", "uv": [ 0.5, 4.0, 2.5, 4.5 ] }
+					}
+				},
+				{
+					"name": "L",
+					"from": [ 2.0, -0.4, 4.7 ],
+					"to": [ 4.0, 3.6, 5.2 ],
+					"unwrapMode": 3,
+					"uv": [ 10.0, 0.0 ],
+					"rotationOrigin": [ 3.0, 3.6, 5.2 ],
+					"rotationX": -5.0,
+					"faces": {
+						"north": { "texture": "#lapland-cap", "uv": [ 13.0, 0.0, 15.0, 4.0 ] },
+						"east": { "texture": "#lapland-cap", "uv": [ 12.5, 0.0, 13.0, 4.0 ] },
+						"south": { "texture": "#lapland-cap", "uv": [ 10.5, 0.0, 12.5, 4.0 ] },
+						"west": { "texture": "#lapland-cap", "uv": [ 10.0, 0.0, 10.5, 4.0 ] },
+						"up": { "texture": "#null", "uv": [ 10.5, 0.0, 12.5, 0.5 ], "enabled": false },
+						"down": { "texture": "#lapland-cap", "uv": [ 10.5, 4.0, 12.5, 4.5 ], "rotation": 180 }
+					}
+				}
+			]
+		}
+	]}

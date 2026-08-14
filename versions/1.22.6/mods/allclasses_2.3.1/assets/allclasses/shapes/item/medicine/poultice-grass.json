@@ -1,0 +1,40 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"bundle": "Game:block/hay/bundle",
+		"crimson": "Game:block/plant/croton/crimson"
+	},
+	"elements": [
+		{
+			"name": "poultice",
+			"from": [ 4.5, 0.0, 5.0 ],
+			"to": [ 11.5, 1.5, 11.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#crimson", "uv": [ 4.8, 10.0, 11.6, 11.3333 ] },
+				"east": { "texture": "#crimson", "uv": [ 4.4, 8.6667, 10.4, 10.0 ] },
+				"south": { "texture": "#crimson", "uv": [ 4.8, 9.3333, 11.6, 10.6667 ] },
+				"west": { "texture": "#crimson", "uv": [ 4.8, 8.0, 10.8, 9.3333 ] },
+				"up": { "texture": "#crimson", "uv": [ 4.8, 8.0, 11.6, 14.0 ] },
+				"down": { "texture": "#crimson", "uv": [ 4.4, 8.6667, 11.2, 14.6667 ] }
+			},
+			"children": [
+				{
+					"name": "strip",
+					"from": [ -1.0, 0.8, -1.5 ],
+					"to": [ 8.0, 0.8, 7.5 ],
+					"rotationOrigin": [ -1.0, 0.3, 0.5 ],
+					"faces": {
+						"up": { "texture": "#bundle", "uv": [ 0.0, 7.0, 9.0, 16.0 ] }
+					}
+				}
+			]
+		}
+	]}

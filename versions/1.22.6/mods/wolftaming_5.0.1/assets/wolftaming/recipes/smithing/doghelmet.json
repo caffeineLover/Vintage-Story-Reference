@@ -1,0 +1,38 @@
+{
+    "ingredient": {
+        "type": "item",
+        "code": "game:ingot-*",
+        "name": "metal",
+        "allowedVariants": [
+            "iron",
+            "tinbronze",
+            "copper"
+        ]
+    },
+    "pattern": [
+        [
+            "__#####__",
+            "_#######_",
+            "_#######_",
+            "__#####__"
+        ],
+        [
+            "__#_#_#__",
+            "_##___##_",
+            "_##___##_",
+            "__#####__"
+        ],
+        [
+            "__#_#_#__",
+            "_##___##_",
+            "_##___##_",
+            "__#####__"
+        ]
+    ],
+    "name": "Dog Helmet",
+    "code": "doghelmet-{metal}",
+    "output": {
+        "type": "item",
+        "code": "doghelmet-{metal}"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "ingredientPattern": "FW",
+    "requiresTrait": "transmutation",
+    "ingredients": {
+      "W": {
+        "type": "block",
+        "code": "game:woodbucket"
+      },
+      "F": {
+        "type": "item",
+        "code": "game:lime",
+        "quantity": 5
+      }
+    },
+    "width": 1,
+    "height": 2,
+    "attributes": {
+      "liquidContainerProps": {
+        "requiresContent": { "type": "item", "code": "game:boilingwaterportion" },
+        "requiresLitres": 5
+      }
+    },
+    "name": "sulfur",
+    "shapeless": true,
+    "output": { "type": "item", "code": "game:ore-sulfur", "quantity": 2 }
+  }
+
+
+

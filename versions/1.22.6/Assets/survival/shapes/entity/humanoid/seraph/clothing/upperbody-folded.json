@@ -1,0 +1,84 @@
+{
+	"editor": {
+		"collapsedPaths": "Root/origin shelf/glass L,Root/bottomC/origin dress,Root/Top/origin dress,Root/Middle/origin shelf/doorL3,Root/origin shelf/glass R,Root/Middle/origin shelf/doorR,Root/Top/origin dress4,Root/Middle/origin shelf/doorR3,Root/Middle/origin shelf/shelf 1,Root/Top/origin dress3,Root/Top/origin dress2,Root/origin dress,Root/Middle/origin shelf/doorL,Root/Top/doorR2,Root/Top/doorR3,Root/bottomC/origin dress5,Root/Top/doorL2,Root/Top/doorL3,Root/bottomC/origin dress3,Root/bottomC/origin dress4,Root/Middle/origin dress2,Root/origin contents/dress 3,Root/Middle/origin dress3,Root/Middle/origin dress4,Root/origin contents/dress 1,Root/Middle/origin dress5,Root/bottomC/doorR3,Root/origin contents/dress 7,Root/bottomC/origin shelf,Root/origin contents/dress 5,Root/origin,Root/Middle/origin dress,Root/contents,Root/origin shelf/shelf 1,Root/Top/origin shelf,Root/origin dress8,Root/origin dress7,Root/origin dress6,Root/origin dress5,Root/origin dress4,Root/origin dress3,Root/origin dress2,Root/origin dress1,Root/origin/bottom/glass R,Root/origin/bottom/glass L,Root/origin shelf2",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 28,
+	"textureHeight": 56,
+	"textureSizes": {
+		"uover": [28,56]
+	},
+	"textures": {
+		"uover": "entity/humanoid/seraphclothes/upperbody/messenger-shirt"
+	},
+	"elements": [
+		{
+			"name": "origin dress1",
+			"from": [ 8.0, 0.0, 10.0 ],
+			"to": [ 8.0, 0.0, 10.0 ],
+			"rotationOrigin": [ 8.0, 1.0, 10.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "base2",
+					"from": [ -5.5, 0.0, -6.0 ],
+					"to": [ 5.5, 1.5, 1.0 ],
+					"rotationOrigin": [ -5.5, 0.0, -6.0 ],
+					"faces": {
+						"north": { "texture": "#uover", "uv": [ 3.5, 5.5, 14.5, 7.0 ] },
+						"east": { "texture": "#uover", "uv": [ 14.5, 7.0, 16.0, 14.0 ], "rotation": 90 },
+						"south": { "texture": "#uover", "uv": [ 3.5, 14.0, 14.5, 15.5 ] },
+						"west": { "texture": "#uover", "uv": [ 2.0, 7.0, 3.5, 14.0 ], "rotation": 270 },
+						"up": { "texture": "#uover", "uv": [ 3.5, 7.0, 14.5, 14.0 ] },
+						"down": { "texture": "#uover", "uv": [ 3.5, 7.0, 14.5, 14.0 ] }
+					}
+				},
+				{
+					"name": "front fold2",
+					"from": [ -5.5, 0.0, 1.0 ],
+					"to": [ 5.5, 1.5, 1.5 ],
+					"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+					"rotationX": -8.0,
+					"rotationZ": -0.01,
+					"faces": {
+						"east": { "texture": "#uover", "uv": [ 14.5, 14.5, 15.0, 16.0 ] },
+						"south": { "texture": "#uover", "uv": [ 3.5, 14.5, 14.5, 16.0 ] },
+						"west": { "texture": "#uover", "uv": [ 3.0, 14.5, 3.5, 16.0 ] },
+						"up": { "texture": "#uover", "uv": [ 3.5, 14.0, 14.5, 14.5 ] },
+						"down": { "texture": "#uover", "uv": [ 3.5, 16.0, 14.5, 16.5 ], "rotation": 180 }
+					}
+				},
+				{
+					"name": "top2",
+					"from": [ -5.0, 0.07, -5.6 ],
+					"to": [ 5.0, 1.57, 1.4 ],
+					"rotationOrigin": [ 0.0, 0.1, 1.4 ],
+					"rotationX": 3.0,
+					"faces": {
+						"north": { "texture": "#uover", "uv": [ 4.0, 5.5, 14.0, 7.0 ] },
+						"east": { "texture": "#uover", "uv": [ 14.0, 7.0, 15.5, 14.0 ], "rotation": 90 },
+						"south": { "texture": "#uover", "uv": [ 4.0, 14.0, 14.0, 15.5 ] },
+						"west": { "texture": "#uover", "uv": [ 2.5, 7.0, 4.0, 14.0 ], "rotation": 270 },
+						"up": { "texture": "#uover", "uv": [ 4.0, 7.0, 14.0, 14.0 ] },
+						"down": { "texture": "#uover", "uv": [ 4.0, 7.0, 14.0, 14.0 ] }
+					}
+				},
+				{
+					"name": "blackout2",
+					"from": [ -5.4, 0.1, -5.9 ],
+					"to": [ 5.4, 1.4, 0.9 ],
+					"rotationOrigin": [ -5.4, 0.1, -5.9 ],
+					"faces": {
+						"north": { "texture": "#uover", "uv": [ 4.0, 9.0, 14.5, 10.0 ], "rotation": 180 },
+						"east": { "texture": "#uover", "uv": [ 14.5, 10.0, 15.5, 16.5 ], "rotation": 90 },
+						"south": { "texture": "#uover", "uv": [ 4.0, 16.5, 14.5, 17.5 ] },
+						"west": { "texture": "#uover", "uv": [ 3.0, 10.0, 4.0, 16.5 ], "rotation": 270 },
+						"up": { "texture": "#uover", "uv": [ 4.0, 10.0, 14.5, 16.5 ] },
+						"down": { "texture": "#uover", "uv": [ 4.0, 10.0, 14.5, 16.5 ] }
+					}
+				}
+			]
+		}
+	]}

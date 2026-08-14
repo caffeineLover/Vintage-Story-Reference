@@ -1,0 +1,170 @@
+{
+	"editor": {
+		"collapsedPaths": "Root/BackPlate/Beam1/Lathe1,Root/BackPlate/Beam1Up/LatheMover1,Root/BackPlate4/Beam1Up4,Root/ORIGIN/BackHub/BackPlate1,Root/BackPlate/Beam1/VertLathe1,Root/BackPlate4/Beam1Up4/LatheMover31/Lathe135,Root/BackORIGIN/Beam1North/LatheMover31/VertLathe121,Root/BackORIGIN/Beam1Up/Beam6/LatheMover6,Root/BackPlate4/Beam1Up4/LatheMover31/Lathe133/SailUA69,Root/BackPlate/Beam1/Beam2/Beam3/Beam5/VertLathe17,Root/BackORIGIN/Beam1Down/Beam23/Beam24/Beam25/LatheMover28,Root/BackORIGIN/Beam1North/LatheMover31/Lathe135,Root/BackPlate/Beam1/Lathe5,Root/BackORIGIN/Beam1North/LatheMover31/Lathe137,Root/BackPlate/Beam1/Lathe3,Root/BackORIGIN/Beam1Up/Beam6/Beam6/Beam7/Beam8/LatheMover9,Root/BackPlate/Beam1North,Root/MidPlate/Cube22/Gusset2,Root/BackORIGIN/Beam1South/Beam14/Beam15/Beam16/Beam17/Beam18/LatheMover20,Root/MidPlate/Cube22/Gusset1,Root/BackPlate/Beam1Up,Root/BackORIGIN/Beam1North/Beam28/Beam29/LatheMover33,Root/BackHub,Root/BackORIGIN/Beam1South/LatheMover11/VertLathe41,Root/BackORIGIN/Beam1South/Beam14/Beam15/Beam16/Beam17/LatheMover19,Root/BackORIGIN/Beam1North/Beam32/Beam33/Beam34/LatheMover38,Root/BackORIGIN/Beam1North/Beam32/LatheMover36,Root/BackPlate4/Beam1Up4/LatheMover31/Lathe133/SailUA59,Root/BackORIGIN/Beam1Up/Beam6/Beam6/Beam7/LatheMover8,Root/BackPlate/Beam1Up2,Root/BackPlate/ShaftFront/FacePlate,Root/ORIGIN/BackHub,Root/BackPlate3/ShaftFront3,Root/BackORIGIN/Beam1Down/LatheMover21/Lathe91,Root/BackORIGIN/Beam1South/Beam14/Beam15/Beam16/LatheMover18,Root/BackORIGIN/Beam1Down/LatheMover21/Lathe93,Root/BackORIGIN/Beam1South/Beam14/Beam15/LatheMover17,Root/BackORIGIN/Beam1Up2,Root/BackORIGIN/Beam1Down/LatheMover21/VertLathe81,Root/BackORIGIN/Beam1Down/Beam23/Beam24/Beam25/Beam26/Beam27/LatheMover30,Root/BackORIGIN/Beam1Down/Beam23/LatheMover26,Root/BackORIGIN/BackRotorBase/ShaftBack/BackRotorPlate/ClampRodD,Root/BackORIGIN/Beam1South/Beam14/LatheMover16,Root/BackPlate/Beam1/Beam2/Beam3/Beam5,Root/BackPlate/Beam1Down,Root/BackPlate/Beam1/Beam2/Beam4/VertLathe13,Root/BackORIGIN/Beam1North/Beam28/LatheMover32,Root/BackORIGIN/Beam1Up/Beam6/Beam6/Beam7/Beam8/Beam9/LatheMover10,Root/BackPlate/Beam1Down2,Root/BackORIGIN/Beam1North/Beam32/Beam33/Beam34/Beam35/LatheMover39,Root/MidPlate,Root/BackORIGIN/Beam1South/LatheMover11/Lathe49,Root/BackORIGIN/Beam1South/LatheMover11/Lathe47,Root/BackORIGIN/Beam1North/Beam28/Beam29/Beam30/LatheMover34,Root/BackORIGIN/Beam1Up/Beam2/Beam3/Beam4/Beam5,Root/BackPlate/BackRotorBase,Root/ORIGIN/FrontPlate,Root/BackORIGIN/Beam1North/Beam32/Beam33/Beam34/Beam35/Beam36/LatheMover40,Root/BackORIGIN/Beam1North/Beam32/Beam33/LatheMover37,Root/MidPlate/Cube23,Root/BackORIGIN/Beam1South2,Root/BackPlate/Beam1South2,Root/BackORIGIN/BackRotorBase/ShaftBack/BackRotorPlate/CrossPlate,Root/BackORIGIN/Beam1Down/Beam23/Beam24/Beam25/Beam26/LatheMover29,Root/BackORIGIN/BackRotorBase/ShaftBack/BackRotorPlate/ClampRodD2,Root/BackPlate/Beam1/Beam2/Beam4/Lathe17,Root/BackPlate/Beam3,Root/BackPlate/Beam1/Beam2/Beam4/Lathe19,Root/BackPlate/Beam2,Root/BackORIGIN/Beam1Up/Beam6/Beam6/LatheMover7,Root/BackPlate/Beam1,Root/BackPlate/Beam1/Beam2/Beam3/Beam5/Lathe23,Root/BackPlate/Beam6,Root/BackORIGIN/Beam1Down/Beam23/Beam24/LatheMover27,Root/BackPlate/Beam1/Beam2/Beam3/Beam5/Lathe21,Root/BackPlate3,Root/BackPlate2,Root/BackPlate5,Root/BackPlate4",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"iron": "block/metal/plate/iron",
+		"iron1": "block/metal/riveted/iron1",
+		"iron12": "block/metal/sheet-plain/iron1",
+		"linkagewood": "block/wood/debarked/oak"
+	},
+	"elements": [
+		{
+			"name": "ORIGIN",
+			"from": [ 8.0, 8.0, 8.0 ],
+			"to": [ 8.0, 8.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#iron", "uv": [ 2.5, 9.5, 3.0, 10.0 ], "enabled": false },
+				"east": { "texture": "#iron", "uv": [ 8.0, 6.5, 8.5, 7.0 ], "enabled": false },
+				"south": { "texture": "#iron", "uv": [ 12.5, 8.5, 13.0, 9.0 ], "enabled": false },
+				"west": { "texture": "#iron", "uv": [ 13.5, 0.5, 14.0, 1.0 ], "enabled": false },
+				"up": { "texture": "#iron", "uv": [ 14.5, 3.0, 15.0, 3.5 ], "enabled": false },
+				"down": { "texture": "#iron", "uv": [ 4.0, 3.0, 4.5, 3.5 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "Linkage",
+					"from": [ -8.0, -7.75, -1.0 ],
+					"to": [ 8.0, -6.75, 1.0 ],
+					"rotationOrigin": [ -8.0, -7.75, 0.0 ],
+					"faces": {
+						"north": { "texture": "#linkagewood", "uv": [ 0.0, 9.5, 16.0, 10.5 ] },
+						"east": { "texture": "#linkagewood", "uv": [ 2.5, 9.5, 4.5, 10.5 ] },
+						"south": { "texture": "#linkagewood", "uv": [ 0.0, 5.5, 16.0, 6.5 ] },
+						"west": { "texture": "#linkagewood", "uv": [ 8.5, 2.0, 10.5, 3.0 ] },
+						"up": { "texture": "#linkagewood", "uv": [ 0.0, 6.5, 16.0, 8.5 ] },
+						"down": { "texture": "#linkagewood", "uv": [ 0.0, 13.5, 16.0, 15.5 ] }
+					},
+					"children": [
+						{
+							"name": "Cap",
+							"from": [ -1.5, -0.25, -0.25 ],
+							"to": [ 0.0, 1.25, 2.25 ],
+							"rotationOrigin": [ -1.5, -0.25, -0.25 ],
+							"faces": {
+								"north": { "texture": "#iron1", "uv": [ 1.0, 3.5, 2.5, 5.0 ] },
+								"east": { "texture": "#iron12", "uv": [ 8.5, 10.0, 11.0, 11.5 ], "windMode": [-1,-1,-1,-1] },
+								"south": { "texture": "#iron1", "uv": [ 3.0, 8.0, 4.5, 9.5 ] },
+								"west": { "texture": "#iron12", "uv": [ 3.5, 7.0, 6.0, 8.5 ], "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#iron1", "uv": [ 8.5, 13.5, 10.0, 16.0 ] },
+								"down": { "texture": "#iron1", "uv": [ 13.0, 13.5, 14.5, 16.0 ] }
+							},
+							"children": [
+								{
+									"name": "Loop1",
+									"from": [ -1.5, 0.5, 0.25 ],
+									"to": [ 0.0, 1.0, 0.75 ],
+									"rotationOrigin": [ -1.5, 0.5, 0.25 ],
+									"faces": {
+										"north": { "texture": "#iron12", "uv": [ 12.0, 4.0, 13.5, 4.5 ] },
+										"east": { "texture": "#iron12", "uv": [ 4.5, 13.5, 5.0, 14.0 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+										"south": { "texture": "#iron12", "uv": [ 7.5, 14.5, 9.0, 15.0 ] },
+										"west": { "texture": "#iron12", "uv": [ 6.5, 13.0, 7.0, 13.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+										"up": { "texture": "#iron12", "uv": [ 5.5, 9.0, 7.0, 9.5 ] },
+										"down": { "texture": "#iron12", "uv": [ 0.0, 8.0, 1.5, 8.5 ] }
+									},
+									"children": [
+										{
+											"name": "Loop2",
+											"from": [ 0.0, 0.0, 1.5 ],
+											"to": [ 1.5, 0.5, 2.0 ],
+											"rotationOrigin": [ 0.0, 0.0, 1.5 ],
+											"faces": {
+												"north": { "texture": "#iron12", "uv": [ 12.5, 10.0, 14.0, 10.5 ] },
+												"east": { "texture": "#iron12", "uv": [ 14.5, 6.0, 15.0, 6.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+												"south": { "texture": "#iron12", "uv": [ 8.5, 4.5, 10.0, 5.0 ] },
+												"west": { "texture": "#iron12", "uv": [ 3.5, 7.0, 4.0, 7.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+												"up": { "texture": "#iron12", "uv": [ 5.5, 6.5, 7.0, 7.0 ] },
+												"down": { "texture": "#iron12", "uv": [ 12.5, 8.0, 14.0, 8.5 ] }
+											}
+										},
+										{
+											"name": "Loop3",
+											"from": [ -0.5, 0.0, 0.0 ],
+											"to": [ 0.0, 0.5, 2.0 ],
+											"rotationOrigin": [ -0.5, 0.0, 0.0 ],
+											"faces": {
+												"north": { "texture": "#iron12", "uv": [ 2.0, 9.5, 2.5, 10.0 ] },
+												"east": { "texture": "#iron12", "uv": [ 5.5, 12.0, 7.5, 12.5 ] },
+												"south": { "texture": "#iron12", "uv": [ 3.5, 7.5, 4.0, 8.0 ] },
+												"west": { "texture": "#iron12", "uv": [ 2.5, 2.0, 4.5, 2.5 ] },
+												"up": { "texture": "#iron12", "uv": [ 6.5, 5.0, 7.0, 7.0 ] },
+												"down": { "texture": "#iron12", "uv": [ 5.0, 2.0, 5.5, 4.0 ] }
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Cap2",
+							"from": [ 16.0, -0.25, -0.25 ],
+							"to": [ 17.5, 1.25, 2.25 ],
+							"rotationOrigin": [ 16.0, -0.25, -0.25 ],
+							"faces": {
+								"north": { "texture": "#iron1", "uv": [ 1.0, 3.5, 2.5, 5.0 ] },
+								"east": { "texture": "#iron12", "uv": [ 8.5, 10.0, 11.0, 11.5 ], "windMode": [-1,-1,-1,-1] },
+								"south": { "texture": "#iron1", "uv": [ 3.0, 8.0, 4.5, 9.5 ] },
+								"west": { "texture": "#iron12", "uv": [ 3.5, 7.0, 6.0, 8.5 ], "windMode": [-1,-1,-1,-1] },
+								"up": { "texture": "#iron1", "uv": [ 8.5, 13.5, 10.0, 16.0 ] },
+								"down": { "texture": "#iron1", "uv": [ 13.0, 13.5, 14.5, 16.0 ] }
+							},
+							"children": [
+								{
+									"name": "Loop4",
+									"from": [ 1.5, 0.5, 0.25 ],
+									"to": [ 3.0, 1.0, 0.75 ],
+									"rotationOrigin": [ 1.5, 0.5, 0.25 ],
+									"faces": {
+										"north": { "texture": "#iron12", "uv": [ 10.0, 13.5, 11.5, 14.0 ] },
+										"east": { "texture": "#iron12", "uv": [ 8.0, 15.0, 8.5, 15.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+										"south": { "texture": "#iron12", "uv": [ 1.5, 13.0, 3.0, 13.5 ] },
+										"west": { "texture": "#iron12", "uv": [ 0.5, 15.0, 1.0, 15.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+										"up": { "texture": "#iron12", "uv": [ 8.0, 12.5, 9.5, 13.0 ] },
+										"down": { "texture": "#iron12", "uv": [ 5.0, 8.0, 6.5, 8.5 ] }
+									},
+									"children": [
+										{
+											"name": "Loop5",
+											"from": [ 0.0, 0.0, 1.5 ],
+											"to": [ 1.5, 0.5, 2.0 ],
+											"rotationOrigin": [ 0.0, 0.0, 1.5 ],
+											"faces": {
+												"north": { "texture": "#iron12", "uv": [ 10.0, 8.5, 11.5, 9.0 ] },
+												"east": { "texture": "#iron12", "uv": [ 11.0, 11.5, 11.5, 12.0 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+												"south": { "texture": "#iron12", "uv": [ 8.0, 12.0, 9.5, 12.5 ] },
+												"west": { "texture": "#iron12", "uv": [ 6.5, 15.0, 7.0, 15.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+												"up": { "texture": "#iron12", "uv": [ 12.5, 12.0, 14.0, 12.5 ] },
+												"down": { "texture": "#iron12", "uv": [ 3.5, 13.0, 5.0, 13.5 ] }
+											}
+										},
+										{
+											"name": "Loop6",
+											"from": [ 1.5, 0.0, 0.0 ],
+											"to": [ 2.0, 0.5, 2.0 ],
+											"rotationOrigin": [ 1.5, 0.0, 0.0 ],
+											"faces": {
+												"north": { "texture": "#iron12", "uv": [ 6.5, 1.0, 7.0, 1.5 ] },
+												"east": { "texture": "#iron12", "uv": [ 0.5, 1.0, 2.5, 1.5 ] },
+												"south": { "texture": "#iron12", "uv": [ 12.5, 4.5, 13.0, 5.0 ] },
+												"west": { "texture": "#iron12", "uv": [ 7.0, 13.0, 9.0, 13.5 ] },
+												"up": { "texture": "#iron12", "uv": [ 6.5, 10.5, 7.0, 12.5 ] },
+												"down": { "texture": "#iron12", "uv": [ 8.5, 12.0, 9.0, 14.0 ] }
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]}

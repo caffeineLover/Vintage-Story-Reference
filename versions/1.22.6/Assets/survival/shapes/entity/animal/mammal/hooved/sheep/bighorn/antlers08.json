@@ -1,0 +1,574 @@
+{
+	"editor": {
+		"backDropShape": "entity/animal/mammal/hooved/sheep/bighorn/male",
+		"collapsedPaths": "Root/Rear,Root/Body/neck/neck2/head/Horn Attachment/LHornBase/Lhorn1A/Lhorn2A/Lhorn3A,Root/Body/rear/R back Thigh,Root/Body/neck,Root/Origin/Rear/L Haunch/L LegUp/L LegLow/L Hind Pastern/L Hind Hoof,Root/Origin,Root/Origin/Rear/Midsection/Chest/L front Thigh/L front Upper Arm,Root/Body/neck/neck2/head/Horn Attachment/HornRBase/HornRrotator/Rhorn1A/Rhorn2A/Rhorn3A,Root/Body/abdomen,Root/Body/neck/neck2/head/Horn Attachment/RHornRotator/Rhorn1A,Root/Body/rear/L back Thigh,Root/Horn Attachment,Root/Body/R front Thigh,Root/Body/Right Shoulder,Root/Body/Left Shoulder,Root/Origin/Rear/R Haunch/R LegUp/R LegLow/R Hind Pastern/R Hind Hoof,Root/Body/L front Thigh",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 52,
+	"textureHeight": 60,
+	"textureSizes": {
+		"hide": [52,60],
+		"bighorn-male": [52,60]
+	},
+	"textures": {
+		"bighorn-male": "entity/animal/mammal/hooved/sheep/bighorn-male"
+	},
+	"elements": [
+		{
+			"name": "Horn Attachment",
+			"stepParentName": "Head",
+			"from": [ 0.5, 4.0, 1.5 ],
+			"to": [ 1.5, 5.0, 2.5 ],
+			"unwrapMode": 4,
+			"uv": [ 1.0, 19.5 ],
+			"rotationOrigin": [ 0.5, 4.0, 1.5 ],
+			"faces": {
+				"north": { "texture": "#bighorn-male", "uv": [ 1.0, 19.5, 2.0, 20.5 ], "enabled": false },
+				"east": { "texture": "#bighorn-male", "uv": [ 1.0, 19.5, 2.0, 20.5 ], "enabled": false },
+				"south": { "texture": "#bighorn-male", "uv": [ 1.0, 19.5, 2.0, 20.5 ], "enabled": false },
+				"west": { "texture": "#bighorn-male", "uv": [ 1.0, 19.5, 2.0, 20.5 ], "enabled": false },
+				"up": { "texture": "#bighorn-male", "uv": [ 1.0, 19.5, 2.0, 20.5 ], "rotation": 90, "enabled": false },
+				"down": { "texture": "#bighorn-male", "uv": [ 1.0, 20.5, 2.0, 21.5 ], "rotation": 90, "enabled": false }
+			},
+			"children": [
+				{
+					"name": "HornL00",
+					"from": [ -0.3, 0.4, 0.1 ],
+					"to": [ 1.5, 2.0, 2.1 ],
+					"unwrapMode": 4,
+					"uv": [ 32.0, 55.5 ],
+					"rotationOrigin": [ -0.3, 0.4, 0.1 ],
+					"rotationX": 25.0,
+					"rotationZ": 9.0,
+					"faces": {
+						"north": { "texture": "#bighorn-male", "uv": [ 32.0, 57.0, 33.5, 58.5 ] },
+						"east": { "texture": "#bighorn-male", "uv": [ 37.0, 57.0, 39.0, 58.5 ] },
+						"south": { "texture": "#bighorn-male", "uv": [ 35.5, 57.0, 37.0, 58.5 ] },
+						"west": { "texture": "#bighorn-male", "uv": [ 33.5, 57.0, 35.5, 58.5 ] },
+						"up": { "texture": "#bighorn-male", "uv": [ 33.5, 55.5, 35.5, 57.0 ], "rotation": 90 },
+						"down": { "texture": "#bighorn-male", "uv": [ 33.5, 58.5, 35.5, 60.0 ], "rotation": 90 }
+					},
+					"children": [
+						{
+							"name": "HornL01",
+							"from": [ 0.0, 1.6, 0.0 ],
+							"to": [ 1.7, 3.6, 1.8 ],
+							"unwrapMode": 4,
+							"uv": [ 33.5, 53.0 ],
+							"rotationOrigin": [ 0.0, 1.6, 1.8 ],
+							"rotationY": -9.0,
+							"rotationZ": -50.0,
+							"faces": {
+								"north": { "texture": "#bighorn-male", "uv": [ 33.5, 54.5, 35.0, 56.5 ] },
+								"east": { "texture": "#bighorn-male", "uv": [ 38.0, 54.5, 39.5, 56.5 ] },
+								"south": { "texture": "#bighorn-male", "uv": [ 36.5, 54.5, 38.0, 56.5 ] },
+								"west": { "texture": "#bighorn-male", "uv": [ 35.0, 54.5, 36.5, 56.5 ] },
+								"up": { "texture": "#bighorn-male", "uv": [ 35.0, 53.0, 36.5, 54.5 ], "rotation": 90 },
+								"down": { "texture": "#bighorn-male", "uv": [ 35.0, 56.5, 36.5, 58.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+							},
+							"children": [
+								{
+									"name": "HornL02",
+									"from": [ 0.0, 2.0, 0.0 ],
+									"to": [ 1.6, 4.5, 1.6 ],
+									"unwrapMode": 4,
+									"uv": [ 33.5, 50.5 ],
+									"rotationOrigin": [ 0.0, 2.0, 1.6 ],
+									"rotationX": -7.0,
+									"rotationY": -9.0,
+									"rotationZ": -45.0,
+									"faces": {
+										"north": { "texture": "#bighorn-male", "uv": [ 33.5, 52.0, 35.0, 54.5 ] },
+										"east": { "texture": "#bighorn-male", "uv": [ 38.0, 52.0, 39.5, 54.5 ] },
+										"south": { "texture": "#bighorn-male", "uv": [ 36.5, 52.0, 38.0, 54.5 ] },
+										"west": { "texture": "#bighorn-male", "uv": [ 35.0, 52.0, 36.5, 54.5 ] },
+										"up": { "texture": "#bighorn-male", "uv": [ 35.0, 50.5, 36.5, 52.0 ], "rotation": 90 },
+										"down": { "texture": "#bighorn-male", "uv": [ 35.0, 54.5, 36.5, 56.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+									},
+									"children": [
+										{
+											"name": "HornL03",
+											"from": [ 0.0, 2.5, 0.0 ],
+											"to": [ 2.0, 4.5, 1.5 ],
+											"unwrapMode": 4,
+											"uv": [ 33.5, 48.5 ],
+											"rotationOrigin": [ 0.0, 2.5, 1.5 ],
+											"rotationX": 5.0,
+											"rotationY": -10.0,
+											"rotationZ": -45.0,
+											"faces": {
+												"north": { "texture": "#bighorn-male", "uv": [ 33.5, 50.5, 35.5, 52.5 ] },
+												"east": { "texture": "#bighorn-male", "uv": [ 39.0, 50.5, 40.5, 52.5 ] },
+												"south": { "texture": "#bighorn-male", "uv": [ 37.0, 50.5, 39.0, 52.5 ] },
+												"west": { "texture": "#bighorn-male", "uv": [ 35.5, 50.5, 37.0, 52.5 ] },
+												"up": { "texture": "#bighorn-male", "uv": [ 35.0, 48.5, 36.5, 50.5 ], "rotation": 90 },
+												"down": { "texture": "#bighorn-male", "uv": [ 35.5, 52.5, 37.0, 54.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+											},
+											"children": [
+												{
+													"name": "HornL04",
+													"from": [ 0.0, 2.0, -0.1 ],
+													"to": [ 1.5, 4.5, 1.4 ],
+													"unwrapMode": 4,
+													"uv": [ 33.5, 46.5 ],
+													"rotationOrigin": [ 0.0, 2.0, 1.3 ],
+													"rotationY": -19.0,
+													"rotationZ": -45.0,
+													"faces": {
+														"north": { "texture": "#bighorn-male", "uv": [ 33.5, 48.0, 35.0, 50.5 ] },
+														"east": { "texture": "#bighorn-male", "uv": [ 38.0, 48.0, 39.5, 50.5 ] },
+														"south": { "texture": "#bighorn-male", "uv": [ 36.5, 48.0, 38.0, 50.5 ] },
+														"west": { "texture": "#bighorn-male", "uv": [ 35.0, 48.0, 36.5, 50.5 ] },
+														"up": { "texture": "#bighorn-male", "uv": [ 35.0, 46.5, 36.5, 48.0 ], "rotation": 90 },
+														"down": { "texture": "#bighorn-male", "uv": [ 35.0, 50.5, 36.5, 52.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+													},
+													"children": [
+														{
+															"name": "HornL05",
+															"from": [ 0.0, 2.5, 0.0 ],
+															"to": [ 1.5, 4.5, 1.3 ],
+															"unwrapMode": 4,
+															"uv": [ 33.5, 44.5 ],
+															"rotationOrigin": [ 0.0, 2.5, 1.3 ],
+															"rotationY": -15.0,
+															"rotationZ": -45.0,
+															"faces": {
+																"north": { "texture": "#bighorn-male", "uv": [ 33.5, 46.0, 35.0, 48.0 ] },
+																"east": { "texture": "#bighorn-male", "uv": [ 37.5, 46.0, 38.5, 48.0 ] },
+																"south": { "texture": "#bighorn-male", "uv": [ 36.0, 46.0, 37.5, 48.0 ] },
+																"west": { "texture": "#bighorn-male", "uv": [ 35.0, 46.0, 36.0, 48.0 ] },
+																"up": { "texture": "#bighorn-male", "uv": [ 34.5, 44.5, 35.5, 46.0 ], "rotation": 90 },
+																"down": { "texture": "#bighorn-male", "uv": [ 35.0, 48.0, 36.0, 49.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+															},
+															"children": [
+																{
+																	"name": "HornL06",
+																	"from": [ 0.0, 2.0, 0.1 ],
+																	"to": [ 1.3, 4.0, 1.3 ],
+																	"unwrapMode": 4,
+																	"uv": [ 35.0, 42.5 ],
+																	"rotationOrigin": [ 0.0, 2.0, 1.3 ],
+																	"rotationY": -6.0,
+																	"rotationZ": -45.0,
+																	"faces": {
+																		"north": { "texture": "#bighorn-male", "uv": [ 35.0, 43.5, 36.0, 45.5 ] },
+																		"east": { "texture": "#bighorn-male", "uv": [ 38.0, 43.5, 39.0, 45.5 ] },
+																		"south": { "texture": "#bighorn-male", "uv": [ 37.0, 43.5, 38.0, 45.5 ] },
+																		"west": { "texture": "#bighorn-male", "uv": [ 36.0, 43.5, 37.0, 45.5 ] },
+																		"up": { "texture": "#bighorn-male", "uv": [ 36.0, 42.5, 37.0, 43.5 ], "rotation": 90 },
+																		"down": { "texture": "#bighorn-male", "uv": [ 36.0, 45.5, 37.0, 46.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																	},
+																	"children": [
+																		{
+																			"name": "HornL07",
+																			"from": [ 0.0, 2.0, 0.1 ],
+																			"to": [ 1.1, 4.0, 1.2 ],
+																			"unwrapMode": 4,
+																			"uv": [ 35.0, 40.5 ],
+																			"rotationOrigin": [ 0.0, 2.0, 1.2 ],
+																			"rotationY": -7.0,
+																			"rotationZ": -45.0,
+																			"faces": {
+																				"north": { "texture": "#bighorn-male", "uv": [ 35.0, 41.5, 36.0, 43.5 ] },
+																				"east": { "texture": "#bighorn-male", "uv": [ 38.0, 41.5, 39.0, 43.5 ] },
+																				"south": { "texture": "#bighorn-male", "uv": [ 37.0, 41.5, 38.0, 43.5 ] },
+																				"west": { "texture": "#bighorn-male", "uv": [ 36.0, 41.5, 37.0, 43.5 ] },
+																				"up": { "texture": "#bighorn-male", "uv": [ 36.0, 40.5, 37.0, 41.5 ], "rotation": 90 },
+																				"down": { "texture": "#bighorn-male", "uv": [ 36.0, 43.5, 37.0, 44.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																			},
+																			"children": [
+																				{
+																					"name": "HornL08",
+																					"from": [ 0.0, 2.0, 0.1 ],
+																					"to": [ 1.0, 3.5, 1.1 ],
+																					"unwrapMode": 4,
+																					"uv": [ 35.0, 39.0 ],
+																					"rotationOrigin": [ 0.0, 2.0, 1.1 ],
+																					"rotationY": -8.0,
+																					"rotationZ": -45.0,
+																					"faces": {
+																						"north": { "texture": "#bighorn-male", "uv": [ 35.0, 40.0, 36.0, 41.5 ] },
+																						"east": { "texture": "#bighorn-male", "uv": [ 38.0, 40.0, 39.0, 41.5 ] },
+																						"south": { "texture": "#bighorn-male", "uv": [ 37.0, 40.0, 38.0, 41.5 ] },
+																						"west": { "texture": "#bighorn-male", "uv": [ 36.0, 40.0, 37.0, 41.5 ] },
+																						"up": { "texture": "#bighorn-male", "uv": [ 36.0, 39.0, 37.0, 40.0 ], "rotation": 90 },
+																						"down": { "texture": "#bighorn-male", "uv": [ 36.0, 41.5, 37.0, 42.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																					},
+																					"children": [
+																						{
+																							"name": "HornL09",
+																							"from": [ 0.0, 1.5, 0.1 ],
+																							"to": [ 0.9, 3.0, 1.0 ],
+																							"unwrapMode": 4,
+																							"uv": [ 35.0, 38.0 ],
+																							"rotationOrigin": [ 0.0, 1.5, 1.0 ],
+																							"rotationY": -9.0,
+																							"rotationZ": -45.0,
+																							"faces": {
+																								"north": { "texture": "#bighorn-male", "uv": [ 35.0, 38.5, 35.5, 40.0 ] },
+																								"east": { "texture": "#bighorn-male", "uv": [ 36.5, 38.5, 37.0, 40.0 ] },
+																								"south": { "texture": "#bighorn-male", "uv": [ 36.0, 38.5, 36.5, 40.0 ] },
+																								"west": { "texture": "#bighorn-male", "uv": [ 35.5, 38.5, 36.0, 40.0 ] },
+																								"up": { "texture": "#bighorn-male", "uv": [ 35.5, 38.0, 36.0, 38.5 ], "rotation": 90 },
+																								"down": { "texture": "#bighorn-male", "uv": [ 35.5, 40.0, 36.0, 40.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																							},
+																							"children": [
+																								{
+																									"name": "HornL10",
+																									"from": [ 0.0, 1.5, 0.1 ],
+																									"to": [ 0.8, 2.5, 0.9 ],
+																									"unwrapMode": 4,
+																									"uv": [ 35.0, 37.0 ],
+																									"rotationOrigin": [ 0.0, 1.5, 0.9 ],
+																									"rotationY": -10.0,
+																									"rotationZ": -45.0,
+																									"faces": {
+																										"north": { "texture": "#bighorn-male", "uv": [ 35.0, 37.5, 35.5, 38.5 ] },
+																										"east": { "texture": "#bighorn-male", "uv": [ 36.5, 37.5, 37.0, 38.5 ] },
+																										"south": { "texture": "#bighorn-male", "uv": [ 36.0, 37.5, 36.5, 38.5 ] },
+																										"west": { "texture": "#bighorn-male", "uv": [ 35.5, 37.5, 36.0, 38.5 ] },
+																										"up": { "texture": "#bighorn-male", "uv": [ 35.5, 37.0, 36.0, 37.5 ], "rotation": 90 },
+																										"down": { "texture": "#bighorn-male", "uv": [ 35.5, 38.5, 36.0, 39.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																									},
+																									"children": [
+																										{
+																											"name": "HornL11",
+																											"from": [ 0.0, 1.0, 0.2 ],
+																											"to": [ 0.6, 2.0, 0.8 ],
+																											"unwrapMode": 4,
+																											"uv": [ 35.0, 36.0 ],
+																											"rotationOrigin": [ 0.0, 1.0, 0.8 ],
+																											"rotationY": -11.0,
+																											"rotationZ": -45.0,
+																											"faces": {
+																												"north": { "texture": "#bighorn-male", "uv": [ 35.0, 36.5, 35.5, 37.5 ] },
+																												"east": { "texture": "#bighorn-male", "uv": [ 36.5, 36.5, 37.0, 37.5 ] },
+																												"south": { "texture": "#bighorn-male", "uv": [ 36.0, 36.5, 36.5, 37.5 ] },
+																												"west": { "texture": "#bighorn-male", "uv": [ 35.5, 36.5, 36.0, 37.5 ] },
+																												"up": { "texture": "#bighorn-male", "uv": [ 35.5, 36.0, 36.0, 36.5 ], "rotation": 90 },
+																												"down": { "texture": "#bighorn-male", "uv": [ 35.5, 37.5, 36.0, 38.0 ], "rotation": 90, "enabled": false }
+																											},
+																											"children": [
+																												{
+																													"name": "HornL12",
+																													"from": [ 0.0, 1.0, 0.1 ],
+																													"to": [ 0.4, 2.0, 0.5 ],
+																													"unwrapMode": 4,
+																													"uv": [ 35.0, 35.0 ],
+																													"rotationOrigin": [ 0.0, 1.0, 0.5 ],
+																													"rotationY": -12.0,
+																													"rotationZ": -45.0,
+																													"faces": {
+																														"north": { "texture": "#bighorn-male", "uv": [ 35.0, 35.5, 35.5, 36.5 ] },
+																														"east": { "texture": "#bighorn-male", "uv": [ 36.5, 35.5, 37.0, 36.5 ] },
+																														"south": { "texture": "#bighorn-male", "uv": [ 36.0, 35.5, 36.5, 36.5 ] },
+																														"west": { "texture": "#bighorn-male", "uv": [ 35.5, 35.5, 36.0, 36.5 ] },
+																														"up": { "texture": "#bighorn-male", "uv": [ 35.5, 35.0, 36.0, 35.5 ], "rotation": 90 },
+																														"down": { "texture": "#bighorn-male", "uv": [ 35.5, 36.5, 36.0, 37.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																													}
+																												}
+																											]
+																										}
+																									]
+																								}
+																							]
+																						}
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "HornR00",
+					"from": [ -0.3, 0.4, -2.1 ],
+					"to": [ 1.5, 2.0, -0.1 ],
+					"unwrapMode": 4,
+					"uv": [ 37.0, 55.5 ],
+					"rotationOrigin": [ -0.3, 0.4, -0.1 ],
+					"rotationX": -25.0,
+					"rotationZ": 10.0,
+					"faces": {
+						"north": { "texture": "#bighorn-male", "uv": [ 37.0, 57.0, 38.5, 58.5 ] },
+						"east": { "texture": "#bighorn-male", "uv": [ 42.0, 57.0, 44.0, 58.5 ] },
+						"south": { "texture": "#bighorn-male", "uv": [ 40.5, 57.0, 42.0, 58.5 ] },
+						"west": { "texture": "#bighorn-male", "uv": [ 38.5, 57.0, 40.5, 58.5 ] },
+						"up": { "texture": "#bighorn-male", "uv": [ 38.5, 55.5, 40.5, 57.0 ], "rotation": 90 },
+						"down": { "texture": "#bighorn-male", "uv": [ 38.5, 58.5, 40.5, 60.0 ], "rotation": 90 }
+					},
+					"children": [
+						{
+							"name": "HornR01",
+							"from": [ 0.0, 1.6, 0.2 ],
+							"to": [ 1.7, 3.6, 2.0 ],
+							"unwrapMode": 4,
+							"uv": [ 35.35, 52.5 ],
+							"rotationOrigin": [ 0.0, 1.6, 0.2 ],
+							"rotationY": 9.0,
+							"rotationZ": -50.0,
+							"faces": {
+								"north": { "texture": "#bighorn-male", "uv": [ 35.5, 54.0, 37.0, 56.0 ] },
+								"east": { "texture": "#bighorn-male", "uv": [ 40.0, 54.0, 41.5, 56.0 ] },
+								"south": { "texture": "#bighorn-male", "uv": [ 38.5, 54.0, 40.0, 56.0 ] },
+								"west": { "texture": "#bighorn-male", "uv": [ 37.0, 54.0, 38.5, 56.0 ] },
+								"up": { "texture": "#bighorn-male", "uv": [ 37.0, 52.5, 38.5, 54.0 ], "rotation": 90 },
+								"down": { "texture": "#bighorn-male", "uv": [ 37.0, 56.0, 38.5, 57.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+							},
+							"children": [
+								{
+									"name": "HornR02",
+									"from": [ 0.0, 2.0, 0.2 ],
+									"to": [ 1.6, 4.5, 1.8 ],
+									"unwrapMode": 4,
+									"uv": [ 35.35, 50.5 ],
+									"rotationOrigin": [ 0.0, 2.0, 0.2 ],
+									"rotationX": 7.0,
+									"rotationY": 9.0,
+									"rotationZ": -45.0,
+									"faces": {
+										"north": { "texture": "#bighorn-male", "uv": [ 35.5, 52.0, 37.0, 54.5 ] },
+										"east": { "texture": "#bighorn-male", "uv": [ 40.0, 52.0, 41.5, 54.5 ] },
+										"south": { "texture": "#bighorn-male", "uv": [ 38.5, 52.0, 40.0, 54.5 ] },
+										"west": { "texture": "#bighorn-male", "uv": [ 37.0, 52.0, 38.5, 54.5 ] },
+										"up": { "texture": "#bighorn-male", "uv": [ 37.0, 50.5, 38.5, 52.0 ], "rotation": 90 },
+										"down": { "texture": "#bighorn-male", "uv": [ 37.0, 54.5, 38.5, 56.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+									},
+									"children": [
+										{
+											"name": "HornR03",
+											"from": [ 0.0, 2.5, 0.1 ],
+											"to": [ 2.0, 4.5, 1.6 ],
+											"unwrapMode": 4,
+											"uv": [ 35.5, 48.5 ],
+											"rotationOrigin": [ 0.0, 2.5, 0.1 ],
+											"rotationX": -5.0,
+											"rotationY": 10.0,
+											"rotationZ": -45.0,
+											"faces": {
+												"north": { "texture": "#bighorn-male", "uv": [ 35.5, 50.5, 37.5, 52.5 ] },
+												"east": { "texture": "#bighorn-male", "uv": [ 41.0, 50.5, 42.5, 52.5 ] },
+												"south": { "texture": "#bighorn-male", "uv": [ 39.0, 50.5, 41.0, 52.5 ] },
+												"west": { "texture": "#bighorn-male", "uv": [ 37.5, 50.5, 39.0, 52.5 ] },
+												"up": { "texture": "#bighorn-male", "uv": [ 37.0, 48.5, 38.5, 50.5 ], "rotation": 90 },
+												"down": { "texture": "#bighorn-male", "uv": [ 37.5, 52.5, 39.0, 54.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+											},
+											"children": [
+												{
+													"name": "HornR04",
+													"from": [ 0.0, 2.0, 0.1 ],
+													"to": [ 1.5, 4.5, 1.6 ],
+													"unwrapMode": 4,
+													"uv": [ 37.5, 46.5 ],
+													"rotationOrigin": [ 0.0, 2.0, 0.1 ],
+													"rotationY": 19.0,
+													"rotationZ": -45.0,
+													"faces": {
+														"north": { "texture": "#bighorn-male", "uv": [ 37.5, 48.0, 39.0, 50.5 ] },
+														"east": { "texture": "#bighorn-male", "uv": [ 42.0, 48.0, 43.5, 50.5 ] },
+														"south": { "texture": "#bighorn-male", "uv": [ 40.5, 48.0, 42.0, 50.5 ] },
+														"west": { "texture": "#bighorn-male", "uv": [ 39.0, 48.0, 40.5, 50.5 ] },
+														"up": { "texture": "#bighorn-male", "uv": [ 38.5, 46.5, 40.0, 48.0 ], "rotation": 90 },
+														"down": { "texture": "#bighorn-male", "uv": [ 39.0, 50.5, 40.5, 52.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+													},
+													"children": [
+														{
+															"name": "HornR05",
+															"from": [ 0.0, 2.5, 0.2 ],
+															"to": [ 1.5, 4.5, 1.5 ],
+															"unwrapMode": 4,
+															"uv": [ 37.5, 44.5 ],
+															"rotationOrigin": [ 0.0, 2.5, 0.2 ],
+															"rotationY": 15.0,
+															"rotationZ": -45.0,
+															"faces": {
+																"north": { "texture": "#bighorn-male", "uv": [ 37.5, 46.0, 39.0, 48.0 ] },
+																"east": { "texture": "#bighorn-male", "uv": [ 41.5, 46.0, 42.5, 48.0 ] },
+																"south": { "texture": "#bighorn-male", "uv": [ 40.0, 46.0, 41.5, 48.0 ] },
+																"west": { "texture": "#bighorn-male", "uv": [ 39.0, 46.0, 40.0, 48.0 ] },
+																"up": { "texture": "#bighorn-male", "uv": [ 38.5, 44.5, 39.5, 46.0 ], "rotation": 90 },
+																"down": { "texture": "#bighorn-male", "uv": [ 39.0, 48.0, 40.0, 49.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+															},
+															"children": [
+																{
+																	"name": "HornR06",
+																	"from": [ 0.0, 2.0, 0.0 ],
+																	"to": [ 1.3, 4.0, 1.2 ],
+																	"unwrapMode": 4,
+																	"uv": [ 37.5, 42.5 ],
+																	"rotationOrigin": [ 0.0, 2.0, 0.0 ],
+																	"rotationY": 6.0,
+																	"rotationZ": -45.0,
+																	"faces": {
+																		"north": { "texture": "#bighorn-male", "uv": [ 37.5, 43.5, 38.5, 45.5 ] },
+																		"east": { "texture": "#bighorn-male", "uv": [ 40.5, 43.5, 41.5, 45.5 ] },
+																		"south": { "texture": "#bighorn-male", "uv": [ 39.5, 43.5, 40.5, 45.5 ] },
+																		"west": { "texture": "#bighorn-male", "uv": [ 38.5, 43.5, 39.5, 45.5 ] },
+																		"up": { "texture": "#bighorn-male", "uv": [ 38.5, 42.5, 39.5, 43.5 ], "rotation": 90 },
+																		"down": { "texture": "#bighorn-male", "uv": [ 38.5, 45.5, 39.5, 46.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																	},
+																	"children": [
+																		{
+																			"name": "HornR07",
+																			"from": [ 0.0, 2.0, 0.0 ],
+																			"to": [ 1.1, 4.0, 1.1 ],
+																			"unwrapMode": 4,
+																			"uv": [ 37.5, 40.5 ],
+																			"rotationOrigin": [ 0.0, 2.0, 0.0 ],
+																			"rotationY": 7.0,
+																			"rotationZ": -45.0,
+																			"faces": {
+																				"north": { "texture": "#bighorn-male", "uv": [ 37.5, 41.5, 38.5, 43.5 ] },
+																				"east": { "texture": "#bighorn-male", "uv": [ 40.5, 41.5, 41.5, 43.5 ] },
+																				"south": { "texture": "#bighorn-male", "uv": [ 39.5, 41.5, 40.5, 43.5 ] },
+																				"west": { "texture": "#bighorn-male", "uv": [ 38.5, 41.5, 39.5, 43.5 ] },
+																				"up": { "texture": "#bighorn-male", "uv": [ 38.5, 40.5, 39.5, 41.5 ], "rotation": 90 },
+																				"down": { "texture": "#bighorn-male", "uv": [ 38.5, 43.5, 39.5, 44.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																			},
+																			"children": [
+																				{
+																					"name": "HornR08",
+																					"from": [ 0.0, 2.0, 0.0 ],
+																					"to": [ 1.0, 3.5, 1.0 ],
+																					"unwrapMode": 4,
+																					"uv": [ 37.5, 39.0 ],
+																					"rotationOrigin": [ 0.0, 2.0, 0.0 ],
+																					"rotationY": 8.0,
+																					"rotationZ": -45.0,
+																					"faces": {
+																						"north": { "texture": "#bighorn-male", "uv": [ 37.5, 40.0, 38.5, 41.5 ] },
+																						"east": { "texture": "#bighorn-male", "uv": [ 40.5, 40.0, 41.5, 41.5 ] },
+																						"south": { "texture": "#bighorn-male", "uv": [ 39.5, 40.0, 40.5, 41.5 ] },
+																						"west": { "texture": "#bighorn-male", "uv": [ 38.5, 40.0, 39.5, 41.5 ] },
+																						"up": { "texture": "#bighorn-male", "uv": [ 38.5, 39.0, 39.5, 40.0 ], "rotation": 90 },
+																						"down": { "texture": "#bighorn-male", "uv": [ 38.5, 41.5, 39.5, 42.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																					},
+																					"children": [
+																						{
+																							"name": "HornR09",
+																							"from": [ 0.0, 1.5, 0.0 ],
+																							"to": [ 0.9, 3.0, 0.9 ],
+																							"unwrapMode": 4,
+																							"uv": [ 39.5, 38.0 ],
+																							"rotationOrigin": [ 0.0, 1.5, 0.0 ],
+																							"rotationY": 9.0,
+																							"rotationZ": -45.0,
+																							"faces": {
+																								"north": { "texture": "#bighorn-male", "uv": [ 39.5, 38.5, 40.0, 40.0 ] },
+																								"east": { "texture": "#bighorn-male", "uv": [ 41.0, 38.5, 41.5, 40.0 ] },
+																								"south": { "texture": "#bighorn-male", "uv": [ 40.5, 38.5, 41.0, 40.0 ] },
+																								"west": { "texture": "#bighorn-male", "uv": [ 40.0, 38.5, 40.5, 40.0 ] },
+																								"up": { "texture": "#bighorn-male", "uv": [ 40.0, 38.0, 40.5, 38.5 ], "rotation": 90 },
+																								"down": { "texture": "#bighorn-male", "uv": [ 40.0, 40.0, 40.5, 40.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																							},
+																							"children": [
+																								{
+																									"name": "HornR10",
+																									"from": [ 0.0, 1.5, 0.0 ],
+																									"to": [ 0.8, 2.5, 0.8 ],
+																									"unwrapMode": 4,
+																									"uv": [ 39.5, 37.0 ],
+																									"rotationOrigin": [ 0.0, 1.5, 0.0 ],
+																									"rotationY": 10.0,
+																									"rotationZ": -45.0,
+																									"faces": {
+																										"north": { "texture": "#bighorn-male", "uv": [ 39.5, 37.5, 40.0, 38.5 ] },
+																										"east": { "texture": "#bighorn-male", "uv": [ 41.0, 37.5, 41.5, 38.5 ] },
+																										"south": { "texture": "#bighorn-male", "uv": [ 40.5, 37.5, 41.0, 38.5 ] },
+																										"west": { "texture": "#bighorn-male", "uv": [ 40.0, 37.5, 40.5, 38.5 ] },
+																										"up": { "texture": "#bighorn-male", "uv": [ 40.0, 37.0, 40.5, 37.5 ], "rotation": 90 },
+																										"down": { "texture": "#bighorn-male", "uv": [ 40.0, 38.5, 40.5, 39.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																									},
+																									"children": [
+																										{
+																											"name": "HornR11",
+																											"from": [ 0.0, 1.0, 0.0 ],
+																											"to": [ 0.6, 2.0, 0.6 ],
+																											"unwrapMode": 4,
+																											"uv": [ 39.5, 36.0 ],
+																											"rotationOrigin": [ 0.0, 1.0, -0.1 ],
+																											"rotationY": 11.0,
+																											"rotationZ": -45.0,
+																											"faces": {
+																												"north": { "texture": "#bighorn-male", "uv": [ 39.5, 36.5, 40.0, 37.5 ] },
+																												"east": { "texture": "#bighorn-male", "uv": [ 41.0, 36.5, 41.5, 37.5 ] },
+																												"south": { "texture": "#bighorn-male", "uv": [ 40.5, 36.5, 41.0, 37.5 ] },
+																												"west": { "texture": "#bighorn-male", "uv": [ 40.0, 36.5, 40.5, 37.5 ] },
+																												"up": { "texture": "#bighorn-male", "uv": [ 40.0, 36.0, 40.5, 36.5 ], "rotation": 90 },
+																												"down": { "texture": "#bighorn-male", "uv": [ 40.0, 37.5, 40.5, 38.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																											},
+																											"children": [
+																												{
+																													"name": "HornR12",
+																													"from": [ 0.0, 1.0, 0.1 ],
+																													"to": [ 0.4, 2.0, 0.5 ],
+																													"unwrapMode": 4,
+																													"uv": [ 39.5, 35.0 ],
+																													"rotationOrigin": [ 0.0, 1.0, 0.0 ],
+																													"rotationY": 12.0,
+																													"rotationZ": -45.0,
+																													"faces": {
+																														"north": { "texture": "#bighorn-male", "uv": [ 39.5, 35.5, 40.0, 36.5 ] },
+																														"east": { "texture": "#bighorn-male", "uv": [ 41.0, 35.5, 41.5, 36.5 ] },
+																														"south": { "texture": "#bighorn-male", "uv": [ 40.5, 35.5, 41.0, 36.5 ] },
+																														"west": { "texture": "#bighorn-male", "uv": [ 40.0, 35.5, 40.5, 36.5 ] },
+																														"up": { "texture": "#bighorn-male", "uv": [ 40.0, 35.0, 40.5, 35.5 ], "rotation": 90 },
+																														"down": { "texture": "#bighorn-male", "uv": [ 40.0, 36.5, 40.5, 37.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+																													}
+																												}
+																											]
+																										}
+																									]
+																								}
+																							]
+																						}
+																					]
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "nubs",
+			"stepParentName": "Head",
+			"from": [ 0.1, 4.0, 0.5 ],
+			"to": [ 2.1, 4.5, 2.5 ],
+			"unwrapMode": 5,
+			"uv": [ 23.5, 5.5 ],
+			"rotationOrigin": [ 0.1, 4.0, 1.5 ],
+			"faces": {
+				"north": { "texture": "#bighorn-male", "uv": [ 24.0, 5.5, 26.0, 6.0 ], "rotation": 180 },
+				"east": { "texture": "#bighorn-male", "uv": [ 26.0, 6.0, 26.5, 8.0 ], "rotation": 90 },
+				"south": { "texture": "#bighorn-male", "uv": [ 24.0, 8.0, 26.0, 8.5 ] },
+				"west": { "texture": "#bighorn-male", "uv": [ 23.5, 6.0, 24.0, 8.0 ], "rotation": 270 },
+				"up": { "texture": "#bighorn-male", "uv": [ 24.0, 6.0, 26.0, 8.0 ] },
+				"down": { "texture": "#null", "uv": [ 26.5, 6.0, 28.5, 8.0 ], "enabled": false }
+			}
+		}
+	]}

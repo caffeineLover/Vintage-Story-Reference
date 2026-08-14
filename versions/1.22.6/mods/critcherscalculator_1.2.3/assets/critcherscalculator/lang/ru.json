@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Калькулятор слитков от Critcher",
+	"hotkey-open-calculator": "Открыть калькулятор слитков",
+	"target-ingots": "Сколько слитков:",
+	"metal-percentages": "Доли металлов:",
+	"required-nuggets": "Нужно самородков:",
+	"close": "Закрыть",
+	"no-data": "Нет данных",
+	"alloy-tinbronze": "Оловянная бронза",
+	"alloy-bismuthbronze": "Висмутовая бронза",
+	"alloy-blackbronze": "Чёрная бронза",
+	"alloy-brass": "Латунь",
+	"alloy-cupronickel": "Мельхиор",
+	"alloy-electrum": "Электрум",
+	"alloy-molybdochalkos": "Молибдохалк",
+	"alloy-leadsolder": "Свинцовый припой",
+	"alloy-silversolder": "Серебряный припой",
+	"crucible-slots-header": "Раскладка тигля:",
+	"crucible-impossible": "Невозможно создать {0} слитков ({1}) — превышена вместимость тигля. Максимум: {2} слитков.",
+	"slot-empty": "(пусто)"
+}

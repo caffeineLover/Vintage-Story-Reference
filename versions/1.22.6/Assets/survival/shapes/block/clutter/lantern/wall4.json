@@ -1,0 +1,74 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"rust": "block/metal/lantern/rust"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "holder1",
+					"from": [ 1.0, 6.0, -4.0 ],
+					"to": [ 3.0, 9.0, -2.0 ],
+					"rotationOrigin": [ 2.0, 8.0, -3.0 ],
+					"rotationY": 30.0,
+					"rotationZ": -39.0,
+					"faces": {
+						"north": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 3.0 ] },
+						"east": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 3.0 ] },
+						"south": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 3.0 ] },
+						"west": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 3.0 ] },
+						"up": { "texture": "#rust", "uv": [ 5.0, 5.0, 7.0, 7.0 ], "windMode": [-1,-1,-1,-1] },
+						"down": { "texture": "#rust", "uv": [ 6.0, 4.0, 8.0, 6.0 ] }
+					}
+				},
+				{
+					"name": "holder2",
+					"from": [ -1.0, 11.0, -8.0 ],
+					"to": [ 1.0, 14.0, -7.0 ],
+					"rotationOrigin": [ 0.0, 12.0, -8.0 ],
+					"rotationX": 6.0,
+					"rotationZ": 22.5,
+					"faces": {
+						"north": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 3.0 ] },
+						"east": { "texture": "#rust", "uv": [ 0.0, 0.0, 1.0, 3.0 ] },
+						"south": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 3.0 ] },
+						"west": { "texture": "#rust", "uv": [ 0.0, 0.0, 1.0, 3.0 ] },
+						"up": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 1.0 ] },
+						"down": { "texture": "#rust", "uv": [ 0.0, 0.0, 2.0, 1.0 ] }
+					},
+					"children": [
+						{
+							"name": "holderH",
+							"from": [ 0.0, 1.0, 1.0 ],
+							"to": [ 2.0, 2.0, 7.0 ],
+							"rotationOrigin": [ 1.0, 1.5, 1.0 ],
+							"rotationX": 47.0,
+							"rotationZ": -30.0,
+							"faces": {
+								"north": { "texture": "#rust", "uv": [ 3.5, 4.0, 5.5, 5.0 ] },
+								"east": { "texture": "#rust", "uv": [ 4.5, 5.5, 10.5, 6.5 ] },
+								"south": { "texture": "#rust", "uv": [ 5.0, 5.5, 7.0, 6.5 ] },
+								"west": { "texture": "#rust", "uv": [ 4.0, 5.5, 10.0, 6.5 ] },
+								"up": { "texture": "#rust", "uv": [ 3.0, 5.0, 5.0, 11.0 ] },
+								"down": { "texture": "#rust", "uv": [ 5.5, 3.0, 7.5, 9.0 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

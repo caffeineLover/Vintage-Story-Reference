@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Calculadora de lingotes de Critcher",
+	"hotkey-open-calculator": "Abrir calculadora de lingotes",
+	"target-ingots": "Lingotes objetivo:",
+	"metal-percentages": "Porcentajes de metales:",
+	"required-nuggets": "Pepitas necesarias:",
+	"close": "Cerrar",
+	"no-data": "Sin datos",
+	"alloy-tinbronze": "Bronce estañado",
+	"alloy-bismuthbronze": "Bronce de bismuto",
+	"alloy-blackbronze": "Bronce negro",
+	"alloy-brass": "Latón",
+	"alloy-cupronickel": "Cuproníquel",
+	"alloy-electrum": "Electro",
+	"alloy-molybdochalkos": "Molibdochalkos",
+	"alloy-leadsolder": "Soldadura de plomo",
+	"alloy-silversolder": "Soldadura de plata",
+	"crucible-slots-header": "Disposición del crisol:",
+	"crucible-impossible": "No se pueden fabricar {0} lingotes de {1} — excede la capacidad del crisol. Máximo fabricable: {2} lingotes.",
+	"slot-empty": "(vacío)"
+}

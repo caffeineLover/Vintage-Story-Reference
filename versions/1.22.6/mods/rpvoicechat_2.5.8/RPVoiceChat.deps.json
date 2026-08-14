@@ -1,0 +1,85 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "RPVoiceChat/1.0.0": {
+        "dependencies": {
+          "Concentus": "2.2.2",
+          "NVorbis": "0.10.5",
+          "OpenTK.Audio.OpenAL": "4.9.4.0",
+          "OpenTK.Mathematics": "4.9.4.0"
+        },
+        "runtime": {
+          "RPVoiceChat.dll": {}
+        }
+      },
+      "Concentus/2.2.2": {
+        "runtime": {
+          "lib/net8.0/Concentus.dll": {
+            "assemblyVersion": "2.2.2.0",
+            "fileVersion": "2.2.2.0"
+          }
+        }
+      },
+      "NVorbis/0.10.5": {
+        "runtime": {
+          "lib/netstandard2.0/NVorbis.dll": {
+            "assemblyVersion": "0.10.5.0",
+            "fileVersion": "0.10.5.0"
+          }
+        }
+      },
+      "OpenTK.Audio.OpenAL/4.9.4.0": {
+        "runtime": {
+          "OpenTK.Audio.OpenAL.dll": {
+            "assemblyVersion": "4.9.4.0",
+            "fileVersion": "4.9.4.0"
+          }
+        }
+      },
+      "OpenTK.Mathematics/4.9.4.0": {
+        "runtime": {
+          "OpenTK.Mathematics.dll": {
+            "assemblyVersion": "4.9.4.0",
+            "fileVersion": "4.9.4.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RPVoiceChat/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Concentus/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2B9YmHPKO+k7YpAAnqmiXwiMJnfjfj1C868RszOll2iZWLnGTAiC1q21L/d7CvTan7T+hyqU8dR0Dcy3cpjVfQ==",
+      "path": "concentus/2.2.2",
+      "hashPath": "concentus.2.2.2.nupkg.sha512"
+    },
+    "NVorbis/0.10.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o+IptCG4Avze39HrGeztC+xIp6fOOwGVAwkoa1J++4Ji1WmZ+KIKlFl5wsgxsXqBkmdpfs/vFSUproiLKYa2bw==",
+      "path": "nvorbis/0.10.5",
+      "hashPath": "nvorbis.0.10.5.nupkg.sha512"
+    },
+    "OpenTK.Audio.OpenAL/4.9.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OpenTK.Mathematics/4.9.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "code": "radiocase",
+  "enabled": false,
+  "maxstacksize": 4,
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "rpvoicechat": [ "*" ]
+  },
+  "texture": {
+    "base": "item/radiocase"
+  }
+}

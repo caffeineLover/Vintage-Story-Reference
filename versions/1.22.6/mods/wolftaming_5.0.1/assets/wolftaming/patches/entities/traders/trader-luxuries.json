@@ -1,0 +1,21 @@
+[
+    {
+        "side": "server",
+        "op": "add",
+        "path": "/selling/list/-",
+        "value": {
+            "code": "wolftaming:creature-dog-corgi-pup",
+            "type": "item",
+            "stacksize": 1,
+            "stock": {
+                "avg": 2,
+                "var": 1
+            },
+            "price": {
+                "avg": 15,
+                "var": 3
+            }
+        },
+        "file": "game:config/tradelists/trader-luxuries.json"
+    }
+]

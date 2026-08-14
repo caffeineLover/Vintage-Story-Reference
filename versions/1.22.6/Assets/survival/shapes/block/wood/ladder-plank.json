@@ -1,0 +1,79 @@
+{
+	"editor": {
+		"collapsedPaths": "",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"ladder": "block/wood/debarked/oak"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 1.0, 1.0, 1.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "VerticalPole",
+					"from": [ 1.0, 0.0, 0.0 ],
+					"to": [ 4.0, 16.0, 3.0 ],
+					"faces": {
+						"north": { "texture": "#ladder", "uv": [ 0.0, 11.0, 16.0, 14.0 ], "rotation": 90 },
+						"east": { "texture": "#ladder", "uv": [ 0.0, 2.5, 16.0, 5.5 ], "rotation": 270 },
+						"south": { "texture": "#ladder", "uv": [ 0.0, 1.0, 16.0, 4.0 ], "rotation": 90 },
+						"west": { "texture": "#ladder", "uv": [ 0.0, 4.0, 16.0, 7.0 ], "rotation": 270 },
+						"up": { "texture": "#ladder", "uv": [ 0.0, 10.5, 3.0, 13.5 ] },
+						"down": { "texture": "#ladder", "uv": [ 7.0, 12.0, 10.0, 15.0 ] }
+					}
+				},
+				{
+					"name": "VerticalPole2",
+					"from": [ 12.0, 0.0, 0.0 ],
+					"to": [ 15.0, 16.0, 3.0 ],
+					"rotationOrigin": [ -1.0, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#ladder", "uv": [ 0.0, 2.0, 16.0, 5.0 ], "rotation": 90 },
+						"east": { "texture": "#ladder", "uv": [ 0.0, 8.5, 16.0, 11.5 ], "rotation": 270 },
+						"south": { "texture": "#ladder", "uv": [ 0.0, 10.5, 16.0, 13.5 ], "rotation": 90 },
+						"west": { "texture": "#ladder", "uv": [ 0.0, 12.0, 16.0, 15.0 ], "rotation": 270 },
+						"up": { "texture": "#ladder", "uv": [ 11.5, 4.0, 14.5, 7.0 ] },
+						"down": { "texture": "#ladder", "uv": [ 8.5, 4.5, 11.5, 7.5 ] }
+					}
+				},
+				{
+					"name": "Rung1",
+					"from": [ 0.5, 3.0, 0.5 ],
+					"to": [ 15.5, 5.0, 2.5 ],
+					"rotationOrigin": [ 0.5, 3.0, 0.5 ],
+					"faces": {
+						"north": { "texture": "#ladder", "uv": [ 0.0, 2.5, 15.0, 4.5 ] },
+						"east": { "texture": "#ladder", "uv": [ 7.5, 2.5, 9.5, 4.5 ], "windMode": [-1,-1,-1,-1] },
+						"south": { "texture": "#ladder", "uv": [ 0.5, 4.0, 15.5, 6.0 ] },
+						"west": { "texture": "#ladder", "uv": [ 5.5, 5.5, 7.5, 7.5 ], "windMode": [-1,-1,-1,-1] },
+						"up": { "texture": "#ladder", "uv": [ 0.0, 0.0, 15.0, 2.0 ] },
+						"down": { "texture": "#ladder", "uv": [ 0.0, 4.5, 15.0, 6.5 ] }
+					}
+				},
+				{
+					"name": "Rung2",
+					"from": [ 0.5, 11.0, 0.5 ],
+					"to": [ 15.5, 13.0, 2.5 ],
+					"rotationOrigin": [ 0.5, 11.0, 0.5 ],
+					"faces": {
+						"north": { "texture": "#ladder", "uv": [ 0.5, 9.5, 15.5, 11.5 ] },
+						"east": { "texture": "#ladder", "uv": [ 11.5, 6.0, 13.5, 8.0 ], "windMode": [-1,-1,-1,-1] },
+						"south": { "texture": "#ladder", "uv": [ 0.0, 3.5, 15.0, 5.5 ] },
+						"west": { "texture": "#ladder", "uv": [ 0.5, 2.0, 2.5, 4.0 ], "windMode": [-1,-1,-1,-1] },
+						"up": { "texture": "#ladder", "uv": [ 0.5, 1.0, 15.5, 3.0 ] },
+						"down": { "texture": "#ladder", "uv": [ 0.5, 8.5, 15.5, 10.5 ] }
+					}
+				}
+			]
+		}
+	]}

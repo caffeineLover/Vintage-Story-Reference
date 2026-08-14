@@ -1,0 +1,254 @@
+{
+  "version": 31,
+  "file": "BetterErProspecting.json",
+  "settings": [
+    {
+      "type": "separator",
+      "title": "Density",
+      "weight": 1.0,
+      "collapsible":  true
+    },
+    {
+      "code": "EnableDensityMode",
+      "ingui": "EnableDensityMode-setting",
+      "type": "boolean",
+      "comment": "EnableDensityMode-description",
+      "default": true,
+      "weight": 1.05
+    },
+    {
+      "code": "OneShotDensity",
+      "ingui": "OneShotDensity-setting",
+      "type": "boolean",
+      "comment": "OneShotDensity-description",
+      "default": false,
+      "weight": 1.07
+    },
+    {
+      "code": "NewDensityMode",
+      "ingui": "NewDensityMode-setting",
+      "type": "boolean",
+      "comment": "NewDensityMode-description",
+      "default": true,
+      "weight": 1.1
+    },
+    {
+      "code": "NewDensityDmg",
+      "ingui": "NewDensityDmg-setting",
+      "type": "integer",
+      "comment": "NewDensityDmg-description",
+      "default": 3,
+      "range": {
+        "min": 1,
+        "max": 10
+      },
+      "weight": 1.2
+    },
+    {
+      "code": "DensityBlackListedOres",
+      "ingui": "DensityBlackListedOres-setting",
+      "type": "string",
+      "comment": "DensityBlackListedOres-description",
+      "default": "flint, quartz",
+      "weight": 1.25
+    },
+    {
+      "type": "separator",
+      "title": "Proximity",
+      "weight": 12.0,
+      "collapsible": true
+    },
+    {
+      "code": "AddProximityMode",
+      "ingui": "AddProximityMode-setting",
+      "type": "boolean",
+      "comment": "AddProximityMode-description",
+      "default": true,
+      "weight": 12.1
+    },
+    {
+      "code": "ProximityVagueDescriptors",
+      "ingui": "ProximityVagueDescriptors-setting",
+      "type": "boolean",
+      "comment": "ProximityVagueDescriptors-description",
+      "default": false,
+      "weight": 12.2
+    },
+    {
+      "code": "ProximitySearchRadius",
+      "ingui": "ProximitySearchRadius-setting",
+      "type": "integer",
+      "comment": "ProximitySearchRadius-description",
+      "default": 5,
+      "range": {
+        "min": 1,
+        "max": 10
+      },
+      "weight": 12.5
+    },
+    {
+      "code": "ProximityDmg",
+      "ingui": "ProximityDmg-setting",
+      "type": "integer",
+      "comment": "ProximityDmg-description",
+      "default": 2,
+      "range": {
+        "min": 1,
+        "max": 10
+      },
+      "weight": 12.6
+    },
+    {
+      "type": "separator",
+      "title": "Stone",
+      "weight": 13.0,
+      "collapsible": true
+    },
+    {
+      "code": "AddStoneMode",
+      "ingui": "AddStoneMode-setting",
+      "type": "boolean",
+      "comment": "AddStoneMode-description",
+      "default": true,
+      "weight": 13.1
+    },
+    {
+      "code": "StoneSearchCreatesReadings",
+      "ingui": "StoneSearchCreatesReadings-setting",
+      "type": "boolean",
+      "comment": "StoneSearchCreatesReadings-description",
+      "default": false,
+      "weight": 13.13
+    },
+    {
+      "code": "StonePercentSearch",
+      "ingui": "StonePercentSearch-setting",
+      "type": "boolean",
+      "comment": "StonePercentSearch-description",
+      "default": true,
+      "weight": 13.15
+    },
+    {
+      "code": "StoneSearchRadius",
+      "ingui": "StoneSearchRadius-setting",
+      "type": "integer",
+      "comment": "StoneSearchRadius-description",
+      "default": 64,
+      "weight": 13.2
+    },
+    {
+      "code": "StoneDmg",
+      "ingui": "StoneDmg-setting",
+      "type": "integer",
+      "comment": "StoneDmg-description",
+      "default": 3,
+      "range": {
+        "min": 1,
+        "max": 10
+      },
+      "weight": 13.3
+    },
+    {
+      "code": "StoneSearchBlackList",
+      "ingui": "StoneSearchBlackList-setting",
+      "type": "string",
+      "comment": "StoneSearchBlackList-description",
+      "default": "rock-suevite",
+      "weight": 13.5
+    },
+    {
+      "type": "separator",
+      "title": "Borehole",
+      "weight": 14.0,
+      "collapsible": true
+    },
+    {
+      "code": "AddBoreHoleMode",
+      "ingui": "AddBoreHoleMode-setting",
+      "type": "boolean",
+      "comment": "AddBoreHoleMode-description",
+      "default": true,
+      "weight": 14.1
+    },
+    {
+      "code": "BoreholeDmg",
+      "ingui": "BoreholeDmg-setting",
+      "type": "integer",
+      "comment": "BoreholeDmg-description",
+      "default": 4,
+      "range": {
+        "min": 1,
+        "max": 10
+      },
+      "weight": 14.2
+    },
+    {
+      "code": "BoreholeRadius",
+      "ingui": "BoreholeRadius-setting",
+      "type": "integer",
+      "comment": "BoreholeRadius-description",
+      "default": 8,
+      "range": {
+        "min": 0,
+        "max": 10
+      },
+      "weight": 14.25
+    },
+    {
+      "code": "BoreholeWpMarker",
+      "ingui": "BoreholeWpMarker-setting",
+      "type": "boolean",
+      "comment": "BoreholeWpMarker-description",
+      "clientSide": true,
+      "default": false,
+      "weight": 14.26
+    },
+    {
+      "type": "separator",
+      "text": "AtLeastOne",
+      "weight": 14.3
+    },
+    {
+      "code": "BoreholeScansOre",
+      "ingui": "BoreholeScansOre-setting",
+      "type": "boolean",
+      "comment": "BoreholeScansOre-description",
+      "default": true,
+      "weight": 14.4
+    },
+    {
+      "code": "BoreholeScansStone",
+      "ingui": "BoreholeScansStone-setting",
+      "type": "boolean",
+      "comment": "BoreholeScansStone-description",
+      "default": false,
+      "weight": 14.5
+    },
+    {
+      "type": "separator",
+      "title": "Advanced",
+      "weight": 99.0,
+      "collapsible": true
+    },
+    {
+      "code": "DebugMode",
+      "ingui": "DebugMode-setting",
+      "type": "boolean",
+      "comment": "DebugMode-description",
+      "default": false,
+      "weight": 100.0
+    },
+    {
+      "code": "ReprospectParellelism",
+      "ingui": "ReprospectParellelism-setting",
+      "type": "integer",
+      "comment": "ReprospectParellelism-description",
+      "default": 0,
+      "weight": 101.0,
+      "range": {
+        "min": 0,
+        "max": 100
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"pelt": [16,16]
+	},
+	"textures": {
+		"pelt": "block/cloth/pelt",
+		"ropedcloth": "block/cloth/ropedcloth"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"stepParentName": "Head",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 5.5, 5.0, 5.0 ],
+			"rotationOrigin": [ 2.0, 2.0, 2.5 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "strap",
+					"from": [ 1.5, 4.01, -0.01 ],
+					"to": [ 3.5, 5.01, 5.01 ],
+					"rotationOrigin": [ 2.5, 4.0, 2.5 ],
+					"faces": {
+						"north": { "texture": "#pelt", "uv": [ 0.0, 0.0, 2.0, 1.0 ] },
+						"east": { "texture": "#pelt", "uv": [ 0.0, 0.0, 5.0, 1.0 ] },
+						"south": { "texture": "#pelt", "uv": [ 0.0, 0.0, 2.0, 1.0 ] },
+						"west": { "texture": "#pelt", "uv": [ 0.0, 0.0, 5.0, 1.0 ] },
+						"up": { "texture": "#pelt", "uv": [ 0.0, 0.0, 2.0, 5.0 ] },
+						"down": { "texture": "#pelt", "uv": [ 0.0, 0.0, 2.0, 5.0 ] }
+					},
+					"children": [
+						{
+							"name": "R",
+							"from": [ 0.5, -3.5, 0.0 ],
+							"to": [ 1.5, 0.0, 0.5 ],
+							"rotationOrigin": [ 1.05, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 3.5 ] },
+								"east": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 0.5, 3.5 ] },
+								"south": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 3.5 ] },
+								"west": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 0.5, 3.5 ] },
+								"down": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 0.5 ] }
+							}
+						},
+						{
+							"name": "L",
+							"from": [ 0.5, -3.5, 4.52 ],
+							"to": [ 1.5, 0.0, 5.02 ],
+							"rotationOrigin": [ 1.05, 0.0, 5.0 ],
+							"faces": {
+								"north": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 3.5 ] },
+								"east": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 0.5, 3.5 ] },
+								"south": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 3.5 ] },
+								"west": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 0.5, 3.5 ] },
+								"down": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 0.5 ] }
+							}
+						},
+						{
+							"name": "chin",
+							"from": [ 0.0, -4.02, 0.0 ],
+							"to": [ 1.0, -3.5, 5.02 ],
+							"rotationOrigin": [ 0.0, -4.0, 2.6 ],
+							"faces": {
+								"north": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+								"east": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 5.0, 0.5 ] },
+								"south": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 0.5 ] },
+								"west": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 5.0, 0.5 ] },
+								"up": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 5.0 ] },
+								"down": { "texture": "#ropedcloth", "uv": [ 0.0, 0.0, 1.0, 5.0 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

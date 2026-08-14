@@ -6,6 +6,7 @@ riderModule.iml
 .vs/
 *.suo
 *.user
+.codex/tmp/
 
 # Generated reference indexes. Keep each Index folder via its local .gitignore only.
 versions/*/Index/*

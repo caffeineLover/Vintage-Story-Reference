@@ -1,0 +1,17 @@
+{
+    "type": "code",
+    "name": "Config lib",
+    "modid": "configlib",
+    "version": "1.12.0",
+
+    "description": "A universal place to configure your mods. Makes it possible for content mods to have configs too.",
+    "authors": [ "Maltiez", "The Insanity God" ],
+
+    "dependencies": {
+        "vsimgui": "1.2.0"
+    },
+    
+    "side" : "universal",
+	  "requiredOnClient": true,
+	  "requiredOnServer": false
+}

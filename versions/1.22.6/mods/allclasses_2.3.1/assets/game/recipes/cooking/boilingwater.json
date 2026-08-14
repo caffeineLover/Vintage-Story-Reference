@@ -1,0 +1,534 @@
+[
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-andesite", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-andesite"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-chalk", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-chalk"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-chert", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-chert"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-conglomerate", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-conglomerate"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-limestone", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-limestone"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-claystone", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-claystone"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-granite", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-granite"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-sandstone", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-sandstone"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-shale", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-shale"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-basalt", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-basalt"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-peridotite", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-peridotite"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-phyllite", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-phyllite"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-slate", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-slate"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+},
+{
+    "code": "boilingwaterportion",
+    "perishableProps": {
+        "type": "None",
+        "freshHours": { "avg": 48 },
+        "transitionHours": { "avg": 48 },
+        "transitionRatio": 1,
+        "transitionedStack": { "type": "item", "code": "boilingwaterportion" }
+    },
+    "shape": { "base": "block/food/meal/liquid" },
+    "ingredients": [
+        {
+            "code": "water",
+            "validStacks": [
+                {
+                    "type": "item",
+                    "code": "waterportion",
+                    "shapeElement": "bowl/water"
+                }
+            ],
+            "minQuantity": 3,
+            "maxQuantity": 3,
+            "portionSizeLitres": 1
+        },
+		{ 
+			"code": "sand-bauxite", 
+            "validStacks": [
+                {
+                    "type": "block",
+                    "code": "sand-bauxite"
+                }
+            ],
+			"minQuantity": 1,
+			"maxQuantity": 1
+		}
+    ],
+    "cooksInto": { "type": "item", "code": "boilingwaterportion", "quantity": 200 }
+}
+]

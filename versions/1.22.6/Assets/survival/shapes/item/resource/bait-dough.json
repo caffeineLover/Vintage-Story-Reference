@@ -1,0 +1,28 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"flaxbread": "item/food/grain/flaxbread"
+	},
+	"elements": [
+		{
+			"name": "bait1",
+			"from": [ 7.2, 0.0, 7.5 ],
+			"to": [ 8.8, 1.0, 8.5 ],
+			"rotationOrigin": [ 7.2, 0.0, 7.5 ],
+			"faces": {
+				"north": { "texture": "#flaxbread", "uv": [ 10.0, 11.5, 11.5, 12.5 ] },
+				"east": { "texture": "#flaxbread", "uv": [ 12.5, 12.5, 13.5, 13.5 ] },
+				"south": { "texture": "#flaxbread", "uv": [ 10.0, 11.5, 11.5, 12.5 ] },
+				"west": { "texture": "#flaxbread", "uv": [ 12.5, 12.5, 13.5, 13.5 ] },
+				"up": { "texture": "#flaxbread", "uv": [ 9.5, 11.0, 11.0, 12.0 ] },
+				"down": { "texture": "#flaxbread", "uv": [ 13.5, 13.5, 15.0, 14.5 ] }
+			}
+		}
+	]}

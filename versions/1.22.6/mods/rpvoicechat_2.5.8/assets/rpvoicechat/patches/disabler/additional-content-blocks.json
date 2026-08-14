@@ -1,0 +1,172 @@
+[
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/callbell.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/carillonbell.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/churchbell.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/churchbell-part.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/churchbell-layer.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/raw/smallbellpartsmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/fired/smallbellpartsmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/raw/royalhornheadmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/fired/royalhornheadmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/raw/carillonbellmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/fired/carillonbellmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/raw/churchbellmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/fired/churchbellmold.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/bellhammer.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/signallamp.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/raw/lucerne.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/enabled",
+    "value": false,
+    "file": "rpvoicechat:blocktypes/clay/fired/lucerne.json",
+    "condition": {
+      "when": "rpvoicechat:additional-content",
+      "isValue": "false"
+    }
+  }
+]

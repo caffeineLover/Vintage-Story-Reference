@@ -1,0 +1,99 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/trader-female",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 8,
+	"textureHeight": 8,
+	"textureSizes": {
+		"material": [8,8],
+		"sapphire": [4,4]
+	},
+	"textures": {
+		"sapphire": "entity/humanoid/seraphclothes/neck/gem/sapphire",
+		"material": "entity/humanoid/traderaccessories/jewelry/silver"
+	},
+	"elements": [
+		{
+			"name": "hidelowerarm",
+			"stepParentName": "LowerArmR",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 2.5, 6.0, 2.0 ],
+			"uv": [ 0.0, 0.0 ],
+			"rotationOrigin": [ 1.0, 3.0, 1.0 ],
+			"faces": {
+				"north": { "texture": "#material", "uv": [ 0.0, 1.0, 1.0, 2.0 ], "enabled": false },
+				"east": { "texture": "#material", "uv": [ 1.0, 1.0, 2.0, 2.0 ], "enabled": false },
+				"south": { "texture": "#material", "uv": [ 2.0, 1.0, 3.0, 2.0 ], "enabled": false },
+				"west": { "texture": "#material", "uv": [ 3.0, 1.0, 4.0, 2.0 ], "enabled": false },
+				"up": { "texture": "#material", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+				"down": { "texture": "#material", "uv": [ 1.0, 0.0, 2.0, 1.0 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "ring1",
+					"from": [ 1.05, -0.2, 0.5 ],
+					"to": [ 1.55, 0.0, 1.5 ],
+					"uv": [ 5.0, 5.5 ],
+					"rotationOrigin": [ 1.3, 0.0, 1.0 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 5.0, 6.5, 5.5, 7.0 ] },
+						"east": { "texture": "#material", "uv": [ 5.5, 6.5, 6.5, 7.0 ] },
+						"south": { "texture": "#material", "uv": [ 6.5, 6.5, 7.0, 7.0 ] },
+						"west": { "texture": "#material", "uv": [ 7.0, 6.5, 8.0, 7.0 ] },
+						"up": { "texture": "#material", "uv": [ 2.5, 1.5, 3.0, 2.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+						"down": { "texture": "#material", "uv": [ 5.0, 5.5, 5.5, 6.5 ] }
+					},
+					"children": [
+						{
+							"name": "gem1",
+							"from": [ 0.15, -0.1, 0.4 ],
+							"to": [ 0.35, 0.0, 0.6 ],
+							"uv": [ 0.5, 0.5 ],
+							"rotationOrigin": [ 0.25, 0.0, 0.5 ],
+							"rotationY": 45.0,
+							"faces": {
+								"north": { "texture": "#sapphire", "uv": [ 0.5, 1.0, 1.0, 1.5 ] },
+								"east": { "texture": "#sapphire", "uv": [ 1.0, 1.0, 1.5, 1.5 ] },
+								"south": { "texture": "#sapphire", "uv": [ 1.5, 1.0, 2.0, 1.5 ] },
+								"west": { "texture": "#sapphire", "uv": [ 2.0, 1.0, 2.5, 1.5 ] },
+								"up": { "texture": "#sapphire", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+								"down": { "texture": "#sapphire", "uv": [ 0.5, 0.5, 1.0, 1.0 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "ring2",
+					"from": [ 0.45, -0.2, 0.5 ],
+					"to": [ 0.95, 0.0, 1.5 ],
+					"uv": [ 2.5, 1.5 ],
+					"rotationOrigin": [ 0.7, 0.0, 1.0 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 2.5, 2.5, 3.0, 3.0 ] },
+						"east": { "texture": "#material", "uv": [ 3.0, 2.5, 4.0, 3.0 ] },
+						"south": { "texture": "#material", "uv": [ 4.0, 2.5, 4.5, 3.0 ] },
+						"west": { "texture": "#material", "uv": [ 4.5, 2.5, 5.5, 3.0 ] },
+						"up": { "texture": "#material", "uv": [ 2.5, 1.5, 3.0, 2.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+						"down": { "texture": "#material", "uv": [ 2.5, 1.5, 3.0, 2.5 ] }
+					}
+				},
+				{
+					"name": "ring3",
+					"from": [ 1.65, -0.2, 0.5 ],
+					"to": [ 2.15, 0.0, 1.5 ],
+					"uv": [ 5.0, 4.5 ],
+					"rotationOrigin": [ 1.9, 0.0, 1.0 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 5.0, 5.5, 5.5, 6.0 ] },
+						"east": { "texture": "#material", "uv": [ 5.5, 5.5, 6.5, 6.0 ] },
+						"south": { "texture": "#material", "uv": [ 6.5, 5.5, 7.0, 6.0 ] },
+						"west": { "texture": "#material", "uv": [ 7.0, 5.5, 8.0, 6.0 ] },
+						"up": { "texture": "#material", "uv": [ 2.5, 1.5, 3.0, 2.5 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+						"down": { "texture": "#material", "uv": [ 5.0, 4.5, 5.5, 5.5 ] }
+					}
+				}
+			]
+		}
+	]}

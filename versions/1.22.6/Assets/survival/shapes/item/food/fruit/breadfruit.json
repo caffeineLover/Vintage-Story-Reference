@@ -1,0 +1,73 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 8,
+	"textureHeight": 8,
+	"textureSizes": {
+		"saguaro": [8,8],
+		"ripe": [16,16]
+	},
+	"textures": {
+		"ripe": "block/plant/fruittree/breadfruit/ripe",
+		"saguaro": "item/food/fruit/saguaro"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "body",
+					"from": [ -1.45, 0.7, -1.4 ],
+					"to": [ 1.35, 4.2, 1.4 ],
+					"rotationOrigin": [ -0.05, 2.1, 0.0 ],
+					"faces": {
+						"north": { "texture": "#ripe", "uv": [ 1.0, 1.0, 3.5, 4.5 ] },
+						"east": { "texture": "#ripe", "uv": [ 0.5, 1.0, 3.0, 4.5 ] },
+						"south": { "texture": "#ripe", "uv": [ 1.0, 0.5, 3.5, 4.0 ] },
+						"west": { "texture": "#ripe", "uv": [ 0.5, 1.0, 3.0, 4.5 ] },
+						"up": { "texture": "#ripe", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
+						"down": { "texture": "#ripe", "uv": [ 0.5, 3.0, 3.0, 5.5 ] }
+					},
+					"children": [
+						{
+							"name": "bottom",
+							"from": [ 0.35, -0.7, 0.35 ],
+							"to": [ 2.45, 4.2, 2.45 ],
+							"rotationOrigin": [ 1.4, 0.0, 1.4 ],
+							"faces": {
+								"north": { "texture": "#ripe", "uv": [ 1.0, 5.0, 3.1, 9.9 ] },
+								"east": { "texture": "#ripe", "uv": [ 2.5, 6.0, 4.6, 10.9 ] },
+								"south": { "texture": "#ripe", "uv": [ 1.5, 6.5, 3.6, 11.4 ] },
+								"west": { "texture": "#ripe", "uv": [ 1.5, 6.0, 3.6, 10.9 ] },
+								"up": { "texture": "#ripe", "uv": [ 0.0, 0.0, 2.1, 2.1 ], "windMode": [-1,-1,-1,-1] },
+								"down": { "texture": "#ripe", "uv": [ 2.5, 5.0, 4.6, 7.1 ] }
+							}
+						},
+						{
+							"name": "dongle",
+							"from": [ 1.05, 3.99, 1.05 ],
+							"to": [ 1.75, 5.39, 1.75 ],
+							"rotationOrigin": [ 1.4, 3.99, 1.4 ],
+							"rotationX": -22.5,
+							"rotationY": -45.0,
+							"rotationZ": -22.5,
+							"faces": {
+								"north": { "texture": "#saguaro", "uv": [ 7.0, 2.0, 7.7, 3.4 ] },
+								"east": { "texture": "#saguaro", "uv": [ 6.5, 1.5, 7.2, 2.9 ] },
+								"south": { "texture": "#saguaro", "uv": [ 7.0, 2.5, 7.7, 3.9 ] },
+								"west": { "texture": "#saguaro", "uv": [ 6.0, 1.5, 6.7, 2.9 ] },
+								"up": { "texture": "#saguaro", "uv": [ 7.0, 1.0, 7.7, 1.7 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

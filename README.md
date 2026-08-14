@@ -4,12 +4,11 @@ Versioned reference repository for Vintage Story decompiled assemblies, extracte
 
 For AI-enabled projects that want to use this repository without scanning the full reference trees, see `INDEX_USAGE.md`.
 For the architecture and maintenance model, see `docs/ARCHITECTURE.md` and `docs/MAINTAINING_REFERENCE.md`.
-For the TentBag-Reworked player guide, see `docs/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
+For mod-specific notes and guides, see `docs/mods/`.
 
 ## Versions
 
-- `versions/1.22.3` - Vintage Story 1.22.3 reference payload.
-- `versions/1.22.4` - Vintage Story 1.22.4 five-assembly API, assets, selected mods, web sources, code index, asset index, and web index.
+- `versions/1.22.6` - Vintage Story 1.22.6 five-assembly API, assets, selected mods/tools, web sources, code index, asset index, and web index.
 
 ## Layout
 

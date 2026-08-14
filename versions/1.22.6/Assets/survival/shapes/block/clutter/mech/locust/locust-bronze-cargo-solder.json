@@ -1,0 +1,97 @@
+{
+	"editor": {
+		"backDropShape": "block/cluttertest/locust-bronze-cargo1",
+		"collapsedPaths": "Root/body/drill,Root/body/leg 1 L,Root/body/leg 2 L,Root/body/leg 3 L,Root/body/leg 1 R,Root/body/leg 2 R,Root/body/leg 3 R",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 32,
+	"textureHeight": 32,
+	"textureSizes": {
+	},
+	"textures": {
+		"tin": "block/metal/ingot/tin"
+	},
+	"elements": [
+		{
+			"name": "SolderORIGIN",
+			"stepParentName": "floor",
+			"from": [ 0.0, 0.0, 3.0 ],
+			"to": [ 1.0, 1.0, 4.0 ],
+			"uv": [ 999.0, 999.0 ],
+			"rotationOrigin": [ 0.0, 0.0, 3.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "solder1",
+					"from": [ 0.5, 0.0, -0.5 ],
+					"to": [ 7.5, 1.0, 0.5 ],
+					"uv": [ 2.5, 0.5 ],
+					"rotationOrigin": [ 0.5, 0.0, 0.0 ],
+					"rotationY": -9.0,
+					"faces": {
+						"north": { "texture": "#tin", "uv": [ 3.0, 2.0, 10.0, 3.0 ] },
+						"east": { "texture": "#tin", "uv": [ 10.0, 2.0, 11.0, 3.0 ] },
+						"south": { "texture": "#tin", "uv": [ 11.0, 2.0, 18.0, 3.0 ] },
+						"west": { "texture": "#tin", "uv": [ 18.0, 2.0, 19.0, 3.0 ] },
+						"up": { "texture": "#tin", "uv": [ 3.0, 1.0, 10.0, 2.0 ] },
+						"down": { "texture": "#tin", "uv": [ 10.0, 1.0, 17.0, 2.0 ] }
+					}
+				},
+				{
+					"name": "solder2",
+					"from": [ 0.0, 0.0, -1.6 ],
+					"to": [ 7.0, 1.0, -0.6 ],
+					"uv": [ 0.5, 4.0 ],
+					"rotationOrigin": [ 0.0, 0.0, -1.1 ],
+					"rotationY": 6.0,
+					"faces": {
+						"north": { "texture": "#tin", "uv": [ 1.0, 5.0, 8.0, 6.0 ] },
+						"east": { "texture": "#tin", "uv": [ 8.0, 5.0, 9.0, 6.0 ] },
+						"south": { "texture": "#tin", "uv": [ 9.0, 5.0, 16.0, 6.0 ] },
+						"west": { "texture": "#tin", "uv": [ 16.0, 5.0, 17.0, 6.0 ] },
+						"up": { "texture": "#tin", "uv": [ 1.0, 4.0, 8.0, 5.0 ] },
+						"down": { "texture": "#tin", "uv": [ 8.0, 4.0, 15.0, 5.0 ] }
+					}
+				},
+				{
+					"name": "solder3",
+					"from": [ 0.8, 1.7, -1.5 ],
+					"to": [ 7.8, 2.7, -0.5 ],
+					"uv": [ 4.0, 3.0 ],
+					"rotationOrigin": [ 0.8, 1.7, -1.0 ],
+					"rotationY": -8.0,
+					"rotationZ": -13.0,
+					"faces": {
+						"north": { "texture": "#tin", "uv": [ 4.0, 4.0, 11.0, 5.0 ] },
+						"east": { "texture": "#tin", "uv": [ 11.0, 4.0, 12.0, 5.0 ] },
+						"south": { "texture": "#tin", "uv": [ 12.0, 4.0, 19.0, 5.0 ] },
+						"west": { "texture": "#tin", "uv": [ 19.0, 4.0, 20.0, 5.0 ] },
+						"up": { "texture": "#tin", "uv": [ 4.0, 3.0, 11.0, 4.0 ] },
+						"down": { "texture": "#tin", "uv": [ 11.0, 3.0, 18.0, 4.0 ] }
+					}
+				},
+				{
+					"name": "solder4",
+					"from": [ 0.6, 1.3, 0.1 ],
+					"to": [ 7.6, 2.3, 1.1 ],
+					"uv": [ 4.0, 3.0 ],
+					"rotationOrigin": [ 0.6, 1.3, 0.6 ],
+					"rotationY": 1.0,
+					"rotationZ": 2.0,
+					"faces": {
+						"north": { "texture": "#tin", "uv": [ 4.0, 4.0, 11.0, 5.0 ] },
+						"east": { "texture": "#tin", "uv": [ 11.0, 4.0, 12.0, 5.0 ] },
+						"south": { "texture": "#tin", "uv": [ 12.0, 4.0, 19.0, 5.0 ] },
+						"west": { "texture": "#tin", "uv": [ 19.0, 4.0, 20.0, 5.0 ] },
+						"up": { "texture": "#tin", "uv": [ 4.0, 3.0, 11.0, 4.0 ] },
+						"down": { "texture": "#tin", "uv": [ 11.0, 3.0, 18.0, 4.0 ] }
+					}
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

@@ -1,0 +1,27 @@
+using System;
+using System.Runtime.CompilerServices;
+using YamlDotNet.Core.Events;
+
+namespace YamlDotNet.Serialization.NodeTypeResolvers
+{
+	// Token: 0x0200013D RID: 317
+	[Obsolete("The mechanism that this class uses to specify type names is non-standard. Register the tags explicitly instead of using this convention.")]
+	public sealed class TypeNameInTagNodeTypeResolver : INodeTypeResolver
+	{
+		// Token: 0x060006C1 RID: 1729 RVA: 0x00017424 File Offset: 0x00015624
+		[NullableContext(1)]
+		bool INodeTypeResolver.Resolve([Nullable(2)] NodeEvent nodeEvent, ref Type currentType)
+		{
+			if (nodeEvent != null && !nodeEvent.Tag.IsEmpty)
+			{
+				Type type = Type.GetType(nodeEvent.Tag.Value.Substring(1), false);
+				if (type != null)
+				{
+					currentType = type;
+					return true;
+				}
+			}
+			return false;
+		}
+	}
+}

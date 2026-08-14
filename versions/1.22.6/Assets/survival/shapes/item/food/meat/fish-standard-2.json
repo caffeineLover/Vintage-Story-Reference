@@ -1,0 +1,108 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"fish-cooked": "item/food/meat/fish-cooked"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"east": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"south": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"west": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"up": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"down": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "mainbody101",
+					"from": [ -8.0, 0.0, -1.5 ],
+					"to": [ -3.0, 1.6, 1.5 ],
+					"rotationOrigin": [ -8.0, 0.0, -1.5 ],
+					"faces": {
+						"north": { "texture": "#fish-cooked", "uv": [ 0.5, 9.0, 5.5, 10.5 ] },
+						"east": { "texture": "#fish-cooked", "uv": [ 4.0, 8.0, 7.0, 9.5 ], "rotation": 180 },
+						"south": { "texture": "#fish-cooked", "uv": [ 14.0, 10.5, 15.5, 15.5 ], "rotation": 270 },
+						"west": { "texture": "#fish-cooked", "uv": [ 14.0, 0.5, 15.5, 3.5 ], "rotation": 270 },
+						"up": { "texture": "#fish-cooked", "uv": [ 4.5, 0.0, 7.5, 5.0 ], "rotation": 90 },
+						"down": { "texture": "#fish-cooked", "uv": [ 4.5, 0.0, 7.5, 5.0 ], "rotation": 90 }
+					},
+					"children": [
+						{
+							"name": "middlebody9",
+							"from": [ 5.0, 0.2, 0.5 ],
+							"to": [ 8.5, 1.4, 2.5 ],
+							"rotationOrigin": [ 6.0, 0.2, 1.8 ],
+							"faces": {
+								"north": { "texture": "#fish-cooked", "uv": [ 0.5, 12.5, 4.0, 13.5 ] },
+								"east": { "texture": "#fish-cooked", "uv": [ 5.0, 10.0, 7.0, 11.0 ], "rotation": 180, "windMode": [-1,-1,-1,-1] },
+								"south": { "texture": "#fish-cooked", "uv": [ 9.0, 11.5, 12.5, 12.5 ] },
+								"west": { "texture": "#fish-cooked", "uv": [ 9.5, 1.0, 11.5, 2.0 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+								"up": { "texture": "#fish-cooked", "uv": [ 5.5, 5.0, 7.5, 8.5 ], "rotation": 90 },
+								"down": { "texture": "#fish-cooked", "uv": [ 5.0, 7.0, 7.0, 10.5 ], "rotation": 90 }
+							},
+							"children": [
+								{
+									"name": "Tail1",
+									"from": [ 3.0, 0.6, 1.0 ],
+									"to": [ 5.0, 0.61, 2.0 ],
+									"rotationOrigin": [ 2.0, 0.6, 1.0 ],
+									"rotationY": 45.0,
+									"faces": {
+										"north": { "texture": "#fish-cooked", "uv": [ 12.0, 12.5, 14.0, 13.0 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+										"east": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+										"south": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 2.0, 0.5 ], "enabled": false },
+										"west": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+										"up": { "texture": "#fish-cooked", "uv": [ 3.0, 10.0, 4.0, 12.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+										"down": { "texture": "#fish-cooked", "uv": [ 2.5, 12.5, 3.5, 14.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+									},
+									"children": [
+										{
+											"name": "Tail2",
+											"from": [ -1.0, 0.0, 1.0 ],
+											"to": [ 0.0, 0.01, 3.0 ],
+											"rotationOrigin": [ -1.0, 0.0, 1.0 ],
+											"faces": {
+												"north": { "texture": "#fish-cooked", "uv": [ 12.0, 12.5, 13.0, 13.0 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+												"east": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 2.0, 0.5 ], "enabled": false },
+												"south": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+												"west": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 2.0, 0.5 ], "enabled": false },
+												"up": { "texture": "#fish-cooked", "uv": [ 1.5, 10.5, 2.5, 12.5 ], "windMode": [-1,-1,-1,-1] },
+												"down": { "texture": "#fish-cooked", "uv": [ 2.5, 10.5, 3.5, 12.5 ], "windMode": [-1,-1,-1,-1] }
+											},
+											"children": [
+												{
+													"name": "Tail3",
+													"from": [ 1.0, 0.0, 0.0 ],
+													"to": [ 2.0, 0.01, 1.0 ],
+													"faces": {
+														"north": { "texture": "#fish-cooked", "uv": [ 12.0, 12.5, 13.0, 13.0 ], "windMode": [-1,-1,-1,-1], "enabled": false },
+														"east": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+														"south": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+														"west": { "texture": "#fish-cooked", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+														"up": { "texture": "#fish-cooked", "uv": [ 5.5, 6.5, 6.5, 7.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+														"down": { "texture": "#fish-cooked", "uv": [ 4.0, 9.5, 5.0, 10.5 ], "windMode": [-1,-1,-1,-1] }
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]}

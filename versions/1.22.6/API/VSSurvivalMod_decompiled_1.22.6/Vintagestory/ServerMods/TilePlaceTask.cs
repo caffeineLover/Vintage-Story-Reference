@@ -1,0 +1,26 @@
+using ProtoBuf;
+using Vintagestory.API.MathTools;
+
+namespace Vintagestory.ServerMods;
+
+[ProtoContract]
+public class TilePlaceTask
+{
+	[ProtoMember(1)]
+	public string TileCode;
+
+	[ProtoMember(2)]
+	public int Rotation;
+
+	[ProtoMember(3)]
+	public BlockPos Pos;
+
+	[ProtoMember(4)]
+	public string FileName;
+
+	public int SizeX;
+
+	public int SizeY;
+
+	public int SizeZ;
+}

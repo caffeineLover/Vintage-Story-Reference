@@ -1,0 +1,519 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Cairo;
+using Vintagestory.API.Common;
+using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
+
+namespace Vintagestory.API.Client;
+
+public class GuiElementSlider : GuiElementControl
+{
+	private int minValue;
+
+	private int maxValue = 100;
+
+	private int step = 1;
+
+	private string unit = "";
+
+	private int currentValue;
+
+	private int alarmValue;
+
+	private HashSet<int> skipValues = new HashSet<int>();
+
+	private List<int> allowValues = new List<int>();
+
+	private bool mouseDownOnSlider;
+
+	private bool mouseOnSlider;
+
+	private bool triggerOnMouseUp;
+
+	private bool didChangeValue;
+
+	private LoadedTexture handleTexture;
+
+	private LoadedTexture hoverTextTexture;
+
+	private LoadedTexture restingTextTexture;
+
+	private LoadedTexture sliderFillTexture;
+
+	private LoadedTexture alarmValueTexture;
+
+	private GuiElementStaticText textElem;
+
+	private GuiElementStaticText textElemResting;
+
+	private Rectangled alarmTextureRect;
+
+	private ActionConsumable<int> onNewSliderValue;
+
+	public SliderTooltipDelegate OnSliderTooltip;
+
+	public SliderTooltipDelegate OnSliderRestingText;
+
+	internal const int unscaledHeight = 20;
+
+	internal const int unscaledPadding = 4;
+
+	private int unscaledHandleWidth = 15;
+
+	private int unscaledHandleHeight = 35;
+
+	private double handleWidth;
+
+	private double handleHeight;
+
+	private double padding;
+
+	public bool TooltipExceedClipBounds { get; set; }
+
+	public bool ShowTextWhenResting { get; set; }
+
+	public override bool Enabled
+	{
+		get
+		{
+			return base.Enabled;
+		}
+		set
+		{
+			enabled = value;
+			ComposeHandleElement();
+			if (alarmValue > minValue && alarmValue < maxValue)
+			{
+				MakeAlarmValueTexture();
+			}
+			ComposeHoverTextElement();
+			ComposeRestingTextElement();
+			ComposeFillTexture();
+		}
+	}
+
+	public override bool Focusable => enabled;
+
+	/// <summary>
+	/// Builds a slider.  A horizontal customizeable slider.
+	/// </summary>
+	/// <param name="capi">The Client API</param>
+	/// <param name="onNewSliderValue">The event that's fired when the slider changed.</param>
+	/// <param name="bounds">the bounds of the object.</param>
+	public GuiElementSlider(ICoreClientAPI capi, ActionConsumable<int> onNewSliderValue, ElementBounds bounds)
+		: base(capi, bounds)
+	{
+		handleTexture = new LoadedTexture(capi);
+		hoverTextTexture = new LoadedTexture(capi);
+		restingTextTexture = new LoadedTexture(capi);
+		sliderFillTexture = new LoadedTexture(capi);
+		alarmValueTexture = new LoadedTexture(capi);
+		this.onNewSliderValue = onNewSliderValue;
+	}
+
+	public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
+	{
+		handleWidth = GuiElement.scaled(unscaledHandleWidth) * Scale;
+		handleHeight = GuiElement.scaled(unscaledHandleHeight) * Scale;
+		padding = GuiElement.scaled(4.0) * Scale;
+		Bounds.CalcWorldBounds();
+		ctxStatic.SetSourceRGBA(0.0, 0.0, 0.0, 0.2);
+		GuiElement.RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1.0);
+		ctxStatic.Fill();
+		EmbossRoundRectangleElement(ctxStatic, Bounds, inverse: true, 1, 1);
+		_ = Bounds.InnerWidth;
+		_ = padding;
+		_ = Bounds.InnerHeight;
+		_ = padding;
+		ComposeHandleElement();
+		ComposeFillTexture();
+		ComposeHoverTextElement();
+		ComposeRestingTextElement();
+	}
+
+	internal void ComposeHandleElement()
+	{
+		ImageSurface surface = new ImageSurface(Format.Argb32, (int)handleWidth + 4, (int)handleHeight + 4);
+		Context ctx = genContext(surface);
+		ctx.SetSourceRGBA(1.0, 1.0, 1.0, 0.0);
+		ctx.Paint();
+		GuiElement.RoundRectangle(ctx, 2.0, 2.0, handleWidth, handleHeight, 1.0);
+		if (!enabled)
+		{
+			ctx.SetSourceRGB(43.0 / 255.0, 11.0 / 85.0, 8.0 / 85.0);
+			ctx.FillPreserve();
+		}
+		GuiElement.fillWithPattern(api, ctx, GuiElement.woodTextureName, nearestScalingFiler: false, preserve: true, enabled ? 255 : 159, 0.5f);
+		ctx.SetSourceRGB(43.0 / 255.0, 11.0 / 85.0, 8.0 / 85.0);
+		ctx.LineWidth = 2.0;
+		ctx.Stroke();
+		generateTexture(surface, ref handleTexture);
+		ctx.Dispose();
+		surface.Dispose();
+	}
+
+	internal void ComposeHoverTextElement()
+	{
+		ElementBounds bounds = new ElementBounds().WithFixedPadding(7.0).WithParent(ElementBounds.Empty);
+		string text = currentValue + unit;
+		if (OnSliderTooltip != null)
+		{
+			text = OnSliderTooltip(currentValue);
+		}
+		textElem = new GuiElementStaticText(api, text, EnumTextOrientation.Center, bounds, CairoFont.WhiteMediumText().WithFontSize((float)GuiStyle.SubNormalFontSize));
+		textElem.Font.UnscaledFontsize = GuiStyle.SmallishFontSize;
+		textElem.AutoBoxSize();
+		textElem.Bounds.CalcWorldBounds();
+		ImageSurface surface = new ImageSurface(Format.Argb32, (int)bounds.OuterWidth, (int)bounds.OuterHeight);
+		Context ctx = genContext(surface);
+		ctx.SetSourceRGBA(1.0, 1.0, 1.0, 0.0);
+		ctx.Paint();
+		ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
+		GuiElement.RoundRectangle(ctx, 0.0, 0.0, bounds.OuterWidth, bounds.OuterHeight, GuiStyle.ElementBGRadius);
+		ctx.FillPreserve();
+		double[] color = GuiStyle.DialogStrongBgColor;
+		ctx.SetSourceRGBA(color[0] / 2.0, color[1] / 2.0, color[2] / 2.0, color[3]);
+		ctx.Stroke();
+		textElem.ComposeElements(ctx, surface);
+		generateTexture(surface, ref hoverTextTexture);
+		ctx.Dispose();
+		surface.Dispose();
+	}
+
+	internal void ComposeRestingTextElement()
+	{
+		ElementBounds bounds = new ElementBounds().WithFixedPadding(7.0).WithParent(ElementBounds.Empty);
+		double num = (Bounds.InnerWidth - 2.0 * padding - handleWidth / 2.0) * (1.0 * (double)currentValue - (double)minValue) / (double)(maxValue - minValue);
+		string text = currentValue + unit;
+		if (OnSliderRestingText != null)
+		{
+			text = OnSliderRestingText(currentValue);
+		}
+		else if (OnSliderTooltip != null)
+		{
+			text = OnSliderTooltip(currentValue);
+		}
+		textElemResting = new GuiElementStaticText(api, text, EnumTextOrientation.Center, bounds, CairoFont.WhiteSmallText());
+		textElemResting.AutoBoxSize();
+		textElemResting.Bounds.CalcWorldBounds();
+		textElemResting.Bounds.fixedY = ((double)(int)(GuiElement.scaled(30.0) * Scale) - textElemResting.Font.GetFontExtents().Height) / 2.0 / (double)RuntimeEnv.GUIScale;
+		if (!enabled)
+		{
+			textElemResting.Font.Color[3] = 0.35;
+		}
+		if (num - 10.0 >= textElemResting.Bounds.InnerWidth)
+		{
+			textElemResting.Font.Color = new double[4]
+			{
+				0.0,
+				0.0,
+				0.0,
+				enabled ? 1.0 : 0.5
+			};
+		}
+		ImageSurface surface = new ImageSurface(Format.Argb32, (int)bounds.OuterWidth, (int)bounds.OuterHeight);
+		Context ctx = genContext(surface);
+		textElemResting.ComposeElements(ctx, surface);
+		generateTexture(surface, ref restingTextTexture);
+		ctx.Dispose();
+		surface.Dispose();
+	}
+
+	internal void ComposeFillTexture()
+	{
+		double handlePosition = (Bounds.InnerWidth - 2.0 * padding - handleWidth / 2.0) * (1.0 * (double)currentValue - (double)minValue) / (double)(maxValue - minValue);
+		double insetHeight = Bounds.InnerHeight - 2.0 * padding;
+		ImageSurface surface = new ImageSurface(Format.Argb32, (int)(handlePosition + 5.0), (int)insetHeight);
+		Context ctx = genContext(surface);
+		SurfacePattern pattern = GuiElement.getPattern(api, GuiElement.waterTextureName, doCache: true, enabled ? 255 : 127, 0.5f);
+		GuiElement.RoundRectangle(ctx, 0.0, 0.0, surface.Width, surface.Height, 1.0);
+		if (enabled)
+		{
+			ctx.SetSourceRGBA(0.0, 0.0, 0.0, 1.0);
+		}
+		else
+		{
+			ctx.SetSourceRGBA(0.15, 0.15, 0.0, 0.65);
+		}
+		ctx.FillPreserve();
+		ctx.SetSource(pattern);
+		ctx.Fill();
+		generateTexture(surface, ref sliderFillTexture);
+		ctx.Dispose();
+		surface.Dispose();
+	}
+
+	public override void RenderInteractiveElements(float deltaTime)
+	{
+		if ((float)(alarmValue - minValue) / (float)(maxValue - minValue) > 0f && alarmValueTexture.TextureId > 0)
+		{
+			_ = (float)alarmValue / (float)maxValue;
+			api.Render.RenderTexture(alarmValueTexture.TextureId, Bounds.renderX + alarmTextureRect.X, Bounds.renderY + alarmTextureRect.Y, alarmTextureRect.Width, alarmTextureRect.Height);
+		}
+		double handlePosition = (Bounds.InnerWidth - 2.0 * padding - handleWidth / 2.0) * (1.0 * (double)currentValue - (double)minValue) / (double)(maxValue - minValue);
+		double insetHeight = Bounds.InnerHeight - 2.0 * padding;
+		double dy = (handleHeight - Bounds.OuterHeight + padding) / 2.0;
+		api.Render.Render2DTexturePremultipliedAlpha(sliderFillTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)(handlePosition + 5.0), (int)insetHeight);
+		api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
+		if (mouseDownOnSlider || mouseOnSlider)
+		{
+			if (TooltipExceedClipBounds)
+			{
+				api.Render.PopScissor();
+			}
+			ElementBounds elemBounds = textElem.Bounds;
+			api.Render.Render2DTexturePremultipliedAlpha(hoverTextTexture.TextureId, (int)(Bounds.renderX + padding + handlePosition - elemBounds.OuterWidth / 2.0 + handleWidth / 2.0), (int)(Bounds.renderY - GuiElement.scaled(20.0) - elemBounds.OuterHeight), elemBounds.OuterWidthInt, elemBounds.OuterHeightInt, 300f);
+			if (TooltipExceedClipBounds)
+			{
+				api.Render.PushScissor(InsideClipBounds);
+			}
+		}
+		if (ShowTextWhenResting)
+		{
+			api.Render.PushScissor(Bounds, stacking: true);
+			ElementBounds elemBounds2 = textElemResting.Bounds;
+			double xOffset = ((handlePosition - 10.0 < elemBounds2.InnerWidth) ? (Bounds.renderX + padding + handlePosition - elemBounds2.OuterWidth / 2.0 + handleWidth / 2.0 + (double)(restingTextTexture.Width / 2) + 10.0) : ((double)(int)Bounds.renderX));
+			api.Render.Render2DTexturePremultipliedAlpha(restingTextTexture.TextureId, xOffset, Bounds.renderY + (insetHeight - elemBounds2.OuterHeight - padding / 2.0) / 2.0, elemBounds2.OuterWidthInt, elemBounds2.OuterHeightInt, 300f);
+			api.Render.PopScissor();
+		}
+	}
+
+	private void MakeAlarmValueTexture()
+	{
+		float alarmValueRel = (float)(alarmValue - minValue) / (float)(maxValue - minValue);
+		alarmTextureRect = new Rectangled
+		{
+			X = padding + (Bounds.InnerWidth - 2.0 * padding) * (double)alarmValueRel,
+			Y = padding,
+			Width = (Bounds.InnerWidth - 2.0 * padding) * (double)(1f - alarmValueRel),
+			Height = Bounds.InnerHeight - 2.0 * padding
+		};
+		ImageSurface surface = new ImageSurface(Format.Argb32, (int)alarmTextureRect.Width, (int)alarmTextureRect.Height);
+		Context context = genContext(surface);
+		context.SetSourceRGBA(1.0, 0.0, 1.0, enabled ? 0.4 : 0.25);
+		GuiElement.RoundRectangle(context, 0.0, 0.0, alarmTextureRect.Width, alarmTextureRect.Height, GuiStyle.ElementBGRadius);
+		context.Fill();
+		generateTexture(surface, ref alarmValueTexture.TextureId);
+		context.Dispose();
+		surface.Dispose();
+	}
+
+	public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
+	{
+		if (enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
+		{
+			args.Handled = updateValue(api.Input.MouseX);
+			mouseDownOnSlider = true;
+		}
+	}
+
+	public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
+	{
+		mouseDownOnSlider = false;
+		if (enabled)
+		{
+			if (onNewSliderValue != null && didChangeValue && triggerOnMouseUp)
+			{
+				onNewSliderValue(currentValue);
+			}
+			didChangeValue = false;
+		}
+	}
+
+	public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
+	{
+		mouseOnSlider = Bounds.PointInside(api.Input.MouseX, api.Input.MouseY);
+		if (enabled && mouseDownOnSlider)
+		{
+			args.Handled = updateValue(api.Input.MouseX);
+		}
+	}
+
+	public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
+	{
+		if (enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
+		{
+			args.SetHandled();
+			int curIndex = allowValues.IndexOf(currentValue);
+			int newIndex = ((curIndex != -1) ? (curIndex + Math.Sign(args.deltaPrecise)) : 0);
+			if (newIndex >= 0 && newIndex < allowValues.Count)
+			{
+				currentValue = allowValues[newIndex];
+				ComposeHoverTextElement();
+				ComposeRestingTextElement();
+				ComposeFillTexture();
+				onNewSliderValue?.Invoke(currentValue);
+			}
+		}
+	}
+
+	public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+	{
+		if (!base.HasFocus)
+		{
+			return;
+		}
+		int dir = 0;
+		if (args.KeyCode == 47)
+		{
+			if (currentValue <= allowValues.First())
+			{
+				return;
+			}
+			dir = -1;
+		}
+		else if (args.KeyCode == 48)
+		{
+			if (currentValue >= allowValues.Last())
+			{
+				return;
+			}
+			dir = 1;
+		}
+		if (dir != 0)
+		{
+			currentValue = allowValues[allowValues.IndexOf(currentValue) + dir];
+			ComposeHoverTextElement();
+			ComposeRestingTextElement();
+			ComposeFillTexture();
+			onNewSliderValue?.Invoke(currentValue);
+		}
+	}
+
+	/// <summary>
+	/// Trigger event only once user release the mouse
+	/// </summary>
+	/// <param name="trigger"></param>
+	internal void TriggerOnlyOnMouseUp(bool trigger = true)
+	{
+		triggerOnMouseUp = trigger;
+	}
+
+	private bool updateValue(int mouseX)
+	{
+		double sliderWidth = Bounds.InnerWidth - 2.0 * padding - handleWidth / 2.0;
+		double mouseDeltaX = GameMath.Clamp((double)mouseX - Bounds.renderX - padding, 0.0, sliderWidth);
+		double value = (double)minValue + (double)(maxValue - minValue) * mouseDeltaX / sliderWidth;
+		int newValue = ((allowValues.Count == 0) ? currentValue : allowValues.OrderBy((int item) => Math.Abs(value - (double)item)).First());
+		if (newValue == currentValue)
+		{
+			return true;
+		}
+		didChangeValue = true;
+		currentValue = newValue;
+		ComposeHoverTextElement();
+		ComposeRestingTextElement();
+		ComposeFillTexture();
+		if (onNewSliderValue != null && !triggerOnMouseUp)
+		{
+			return onNewSliderValue(currentValue);
+		}
+		return true;
+	}
+
+	/// <summary>
+	/// Sets a value to warn the player that going over this is not a good idea.
+	/// </summary>
+	/// <param name="value">The maximum limit before things break down.</param>
+	public void SetAlarmValue(int value)
+	{
+		alarmValue = value;
+		MakeAlarmValueTexture();
+	}
+
+	public void SetSkipValues(HashSet<int> skipValues)
+	{
+		this.skipValues = skipValues;
+		allowValues.Clear();
+		for (int i = minValue; i <= maxValue; i += step)
+		{
+			if (!skipValues.Contains(i))
+			{
+				allowValues.Add(i);
+			}
+		}
+	}
+
+	public void ClearSkipValues()
+	{
+		skipValues.Clear();
+		allowValues.Clear();
+		for (int i = minValue; i <= maxValue; i += step)
+		{
+			allowValues.Add(i);
+		}
+	}
+
+	public void AddSkipValue(int skipValue)
+	{
+		skipValues.Add(skipValue);
+		allowValues.Remove(skipValue);
+	}
+
+	public void RemoveSkipValue(int skipValue)
+	{
+		skipValues.Remove(skipValue);
+		allowValues.Clear();
+		for (int i = minValue; i <= maxValue; i += step)
+		{
+			if (!skipValues.Contains(i))
+			{
+				allowValues.Add(i);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Sets the values of the slider.
+	/// </summary>
+	/// <param name="currentValue">The value the slider is now.</param>
+	/// <param name="minValue">The lowest value.</param>
+	/// <param name="maxValue">The highest value.</param>
+	/// <param name="step">Each step between values.</param>
+	/// <param name="unit">The units of the value. %, chunks, ect.</param>
+	public void SetValues(int currentValue, int minValue, int maxValue, int step, string unit = "")
+	{
+		this.currentValue = currentValue;
+		this.minValue = minValue;
+		this.maxValue = maxValue;
+		this.step = step;
+		this.unit = unit;
+		allowValues.Clear();
+		for (int i = minValue; i <= maxValue; i += step)
+		{
+			if (!skipValues.Contains(i))
+			{
+				allowValues.Add(i);
+			}
+		}
+		ComposeHoverTextElement();
+		ComposeRestingTextElement();
+		ComposeFillTexture();
+	}
+
+	public void SetValue(int currentValue)
+	{
+		this.currentValue = currentValue;
+	}
+
+	/// <summary>
+	/// Gets the current value of the slider.
+	/// </summary>
+	public int GetValue()
+	{
+		return currentValue;
+	}
+
+	public override void Dispose()
+	{
+		base.Dispose();
+		handleTexture.Dispose();
+		hoverTextTexture.Dispose();
+		restingTextTexture.Dispose();
+		sliderFillTexture.Dispose();
+		alarmValueTexture.Dispose();
+	}
+}

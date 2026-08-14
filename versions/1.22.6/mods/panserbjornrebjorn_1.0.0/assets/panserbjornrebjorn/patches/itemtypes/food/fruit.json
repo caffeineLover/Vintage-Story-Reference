@@ -1,0 +1,11 @@
+[
+  {
+    "file": "game:itemtypes/food/fruit.json",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "considerpetfood",
+      "properties": {}
+    }
+  }
+]

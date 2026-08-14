@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Calculadora de Lingotes do Critcher",
+	"hotkey-open-calculator": "Abrir calculadora de lingotes",
+	"target-ingots": "Lingotes pretendidos:",
+	"metal-percentages": "Percentagens de metais:",
+	"required-nuggets": "Pepitas necessárias:",
+	"close": "Fechar",
+	"no-data": "Sem dados",
+	"alloy-tinbronze": "Bronze de estanho",
+	"alloy-bismuthbronze": "Bronze de bismuto",
+	"alloy-blackbronze": "Bronze negro",
+	"alloy-brass": "Latão",
+	"alloy-cupronickel": "Cuproníquel",
+	"alloy-electrum": "Electro",
+	"alloy-molybdochalkos": "Molybdochalkos",
+	"alloy-leadsolder": "Solda de chumbo",
+	"alloy-silversolder": "Solda de prata",
+	"crucible-slots-header": "Disposição do cadinho:",
+	"crucible-impossible": "Não é possível forjar {0} lingotes de {1} — excede a capacidade do cadinho. Máximo possível: {2} lingotes.",
+	"slot-empty": "(vazio)"
+}

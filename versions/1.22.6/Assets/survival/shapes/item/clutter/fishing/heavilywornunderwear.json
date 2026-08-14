@@ -1,0 +1,84 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"heavilywornunderpants": [16,16]
+	},
+	"textures": {
+		"heavilywornunderpants": "item/clutter/heavilywornunderpants"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"uv": [ 0.0, 0.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "main",
+					"from": [ -3.5, 0.0, -3.0 ],
+					"to": [ 3.5, 0.5, 1.0 ],
+					"renderPass": 3,
+					"autoUnwrap": false,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 0.0, 0.0, 0.0 ],
+					"rotationX": -5.0,
+					"faces": {
+						"north": { "texture": "#heavilywornunderpants", "uv": [ 0.5, 0.0, 7.5, 0.5 ] },
+						"east": { "texture": "#heavilywornunderpants", "uv": [ 7.5, 0.5, 8.0, 4.5 ], "rotation": 90 },
+						"south": { "texture": "#heavilywornunderpants", "uv": [ 0.5, 4.5, 7.5, 5.0 ] },
+						"west": { "texture": "#heavilywornunderpants", "uv": [ 0.0, 0.5, 0.5, 4.5 ], "rotation": 90 },
+						"up": { "texture": "#heavilywornunderpants", "uv": [ 0.5, 0.5, 7.5, 4.5 ] },
+						"down": { "texture": "#heavilywornunderpants", "uv": [ 8.5, 0.5, 15.5, 4.5 ] }
+					},
+					"children": [
+						{
+							"name": "SleeveW",
+							"from": [ 0.0, 0.0, 3.0 ],
+							"to": [ 4.0, 0.5, 8.0 ],
+							"renderPass": 3,
+							"autoUnwrap": false,
+							"uv": [ 0.5, 5.5 ],
+							"rotationOrigin": [ 2.0, 0.5, 3.0 ],
+							"rotationX": 5.0,
+							"rotationY": -14.0,
+							"faces": {
+								"north": { "texture": "#heavilywornunderpants", "uv": [ 0.5, 5.0, 4.5, 5.5 ] },
+								"east": { "texture": "#heavilywornunderpants", "uv": [ 4.5, 5.5, 5.0, 10.5 ], "rotation": 90 },
+								"south": { "texture": "#heavilywornunderpants", "uv": [ 0.5, 10.5, 4.5, 11.0 ] },
+								"west": { "texture": "#heavilywornunderpants", "uv": [ 0.0, 5.5, 0.5, 10.5 ], "rotation": 90 },
+								"up": { "texture": "#heavilywornunderpants", "uv": [ 0.5, 5.5, 4.5, 10.5 ] },
+								"down": { "texture": "#heavilywornunderpants", "uv": [ 0.0, 11.5, 5.0, 15.5 ], "rotation": 270 }
+							}
+						},
+						{
+							"name": "SleeveE",
+							"from": [ 2.5, 0.0, 3.0 ],
+							"to": [ 6.5, 0.5, 8.0 ],
+							"renderPass": 3,
+							"autoUnwrap": false,
+							"uv": [ 5.5, 5.5 ],
+							"rotationOrigin": [ 4.5, 0.5, 3.0 ],
+							"rotationX": 6.0,
+							"rotationY": 17.0,
+							"faces": {
+								"north": { "texture": "#heavilywornunderpants", "uv": [ 5.5, 5.0, 9.5, 5.5 ] },
+								"east": { "texture": "#heavilywornunderpants", "uv": [ 9.5, 5.5, 10.0, 10.5 ], "rotation": 90 },
+								"south": { "texture": "#heavilywornunderpants", "uv": [ 5.5, 10.5, 9.5, 11.0 ] },
+								"west": { "texture": "#heavilywornunderpants", "uv": [ 5.0, 5.5, 5.5, 10.5 ], "rotation": 90 },
+								"up": { "texture": "#heavilywornunderpants", "uv": [ 5.5, 5.5, 9.5, 10.5 ] },
+								"down": { "texture": "#heavilywornunderpants", "uv": [ 5.5, 11.5, 10.5, 15.5 ], "rotation": 270 }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

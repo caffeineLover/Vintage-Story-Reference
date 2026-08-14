@@ -1,0 +1,22 @@
+[
+    {
+    "op": "add",
+    "path": "/allclasses:AllclassesFv2.0.0",
+    "value": [
+		"/bir remap allclasses:metalpot-copper-fired allclasses:coppercookingpot-burned force",
+		"/bir remap allclasses:metalpot-copper-cooked allclasses:coppercookingpot-cooked force",
+		"/bir remap allclasses:metalpot-bismuthbronze-fired allclasses:bronzecookingpot-burned force",
+		"/bir remap allclasses:metalpot-bismuthbronze-cooked allclasses:bronzecookingpot-cooked force",
+		"/bir remap allclasses:metalpot-iron-fired  allclasses:ironcookingpot-burned force",
+		"/bir remap allclasses:metalpot-iron-cooked allclasses:ironcookingpot-cooked force",
+		"/bir remap allclasses:metalpot-meteoriciron-fired allclasses:meteoricironcookingpot-burned force",
+		"/bir remap allclasses:metalpot-meteoriciron-cooked allclasses:meteoricironcookingpot-cooked force",
+		"/bir remap allclasses:metalpot-steel-fired allclasses:steelcookingpot-burned force",
+		"/bir remap allclasses:metalpot-steel-cooked allclasses:steelcookingpot-cooked force",
+		"/bir remap allclasses:metalpot-gold-fired allclasses:goldplatedcookingpot-burned force",
+		"/bir remap allclasses:metalpot-gold-cooked allclasses:goldplatedcookingpot-cooked force"
+	       ],
+    "file": "game:config/remaps.json",
+    "side": "server"
+    }
+]

@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Critcher's Ingot Calculator",
+	"hotkey-open-calculator": "Open Ingot Calculator",
+	"target-ingots": "Target Ingots:",
+	"metal-percentages": "Metal Percentages:",
+	"required-nuggets": "Required Nuggets:",
+	"close": "Close",
+	"no-data": "No data",
+	"alloy-tinbronze": "Tin Bronze",
+	"alloy-bismuthbronze": "Bismuth Bronze",
+	"alloy-blackbronze": "Black Bronze",
+	"alloy-brass": "Brass",
+	"alloy-cupronickel": "Cupronickel",
+	"alloy-electrum": "Electrum",
+	"alloy-molybdochalkos": "Molybdochalkos",
+	"alloy-leadsolder": "Lead Solder",
+	"alloy-silversolder": "Silver Solder",
+	"crucible-slots-header": "Crucible Layout:",
+	"crucible-impossible": "Cannot craft {0} ingots of {1} — exceeds crucible capacity. Maximum craftable: {2} ingots.",
+	"slot-empty": "(empty)"
+}

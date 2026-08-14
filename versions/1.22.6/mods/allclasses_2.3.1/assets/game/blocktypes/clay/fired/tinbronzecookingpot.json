@@ -1,0 +1,147 @@
+﻿{
+	"code": "dirtyclaypot",
+	"behaviors": [
+		{ "name": "GroundStorable", "properties": { "layout": "Quadrants", "collisionBox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.4375, "z2": 1 } } },
+		{ "name": "Unplaceable", "__comment": "The ground storable obsoletes this being a block. Should be an item, but is kept a block for backwards compatibility" },
+		{
+			"name": "RightClickPickup"
+		} 
+	],
+	"classByType": {
+		"dirtyclaypot-tinbronze-empty": "AllclassesCookingContainer",
+		"dirtyclaypot-tinbronze-cooked": "AllclassesCookedContainer"
+	},
+	"heldTpIdleAnimation": "holdbothhands",
+	"heldTpUseAnimation": "twohandplaceblock",
+
+	"attributes": { 
+	"shelvable": true, 
+	"onshelfTransform": {
+		"translation": { "x": 0, "y": -0.12, "z": 0 },
+		"rotation": { "x": 0, "y": 31, "z": 0 },
+		"scale": 0.78		
+	},
+	"onDisplayTransform": {
+		"translation": { "x": 0.03, "y": 1.55, "z": 0.05 },
+		"scale": 4
+	}
+},
+
+	"attributesByType": {
+		"*": {
+			"attachmentArea": { "x1": 4, "y1": 0, "z1": 4, "x2": 11, "y2": 0, "z2": 11 },
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 10,
+			"cookingSlotCapacityLitres": 10,
+			"servingCapacity": 10,
+			"maxServingSize": 10,
+			"storageType": 1,
+			"maxTemperature": 300,
+			"inFirePitProps": {
+				"transform": { 
+					"translation": { "x": 0, "y": 0.125, "z": 0 } 
+				},
+				"useFirepitModel": "Wide"
+			},
+			"mealContainer": true,
+			"mealBlockCode": "dirtyclaypot-tinbronze-cooked",
+			"dirtiedBlockCode": "dirtyclaypot-tinbronze-cooked",
+			"emptiedBlockCode": "dirtyclaypot-tinbronze-empty",
+			"isDirtyPot": true,
+			"groundStorageTransform": {
+				"rotation": { "x": 0, "y": -49, "z": 0 },
+				"origin": { "x": 0.5, "y": -0.1, "z": 0.5 },
+				"scale": 0.88
+					}		}
+	},
+		
+	"variantgroups": [
+		{ "code": "color", "states": ["tinbronze"] },
+		{ "code":"type", "states": ["empty", "cooked"] }
+	],
+	"entityclassByType": {
+		"*-tinbronze-cooked": "CookedContainer"
+	},
+	"shape": { "base": "allclasses:block/tinbronzecookingpot" },
+	"doNotRenderAtLod2": true,
+	"blockmaterial": "Metal",
+	"creativeinventory": { "general": ["dirtyclaypot-tinbronze-empty"], "allclasses": ["dirtyclaypot-tinbronze-empty"] },
+	"replaceable": 400,
+	"resistance": 1.5,
+	"maxStackSize": 2,
+	"lightAbsorption": 0,
+	"texturesByType": {
+		"*": {
+			"transparent": { "base": "block/transparent" },
+			"ceramic": { "base": "game:block/metal/sheet/tinbronze13" },
+			"lid-dirty2": { "base": "game:block/metal/plate/tinbronze" },
+			"lid": {
+				"base": "game:block/metal/plate/tinbronze"
+			},
+		
+			"liquid": { "base": "block/liquid/glue-cold" }
+		}
+	},
+	"sounds": {
+		"walk": "game:walk/stone"
+	},
+	"sideopaque": {
+		"all": false
+	},
+	"sidesolid": {
+		"all": false
+	},
+	"collisionBox": {
+		"x1": 0.28,
+		"y1": 0,
+		"z1": 0.28,
+		"x2": 0.72,
+		"y2": 0.35,
+		"z2": 0.72
+	},
+	"selectionbox": {
+		"x1": 0.28,
+		"y1": 0,
+		"z1": 0.28,
+		"x2": 0.72,
+		"y2": 0.35,
+		"z2": 0.72
+	},
+	"guiTransform": {
+		"origin": {
+			"x": 0.5,
+			"y": 0.2,
+			"z": 0.5
+		},
+		"scale": 2
+	},
+	"groundTransform": {
+		"scale": 3
+	},
+	"fpHandTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0.1,
+			"z": 0.5
+		},
+		"scale": 2
+	},
+	"tpHandTransform": {
+		"translation": {
+			"x": -0.67,
+			"y": 0.06,
+			"z": -0.5
+		},
+		"rotation": {
+			"x": -52,
+			"y": 20,
+			"z": -110
+		},
+		"origin": {
+			"x": 0.5,
+			"y": 0,
+			"z": 0.5
+		},
+		"scale": 0.76
+	}
+}

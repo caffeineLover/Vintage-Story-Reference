@@ -1,0 +1,82 @@
+{
+  "code": "churchbell",
+  "enabled": true,
+  "class": "soundemittingblock",
+  "entityClass": "BESoundEmitting",
+  "entityBehaviors": [
+    { "name": "BESoundable" }
+  ],
+  "creativeinventory": {
+    "general": [ "*" ],
+    "rpvoicechat": [ "*" ]
+  },
+  "blockmaterial": "Metal",
+  "drawtype": "json",
+  "shape": {
+    "base": "block/churchbell/churchbell"
+  },
+  "behaviors": [
+    {
+      "name": "Multiblock",
+      "properties": {
+        "sizex": 3,
+        "sizey": 4,
+        "sizez": 3,
+        "cposition": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        }
+      }
+    }
+  ],
+  "attributes": {
+    "handbook": {
+      "extraSections": [
+        {
+          "title": "rpvoicechat:Handbook.Welding.block-churchbell.Title",
+          "text": "rpvoicechat:Handbook.Welding.block-churchbell.Text"
+        },
+        {
+          "title": "rpvoicechat:Handbook.Usage.block-churchbell.Title",
+          "text": "rpvoicechat:Handbook.Usage.block-churchbell.Text"
+        }
+      ]
+    },
+    "soundAudibleDistance": 832,
+    "soundVolume": 1,
+    "soundDuration": 2, // Shorter than 3 real-time seconds to allow for bell to ring in succession
+    "blockInteractSounds": [
+      "block/churchbell/churchbell"
+    ]
+  },
+  "rainPermeable": true,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "lightAbsorption": 0,
+  "resistance": 1,
+  "sounds": {
+    "place": "game:block/anvil",
+    "walk": "game:walk/stone"
+  },
+  "guiTransform": {
+    "origin": {
+      "x": 0.5,
+      "y": 1.5,
+      "z": 0.5
+    },
+    "scale": 0.26
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "scale": 0.5
+  }
+}

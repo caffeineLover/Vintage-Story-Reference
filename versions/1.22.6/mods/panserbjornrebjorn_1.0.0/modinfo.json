@@ -1,0 +1,17 @@
+{
+    "modid": "panserbjornrebjorn",
+    "name": "A Panserbjørn Story: Rebjørn",
+    "type": "content",
+    "authors": [
+        "Sythelux Rikd", "Wulk"
+    ],
+    "description": "Makes bears tamable (maybe as Panserbjørn companion later)",
+    "version": "1.0.0",
+    "side": "universal",
+    "requiredOnClient": true,
+    "requiredOnServer": true,
+    "dependencies": {
+        "petai": "",
+        "jaunt": ""
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "code",
+  "modid": "bettererprospecting",
+  "name": "BetterEr Prospecting",
+  "authors": [
+    "KnewOne"
+  ],
+  "contributors": [
+    "NeoB"
+  ],
+  "description": "A compilation of configurable ProPick features.",
+  "version": "3.4.5",
+  "Side": "Universal",
+  "dependencies": {
+    "game": "1.22.0"
+  }
+}

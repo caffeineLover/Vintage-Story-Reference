@@ -1,0 +1,346 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using Vintagestory.API;
+using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
+
+namespace Vintagestory.GameContent;
+
+[DocumentAsJson]
+public class BlockBehaviorCreatureContainer(Block block) : BlockBehavior(block)
+{
+	public double CreatureSurvivalDays = 2.0;
+
+	private ICoreAPI api;
+
+	private static Dictionary<string, MultiTextureMeshRef> containedMeshrefs = new Dictionary<string, MultiTextureMeshRef>();
+
+	public override void OnLoaded(ICoreAPI api)
+	{
+		this.api = api;
+	}
+
+	public bool HasAnimal(ItemStack itemStack)
+	{
+		return itemStack.Attributes?.HasAttribute("animalSerialized") ?? false;
+	}
+
+	public static double GetStillAliveDays(IWorldAccessor world, ItemStack itemStack)
+	{
+		return itemStack.Block.GetBehavior<BlockBehaviorCreatureContainer>().CreatureSurvivalDays - (world.Calendar.TotalDays - itemStack.Attributes.GetDouble("totalDaysCaught"));
+	}
+
+	public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
+	{
+		if (HasAnimal(itemstack))
+		{
+			string type = itemstack.Attributes.GetString("type", "");
+			string shapepath = itemstack.Collectible.Attributes?["creatureContainedShape"][type].AsString();
+			if (GetStillAliveDays(capi.World, itemstack) > 0.0)
+			{
+				float escapeSec = itemstack.TempAttributes.GetFloat("triesToEscape") - renderinfo.dt;
+				if (api.World.Rand.NextDouble() < 0.001)
+				{
+					escapeSec = 1f + (float)api.World.Rand.NextDouble() * 2f;
+				}
+				itemstack.TempAttributes.SetFloat("triesToEscape", escapeSec);
+				if (escapeSec > 0f)
+				{
+					if (api.World.Rand.NextDouble() < 0.05)
+					{
+						itemstack.TempAttributes.SetFloat("wiggle", 0.05f + (float)api.World.Rand.NextDouble() / 10f);
+					}
+					float wiggle = itemstack.TempAttributes.GetFloat("wiggle") - renderinfo.dt;
+					itemstack.TempAttributes.SetFloat("wiggle", wiggle);
+					if (wiggle > 0f)
+					{
+						if (shapepath != null)
+						{
+							shapepath += "-wiggle";
+						}
+						renderinfo.Transform = renderinfo.Transform.Clone();
+						float wiggleX = (float)api.World.Rand.NextDouble() * 4f - 2f;
+						float wiggleZ = (float)api.World.Rand.NextDouble() * 4f - 2f;
+						if (target != EnumItemRenderTarget.Gui)
+						{
+							wiggleX /= 25f;
+							wiggleZ /= 25f;
+						}
+						if (target == EnumItemRenderTarget.Ground)
+						{
+							wiggleX /= 4f;
+							wiggleZ /= 4f;
+						}
+						renderinfo.Transform.EnsureDefaultValues();
+						renderinfo.Transform.Translation.X += wiggleX;
+						renderinfo.Transform.Translation.Z += wiggleZ;
+					}
+				}
+			}
+			if (shapepath != null)
+			{
+				if (!containedMeshrefs.TryGetValue(shapepath + type, out var meshref))
+				{
+					Shape shape = capi.Assets.TryGet(new AssetLocation(shapepath).WithPathPrefix("shapes/").WithPathAppendixOnce(".json")).ToObject<Shape>();
+					ITexPositionSource texSource = capi.Tesselator.GetTextureSource(block);
+					if (block is BlockGenericTypedContainer)
+					{
+						texSource = new GenericContainerTextureSource
+						{
+							blockTextureSource = texSource,
+							curType = type
+						};
+					}
+					capi.Tesselator.TesselateShape("creature container shape", shape, out var meshdata, texSource, new Vec3f(0f, 270f, 0f), 0, 0, 0);
+					meshref = (containedMeshrefs[shapepath + type] = capi.Render.UploadMultiTextureMesh(meshdata));
+				}
+				renderinfo.ModelRef = meshref;
+			}
+		}
+		base.OnBeforeRender(capi, itemstack, target, ref renderinfo);
+	}
+
+	public override void OnUnloaded(ICoreAPI api)
+	{
+		foreach (KeyValuePair<string, MultiTextureMeshRef> containedMeshref in containedMeshrefs)
+		{
+			containedMeshref.Value.Dispose();
+		}
+		containedMeshrefs.Clear();
+	}
+
+	public override EnumItemStorageFlags GetStorageFlags(ItemStack itemstack, ref EnumHandling handling)
+	{
+		if (HasAnimal(itemstack))
+		{
+			handling = EnumHandling.PreventDefault;
+			return EnumItemStorageFlags.Backpack;
+		}
+		return base.GetStorageFlags(itemstack, ref handling);
+	}
+
+	public override bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)
+	{
+		ItemSlot slot = byPlayer.InventoryManager.ActiveHotbarSlot;
+		if (HasAnimal(slot.Itemstack))
+		{
+			handling = EnumHandling.PreventSubsequent;
+			if (world.Side == EnumAppSide.Client)
+			{
+				handling = EnumHandling.PreventSubsequent;
+				return false;
+			}
+			if (!ReleaseCreature(slot, blockSel, byPlayer.Entity))
+			{
+				failureCode = "creaturenotplaceablehere";
+			}
+			return false;
+		}
+		return base.TryPlaceBlock(world, byPlayer, itemstack, blockSel, ref handling, ref failureCode);
+	}
+
+	public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling, ref EnumHandling handling)
+	{
+		IServerPlayer plr = (byEntity as EntityPlayer).Player as IServerPlayer;
+		ICoreServerAPI sapi = api as ICoreServerAPI;
+		BlockPos selPos = blockSel?.Position ?? entitySel?.Position?.AsBlockPos;
+		if (selPos == null || !api.World.Claims.TryAccess((byEntity as EntityPlayer).Player, selPos, EnumBlockAccessFlags.Use))
+		{
+			return;
+		}
+		if (HasAnimal(slot.Itemstack))
+		{
+			if (blockSel == null)
+			{
+				base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handHandling, ref handling);
+				return;
+			}
+			if (!ReleaseCreature(slot, blockSel, byEntity))
+			{
+				sapi?.SendIngameError(plr, "nospace", Lang.Get("Not enough space to release animal here"));
+			}
+			handHandling = EnumHandHandling.PreventDefault;
+			handling = EnumHandling.PreventDefault;
+			slot.MarkDirty();
+		}
+		else
+		{
+			if (entitySel == null || !entitySel.Entity.Alive || entitySel.Entity is EntityBoat)
+			{
+				return;
+			}
+			if (!IsCatchableAtThisGeneration(entitySel.Entity))
+			{
+				(byEntity.Api as ICoreClientAPI)?.TriggerIngameError(this, "toowildtocatch", Lang.Get("animaltrap-toowildtocatch-error"));
+				return;
+			}
+			if (!IsCatchableInThisTrap(entitySel.Entity))
+			{
+				(byEntity.Api as ICoreClientAPI)?.TriggerIngameError(this, "notcatchable", Lang.Get("animaltrap-notcatchable-error"));
+				return;
+			}
+			handHandling = EnumHandHandling.PreventDefault;
+			handling = EnumHandling.PreventDefault;
+			ItemSlot emptyBackpackSlot = null;
+			if (slot is ItemSlotBackpack)
+			{
+				emptyBackpackSlot = slot;
+			}
+			else
+			{
+				IInventory backpackInventory = (byEntity as EntityPlayer)?.Player?.InventoryManager.GetOwnInventory("backpack");
+				if (backpackInventory != null)
+				{
+					emptyBackpackSlot = backpackInventory.Where((ItemSlot itemSlot) => itemSlot is ItemSlotBackpack).FirstOrDefault((ItemSlot itemSlot) => itemSlot.Empty);
+				}
+			}
+			if (emptyBackpackSlot == null)
+			{
+				sapi?.SendIngameError(plr, "canthold", Lang.Get("Must have empty backpack slot to catch an animal"));
+				return;
+			}
+			ItemStack leftOverBaskets = null;
+			if (slot.StackSize > 1)
+			{
+				leftOverBaskets = slot.TakeOut(slot.StackSize - 1);
+			}
+			CatchCreature(slot, entitySel.Entity);
+			slot.TryFlipWith(emptyBackpackSlot);
+			if (slot.Empty)
+			{
+				slot.Itemstack = leftOverBaskets;
+			}
+			else if (!byEntity.TryGiveItemStack(leftOverBaskets))
+			{
+				byEntity.World.SpawnItemEntity(leftOverBaskets, byEntity.Pos.XYZ);
+			}
+			slot.MarkDirty();
+			emptyBackpackSlot.MarkDirty();
+		}
+	}
+
+	private bool IsCatchableInThisTrap(Entity entity)
+	{
+		Dictionary<string, TrapChances> trapChancesByTrapType = TrapChances.FromEntityAttr(entity);
+		if (trapChancesByTrapType != null && trapChancesByTrapType.TryGetValue(block.Attributes["traptype"].AsString("small"), out var trapMeta))
+		{
+			return trapMeta.TrapChance > 0f;
+		}
+		return false;
+	}
+
+	private bool IsCatchableAtThisGeneration(Entity entity)
+	{
+		return entity.WatchedAttributes.GetAsInt("generation") >= (entity.Properties.Attributes?["trapPickupGeneration"].AsInt(5) ?? 5);
+	}
+
+	public static void CatchCreature(ItemSlot slot, Entity entity)
+	{
+		if (entity.World.Side != EnumAppSide.Client)
+		{
+			ItemStack stack = slot.Itemstack;
+			using (MemoryStream ms = new MemoryStream())
+			{
+				BinaryWriter writer = new BinaryWriter(ms);
+				entity.ToBytes(writer, forClient: false);
+				stack.Attributes.SetString("classname", entity.Api.ClassRegistry.GetEntityClassName(entity.GetType()));
+				stack.Attributes.SetString("creaturecode", entity.Code.ToShortString());
+				stack.Attributes.SetBytes("animalSerialized", ms.ToArray());
+				double totalDaysReleased = entity.Attributes.GetDouble("totalDaysReleased");
+				double caughtDays = totalDaysReleased - entity.Attributes.GetDouble("totalDaysCaught");
+				double releasedDays = entity.World.Calendar.TotalDays - totalDaysReleased;
+				double unrecoveredDays = Math.Max(0.0, caughtDays - releasedDays * 2.0);
+				stack.Attributes.SetDouble("totalDaysCaught", entity.World.Calendar.TotalDays - unrecoveredDays);
+			}
+			entity.Die(EnumDespawnReason.PickedUp);
+		}
+	}
+
+	public static bool ReleaseCreature(ItemSlot slot, BlockSelection blockSel, Entity byEntity)
+	{
+		IWorldAccessor world = byEntity.World;
+		if (world.Side == EnumAppSide.Client)
+		{
+			return true;
+		}
+		string classname = slot.Itemstack.Attributes.GetString("classname");
+		string creaturecode = slot.Itemstack.Attributes.GetString("creaturecode");
+		if (((IServerWorldAccessor)world).RemappedEntities.TryGetValue(creaturecode, out var remap))
+		{
+			creaturecode = remap;
+		}
+		Entity entity = world.Api.ClassRegistry.CreateEntity(classname);
+		EntityProperties type = world.EntityTypes.FirstOrDefault((EntityProperties entityProperties) => entityProperties.Code.ToShortString() == creaturecode);
+		if (type == null)
+		{
+			return false;
+		}
+		ItemStack stack = slot.Itemstack;
+		using (MemoryStream ms = new MemoryStream(slot.Itemstack.Attributes.GetBytes("animalSerialized")))
+		{
+			BinaryReader reader = new BinaryReader(ms);
+			entity.FromBytes(reader, isSync: false, ((IServerWorldAccessor)world).RemappedEntities);
+			Vec3d spawnPos = blockSel.FullPosition;
+			Cuboidf collisionBox = type.SpawnCollisionBox.OmniNotDownGrowBy(0.1f);
+			if (world.CollisionTester.IsColliding(world.BlockAccessor, collisionBox, spawnPos, alsoCheckTouch: false))
+			{
+				return false;
+			}
+			entity.Pos.X = (float)(blockSel.Position.X + ((!blockSel.DidOffset) ? blockSel.Face.Normali.X : 0)) + 0.5f;
+			entity.Pos.Y = blockSel.Position.Y + ((!blockSel.DidOffset) ? blockSel.Face.Normali.Y : 0);
+			entity.Pos.Z = (float)(blockSel.Position.Z + ((!blockSel.DidOffset) ? blockSel.Face.Normali.Z : 0)) + 0.5f;
+			entity.Pos.Yaw = (float)world.Rand.NextDouble() * 2f * (float)Math.PI;
+			entity.PositionBeforeFalling.Set(entity.Pos.X, entity.Pos.Y, entity.Pos.Z);
+			entity.Attributes.SetString("origin", "playerplaced");
+			entity.Attributes.SetDouble("totalDaysCaught", stack.Attributes.GetDouble("totalDaysCaught"));
+			entity.Attributes.SetDouble("totalDaysReleased", world.Calendar.TotalDays);
+			world.SpawnEntity(entity);
+			if (GetStillAliveDays(world, slot.Itemstack) < 0.0)
+			{
+				(world.Api as ICoreServerAPI).Event.EnqueueMainThreadTask(delegate
+				{
+					entity.Die(EnumDespawnReason.Death, new DamageSource
+					{
+						CauseEntity = byEntity,
+						Type = EnumDamageType.Hunger
+					});
+					entity.Properties.ResolvedSounds = null;
+				}, "die");
+			}
+			stack.Attributes.RemoveAttribute("classname");
+			stack.Attributes.RemoveAttribute("creaturecode");
+			stack.Attributes.RemoveAttribute("animalSerialized");
+			stack.Attributes.RemoveAttribute("totalDaysCaught");
+		}
+		return true;
+	}
+
+	public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+	{
+		base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+		AddCreatureInfo(inSlot.Itemstack, dsc, world);
+	}
+
+	public void AddCreatureInfo(ItemStack stack, StringBuilder dsc, IWorldAccessor world)
+	{
+		if (HasAnimal(stack))
+		{
+			if (GetStillAliveDays(world, stack) > 0.0)
+			{
+				dsc.AppendLine(Lang.Get("Contains a frightened {0}", Lang.Get("item-creature-" + stack.Attributes.GetString("creaturecode"))));
+				dsc.AppendLine(Lang.Get("It remains alive for {0:0.##} more hours", GetStillAliveDays(world, stack) * (double)world.Calendar.HoursPerDay));
+			}
+			else
+			{
+				dsc.AppendLine(Lang.Get("Contains a dead {0}", Lang.Get("item-creature-" + stack.Attributes.GetString("creaturecode"))));
+			}
+		}
+	}
+}

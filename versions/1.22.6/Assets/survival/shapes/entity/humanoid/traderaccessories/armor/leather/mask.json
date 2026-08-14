@@ -1,0 +1,117 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/trader-female",
+		"allAngles": false,
+		"entityTextureMode": true
+	},
+	"textureWidth": 64,
+	"textureHeight": 64,
+	"textureSizes": {
+	},
+	"textures": {
+		"material": "entity/humanoid/traderaccessories/armor/hallowcroft"
+	},
+	"elements": [
+		{
+			"name": "Facecover",
+			"stepParentName": "Head",
+			"from": [ -0.6, -0.1, -0.6 ],
+			"to": [ 0.4, 3.0, 5.6 ],
+			"unwrapMode": 4,
+			"autoUnwrap": false,
+			"uv": [ 13.5, 13.5 ],
+			"rotationOrigin": [ -0.6, 2.0, 2.6 ],
+			"faces": {
+				"north": { "texture": "#material", "uv": [ 13.5, 13.5, 14.5, 16.5 ] },
+				"east": { "texture": "#material", "uv": [ 21.5, 13.5, 27.5, 16.5 ] },
+				"south": { "texture": "#material", "uv": [ 20.5, 13.5, 21.5, 16.5 ] },
+				"west": { "texture": "#material", "uv": [ 14.5, 13.5, 20.5, 16.5 ] },
+				"up": { "texture": "#material", "uv": [ 14.5, 16.5, 20.5, 17.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+				"down": { "texture": "#material", "uv": [ 14.5, 16.5, 20.5, 17.5 ], "rotation": 90 }
+			},
+			"children": [
+				{
+					"name": "eyeD",
+					"from": [ 0.0, 2.0, 0.5 ],
+					"to": [ 1.0, 2.0, 5.7 ],
+					"autoUnwrap": false,
+					"uv": [ 4.5, 4.0 ],
+					"rotationOrigin": [ 0.0, 2.0, 3.1 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 0.0, 5.0, 1.0, 5.5 ], "enabled": false },
+						"east": { "texture": "#material", "uv": [ 1.0, 5.0, 6.0, 5.5 ], "enabled": false },
+						"south": { "texture": "#material", "uv": [ 6.0, 5.0, 7.0, 5.5 ], "enabled": false },
+						"west": { "texture": "#material", "uv": [ 7.0, 5.0, 12.0, 5.5 ], "enabled": false },
+						"up": { "texture": "#material", "uv": [ 15.0, 16.5, 20.0, 17.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+						"down": { "texture": "#material", "uv": [ 1.0, 0.0, 2.0, 5.0 ], "enabled": false }
+					}
+				},
+				{
+					"name": "eyeU",
+					"from": [ 0.0, 2.6, 0.5 ],
+					"to": [ 1.0, 2.6, 5.7 ],
+					"autoUnwrap": false,
+					"uv": [ 4.5, 4.0 ],
+					"rotationOrigin": [ 0.0, 2.6, 3.1 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 0.0, 5.0, 1.0, 5.5 ], "enabled": false },
+						"east": { "texture": "#material", "uv": [ 1.0, 5.0, 6.0, 5.5 ], "enabled": false },
+						"south": { "texture": "#material", "uv": [ 6.0, 5.0, 7.0, 5.5 ], "enabled": false },
+						"west": { "texture": "#material", "uv": [ 7.0, 5.0, 12.0, 5.5 ], "enabled": false },
+						"up": { "texture": "#material", "uv": [ 15.0, 16.5, 20.0, 17.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1], "enabled": false },
+						"down": { "texture": "#material", "uv": [ 15.5, 16.5, 20.5, 17.5 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+					}
+				},
+				{
+					"name": "eyeM",
+					"from": [ 0.0, 2.0, 2.1 ],
+					"to": [ 1.0, 2.6, 4.1 ],
+					"uv": [ 16.5, 17.0 ],
+					"rotationOrigin": [ 0.0, 2.0, 3.1 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 16.5, 17.0, 17.5, 17.5 ] },
+						"east": { "texture": "#material", "uv": [ 1.0, 2.0, 3.0, 2.5 ], "enabled": false },
+						"south": { "texture": "#material", "uv": [ 17.5, 17.0, 18.5, 17.5 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+						"west": { "texture": "#material", "uv": [ 4.0, 2.0, 6.0, 2.5 ], "enabled": false },
+						"up": { "texture": "#material", "uv": [ 0.0, 0.0, 1.0, 2.0 ], "enabled": false },
+						"down": { "texture": "#material", "uv": [ 1.0, 0.0, 2.0, 2.0 ], "enabled": false }
+					},
+					"children": [
+						{
+							"name": "eyeR",
+							"from": [ 0.0, 0.0, -1.6 ],
+							"to": [ 1.0, 1.0, -1.6 ],
+							"uv": [ 16.0, 16.5 ],
+							"rotationOrigin": [ 0.0, 0.0, -1.6 ],
+							"faces": {
+								"north": { "texture": "#material", "uv": [ 0.0, 0.5, 1.0, 1.5 ], "enabled": false },
+								"east": { "texture": "#material", "uv": [ 1.0, 0.5, 1.5, 1.5 ], "enabled": false },
+								"south": { "texture": "#material", "uv": [ 16.0, 16.5, 17.0, 17.5 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+								"west": { "texture": "#material", "uv": [ 2.5, 0.5, 3.0, 1.5 ], "enabled": false },
+								"up": { "texture": "#material", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+								"down": { "texture": "#material", "uv": [ 1.0, 0.0, 2.0, 0.5 ], "enabled": false }
+							}
+						},
+						{
+							"name": "eyeL",
+							"from": [ 0.0, 0.0, 3.6 ],
+							"to": [ 1.0, 1.0, 3.6 ],
+							"uv": [ 17.0, 16.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 3.6 ],
+							"faces": {
+								"north": { "texture": "#material", "uv": [ 0.0, 0.5, 1.0, 1.5 ], "enabled": false },
+								"east": { "texture": "#material", "uv": [ 1.0, 0.5, 1.5, 1.5 ], "enabled": false },
+								"south": { "texture": "#material", "uv": [ 17.0, 16.5, 18.0, 17.5 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] },
+								"west": { "texture": "#material", "uv": [ 2.5, 0.5, 3.0, 1.5 ], "enabled": false },
+								"up": { "texture": "#material", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+								"down": { "texture": "#material", "uv": [ 1.0, 0.0, 2.0, 0.5 ], "enabled": false }
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

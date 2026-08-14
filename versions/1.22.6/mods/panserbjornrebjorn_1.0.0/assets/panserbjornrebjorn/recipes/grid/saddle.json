@@ -1,0 +1,44 @@
+[
+    {
+        "ingredientPattern": "_C_,LSL,_N_",
+        "ingredients": {
+            "C": { "type": "item", "code": "game:cloth-*" },
+            "S": { "type": "item", "code": "game:hoovedwearables-middleback-saddle1" },
+            "L": { "type": "item", "code": "game:leather-normal-{color}", "quantity": 3 },
+            "N": { "type": "item", "code": "game:metalnailsandstrips-{metal}", "quantity": 2 }
+        },
+        "allowedVariants": {
+            "metal": [ "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel" ],
+            "color": [ "black", "red", "blue", "green", "orange", "plain", "purple", "white", "yellow", "gray", "pink" ]
+        },
+        "height": 3,
+        "width": 3,
+        "output": { "type": "item", "code": "saddle-hold-{color}-{metal}" }
+    },
+    {
+        "ingredientPattern": "S",
+        "ingredients": {
+            "S": { "type": "item", "code": "saddle-hold-{color}-{metal}" }
+        },
+        "allowedVariants": {
+            "metal": [ "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel" ],
+            "color": [ "black", "red", "blue", "green", "orange", "plain", "purple", "white", "yellow", "gray", "pink" ]
+        },
+        "height": 1,
+        "width": 1,
+        "output": { "type": "item", "code": "saddle-press-{color}-{metal}" }
+    },
+    {
+        "ingredientPattern": "S",
+        "ingredients": {
+            "S": { "type": "item", "code": "saddle-press-{color}-{metal}" }
+        },
+        "allowedVariants": {
+            "metal": [ "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel" ],
+            "color": [ "black", "red", "blue", "green", "orange", "plain", "purple", "white", "yellow", "gray", "pink" ]
+        },
+        "height": 1,
+        "width": 1,
+        "output": { "type": "item", "code": "saddle-hold-{color}-{metal}" }
+    }
+]

@@ -1,0 +1,21 @@
+{
+    "ingredientPattern": "_F_,FPF",
+    "ingredients": {
+        "P": {
+            "type": "item",
+            "code": "game:hide-pelt-small"
+        },
+        "F": {
+            "type": "item",
+            "code": "game:flaxfibers",
+            "quantity": 3
+        }
+    },
+    "width": 3,
+    "height": 2,
+    "output": {
+        "type": "item",
+        "code": "doghelmet-basic",
+        "quantity": 1
+    }
+}

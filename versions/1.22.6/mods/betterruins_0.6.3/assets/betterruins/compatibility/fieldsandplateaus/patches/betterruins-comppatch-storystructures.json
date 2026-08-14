@@ -1,0 +1,170 @@
+[
+  {
+    "op": "replace",
+    "path": "/structures/0/requireLandform",
+    "value": "fpcold glaciers",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/1/requireLandform",
+    "value": "fpcold glaciers",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/2/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/3/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/4/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/5/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/6/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/7/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/8/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/9/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/10/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/11/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/12/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/13/requireLandform",
+    "value": "fpcoastal flatlands",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "fieldsandplateaus"
+      }
+    ]
+  }
+]

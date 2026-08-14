@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="version.catalog.json" />
+    <None Include="API\**\*" Exclude="API\**\bin\**;API\**\obj\**" />
+    <None Include="Assets\**\*" />
+    <None Include="mods\**\*" />
+    <None Include="Web\**\*" />
+  </ItemGroup>
+</Project>

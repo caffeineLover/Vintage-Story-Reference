@@ -1,0 +1,86 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"allAngles": false,
+		"entityTextureMode": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"shoes": [16,16],
+		"beggar": [16,16]
+	},
+	"textures": {
+		"beggar": "entity/humanoid/seraphclothes/foot/beggar"
+	},
+	"elements": [
+		{
+			"name": "shoeR",
+			"stepParentName": "LowerFootR",
+			"from": [ -0.15, -0.1, -0.15 ],
+			"to": [ 4.15, 0.9, 3.15 ],
+			"autoUnwrap": false,
+			"uv": [ 0.0, 0.5 ],
+			"rotationOrigin": [ -0.1, -0.1, -0.1 ],
+			"faces": {
+				"north": { "texture": "#beggar", "uv": [ 0.0, 11.0, 4.0, 12.0 ] },
+				"east": { "texture": "#beggar", "uv": [ 11.0, 11.0, 14.0, 12.0 ] },
+				"south": { "texture": "#beggar", "uv": [ 7.0, 11.0, 11.0, 12.0 ] },
+				"west": { "texture": "#beggar", "uv": [ 4.0, 11.0, 7.0, 12.0 ] },
+				"up": { "texture": "#beggar", "uv": [ 0.0, 0.5, 4.0, 3.5 ] },
+				"down": { "texture": "#beggar", "uv": [ 0.0, 4.0, 3.0, 8.0 ], "rotation": 90 }
+			},
+			"children": [
+				{
+					"name": "wrapR",
+					"from": [ 0.05, 1.0, 0.05 ],
+					"to": [ 4.25, 4.0, 3.25 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 5.0 ],
+					"rotationOrigin": [ 0.0, 1.0, 2.0 ],
+					"faces": {
+						"north": { "texture": "#beggar", "uv": [ 0.0, 8.0, 4.0, 11.0 ] },
+						"east": { "texture": "#beggar", "uv": [ 11.0, 8.0, 14.0, 11.0 ] },
+						"south": { "texture": "#beggar", "uv": [ 7.0, 8.0, 11.0, 11.0 ] },
+						"west": { "texture": "#beggar", "uv": [ 4.0, 8.0, 7.0, 11.0 ] }
+					}
+				}
+			]
+		},
+		{
+			"name": "shoeL",
+			"stepParentName": "LowerFootL",
+			"from": [ -0.15, -0.1, -0.15 ],
+			"to": [ 4.15, 0.9, 3.15 ],
+			"autoUnwrap": false,
+			"uv": [ 0.0, 0.5 ],
+			"rotationOrigin": [ -0.1, -0.1, -0.1 ],
+			"faces": {
+				"north": { "texture": "#beggar", "uv": [ 0.0, 15.0, 4.0, 16.0 ] },
+				"east": { "texture": "#beggar", "uv": [ 11.0, 15.0, 14.0, 16.0 ] },
+				"south": { "texture": "#beggar", "uv": [ 7.0, 15.0, 11.0, 16.0 ] },
+				"west": { "texture": "#beggar", "uv": [ 4.0, 15.0, 7.0, 16.0 ] },
+				"up": { "texture": "#beggar", "uv": [ 4.5, 0.5, 8.5, 3.5 ] },
+				"down": { "texture": "#beggar", "uv": [ 4.0, 4.0, 7.0, 8.0 ], "rotation": 90 }
+			},
+			"children": [
+				{
+					"name": "wrapL",
+					"from": [ 0.05, 1.0, 0.05 ],
+					"to": [ 4.25, 4.0, 3.25 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 9.0 ],
+					"rotationOrigin": [ 0.1, 1.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#beggar", "uv": [ 0.0, 12.0, 4.0, 15.0 ] },
+						"east": { "texture": "#beggar", "uv": [ 11.0, 12.0, 14.0, 15.0 ] },
+						"south": { "texture": "#beggar", "uv": [ 7.0, 12.0, 11.0, 15.0 ] },
+						"west": { "texture": "#beggar", "uv": [ 4.0, 12.0, 7.0, 15.0 ] }
+					}
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

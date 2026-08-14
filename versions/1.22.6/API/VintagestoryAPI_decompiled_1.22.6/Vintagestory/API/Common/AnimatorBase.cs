@@ -1,0 +1,280 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
+
+namespace Vintagestory.API.Common;
+
+/// <summary>
+/// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts, progresses and stops animations when necessary 
+/// </summary>
+public abstract class AnimatorBase : IAnimator
+{
+	public static readonly float[] identMat = Mat4f.Create();
+
+	public static readonly HashSet<string> logAntiSpam = new HashSet<string>();
+
+	private WalkSpeedSupplierDelegate WalkSpeedSupplier;
+
+	private Action<string> onAnimationStoppedListener;
+
+	protected int activeAnimCount;
+
+	public ShapeElement[] RootElements;
+
+	public List<ElementPose> RootPoses;
+
+	/// <summary>
+	/// A RunningAnimation object for each of the possible Animations for this object
+	/// </summary>
+	public RunningAnimation[] anims;
+
+	private readonly Dictionary<string, RunningAnimation> animsByCode;
+
+	/// <summary>
+	/// We skip the last row - https://stackoverflow.com/questions/32565827/whats-the-purpose-of-magic-4-of-last-row-in-matrix-4x4-for-3d-graphics 
+	/// </summary>
+	public float[] TransformationMatrices;
+
+	/// <summary>
+	/// The entity's default pose. Meaning for most elements this is the identity matrix, with exception of individually controlled elements such as the head.
+	/// </summary>
+	public float[] TransformationMatricesDefaultPose;
+
+	public Dictionary<string, AttachmentPointAndPose> AttachmentPointByCode = new Dictionary<string, AttachmentPointAndPose>();
+
+	public RunningAnimation[] CurAnims = new RunningAnimation[20];
+
+	private readonly List<RunningAnimation> activeOrRunning = new List<RunningAnimation>(2);
+
+	public Entity entityForLogging;
+
+	private float accum = 0.25f;
+
+	private double walkSpeed;
+
+	public bool CalculateMatrices { get; set; } = true;
+
+	public float[] Matrices
+	{
+		get
+		{
+			if (activeAnimCount <= 0)
+			{
+				return TransformationMatricesDefaultPose;
+			}
+			return TransformationMatrices;
+		}
+	}
+
+	public int ActiveAnimationCount => activeAnimCount;
+
+	[Obsolete("Use Animations instead")]
+	public RunningAnimation[] RunningAnimations => Animations;
+
+	public RunningAnimation[] Animations => anims;
+
+	public abstract int MaxJointId { get; }
+
+	public RunningAnimation GetAnimationState(string code)
+	{
+		if (code == null)
+		{
+			return null;
+		}
+		animsByCode.TryGetValue(code.ToLowerInvariant(), out var anim);
+		return anim;
+	}
+
+	public AnimatorBase(WalkSpeedSupplierDelegate WalkSpeedSupplier, Animation[] Animations, Action<string> onAnimationStoppedListener = null)
+	{
+		this.WalkSpeedSupplier = WalkSpeedSupplier;
+		this.onAnimationStoppedListener = onAnimationStoppedListener;
+		RunningAnimation[] anims = (this.anims = ((Animations == null) ? Array.Empty<RunningAnimation>() : new RunningAnimation[Animations.Length]));
+		animsByCode = new Dictionary<string, RunningAnimation>(anims.Length);
+		Dictionary<string, RunningAnimation> animsByCodeLocal = animsByCode;
+		for (int i = 0; i < anims.Length; i++)
+		{
+			Animation Anim = Animations[i];
+			Anim.Code = Anim.Code.ToLowerInvariant();
+			RunningAnimation newAnim = (anims[i] = new RunningAnimation
+			{
+				Animation = Anim
+			});
+			animsByCodeLocal[Anim.Code] = newAnim;
+		}
+	}
+
+	public virtual void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
+	{
+		activeAnimCount = 0;
+		if ((accum += dt) > 0.25f)
+		{
+			walkSpeed = ((WalkSpeedSupplier == null) ? 1.0 : WalkSpeedSupplier());
+			accum = 0f;
+		}
+		string missingAnimCode = null;
+		foreach (string code in activeAnimationsByAnimCode.Keys)
+		{
+			if (!animsByCode.TryGetValue(code.ToLowerInvariant(), out var anim))
+			{
+				missingAnimCode = code;
+			}
+			else if (!anim.Active)
+			{
+				AnimNowActive(anim, activeAnimationsByAnimCode[code]);
+			}
+		}
+		if (missingAnimCode != null)
+		{
+			activeAnimationsByAnimCode.Remove(missingAnimCode);
+			if (entityForLogging != null)
+			{
+				string entityCode = entityForLogging.Code.ToShortString();
+				string logRecord = entityCode + "|" + missingAnimCode;
+				if (logAntiSpam.Add(logRecord))
+				{
+					entityForLogging.World.Logger.Debug(entityCode + " attempted to play an animation code which its shape does not have: \"" + missingAnimCode + "\"");
+				}
+			}
+		}
+		List<RunningAnimation> activeAnims = activeOrRunning;
+		for (int i = activeAnims.Count - 1; i >= 0; i--)
+		{
+			RunningAnimation anim2 = activeAnims[i];
+			if (anim2.Active && !activeAnimationsByAnimCode.ContainsKey(anim2.Animation.Code))
+			{
+				anim2.Active = false;
+				EnumEntityActivityStoppedHandling onActivityStopped = anim2.Animation.OnActivityStopped;
+				if (onActivityStopped == EnumEntityActivityStoppedHandling.Rewind)
+				{
+					anim2.ShouldRewind = true;
+				}
+				if (onActivityStopped == EnumEntityActivityStoppedHandling.Stop)
+				{
+					anim2.Stop();
+					onAnimationStoppedListener?.Invoke(anim2.Animation.Code);
+				}
+				if (onActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd)
+				{
+					anim2.ShouldPlayTillEnd = true;
+				}
+			}
+			if (anim2.Running && !ProgressRunningAnimation(anim2, dt))
+			{
+				string Code = anim2.Animation.Code;
+				activeAnimationsByAnimCode.Remove(Code);
+				onAnimationStoppedListener?.Invoke(Code);
+			}
+			if (!anim2.Active && !anim2.Running)
+			{
+				activeAnims.RemoveAt(i);
+			}
+		}
+		calculateMatrices(dt);
+	}
+
+	/// <summary>
+	/// The return value of false indicates the animation stopped, and requires removal from activeAnimationsByAnimCode this tick
+	/// (it could also stop and be removed NEXT tick...)
+	/// </summary>
+	/// <param name="anim"></param>
+	/// <param name="dt"></param>
+	/// <returns>False if the animation should immediately stop; true otherwise</returns>
+	private bool ProgressRunningAnimation(RunningAnimation anim, float dt)
+	{
+		EnumEntityAnimationEndHandling onAnimationEnd = anim.Animation.OnAnimationEnd;
+		EnumEntityActivityStoppedHandling onActivityStopped = anim.Animation.OnActivityStopped;
+		bool shouldStop = false;
+		if (anim.Iterations > 0)
+		{
+			shouldStop = onAnimationEnd == EnumEntityAnimationEndHandling.Stop || (!anim.Active && (onActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd || onActivityStopped == EnumEntityActivityStoppedHandling.EaseOut) && anim.EasingFactor < 0.002f) || (onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut && anim.EasingFactor < 0.0005f);
+		}
+		else if (anim.Iterations < 0)
+		{
+			shouldStop = !anim.Active && onActivityStopped == EnumEntityActivityStoppedHandling.Rewind && anim.EasingFactor < 0.002f;
+		}
+		if (shouldStop)
+		{
+			anim.Stop();
+			if (onAnimationEnd == EnumEntityAnimationEndHandling.Stop || onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)
+			{
+				return false;
+			}
+			return true;
+		}
+		CurAnims[activeAnimCount++] = anim;
+		if (anim.Iterations != 0 && ((!anim.Active && onAnimationEnd == EnumEntityAnimationEndHandling.Hold) || onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut))
+		{
+			anim.EaseOut(dt);
+		}
+		anim.Progress(dt, (float)walkSpeed);
+		return true;
+	}
+
+	public virtual string DumpCurrentState()
+	{
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < anims.Length; i++)
+		{
+			RunningAnimation anim = anims[i];
+			if (anim.Active && anim.Running)
+			{
+				sb.Append("Active&Running: " + anim.Animation.Code);
+			}
+			else if (anim.Active)
+			{
+				sb.Append("Active: " + anim.Animation.Code);
+			}
+			else
+			{
+				if (!anim.Running)
+				{
+					continue;
+				}
+				sb.Append("Running: " + anim.Animation.Code);
+			}
+			sb.Append(", easing: " + anim.EasingFactor);
+			sb.Append(", currentframe: " + anim.CurrentFrame);
+			sb.Append(", iterations: " + anim.Iterations);
+			sb.Append(", blendedweight: " + anim.BlendedWeight);
+			sb.Append(", animmetacode: " + anim.meta.Code);
+			sb.AppendLine();
+		}
+		return sb.ToString();
+	}
+
+	protected virtual void AnimNowActive(RunningAnimation anim, AnimationMetaData animData)
+	{
+		anim.Running = true;
+		anim.Active = true;
+		if (!activeOrRunning.Contains(anim))
+		{
+			activeOrRunning.Add(anim);
+		}
+		anim.meta = animData;
+		anim.ShouldRewind = false;
+		anim.ShouldPlayTillEnd = false;
+		anim.CurrentFrame = animData.StartFrameOnce;
+		animData.StartFrameOnce = 0f;
+	}
+
+	protected abstract void calculateMatrices(float dt);
+
+	public AttachmentPointAndPose GetAttachmentPointPose(string code)
+	{
+		AttachmentPointByCode.TryGetValue(code, out var apap);
+		return apap;
+	}
+
+	public virtual ElementPose GetPosebyName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+	{
+		throw new NotImplementedException();
+	}
+
+	public virtual void ReloadAttachmentPoints()
+	{
+		throw new NotImplementedException();
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/villager-male",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 48,
+	"textureHeight": 48,
+	"textureSizes": {
+		"hair": [48,48],
+		"birch": [16,16]
+	},
+	"textures": {
+		"hair": "entity/humanoid/seraphskinparts/hair/eerieblack"
+	},
+	"elements": [
+		{
+			"name": "Hair-Base",
+			"stepParentName": "Head",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 5.5, 5.0, 5.0 ],
+			"uv": [ 0.0, 0.0 ],
+			"faces": {
+				"north": { "texture": "#hair", "uv": [ 0.0, 5.0, 5.0, 10.0 ], "enabled": false },
+				"east": { "texture": "#hair", "uv": [ 5.0, 5.0, 10.0, 10.0 ], "enabled": false },
+				"south": { "texture": "#hair", "uv": [ 10.0, 5.0, 15.0, 10.0 ], "enabled": false },
+				"west": { "texture": "#hair", "uv": [ 15.0, 5.0, 20.0, 10.0 ], "enabled": false },
+				"up": { "texture": "#hair", "uv": [ 0.0, 0.0, 5.0, 5.0 ], "enabled": false },
+				"down": { "texture": "#hair", "uv": [ 5.0, 0.0, 10.0, 5.0 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "HairBaseRight",
+					"from": [ -0.2, -0.3, -0.1 ],
+					"to": [ 5.6, 5.2, 1.9 ],
+					"autoUnwrap": false,
+					"uv": [ 1.5, 10.5 ],
+					"rotationOrigin": [ -0.2, 2.9, 2.3 ],
+					"rotationX": 0.9986,
+					"faces": {
+						"north": { "texture": "#hair", "uv": [ 0.0, 10.5, 5.5, 16.0 ] },
+						"east": { "texture": "#hair", "uv": [ 10.0, 0.0, 12.0, 5.5 ] },
+						"south": { "texture": "#null", "uv": [ 7.5, 2.0, 13.0, 7.5 ], "enabled": false },
+						"west": { "texture": "#hair", "uv": [ 5.5, 0.0, 7.5, 5.5 ] },
+						"up": { "texture": "#hair", "uv": [ 19.5, 11.0, 25.0, 13.0 ] },
+						"down": { "texture": "#null", "uv": [ 5.5, 0.0, 11.0, 2.0 ], "enabled": false }
+					}
+				},
+				{
+					"name": "HairBaseLeft",
+					"from": [ -0.2, -0.3, 3.15 ],
+					"to": [ 5.6, 5.2, 5.15 ],
+					"autoUnwrap": false,
+					"uv": [ 1.5, 10.5 ],
+					"rotationOrigin": [ -0.2, -0.3, 3.15 ],
+					"rotationX": -0.9986,
+					"faces": {
+						"north": { "texture": "#null", "uv": [ 0.0, 2.0, 5.5, 7.5 ], "enabled": false },
+						"east": { "texture": "#hair", "uv": [ 5.5, 0.0, 7.5, 5.5 ] },
+						"south": { "texture": "#hair", "uv": [ 0.0, 10.5, 5.5, 16.0 ] },
+						"west": { "texture": "#hair", "uv": [ 10.0, 0.0, 12.0, 5.5 ] },
+						"up": { "texture": "#hair", "uv": [ 19.5, 11.0, 25.0, 13.0 ], "rotation": 180 },
+						"down": { "texture": "#null", "uv": [ 5.5, 0.0, 11.0, 2.0 ], "enabled": false }
+					}
+				}
+			]
+		}
+	]}

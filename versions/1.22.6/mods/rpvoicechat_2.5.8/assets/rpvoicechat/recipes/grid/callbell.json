@@ -1,0 +1,23 @@
+{
+  "name": "callbell",
+  "enabled": true,
+  "ingredientPattern": "P,B",
+  "ingredients": {
+    "P": {
+      "type": "item",
+      "code": "rpvoicechat:smallbellparts-silver",
+      "quantity": 1
+    },
+    "B": {
+      "type": "item",
+      "code": "game:metalplate-lead",
+      "quantity": 1
+    }
+  },
+  "width": 1,
+  "height": 2,
+  "output": {
+    "type": "block",
+    "code": "rpvoicechat:callbell"
+  }
+}

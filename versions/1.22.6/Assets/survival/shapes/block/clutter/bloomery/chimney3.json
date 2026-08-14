@@ -1,0 +1,145 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"chimney": "block/clay/bloomery/aged/chimney",
+		"inside": "block/clay/bloomery/aged/inside"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#chimney", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"east": { "texture": "#chimney", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"south": { "texture": "#chimney", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"west": { "texture": "#chimney", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"up": { "texture": "#chimney", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"down": { "texture": "#chimney", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "S base",
+					"from": [ -4.5, -0.1, 4.0 ],
+					"to": [ 2.5, 4.9, 7.0 ],
+					"rotationOrigin": [ -1.0, 2.4, 5.0 ],
+					"rotationY": -11.0,
+					"rotationZ": -3.0,
+					"faces": {
+						"north": { "texture": "#inside", "uv": [ 4.0, 6.0, 11.0, 11.0 ] },
+						"east": { "texture": "#chimney", "uv": [ 1.0, 4.0, 6.0, 7.0 ], "rotation": 90 },
+						"south": { "texture": "#chimney", "uv": [ 0.5, 3.0, 7.5, 8.0 ] },
+						"west": { "texture": "#chimney", "uv": [ 9.0, 4.0, 14.0, 7.0 ], "rotation": 90 },
+						"up": { "texture": "#chimney", "uv": [ 4.0, 8.0, 11.0, 11.0 ] },
+						"down": { "texture": "#chimney", "uv": [ 3.5, 0.5, 10.5, 3.5 ] }
+					}
+				},
+				{
+					"name": "N base",
+					"from": [ -5.0, 0.0, -7.0 ],
+					"to": [ 3.0, 5.0, -4.0 ],
+					"rotationOrigin": [ -1.0, 2.5, -5.0 ],
+					"rotationY": -39.0,
+					"faces": {
+						"north": { "texture": "#chimney", "uv": [ 7.0, 11.0, 15.0, 16.0 ] },
+						"east": { "texture": "#chimney", "uv": [ 0.0, 0.0, 3.0, 5.0 ] },
+						"south": { "texture": "#inside", "uv": [ 4.0, 11.0, 12.0, 16.0 ] },
+						"west": { "texture": "#chimney", "uv": [ 0.0, 0.0, 3.0, 5.0 ] },
+						"up": { "texture": "#chimney", "uv": [ 4.0, 8.0, 12.0, 11.0 ] },
+						"down": { "texture": "#chimney", "uv": [ 0.0, 0.0, 8.0, 3.0 ] }
+					}
+				},
+				{
+					"name": "E base1",
+					"from": [ 4.0, -1.1, -7.0 ],
+					"to": [ 7.0, 3.9, 1.0 ],
+					"rotationOrigin": [ 5.5, 1.4, -3.0 ],
+					"rotationY": 8.0,
+					"rotationZ": 89.0,
+					"faces": {
+						"north": { "texture": "#chimney", "uv": [ 1.0, 4.0, 6.0, 7.0 ], "rotation": 90 },
+						"east": { "texture": "#chimney", "uv": [ 7.0, 11.0, 15.0, 16.0 ] },
+						"south": { "texture": "#chimney", "uv": [ 9.5, 4.0, 14.5, 7.0 ], "rotation": 90 },
+						"west": { "texture": "#inside", "uv": [ 2.0, 9.0, 10.0, 14.0 ] },
+						"up": { "texture": "#chimney", "uv": [ 0.0, 4.0, 8.0, 7.0 ], "rotation": 90 },
+						"down": { "texture": "#chimney", "uv": [ 3.0, 0.5, 11.0, 3.5 ], "rotation": 90 }
+					}
+				},
+				{
+					"name": "S top",
+					"from": [ -5.5, 4.6, 2.0 ],
+					"to": [ 3.5, 9.6, 5.0 ],
+					"rotationOrigin": [ -1.0, 6.6, 4.0 ],
+					"rotationX": -19.0,
+					"rotationY": -36.0,
+					"rotationZ": 3.0,
+					"faces": {
+						"north": { "texture": "#inside", "uv": [ 5.0, 3.0, 14.0, 8.0 ] },
+						"east": { "texture": "#chimney", "uv": [ 2.5, 3.0, 5.5, 8.0 ] },
+						"south": { "texture": "#chimney", "uv": [ 3.0, 7.0, 12.0, 12.0 ] },
+						"west": { "texture": "#chimney", "uv": [ 11.5, 11.0, 14.5, 16.0 ] },
+						"up": { "texture": "#chimney", "uv": [ 3.0, 0.5, 12.0, 3.5 ] },
+						"down": { "texture": "#inside", "uv": [ 7.0, 13.0, 16.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "N top",
+					"from": [ -4.0, 3.0, -3.0 ],
+					"to": [ 5.0, 8.0, 0.0 ],
+					"rotationOrigin": [ 0.5, 5.0, -1.0 ],
+					"rotationX": 8.0,
+					"rotationY": -66.0,
+					"rotationZ": -50.0,
+					"faces": {
+						"north": { "texture": "#chimney", "uv": [ 3.0, 7.5, 12.0, 12.5 ] },
+						"east": { "texture": "#chimney", "uv": [ 10.0, 4.0, 15.0, 7.0 ], "rotation": 90 },
+						"south": { "texture": "#inside", "uv": [ 1.0, 2.0, 10.0, 7.0 ] },
+						"west": { "texture": "#chimney", "uv": [ 5.0, 8.5, 10.0, 11.5 ], "rotation": 90 },
+						"up": { "texture": "#chimney", "uv": [ 3.0, 8.0, 12.0, 11.0 ] },
+						"down": { "texture": "#inside", "uv": [ 7.0, 13.0, 16.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "W top1",
+					"from": [ -6.0, -1.5, -6.0 ],
+					"to": [ -3.0, 3.5, 1.0 ],
+					"rotationOrigin": [ -4.0, 0.5, -2.6 ],
+					"rotationX": 3.0,
+					"rotationY": -6.0,
+					"rotationZ": -44.0,
+					"faces": {
+						"north": { "texture": "#chimney", "uv": [ 1.0, 3.5, 6.0, 6.5 ], "rotation": 90 },
+						"east": { "texture": "#inside", "uv": [ 4.0, 7.0, 11.0, 12.0 ] },
+						"south": { "texture": "#chimney", "uv": [ 1.0, 4.0, 6.0, 7.0 ], "rotation": 90 },
+						"west": { "texture": "#chimney", "uv": [ 8.0, 11.0, 15.0, 16.0 ] },
+						"up": { "texture": "#chimney", "uv": [ 8.0, 4.0, 15.0, 7.0 ], "rotation": 90 },
+						"down": { "texture": "#inside", "uv": [ 11.0, 2.0, 14.0, 9.0 ] }
+					}
+				},
+				{
+					"name": "E base2",
+					"from": [ 4.0, -0.1, 1.0 ],
+					"to": [ 7.0, 4.9, 7.0 ],
+					"rotationOrigin": [ 5.5, 1.9, 4.0 ],
+					"rotationX": -3.0,
+					"rotationY": -11.0,
+					"faces": {
+						"north": { "texture": "#chimney", "uv": [ 1.0, 4.0, 6.0, 7.0 ], "rotation": 90 },
+						"east": { "texture": "#chimney", "uv": [ 7.0, 11.0, 13.0, 16.0 ] },
+						"south": { "texture": "#chimney", "uv": [ 9.5, 4.0, 14.5, 7.0 ], "rotation": 90 },
+						"west": { "texture": "#inside", "uv": [ 2.0, 9.0, 8.0, 14.0 ] },
+						"up": { "texture": "#chimney", "uv": [ 0.0, 4.0, 6.0, 7.0 ], "rotation": 90 },
+						"down": { "texture": "#chimney", "uv": [ 3.0, 0.5, 9.0, 3.5 ], "rotation": 90 }
+					}
+				}
+			]
+		}
+	]}

@@ -1,0 +1,28 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"chunk": "item/food/meat/raw"
+	},
+	"elements": [
+		{
+			"name": "bait1",
+			"from": [ 7.2, 0.0, 7.5 ],
+			"to": [ 8.8, 1.0, 8.5 ],
+			"rotationOrigin": [ 7.2, 0.0, 7.5 ],
+			"faces": {
+				"north": { "texture": "#chunk", "uv": [ 5.5, 2.0, 7.0, 3.0 ] },
+				"east": { "texture": "#chunk", "uv": [ 5.5, 4.5, 6.5, 5.5 ] },
+				"south": { "texture": "#chunk", "uv": [ 3.5, 3.5, 5.0, 4.5 ] },
+				"west": { "texture": "#chunk", "uv": [ 3.0, 3.5, 4.0, 4.5 ] },
+				"up": { "texture": "#chunk", "uv": [ 2.0, 3.0, 3.5, 4.0 ] },
+				"down": { "texture": "#chunk", "uv": [ 3.5, 5.5, 5.0, 6.5 ] }
+			}
+		}
+	]}

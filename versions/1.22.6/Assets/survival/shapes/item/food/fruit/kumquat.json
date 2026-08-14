@@ -1,0 +1,131 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 4,
+	"textureHeight": 4,
+	"textureSizes": {
+		"kumquat": [4,4],
+		"fruitleaves": [16,16],
+		"branch": [4,4]
+	},
+	"textures": {
+		"branch": "item/food/fruit/branch",
+		"fruitleaves": "item/food/fruit/fruitleaves",
+		"kumquat": "item/food/fruit/kumquat"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "fruit1",
+					"from": [ 0.0, 0.0, -3.0 ],
+					"to": [ 2.5, 3.0, -0.5 ],
+					"rotationOrigin": [ 1.25, 1.5, -1.75 ],
+					"rotationY": 8.0,
+					"faces": {
+						"north": { "texture": "#kumquat", "uv": [ 0.5, 0.5, 3.0, 3.5 ] },
+						"east": { "texture": "#kumquat", "uv": [ 1.0, 0.5, 3.5, 3.5 ] },
+						"south": { "texture": "#kumquat", "uv": [ 0.0, 0.0, 2.5, 3.0 ] },
+						"west": { "texture": "#kumquat", "uv": [ 0.5, 0.0, 3.0, 3.0 ] },
+						"up": { "texture": "#kumquat", "uv": [ 0.5, 0.0, 3.0, 2.5 ] },
+						"down": { "texture": "#kumquat", "uv": [ 1.0, 0.0, 3.5, 2.5 ] }
+					},
+					"children": [
+						{
+							"name": "stem1",
+							"from": [ 1.0, 2.5, 1.0 ],
+							"to": [ 1.5, 3.5, 1.5 ],
+							"rotationOrigin": [ 1.0, 3.0, 1.0 ],
+							"faces": {
+								"north": { "texture": "#branch", "uv": [ 1.5, 1.0, 2.0, 2.0 ] },
+								"east": { "texture": "#branch", "uv": [ 2.5, 2.0, 3.0, 3.0 ] },
+								"south": { "texture": "#branch", "uv": [ 1.5, 1.5, 2.0, 2.5 ] },
+								"west": { "texture": "#branch", "uv": [ 2.5, 0.0, 3.0, 1.0 ] },
+								"up": { "texture": "#branch", "uv": [ 0.0, 0.5, 0.5, 1.0 ] }
+							}
+						},
+						{
+							"name": "leaf1",
+							"from": [ 0.5, 2.8, 1.0 ],
+							"to": [ 3.0, 6.3, 1.0 ],
+							"renderPass": 3,
+							"rotationOrigin": [ 1.0, 3.5, 1.0 ],
+							"rotationX": -50.0,
+							"rotationZ": -11.0,
+							"faces": {
+								"south": { "texture": "#fruitleaves", "uv": [ 5.0, 0.0, 7.5, 3.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "fruit2",
+					"from": [ -3.0, 0.0, -2.0 ],
+					"to": [ -0.5, 2.5, 1.0 ],
+					"rotationOrigin": [ -1.75, 1.25, -0.5 ],
+					"rotationY": 17.0,
+					"faces": {
+						"north": { "texture": "#kumquat", "uv": [ 1.0, 0.0, 3.5, 2.5 ] },
+						"east": { "texture": "#kumquat", "uv": [ 0.0, 1.0, 3.0, 3.5 ] },
+						"south": { "texture": "#kumquat", "uv": [ 0.5, 0.0, 3.0, 2.5 ] },
+						"west": { "texture": "#kumquat", "uv": [ 0.0, 1.0, 3.0, 3.5 ] },
+						"up": { "texture": "#kumquat", "uv": [ 0.5, 0.5, 3.0, 3.5 ] },
+						"down": { "texture": "#kumquat", "uv": [ 1.0, 0.5, 3.5, 3.5 ] }
+					},
+					"children": [
+						{
+							"name": "stem2",
+							"from": [ 1.0, 1.0, 3.0 ],
+							"to": [ 1.5, 1.4, 4.0 ],
+							"rotationOrigin": [ 1.0, 1.0, 3.0 ],
+							"faces": {
+								"east": { "texture": "#branch", "uv": [ 2.0, 0.0, 3.0, 0.5 ] },
+								"south": { "texture": "#branch", "uv": [ 0.5, 0.5, 1.0, 1.0 ] },
+								"west": { "texture": "#branch", "uv": [ 1.5, 3.0, 2.5, 3.5 ] },
+								"up": { "texture": "#branch", "uv": [ 2.0, 1.5, 2.5, 2.5 ] },
+								"down": { "texture": "#branch", "uv": [ 1.0, 1.0, 1.5, 2.0 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "fruit3",
+					"from": [ -0.1, 0.0, 0.2 ],
+					"to": [ 2.9, 2.5, 2.7 ],
+					"rotationOrigin": [ 1.4, 1.25, 1.45 ],
+					"rotationY": 36.0,
+					"faces": {
+						"north": { "texture": "#kumquat", "uv": [ 0.5, 0.0, 3.5, 2.5 ] },
+						"east": { "texture": "#kumquat", "uv": [ 0.0, 1.0, 2.5, 3.5 ] },
+						"south": { "texture": "#kumquat", "uv": [ 0.0, 0.5, 3.0, 3.0 ] },
+						"west": { "texture": "#kumquat", "uv": [ 0.0, 0.0, 2.5, 2.5 ] },
+						"up": { "texture": "#kumquat", "uv": [ 0.0, 0.0, 3.0, 2.5 ] },
+						"down": { "texture": "#kumquat", "uv": [ 0.5, 1.0, 3.5, 3.5 ] }
+					},
+					"children": [
+						{
+							"name": "stem3",
+							"from": [ 2.5, 1.0, 1.0 ],
+							"to": [ 3.5, 1.5, 1.5 ],
+							"rotationOrigin": [ 3.0, 1.0, 1.0 ],
+							"faces": {
+								"north": { "texture": "#branch", "uv": [ 1.0, 1.0, 2.0, 1.5 ] },
+								"east": { "texture": "#branch", "uv": [ 2.0, 2.5, 2.5, 3.0 ] },
+								"south": { "texture": "#branch", "uv": [ 0.5, 1.5, 1.5, 2.0 ] },
+								"up": { "texture": "#branch", "uv": [ 1.0, 3.0, 2.0, 3.5 ] },
+								"down": { "texture": "#branch", "uv": [ 1.5, 3.0, 2.5, 3.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

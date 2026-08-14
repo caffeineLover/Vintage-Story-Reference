@@ -1,0 +1,84 @@
+{
+	"code": "doghelmet",
+	"shape": {
+		"base": "armor/helmet/inventory/doghelmet-{type}"
+	},
+	"attributes": {
+		"attachableToEntity": {
+			"categoryCode": "helmet-dog",
+			"attachedShapeBySlotCode": {
+				"helmet-wolf": {
+					"base": "wolftaming:armor/helmet/dog-wolf/doghelmet-{type}"
+				},
+				"helmet-hunting": {
+					"base": "wolftaming:armor/helmet/dog-hunting/doghelmet-{type}"
+				},
+				"helmet-shepherd": {
+					"base": "wolftaming:armor/helmet/dog-wolf/doghelmet-{type}"
+				},
+				"helmet-peach": {
+					"base": "wolftaming:armor/helmet/dog-wolf/doghelmet-{type}"
+				}
+			}
+		},
+		"damageReductionByType": {
+			"*-basic": 0.3,
+			"*-copper": 0.3,
+			"*-tinbronze": 0.4,
+			"*-iron": 0.5
+		}
+	},
+	"maxstacksize": 1,
+	"variantgroups": [
+		{
+			"code": "type",
+			"states": [
+				"basic",
+				"copper",
+				"tinbronze",
+				"iron"
+			]
+		}
+	],
+	"creativeinventory": {
+		"general": [
+			"*"
+		],
+		"items": [
+			"*"
+		],
+		"clothing": [
+			"*"
+		]
+	},
+	"guiTransform": {
+		"translation": {
+			"x": -4,
+			"y": 6,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 158,
+			"z": -180
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 2.34
+	},
+		"tpHandTransform": {
+		"translation": { "x": -0.2, "y": -0.3, "z": -0.2 },
+		"rotation": { "x": 0, "y": -180, "z": 30 },
+		"origin": { "x": 0, "y": 0, "z": 0 },
+		"scale": 0.55
+	},
+		"groundTransform": {
+		"translation": { "x": 0, "y": 0, "z": 0 },
+		"rotation": { "x": 0, "y": 0, "z": 0 },
+		"origin": { "x": 0, "y": 0, "z": 0 },
+		"scale": 4
+	}
+}

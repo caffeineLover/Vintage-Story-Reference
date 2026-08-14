@@ -1,0 +1,90 @@
+{
+	"editor": {
+		"backDropShape": "block/cluttertest/locust-bronze-cargo1",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"color": "block/cloth/linen/normal1",
+		"oak": "block/wood/oak"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"stepParentName": "floor",
+			"from": [ 8.0, 0.0, 3.0 ],
+			"to": [ 8.0, 0.0, 3.0 ],
+			"rotationOrigin": [ 1.0, 0.0, 3.0 ],
+			"rotationZ": 16.0,
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "plank",
+					"from": [ -7.3, 0.5, -2.0 ],
+					"to": [ 2.7, 1.0, 1.0 ],
+					"rotationOrigin": [ -7.3, 0.0, -0.5 ],
+					"faces": {
+						"north": { "texture": "#oak", "uv": [ 0.0, 0.0, 0.5, 10.0 ], "rotation": 90 },
+						"east": { "texture": "#oak", "uv": [ 2.5, 12.5, 3.0, 15.5 ], "rotation": 90 },
+						"south": { "texture": "#oak", "uv": [ 0.0, 0.0, 0.5, 10.0 ], "rotation": 90 },
+						"west": { "texture": "#oak", "uv": [ 0.0, 0.0, 3.0, 0.5 ] },
+						"up": { "texture": "#oak", "uv": [ 0.0, 0.0, 3.0, 10.0 ], "rotation": 90 },
+						"down": { "texture": "#oak", "uv": [ 0.0, 0.0, 3.0, 10.0 ], "rotation": 90 }
+					},
+					"children": [
+						{
+							"name": "Cloth-bolt",
+							"from": [ 0.7, -0.5, -0.5 ],
+							"to": [ 9.3, 1.0, 3.5 ],
+							"rotationOrigin": [ 6.7, -0.5, 2.0 ],
+							"faces": {
+								"north": { "texture": "#color", "uv": [ 1.5, 9.5, 10.0, 11.0 ] },
+								"east": { "texture": "#color", "uv": [ 3.5, 7.5, 7.5, 9.0 ] },
+								"south": { "texture": "#color", "uv": [ 3.0, 6.0, 11.5, 7.5 ] },
+								"west": { "texture": "#color", "uv": [ 4.0, 7.0, 8.0, 8.5 ] },
+								"up": { "texture": "#color", "uv": [ 2.5, 5.0, 11.0, 9.0 ] },
+								"down": { "texture": "#color", "uv": [ 2.0, 2.5, 10.5, 6.5 ] }
+							},
+							"children": [
+								{
+									"name": "bolt-up",
+									"from": [ 0.3, 1.5, 0.5 ],
+									"to": [ 8.3, 2.0, 3.5 ],
+									"rotationOrigin": [ 0.3, 1.5, 0.5 ],
+									"faces": {
+										"north": { "texture": "#color", "uv": [ 1.5, 4.5, 9.5, 5.0 ] },
+										"east": { "texture": "#color", "uv": [ 4.5, 5.5, 7.5, 6.0 ] },
+										"south": { "texture": "#color", "uv": [ 3.0, 6.5, 11.0, 7.0 ] },
+										"west": { "texture": "#color", "uv": [ 6.0, 8.5, 9.0, 9.0 ] },
+										"up": { "texture": "#color", "uv": [ 3.5, 5.5, 11.5, 8.5 ] }
+									}
+								},
+								{
+									"name": "bolt-down",
+									"from": [ 0.3, 0.0, 1.5 ],
+									"to": [ 8.3, 0.5, 3.5 ],
+									"rotationOrigin": [ 0.3, 0.0, 1.5 ],
+									"rotationX": 10.0,
+									"faces": {
+										"north": { "texture": "#color", "uv": [ 1.5, 4.5, 9.5, 5.0 ] },
+										"east": { "texture": "#color", "uv": [ 4.5, 5.5, 6.5, 6.0 ] },
+										"south": { "texture": "#color", "uv": [ 3.0, 6.5, 11.0, 7.0 ] },
+										"west": { "texture": "#color", "uv": [ 6.0, 8.5, 8.0, 9.0 ] },
+										"down": { "texture": "#color", "uv": [ 1.5, 4.0, 9.5, 6.0 ], "windMode": [-1,-1,-1,-1] }
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

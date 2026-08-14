@@ -1,0 +1,62 @@
+{
+  "code": "smallbellparts",
+  "enabled": true,
+  "attributes": {
+    "handbook": {
+      "groupBy": [ "smallbellparts-*" ],
+      "createdBy": "metalmolding",
+      "extraSections": [
+        {
+          "title": "rpvoicechat:Handbook.Usage.smallbellparts.Title",
+          "text": "rpvoicechat:Handbook.Usage.smallbellparts.Text"
+        }
+      ]
+    }
+  },
+  "maxstacksize": 64,
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "rpvoicechat": [ "*" ]
+  },
+  "shape": {
+    "base": "item/smallbellparts"
+  },
+  "variantgroups": [
+    {
+      "code": "metal",
+      "states": [ "silver" ]
+    }
+  ],
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": -38,
+      "y": 47,
+      "z": -140
+    },
+    "origin": {
+      "x": 0,
+      "y": 0,
+      "z": 0.12
+    },
+    "scale": 3.55
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0.3,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": -90,
+      "z": 0
+    },
+    "scale": 2.5
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "op": "replace",
+    "path": "/chanceMultiplier",
+    "value": 0.30,
+    "file": "game:worldgen/structures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "strspawnchances", "invert": true
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/chanceMultiplier",
+    "value": 0.025,
+    "file": "game:worldgen/villages.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "strspawnchances", "invert": true
+      }
+    ]
+  }
+]

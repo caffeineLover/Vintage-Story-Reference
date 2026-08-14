@@ -1,0 +1,193 @@
+{
+    "code": "creature",
+    "class": "ItemCreature",
+    "maxstacksize": 64,
+    "variantgroups": [
+        {
+            "code": "type",
+            "states": [
+                "dog-hunting-male",
+                "dog-hunting-female",
+                "dog-hunting-pup",
+                "dog-wolf-male",
+                "dog-wolf-female",
+                "dog-wolf-pup",
+                "dog-shepherd-male",
+                "dog-shepherd-female",
+                "dog-shepherd-pup",
+                "dog-corgi-male",
+                "dog-corgi-female",
+                "dog-corgi-pup",
+                "dog-peach-male",
+                "dog-peach-female",
+                "dog-peach-pup"
+            ]
+        }
+    ],
+    "shape": {
+        "baseByType": {
+            "*-wolf-male": "entity/dog-wolf",
+            "*-wolf-female": "entity/dog-wolf",
+            "*-hunting-male": "entity/dog-hunting",
+            "*-hunting-female": "entity/dog-hunting",
+            "*-shepherd-male": "entity/dog-wolf",
+            "*-shepherd-female": "entity/dog-wolf",
+            "*-peach-male": "entity/dog-wolf",
+            "*-peach-female": "entity/dog-wolf",
+            "*-corgi-male": "entity/dog-corgi",
+            "*-corgi-female": "entity/dog-corgi",
+            "*-shepherd-pup": "entity/dog-shepherd-pup",
+            "*-corgi-pup": "entity/dog-corgi",
+            "*-hunting-pup": "entity/dog-hunting-pup",
+            "*-wolf-pup": "game:entity/animal/mammal/wolf/eurasian-baby",
+            "*-peach-pup": "game:entity/animal/mammal/wolf/eurasian-baby"
+        }
+    },
+    "textures": {
+        "skin": {
+            "baseByType": {
+                "*-wolf-male": "game:entity/animal/mammal/wolf/eurasian-adult1",
+                "*-wolf-female": "game:entity/animal/mammal/wolf/eurasian-adult2",
+                "*-hunting-male": "entity/dog-hunting-black",
+                "*-hunting-female": "entity/dog-hunting-brown",
+                "*-shepherd-male": "entity/dog-shepherd-1",
+                "*-shepherd-female": "entity/dog-shepherd-2",
+                "*-peach-male": "entity/dog-peach",
+                "*-peach-female": "entity/dog-peach",
+                "*-corgi-male": "entity/dog-corgi-1",
+                "*-corgi-female": "entity/dog-corgi-2",
+                "*-shepherd-pup": "entity/dog-shepherd-pup",
+                "*-corgi-pup": "entity/dog-corgi-3",
+                "*-hunting-pup": "entity/dog-hunting-pup",
+                "*-pup": "game:entity/animal/mammal/wolf/eurasian-baby1"
+            }
+        }
+    },
+    "attributes": {
+        "handbook": {
+            "exclude": true
+        }
+    },
+    "creativeinventory": {
+        "general": [
+            "*-wolf-*",
+            "*-hunting-*",
+            "*-shepherd-*",
+            "*-corgi-*"
+        ],
+        "items": [
+            "*-wolf-*",
+            "*-hunting-*",
+            "*-shepherd-*",
+            "*-corgi-*"
+        ],
+        "creatures": [
+            "*-wolf-*",
+            "*-hunting-*",
+            "*-shepherd-*",
+            "*-corgi-*"
+        ]
+    },
+    "materialDensity": 600,
+    "guiTransformByType": {
+        "@.*-pup|.*-corgi-.*": {
+            "rotate": true,
+            "translation": {
+                "x": 3,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": -12,
+                "y": -48,
+                "z": -180
+            },
+            "origin": {
+                "x": 0.5,
+                "y": 0.3,
+                "z": 0.5
+            },
+            "scale": 2.18
+        },
+        "*": {
+            "rotate": true,
+            "translation": {
+                "x": 2,
+                "y": 1,
+                "z": 0
+            },
+            "rotation": {
+                "x": 4,
+                "y": -59,
+                "z": -180
+            },
+            "origin": {
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
+            },
+            "scale": 1.16
+        }
+    },
+    "tpHandTransformByType": {
+        "@.*-pup|.*-corgi-.*": {
+            "translation": {
+                "x": -0.4,
+                "y": 0,
+                "z": -0.5
+            },
+            "rotation": {
+                "x": -160,
+                "y": -26,
+                "z": -90
+            },
+            "origin": {
+                "x": 0.5,
+                "y": 0.1,
+                "z": 0.5
+            },
+            "scale": 0.92
+        },
+        "*": {
+            "translation": {
+                "x": -1,
+                "y": -0.6,
+                "z": -0.7
+            },
+            "rotation": {
+                "x": -180,
+                "y": 0,
+                "z": -156
+            },
+            "scale": 0.5
+        }
+    },
+    "fpHandTransformByType": {
+        "@.*-pup|.*-corgi-.*": {
+            "translation": {
+                "x": 0.4,
+                "y": 0.1,
+                "z": 0
+            },
+            "rotation": {
+                "x": -180,
+                "y": -78,
+                "z": -180
+            },
+            "scale": 1.21
+        },
+        "*": {
+            "translation": {
+                "x": 0.4,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": -180,
+                "y": -96,
+                "z": -180
+            },
+            "scale": 1.16
+        }
+    }
+}

@@ -1,0 +1,77 @@
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using YamlDotNet.Core;
+
+namespace YamlDotNet.Serialization.ObjectGraphVisitors
+{
+	// Token: 0x0200012C RID: 300
+	[NullableContext(1)]
+	[Nullable(0)]
+	public sealed class DefaultValuesObjectGraphVisitor : ChainedObjectGraphVisitor
+	{
+		// Token: 0x06000668 RID: 1640 RVA: 0x0001622C File Offset: 0x0001442C
+		public DefaultValuesObjectGraphVisitor(DefaultValuesHandling handling, IObjectGraphVisitor<IEmitter> nextVisitor, IObjectFactory factory) : base(nextVisitor)
+		{
+			this.handling = handling;
+			this.factory = factory;
+		}
+
+		// Token: 0x06000669 RID: 1641 RVA: 0x00016243 File Offset: 0x00014443
+		[return: Nullable(2)]
+		private object GetDefault(Type type)
+		{
+			return this.factory.CreatePrimitive(type);
+		}
+
+		// Token: 0x0600066A RID: 1642 RVA: 0x00016254 File Offset: 0x00014454
+		public override bool EnterMapping(IPropertyDescriptor key, IObjectDescriptor value, IEmitter context)
+		{
+			DefaultValuesHandling defaultValuesHandling = this.handling;
+			YamlMemberAttribute customAttribute = key.GetCustomAttribute<YamlMemberAttribute>();
+			if (customAttribute != null && customAttribute.IsDefaultValuesHandlingSpecified)
+			{
+				defaultValuesHandling = customAttribute.DefaultValuesHandling;
+			}
+			if ((defaultValuesHandling & DefaultValuesHandling.OmitNull) != DefaultValuesHandling.Preserve && value.Value == null)
+			{
+				return false;
+			}
+			if ((defaultValuesHandling & DefaultValuesHandling.OmitEmptyCollections) != DefaultValuesHandling.Preserve)
+			{
+				IEnumerable enumerable = value.Value as IEnumerable;
+				if (enumerable != null)
+				{
+					IEnumerator enumerator = enumerable.GetEnumerator();
+					bool flag = enumerator.MoveNext();
+					IDisposable disposable = enumerator as IDisposable;
+					if (disposable != null)
+					{
+						disposable.Dispose();
+					}
+					if (!flag)
+					{
+						return false;
+					}
+				}
+			}
+			if ((defaultValuesHandling & DefaultValuesHandling.OmitDefaults) != DefaultValuesHandling.Preserve)
+			{
+				DefaultValueAttribute customAttribute2 = key.GetCustomAttribute<DefaultValueAttribute>();
+				object obj = ((customAttribute2 != null) ? customAttribute2.Value : null) ?? this.GetDefault(key.Type);
+				if (object.Equals(value.Value, obj))
+				{
+					return false;
+				}
+			}
+			return base.EnterMapping(key, value, context);
+		}
+
+		// Token: 0x040002E3 RID: 739
+		private readonly DefaultValuesHandling handling;
+
+		// Token: 0x040002E4 RID: 740
+		private readonly IObjectFactory factory;
+	}
+}

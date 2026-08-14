@@ -1,0 +1,37 @@
+using System;
+
+namespace Standard
+{
+	// Token: 0x020001FC RID: 508
+	internal enum SW
+	{
+		// Token: 0x0400030A RID: 778
+		HIDE,
+		// Token: 0x0400030B RID: 779
+		SHOWNORMAL,
+		// Token: 0x0400030C RID: 780
+		NORMAL = 1,
+		// Token: 0x0400030D RID: 781
+		SHOWMINIMIZED,
+		// Token: 0x0400030E RID: 782
+		SHOWMAXIMIZED,
+		// Token: 0x0400030F RID: 783
+		MAXIMIZE = 3,
+		// Token: 0x04000310 RID: 784
+		SHOWNOACTIVATE,
+		// Token: 0x04000311 RID: 785
+		SHOW,
+		// Token: 0x04000312 RID: 786
+		MINIMIZE,
+		// Token: 0x04000313 RID: 787
+		SHOWMINNOACTIVE,
+		// Token: 0x04000314 RID: 788
+		SHOWNA,
+		// Token: 0x04000315 RID: 789
+		RESTORE,
+		// Token: 0x04000316 RID: 790
+		SHOWDEFAULT,
+		// Token: 0x04000317 RID: 791
+		FORCEMINIMIZE
+	}
+}

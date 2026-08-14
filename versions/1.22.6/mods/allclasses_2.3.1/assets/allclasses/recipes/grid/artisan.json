@@ -1,0 +1,543 @@
+[
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-blue"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-blue4",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-green"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-green1",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-gray"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-grey1",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-brown"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-brown",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-orange"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-walnut",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-purple"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-darkpurple",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-yellow"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-yellow",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "_Y_,YTY,_Y_",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "item",
+				"code": "game:paper-parchment"
+			},
+			"T": {
+				"type": "item",
+				"code": "game:cloth-pink"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"shapeless": false,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-pink",
+			"quantity": 64
+		}
+	},
+	{
+		"ingredientPattern": "Y",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "block",
+				"code": "game:wallpaper-green1"
+			}
+		},
+		"width": 1,
+		"height": 1,
+		"shapeless": true,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-lightgreen",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "Y",
+		"requiresTrait": "artifice",
+		"ingredients": {
+			"Y": {
+				"type": "block",
+				"code": "game:wallpaper-lightgreen"
+			}
+		},
+		"width": 1,
+		"height": 1,
+		"shapeless": true,
+		"output": {
+			"type": "block",
+			"code": "game:wallpaper-green1",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "CSR",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 1,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+			  "C": { "type": "item", "code": "game:cloth-black", "quantity": 2},
+			  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-black", "quantity": 2}
+		  },
+		  {
+		"ingredientPattern": "CSR",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 1,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+			  "C": { "type": "item", "code": "game:cloth-blue", "quantity": 2},
+			  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-blue", "quantity": 2}
+		  },
+		  {
+		"ingredientPattern": "CSR",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 1,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+			  "C": { "type": "item", "code": "game:cloth-brown", "quantity": 2},
+			  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-brown", "quantity": 2}
+		  },
+		  {
+		"ingredientPattern": "CSR",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 1,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+			  "C": { "type": "item", "code": "game:cloth-purple", "quantity": 2},
+			  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-purple", "quantity": 2}
+		  },
+		  {
+		"ingredientPattern": "CSR",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 1,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+			  "C": { "type": "item", "code": "game:cloth-red", "quantity": 2},
+			  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-red", "quantity": 2}
+		  },
+		  {
+		"ingredientPattern": "CDC,RSR",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 2,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+		  "C": { "type": "item", "code": "game:cloth-blue", "quantity": 1},
+			  "D": { "type": "item", "code": "game:cloth-green", "quantity": 1},
+		  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-turqoise", "quantity": 3}
+		  },
+		  {
+		"ingredientPattern": "CDC,RSR,GGG",
+		"requiresTrait": "artifice",
+		"width": 3,
+		"height": 3,
+		  "ingredients": {
+			  "S": { "type": "item", "tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 4 },
+		  "C": { "type": "item", "code": "game:cloth-blue", "quantity": 1},
+			  "D": { "type": "item", "code": "game:cloth-green", "quantity": 1},
+			  "G": { "type": "item", "code": "game:metalbit-gold", "quantity": 1},
+		  "R": { "type": "item", "code": "game:resin"}      
+		  },
+		  "output": { "type": "block", "code": "game:smallcarpet-turqoise2", "quantity": 3}
+		  },
+		  {
+			"ingredientPattern": "I,P,D",
+			"requiresTrait": "artifice",
+			"width": 1,
+			"height": 3,
+			"attributes": {
+				"liquidContainerProps": {
+				  "requiresContent": { "type": "item", "code": "game:dye-yellow" },
+				  "requiresLitres": 1
+				}
+			},
+			"shapeless": false,
+			"ingredients": {
+				"D": {
+					"type": "block",
+					"code": "game:bowl-*-fired",
+					"allowedVariants": [
+					"blue",
+					"fire",
+					"black",
+					"brown",
+					"cream",
+					"gray",
+					"orange",
+					"red",
+					"tan"
+				]
+				  },
+					"P": {
+						"type": "item",
+						"code": "game:paper-parchment",
+						"quantity": 4
+					},
+					"I": {
+						"type": "item",
+						"code": "game:inkandquill"
+					}
+			},
+			"output": {
+				"type": "block",
+				"code": "game:painting-family1-north",
+				"quantity": 1
+			}
+		},
+		  {
+			"ingredientPattern": "I,P,D",
+			"requiresTrait": "artifice",
+			"width": 1,
+			"height": 3,
+			"attributes": {
+				"liquidContainerProps": {
+				  "requiresContent": { "type": "item", "code": "game:dye-yellow" },
+				  "requiresLitres": 1
+				}
+			},
+			"shapeless": false,
+			"ingredients": {
+				"D": {
+					"type": "block",
+					"code": "game:woodbucket"
+				  },
+					"P": {
+						"type": "item",
+						"code": "game:paper-parchment",
+						"quantity": 4
+					},
+					"I": {
+						"type": "item",
+						"code": "game:inkandquill"
+					}
+			},
+			"output": {
+				"type": "block",
+				"code": "game:painting-family1-north",
+				"quantity": 1
+			}
+		},
+		  {
+			"ingredientPattern": "I,P,D",
+			"requiresTrait": "artifice",
+			"width": 1,
+			"height": 3,
+			"attributes": {
+				"liquidContainerProps": {
+				  "requiresContent": { "type": "item", "code": "game:dye-blue" },
+				  "requiresLitres": 1
+				}
+			},
+			"shapeless": false,
+			"ingredients": {
+				"D": {
+					"type": "block",
+					"code": "game:bowl-*-fired",
+					"allowedVariants": [
+					"blue",
+					"fire",
+					"black",
+					"brown",
+					"cream",
+					"gray",
+					"orange",
+					"red",
+					"tan"
+				]
+				  },
+					"P": {
+						"type": "item",
+						"code": "game:paper-parchment",
+						"quantity": 4
+					},
+					"I": {
+						"type": "block",
+						"code": "game:flower-lupine-blue-free",
+						"quantity": 2						
+					}
+			},
+			"output": {
+				"type": "block",
+				"code": "game:painting-iris-north",
+				"quantity": 1
+			}
+		},
+		  {
+			"ingredientPattern": "I,P,D",
+			"requiresTrait": "artifice",
+			"width": 1,
+			"height": 3,
+			"attributes": {
+				"liquidContainerProps": {
+				  "requiresContent": { "type": "item", "code": "game:dye-blue" },
+				  "requiresLitres": 1
+				}
+			},
+			"shapeless": false,
+			"ingredients": {
+				"D": {
+					"type": "block",
+					"code": "game:woodbucket"
+				  },
+					"P": {
+						"type": "item",
+						"code": "game:paper-parchment",
+						"quantity": 4
+					},
+					"I": {
+						"type": "block",
+						"code": "game:flower-lupine-blue-free",
+						"quantity": 2
+					}
+			},
+			"output": {
+				"type": "block",
+				"code": "game:painting-iris-north",
+				"quantity": 1
+			}
+		},
+		  {
+			"ingredientPattern": "_I_,APA,_D_",
+			"requiresTrait": "artifice",
+			"width": 3,
+			"height": 3,
+			"attributes": {
+				"liquidContainerProps": {
+				  "requiresContent": { "type": "item", "code": "game:dye-orange" },
+				  "requiresLitres": 1
+				}
+			},
+			"shapeless": false,
+			"ingredients": {
+				"D": {
+					"type": "block",
+					"code": "game:bowl-*-fired",
+					"allowedVariants": [
+					"blue",
+					"fire",
+					"black",
+					"brown",
+					"cream",
+					"gray",
+					"orange",
+					"red",
+					"tan"
+				]
+				  },
+					"P": {
+						"type": "item",
+						"code": "game:paper-parchment",
+						"quantity": 4
+					},
+					"I": {
+						"type": "item",
+						"code": "game:inkandquill"
+					},
+					"A": {
+						"type": "item",
+						"code": "game:fruit-pinkapple"
+					}
+					
+			},
+			"output": {
+				"type": "block",
+				"code": "game:painting-glam-north",
+				"quantity": 1
+			}
+		},
+		  {
+			"ingredientPattern": "_I_,APA,_D_",
+			"requiresTrait": "artifice",
+			"width": 3,
+			"height": 3,
+			"attributes": {
+				"liquidContainerProps": {
+				  "requiresContent": { "type": "item", "code": "game:dye-orange" },
+				  "requiresLitres": 1
+				}
+			},
+			"shapeless": false,
+			"ingredients": {
+				"D": {
+					"type": "block",
+					"code": "game:woodbucket"
+				  },
+					"P": {
+						"type": "item",
+						"code": "game:paper-parchment",
+						"quantity": 4
+					},
+					"I": {
+						"type": "item",
+						"code": "game:inkandquill"
+					},
+					"A": {
+						"type": "item",
+						"code": "game:fruit-pinkapple"
+					}
+			},
+			"output": {
+				"type": "block",
+				"code": "game:painting-glam-north",
+				"quantity": 1
+			}
+		}
+]

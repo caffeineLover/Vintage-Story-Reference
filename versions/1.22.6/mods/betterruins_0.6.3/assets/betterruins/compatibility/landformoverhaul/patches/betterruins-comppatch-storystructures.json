@@ -1,0 +1,26 @@
+[
+  {
+    "op": "replace",
+    "path": "/structures/0/requireLandform",
+    "value": "veryflat",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "landformoverhaul"
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/structures/1/requireLandform",
+    "value": "veryflat",
+    "file": "betterruins:worldgen/storystructures.json",
+    "side": "Server",
+    "dependsOn": [
+      {
+        "modid": "landformoverhaul"
+      }
+    ]
+  }
+]

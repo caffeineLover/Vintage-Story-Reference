@@ -1,0 +1,348 @@
+[
+  {
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "tameable",
+      "tameEntityCodeByType": {
+        "bear-black-adult-male": "panserbjornrebjorn:tamedbear-black-adult-male",
+        "bear-brown-adult-male": "panserbjornrebjorn:tamedbear-brown-adult-male",
+        "bear-sun-adult-male": "panserbjornrebjorn:tamedbear-sun-adult-male",
+        "bear-panda-adult-male": "panserbjornrebjorn:tamedbear-panda-adult-male",
+        "bear-polar-adult-male": "panserbjornrebjorn:tamedbear-polar-adult-male",
+        "bear-black-adult-female": "panserbjornrebjorn:tamedbear-black-adult-female",
+        "bear-brown-adult-female": "panserbjornrebjorn:tamedbear-brown-adult-female",
+        "bear-sun-adult-female": "panserbjornrebjorn:tamedbear-sun-adult-female",
+        "bear-panda-adult-female": "panserbjornrebjorn:tamedbear-panda-adult-female",
+        "bear-polar-adult-female": "panserbjornrebjorn:tamedbear-polar-adult-female"
+      },
+      "treatByType": {
+        "bear-brown-*-adult": [
+          {
+            "code": "bushmeat-raw",
+            "progress": 0.05,
+            "cooldown": 2
+          },
+          {
+            "code": "redmeat-raw",
+            "progress": 0.1,
+            "cooldown": 3
+          },
+          {
+            "code": "honeycomb",
+            "progress": 0.2,
+            "cooldown": 2
+          },
+          {
+            "code": "fruit-blueberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          },
+          {
+            "code": "fruit-cranberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          }
+        ],
+        "bear-sun-*-adult": [
+          {
+            "code": "insect-termite",
+            "progress": 0.01,
+            "cooldown": 0.01
+          },
+          {
+            "code": "honeycomb",
+            "progress": 0.2,
+            "cooldown": 2
+          },
+          {
+            "code": "fruit-blueberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          },
+          {
+            "code": "fruit-cranberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          }
+        ],
+        "bear-panda-*-adult": [
+          {
+            "code": "sapling-brownbambooshoots-free",
+            "progress": 0.25,
+            "cooldown": 1
+          }
+        ],
+        "*": [
+          {
+            "code": "honeycomb",
+            "progress": 0.2,
+            "cooldown": 2
+          },
+          {
+            "code": "fruit-blueberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          },
+          {
+            "code": "fruit-cranberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          }
+        ]
+      }
+    },
+    "file": "game:entities/animal/mammal/bear-adult.json"
+  },
+  {
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "mouthinventory",
+      "acceptStacksByType": {
+        "bear-brown-*-adult": [
+          {
+            "type": "item",
+            "code": "bushmeat-raw"
+          },
+          {
+            "type": "item",
+            "code": "redmeat-raw"
+          },
+          {
+            "type": "item",
+            "code": "honeycomb"
+          },
+          {
+            "type": "item",
+            "code": "fruit-blueberry"
+          },
+          {
+            "type": "item",
+            "code": "fruit-cranberry"
+          }
+        ],
+        "bear-panda-*-adult": [
+          {
+            "type": "block",
+            "code": "sapling-brownbambooshoots-free"
+          }
+        ],
+        "bear-sun-*-adult": [
+          {
+            "type": "item",
+            "code": "insect-termite"
+          },
+          {
+            "type": "item",
+            "code": "honeycomb"
+          },
+          {
+            "type": "item",
+            "code": "fruit-blueberry"
+          },
+          {
+            "type": "item",
+            "code": "fruit-cranberry"
+          }
+        ],
+        "*": [
+          {
+            "type": "item",
+            "code": "honeycomb"
+          },
+          {
+            "type": "item",
+            "code": "fruit-blueberry"
+          },
+          {
+            "type": "item",
+            "code": "fruit-cranberry"
+          }
+        ]
+      }
+    },
+    "file": "game:entities/animal/mammal/bear-adult.json"
+  },
+  {
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "tameable",
+      "treatByType": {
+        "bear-brown-*-adult": [
+          {
+            "code": "bushmeat-raw",
+            "progress": 0.05,
+            "cooldown": 2
+          },
+          {
+            "code": "redmeat-raw",
+            "progress": 0.1,
+            "cooldown": 3
+          },
+          {
+            "code": "honeycomb",
+            "progress": 0.2,
+            "cooldown": 2
+          },
+          {
+            "code": "fruit-blueberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          },
+          {
+            "code": "fruit-cranberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          }
+        ],
+        "bear-panda-*-adult": [
+          {
+            "code": "sapling-brownbambooshoots-free",
+            "progress": 0.25,
+            "cooldown": 1
+          }
+        ],
+        "bear-sun-*-adult": [
+          {
+            "code": "insect-termite",
+            "progress": 0.01,
+            "cooldown": 0.01
+          },
+          {
+            "code": "honeycomb",
+            "progress": 0.2,
+            "cooldown": 2
+          },
+          {
+            "code": "fruit-blueberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          },
+          {
+            "code": "fruit-cranberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          }
+        ],
+        "*": [
+          {
+            "code": "honeycomb",
+            "progress": 0.2,
+            "cooldown": 2
+          },
+          {
+            "code": "fruit-blueberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          },
+          {
+            "code": "fruit-cranberry",
+            "progress": 0.001,
+            "cooldown": 0.01
+          }
+        ]
+      }
+    },
+    "file": "game:entities/animal/mammal/bear-adult.json"
+  },
+  {
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "mouthinventory",
+      "acceptStacksByType": {
+        "bear-brown-*-adult": [
+          {
+            "type": "item",
+            "code": "bushmeat-raw"
+          },
+          {
+            "type": "item",
+            "code": "redmeat-raw"
+          },
+          {
+            "type": "item",
+            "code": "honeycomb"
+          },
+          {
+            "type": "item",
+            "code": "fruit-blueberry"
+          },
+          {
+            "type": "item",
+            "code": "fruit-cranberry"
+          }
+        ],
+        "bear-panda-*-adult": [
+          {
+            "type": "block",
+            "code": "sapling-brownbambooshoots-free"
+          }
+        ],
+        "bear-sun-*-adult": [
+          {
+            "type": "item",
+            "code": "insect-termite"
+          },
+          {
+            "type": "item",
+            "code": "honeycomb"
+          },
+          {
+            "type": "item",
+            "code": "fruit-blueberry"
+          },
+          {
+            "type": "item",
+            "code": "fruit-cranberry"
+          }
+        ],
+        "*": [
+          {
+            "type": "item",
+            "code": "honeycomb"
+          },
+          {
+            "type": "item",
+            "code": "fruit-blueberry"
+          },
+          {
+            "type": "item",
+            "code": "fruit-cranberry"
+          }
+        ]
+      }
+    },
+    "file": "game:entities/animal/mammal/bear-adult.json"
+  },
+  {
+    "op": "add",
+    "path": "/server/behaviors/9/aitasks/-",
+    "value": {
+      "code": "useinventory",
+      "animation": "eat",
+      "animationSpeed": 0.75,
+      "priority": 2.1,
+      "priorityForCancel": 2.2,
+      "eatItemCategories": [
+        "Protein"
+      ],
+      "eatItemCodes": [
+        "bushmeat-raw",
+        "sapling-brownbambooshoots-free",
+        "sapling-brownbambooshoots-free",
+        "redmeat-raw",
+        "insect-termite",
+        "honeycomb",
+        "fruit-blueberry",
+        "fruit-cranberry"
+      ],
+      "useTime": 1.5,
+      "mincooldownHours": 1,
+      "maxcooldownHours": 1.5
+    },
+    "file": "game:entities/animal/mammal/bear-adult.json"
+  }
+]

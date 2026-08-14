@@ -1,0 +1,45 @@
+{
+    "code": "saddle",
+    "variantgroups": [
+        { "code": "gait", "states": [ "hold", "press" ] },
+        { "code": "color", "states": [ "black", "red", "blue", "green", "orange", "plain", "purple", "white", "yellow", "gray", "pink" ] },
+        { "code": "metal", "states": [ "tinbronze", "bismuthbronze", "blackbronze", "iron", "meteoriciron", "steel" ] }
+    ],
+    "attributes": {
+        "attachableToEntity": {
+            "categoryCode": "bearsaddle",
+            "attachedShapeBySlotCodeByType": {
+                "*": { 
+                    "*-brown": { "base": "panserbjornrebjorn:wearable/brown" },
+                    "*-polar": { "base": "panserbjornrebjorn:wearable/polar" }
+                }
+            } 
+        },
+        "controlSchemeByType": {
+            "*-hold-*": "Hold",
+            "*-press-*": "Press"
+        },
+        "isBridle": true,
+        "isSaddle": true,
+        "interactPassthrough": true,
+        "handbook": {
+            "groupBy": ["saddle-{type}-*"]
+        }
+    },
+    "shape": { "base": "wearable/inv"},
+    "texturesByType": {
+        "*": {
+            "leather": { "base": "game:block/leather/{color}"},
+            "metal": { "base": "game:block/metal/ingot/{metal}"},
+            "cloth": { "base": "game:block/cloth/wool/white1" }
+        }
+    },
+    "heldTpIdleAnimation": "holdbothhands",
+    "maxStackSize": 1,
+    "creativeinventory": { "general": ["*"], "items": ["*"], "clothing": ["*"], "bjorn": ["*"] },
+    guiTransform: {
+    rotation: { x: -35, y: -128, z: -180 },
+    origin: { x: 0.3, y: 0.2, z: 0.5 },
+    scale: 1.42
+  }
+}
