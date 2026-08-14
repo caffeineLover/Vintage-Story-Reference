@@ -1,0 +1,19 @@
+from: markdown
+standalone: true
+pdf-engine: xelatex
+shift-heading-level-by: -1
+toc: true
+toc-depth: 2
+number-sections: true
+highlight-style: tango
+variables:
+  documentclass: article
+  classoption: titlepage
+  papersize: letter
+  geometry: margin=0.85in
+  fontsize: 11pt
+  colorlinks: true
+  linkcolor: blue
+  urlcolor: blue
+  toccolor: black
+  linestretch: 1.08

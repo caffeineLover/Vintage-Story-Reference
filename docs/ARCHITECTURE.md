@@ -16,6 +16,8 @@ This repository is a searchable reference archive for AI-assisted Vintage Story 
 - `docs/ARCHITECTURE.md` explains how the repository's moving parts relate to each other.
 - `docs/MAINTAINING_REFERENCE.md` explains how to add and refresh reference material.
 - `docs/PROJECT_MEMORY.md` records durable project history, decisions, risks, and verified commands.
+- `docs/research/` stores topic-organized research: canonical Markdown for agents, generated and committed LaTeX
+  source, and a matching local PDF for the user.
 
 ## Prompt And Skill Roles
 
@@ -82,6 +84,9 @@ The repository keeps curated source material and rebuildable generated artifacts
   reference mods/tools, curated mod and web source manifests, prompt files, skills, and index/query tools.
 - Rebuildable generated material includes SQLite databases and generated index manifests under
   `versions/<version>/Index`.
+- Research LaTeX files are an explicit, user-requested exception to the ordinary generated-file rule. They are
+  reproducible text sources committed beside their canonical Markdown under `docs/research/`. Compiled research PDFs
+  remain local and ignored by Git.
 - Each `Index` folder should be represented in Git by its local `.gitignore`; generated `.sqlite` and `.index.json`
   files should remain local unless the maintainer explicitly chooses a large-file publishing strategy.
 

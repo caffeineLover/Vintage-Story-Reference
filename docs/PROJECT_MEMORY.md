@@ -26,6 +26,11 @@ through `tools/mod-manifest/query_mod_manifest.py` or the `mod` target in `tools
 registration research, recipe input/output lookup, vanilla-versus-mod comparison, mod provenance, and curated web
 documentation.
 
+Documented research lives under `docs/research/`. Each completed item has canonical Markdown plus same-basename,
+Pandoc-generated LaTeX committed for reproducibility. XeLaTeX compiles the user-facing PDF locally; research PDFs are
+ignored and not committed. `docs/research/README.md` defines the workflow and
+`tools/research-docs/pandoc-pdf.yaml` provides the shared rendering defaults.
+
 The code-index schema is now version `2`. Its `registrations` table stores supported literal Vintage Story
 registration calls, their call-site evidence, containing type, and an unambiguous registered-type declaration link
 when available. `tools/cross-reference/query_class_cross_reference.py` joins top-level asset `class` and `entityClass`
@@ -55,9 +60,9 @@ user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
 
-No active work is currently in progress. Vintage Story 1.22.6 has API sources, full assets, selected reference mods,
-a tracked mod manifest, copied web sources, indexes, catalogs, literal registration evidence, class cross-references,
-a cross-index query cookbook, and a browse-only solution wrapper.
+No active work is currently in progress. The old `docs/mods` tree is now `docs/research/mods`; both retained research
+items have committed Markdown/LaTeX sources and locally generated PDFs. The research workflow, ignore rules, catalogs,
+and maintainer instructions reflect the current Markdown-to-LaTeX-to-PDF policy.
 
 ## Durable technical knowledge
 
@@ -160,7 +165,7 @@ normal game mod package; it has no `modinfo.json` or game-version tag and was ad
 The original selected-mod selection/download/decompilation report is `.codex/tmp/mod-updates/1.22.6/selected-releases.json`;
 Simple VS Manager provenance is recorded in `versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md`.
 
-TentBag-Reworked 3.2.4 default player behavior: an Empty Tent Bag is crafted from one cloth, four rope, and four sticks; cloth color controls bag color. An empty bag packs a default 7x7x7 area above the top face of the clicked ground block and becomes a Packed Tent Bag. A packed bag unpacks above the clicked block and returns to an empty bag. Survival-mode pack and unpack actions consume satiety at the default `BuildEffort` value of `2` per saved non-air block. Defaults include packed-tent hologram preview, empty-bag grab-area preview, 90-degree rotation, waypoint creation on unpack, waypoint removal on pack, and banned blocks such as liquids, crops, ores, rocks, anvils, and forges. The player-facing guide is `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
+TentBag-Reworked 3.2.4 default player behavior: an Empty Tent Bag is crafted from one cloth, four rope, and four sticks; cloth color controls bag color. An empty bag packs a default 7x7x7 area above the top face of the clicked ground block and becomes a Packed Tent Bag. A packed bag unpacks above the clicked block and returns to an empty bag. Survival-mode pack and unpack actions consume satiety at the default `BuildEffort` value of `2` per saved non-air block. Defaults include packed-tent hologram preview, empty-bag grab-area preview, 90-degree rotation, waypoint creation on unpack, waypoint removal on pack, and banned blocks such as liquids, crops, ores, rocks, anvils, and forges. The player-facing guide is `docs/research/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
 
 TentBag-Reworked also ships `assets/tentbagreworked/config/tent.json`, a `7 x 3 x 6` WorldEdit/BlockSchematic sample tent. `TentBagReworkedModSystem.EnsureTentSchematicExists` copies it to `<GamePaths.DataPath>/WorldEdit/tent.json` on server startup if the target file is absent. It is not a pre-packed tent bag or player-granted item; players/admins with WorldEdit can use it as a template and then pack it into a tent bag if desired.
 
@@ -220,19 +225,29 @@ The web index source manifest is `versions/<version>/Web/sources.json`. Each sou
 
 The RPVoiceChat Server Administration upstream source is `https://github.com/Ridderrasmus/RPVoiceChat/wiki/Server-Administration`; its raw Markdown endpoint is `https://raw.githubusercontent.com/wiki/Ridderrasmus/RPVoiceChat/Server-Administration.md`. The RPVoiceChat GitHub README source is `https://github.com/Ridderrasmus/RPVoiceChat`; the indexed raw Markdown endpoint is `https://raw.githubusercontent.com/Ridderrasmus/RPVoiceChat/development/README.md`.
 
+Pandoc `3.10.2` is installed under `%ProgramFiles%\Pandoc`, and MiKTeX `25.12` provides MiKTeX-XeTeX `4.16` under
+`%LOCALAPPDATA%\Programs\MiKTeX`. Neither installation was on the active shell `PATH` on 2026-08-14, so the documented
+workflow prefers `Get-Command` and then probes these environment-relative installation locations. MiKTeX automatic
+missing-package installation is enabled with `[MPM]AutoInstall=1`.
+
 ## Known failed approaches
 
 `dotnet clean "Vintage Story Reference.sln" --no-restore` fails under the installed .NET 10 SDK with
 `MSB1001: Unknown switch`. `dotnet clean "Vintage Story Reference.sln"` succeeds and removes the generated build
 outputs.
 
+The first Pandoc PDF attempt on 2026-08-14 failed because no LaTeX engine was installed. MiKTeX was installed later
+that day. The first XeLaTeX compile then waited indefinitely at first-use package installation until
+`initexmf --set-config-value='[MPM]AutoInstall=1'` enabled non-interactive missing-package installation. Direct
+XeLaTeX compilation now succeeds. Do not replace the requested LaTeX rendering with an HTML/browser renderer.
+
 ## Bugs, risks, and limitations
 
 The web index is a dated snapshot of fetched upstream content. If current documentation matters, rebuild the index or check the upstream URL.
 
-`docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.pdf` is tracked as an intentional binary documentation
-artifact. The user explicitly requested that every pending project file, including this previously untracked PDF, be
-committed on 2026-08-14. Treat the Markdown guide as the editable source and do not regenerate the PDF casually.
+Research `.tex` files are intentionally committed generated sources at the user's explicit direction. Research PDFs
+under `docs/research/` are ignored local reader copies and must not be staged. Update Markdown first, regenerate the
+LaTeX source, then compile and visually review the PDF; never hand-edit generated LaTeX or PDF output.
 
 The asset index rebuild for 1.22.3 can take longer than two minutes. On 2026-07-14 it timed out at a 120-second command limit but succeeded with a 300-second limit in about 220 seconds.
 
@@ -318,6 +333,8 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 
 - `INDEX_USAGE.md` - Instructions for other AI-enabled projects that consume this reference repository.
 - `docs/QUERY_COOKBOOK.md` - Tested, task-shaped and cross-index query recipes for common Vintage Story research.
+- `docs/research/README.md` - Required Markdown/LaTeX/local-PDF research organization and rendering workflow.
+- `tools/research-docs/pandoc-pdf.yaml` - Shared Pandoc defaults for readable, letter-sized XeLaTeX PDFs.
 - `tools/asset-index` - Asset index builder and query helper.
 - `tools/code-index` - Decompiled C# code index builder and query helper.
 - `tools/cross-reference/query_class_cross_reference.py` - Category-aware query-time join from asset class facts to
@@ -335,10 +352,13 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
   the version and mod catalogs, API, assets, mods, and Web source manifest as browseable `None` items.
 - `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
-- `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Player-facing usage guide for TentBag-Reworked 3.2.4 based on the indexed 1.22.6 reference mod files.
-- `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.pdf` - Intentional binary distribution copy of the
-  TentBag-Reworked player guide; the Markdown file remains its editable source.
-- `docs/mods/Betterer Prospecting/BETTERER_PROSPECTING_SETTINGS.md` - Betterer Prospecting settings reference focused on `ReprospectParellelism`, `BoreholeScansStone`, and `BoreholeDmg`.
+- `docs/research/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Canonical TentBag-Reworked 3.2.4 guide.
+- `docs/research/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.tex` - Committed Pandoc-generated LaTeX source
+  for the local TentBag reader PDF.
+- `docs/research/mods/Betterer Prospecting/BETTERER_PROSPECTING_SETTINGS.md` - Betterer Prospecting settings research;
+  the Markdown remains its editable source.
+- `docs/research/mods/Betterer Prospecting/BETTERER_PROSPECTING_SETTINGS.tex` - Committed Pandoc-generated LaTeX
+  source for the local Betterer Prospecting reader PDF.
 - `versions/1.22.6/API` - Decompiled 1.22.6 `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`,
   `VSEssentials`, and `VSSurvivalMod` sources.
 - `versions/1.22.6/Assets` - Full copied 1.22.6 client assets from the Linux client archive.
@@ -382,6 +402,27 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 ## Session history
 
 ### 2026-08-14
+
+- Finalized the research artifact policy at the user's direction: commit canonical `.md` and generated `.tex`, but
+  keep compiled `.pdf` reader copies local and ignored. Updated `.gitignore`, `AGENTS.md`, architecture/maintenance
+  docs, and the research workflow accordingly; preserved the existing TentBag PDF locally while removing it from Git.
+- Added title metadata to both retained research documents, generated their LaTeX sources with Pandoc `3.10.2`, and
+  compiled local PDFs with MiKTeX-XeTeX `4.16`. Enabled MiKTeX automatic missing-package installation after the first
+  compile waited on its first-use prompt.
+- Changed the Pandoc reader from GFM to Pandoc Markdown and shifted heading levels so LaTeX tables wrap to page width
+  and numbered sections start at `1` instead of `0.1`. Shortened displayed source-path segments to eliminate clipping.
+  Two/three-pass XeLaTeX builds succeeded; final visual inspection confirmed readable title pages, contents, tables,
+  body text, and source lists. TentBag finished with no LaTeX layout warnings; Betterer retained only Pandoc's harmless
+  unused table-caption setup warning.
+
+- Established `docs/research/` as the durable home for paired research deliverables: canonical Markdown for agents and
+  same-basename Pandoc/LaTeX PDFs for the user. Added the policy to `AGENTS.md`, maintainer/architecture docs, and the
+  root catalog.
+- Moved the complete tracked `docs/mods` tree to `docs/research/mods`, including Betterer Prospecting research and the
+  TentBag Markdown/PDF pair, and updated current repository references to the new paths.
+- Added `docs/research/README.md` and `tools/research-docs/pandoc-pdf.yaml` with a shared readable PDF style.
+- Located Pandoc `3.10.2` at `C:\Program Files\Pandoc\pandoc.exe`. No `xelatex`, `lualatex`, or `pdflatex` executable
+  was installed or discoverable, so the Betterer Prospecting PDF could not yet be generated.
 
 - At the user's explicit request to commit every pending file, classified the previously untracked TentBag player-guide
   PDF as an intentional documentation artifact, added the PDF binary attribute, and included it in the repository.

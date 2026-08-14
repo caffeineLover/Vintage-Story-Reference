@@ -52,3 +52,17 @@ standards normally place documentation under `docs/`.
 
 The `prompts\Vintage Story Research\VINTAGE_STORY_RESEARCH.md` prompt teaches other Codex-assisted projects how to
 consult this repository as a searchable Vintage Story knowledge archive.
+
+
+## Research Documents
+
+When the user asks for research to be documented, keep the source and reader deliverables under `docs/research/`:
+
+- The Markdown file is the canonical, detailed record for agents and future maintenance.
+- Generate and commit a same-basename LaTeX file from the Markdown with Pandoc, using the repository defaults
+  documented in `docs/research/README.md`.
+- Compile a same-basename PDF from the LaTeX source as the polished reader copy for the user.
+- Commit the Markdown and LaTeX source files. Keep the generated PDF local and uncommitted.
+- Do not edit generated LaTeX or PDF output directly. Update the Markdown, then regenerate both files.
+- If Pandoc or a LaTeX engine is unavailable, preserve the Markdown and report the missing dependency instead of
+  silently substituting a different rendering system.

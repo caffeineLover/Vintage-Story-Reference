@@ -1,0 +1,413 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  11pt,
+  letterpaper,
+  titlepage]{article}
+\usepackage{xcolor}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={TentBag-Reworked Player Guide},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{TentBag-Reworked Player Guide}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{TentBag-Reworked 3.2.4 for Vintage Story 1.22.6}
+\author{}
+\date{2026-08-14}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.08}
+TentBag-Reworked adds a craftable tent bag that can pack a small built
+structure into an item, then place it again later. It is meant for
+portable camps, tents, and other compact travel builds.
+
+This guide describes the default behavior in TentBag-Reworked
+\texttt{3.2.4} as indexed for Vintage Story \texttt{1.22.6}. Server
+configuration can change the capture size, hunger cost, banned blocks,
+waypoint behavior, and some placement rules.
+
+\section{Crafting}\label{crafting}
+
+Craft an Empty Tent Bag in the crafting grid with:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{1} cloth in the center
+\item
+  \texttt{4} rope in the corners
+\item
+  \texttt{4} sticks on the side-center slots
+\end{itemize}
+
+The recipe also works with the rope and stick positions swapped. The
+cloth color determines the bag color. Supported colors are plain, black,
+blue, brown, gray, green, mordant, orange, pink, purple, red, white, and
+yellow.
+
+The tent bag does not stack.
+
+\section{Bundled Sample Tent}\label{bundled-sample-tent}
+
+TentBag-Reworked also ships a sample tent schematic named
+\texttt{tent.json}. On server startup, the mod copies it to the game
+data folder as \texttt{WorldEdit/tent.json} if that file does not
+already exist.
+
+This is a WorldEdit schematic/template, not a pre-packed Tent Bag and
+not an extra survival recipe. Regular players do not automatically
+receive it. In survival play, craft an Empty Tent Bag and pack a tent or
+camp you built yourself.
+
+If you have admin, creative, or WorldEdit access, you can use the copied
+\texttt{tent.json} as a starter/example tent, then pack that structure
+into a tent bag like any other build. The bundled schematic is
+\texttt{7\ x\ 3\ x\ 6} and contains a small camp setup with blocks such
+as a hay bed, firepit, storage vessels, barrel, chest, trunk, tool rack,
+support beams, and ground storage.
+
+\section{Using The Starter Tent}\label{using-the-starter-tent}
+
+You must be in creative mode and have the \texttt{worldedit} privilege.
+The file is loaded by filename from the game or server data
+\texttt{WorldEdit} folder, so use \texttt{tent.json}, not an asset path.
+
+For a direct server-side import:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Stand at the point where you want the bottom center of the tent.
+\item
+  Run \texttt{/we\ start}, then run \texttt{/we\ end} without moving.
+  This gives WorldEdit both ends of a tiny selection and creates the
+  start marker that import needs.
+\item
+  Optional: run \texttt{/we\ import-rotation\ 90} or
+  \texttt{/we\ import-rotation\ 180} before importing.
+\item
+  Run \texttt{/we\ import\ tent.json\ BottomCenter}.
+\item
+  If it lands wrong, run \texttt{/we\ undo}.
+\end{enumerate}
+
+\texttt{BottomCenter} centers the \texttt{7\ x\ 3\ x\ 6} schematic
+horizontally on your marker. Without it, WorldEdit uses the marker as
+the schematic's start corner, which is harder to place by eye.
+
+Use the capitalization \texttt{BottomCenter}; lower-case input falls
+back to the default corner placement.
+
+For a preview workflow:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Select the import tool with \texttt{/we\ tool\ import} or
+  \texttt{/we\ t\ import}.
+\item
+  Load the schematic with \texttt{/we\ ims\ tent.json}.
+\item
+  Use \texttt{/we\ imr\ 90} to rotate the preview, or
+  \texttt{/we\ imflip} to flip it, if needed.
+\item
+  Move the preview with \texttt{/we\ north}, \texttt{/we\ south},
+  \texttt{/we\ east}, \texttt{/we\ west}, \texttt{/we\ up}, or
+  \texttt{/we\ down}.
+\item
+  Right-click a block to place the preview, or run \texttt{/we\ apply},
+  \texttt{/we\ place}, or \texttt{/we\ commit}.
+\end{enumerate}
+
+After the starter tent is pasted into the world, it is just normal
+blocks. To turn it into a Tent Bag, craft or spawn an Empty Tent Bag,
+aim at the top face of the ground block under the center of the tent,
+and right-click to pack it.
+
+\section{Packing A Tent}\label{packing-a-tent}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Build the camp or tent you want to carry.
+\item
+  Hold an Empty Tent Bag.
+\item
+  Aim at the top face of the ground block under the center of the build.
+\item
+  Right-click to pack the area.
+\end{enumerate}
+
+By default, the packed area is a \texttt{7\ x\ 7\ x\ 7} box centered on
+the clicked block, starting above the clicked ground block. The floor
+block itself is not packed unless the server enables floor grabbing.
+
+If packing succeeds, the empty bag becomes a Packed Tent Bag and the
+original blocks are removed. In default configuration, the packed bag
+stays in your active slot. If the server enables copy mode, the original
+blocks are copied instead of removed.
+
+Packing consumes satiety in survival mode. The default cost is
+\texttt{2} satiety per packed non-air block. If you do not have enough
+saturation, the mod refuses to pack and shows:
+\texttt{I\textquotesingle{}m\ too\ hungry\ to\ pack\ this\ right\ now!}
+
+\section{Placing The Tent}\label{placing-the-tent}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Hold a Packed Tent Bag.
+\item
+  Aim at the ground where you want the tent centered.
+\item
+  Use the preview and rotate keys if needed.
+\item
+  Right-click to unpack.
+\end{enumerate}
+
+The packed build is placed above the block you click. The Packed Tent
+Bag changes back into an Empty Tent Bag after unpacking.
+
+Unpacking also consumes satiety in survival mode, using the same saved
+block count from when the tent was packed. If you do not have enough
+saturation, the mod refuses to unpack and shows:
+\texttt{I\textquotesingle{}m\ too\ hungry\ to\ unpack\ this\ right\ now!}
+
+By default, unpacking creates a map waypoint for the tent, and packing
+removes that waypoint.
+
+\section{Hotkeys}\label{hotkeys}
+
+The item tooltip shows the current keybindings. Defaults are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{B}: toggle the packed tent hologram preview
+\item
+  \texttt{P}: toggle the empty bag capture-area preview
+\item
+  \texttt{R}: rotate a packed tent by \texttt{90} degrees
+\end{itemize}
+
+The packed tent preview follows the block you are aiming at. If
+placement would fail, the mod highlights problem blocks.
+
+\section{What Cannot Be Packed}\label{what-cannot-be-packed}
+
+The default banned list prevents packing some world, resource, food, and
+utility blocks. Common examples include:
+
+\begin{itemize}
+\tightlist
+\item
+  water and lava
+\item
+  crops, herbs, mushrooms, and berry bushes
+\item
+  farmland, raw clay, peat, rocks, and ores
+\item
+  grown logs and resin logs
+\item
+  static translocators and teleporter bases
+\item
+  paper lanterns and chandeliers
+\item
+  anvils and forges
+\item
+  cooked crocks, bowls of meal, and cooked clay pots
+\end{itemize}
+
+Servers can change this list or switch to an allow-list mode.
+
+\section{Troubleshooting}\label{troubleshooting}
+
+\texttt{The\ tent\ can\ only\ be\ packed\ by\ clicking\ on\ the\ ground!}
+
+You tried to pack by clicking the side or bottom of a block. Aim at the
+top face of the ground block under the build.
+
+\texttt{There\ are\ no\ solid\ blocks\ in\ the\ build\ area!}
+
+The capture box did not contain anything packable. Move the bag target
+closer to the build center or check the server's configured capture
+size.
+
+\texttt{Cannot\ pack\ ...\ into\ the\ bag!}
+
+The capture area contains a banned block. Remove that block or ask the
+server owner whether the banned list is intentional.
+
+\texttt{Cannot\ unpack\ here,\ a\ clear\ area\ is\ required!}
+
+Something blocks the placement area. Clear the space or move the target.
+
+\texttt{Cannot\ unpack\ here,\ solid\ ground\ is\ required!}
+
+The server requires solid ground under the tent, and the target area
+does not meet that rule.
+
+\texttt{Failed\ to\ unpack:\ Internal\ error\ while\ reading\ saved\ data!}
+
+The packed tent data could not be read. This usually means the item data
+is damaged or incompatible.
+
+\section{Notes For Players On
+Servers}\label{notes-for-players-on-servers}
+
+If TentBag-Reworked behaves differently from this guide, check with the
+server owner. The server can change:
+
+\begin{itemize}
+\tightlist
+\item
+  capture radius and height
+\item
+  whether the floor is packed
+\item
+  whether packing removes blocks or only copies them
+\item
+  whether plants and loose rocks are replaced during placement
+\item
+  whether the bag stays in your inventory or drops as an item after use
+\item
+  waypoint creation
+\item
+  blocked or allowed block lists
+\item
+  satiety cost per packed block
+\end{itemize}
+
+\section{Reference Sources}\label{reference-sources}
+
+This guide was written from the local indexed TentBag-Reworked
+\texttt{3.2.4} reference files.
+
+Under \texttt{versions/1.22.6/mods/}, use the
+\texttt{tentbagreworked\_3.2.4/} mod root. Its asset files are in
+\texttt{assets/tentbagreworked/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{itemtypes/tentbagreworked.json}
+\item
+  \texttt{recipes/grid/tentbagreworked.json}
+\item
+  \texttt{config/tent.json}
+\item
+  \texttt{lang/en.json}
+\end{itemize}
+
+Under the same mod root, decompiled sources in
+\texttt{decompiled\ assembly/TentBagReworked/}, then
+\texttt{TentBagReworked/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{TentBagReworkedModSystem.cs}
+\item
+  \texttt{Behaviors/PackableBehavior.cs}
+\item
+  \texttt{TentHologramRenderer.cs}
+\item
+  \texttt{Config/TentBagReworkedConfig.cs}
+\item
+  \texttt{Util/TentArea.cs}
+\end{itemize}
+
+Under the API root \texttt{versions/1.22.6/API/}, use the
+\texttt{VSCreativeMod} decompile for version \texttt{1.22.6}, then
+\texttt{Vintagestory/ServerMods/WorldEdit/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{WorldEdit.cs}
+\item
+  \texttt{WorldEditWorkspace.cs}
+\item
+  \texttt{ImportTool.cs}
+\end{itemize}
+
+Under the same API root, use the \texttt{VintagestoryAPI} decompile for
+version \texttt{1.22.6}, then \texttt{Vintagestory/API/Common/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{BlockSchematic.cs}
+\item
+  \texttt{EnumOrigin.cs}
+\end{itemize}
+
+\end{document}

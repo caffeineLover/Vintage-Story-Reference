@@ -124,6 +124,27 @@ python -B tools\reference-query.py --version <version> web --search "search term
 6. Update `INDEX_USAGE.md`, `versions/<version>/version.catalog.json`, and `docs/PROJECT_MEMORY.md` when sources, counts, or assumptions change.
 7. Do not stage generated `versions/<version>/Index` files other than the folder's `.gitignore` unless the user explicitly requests generated-index versioning and the repository has a suitable large-file policy.
 
+## Adding Research Documents
+
+Store completed research under `docs/research/<category>/<topic>/`. Read `docs/research/README.md` before creating or
+updating a research document.
+
+Every completed research item should have three same-basename files. Markdown preserves the canonical findings and
+evidence for agents. Pandoc generates committed LaTeX source using `tools/research-docs/pandoc-pdf.yaml`. XeLaTeX
+compiles the polished user-facing PDF, which remains local and ignored by Git. The generated LaTeX source is an
+explicit, user-requested exception to the ordinary rule against tracking generated files.
+
+When the Markdown changes:
+
+1. Verify factual claims and source paths.
+2. Regenerate the matching LaTeX source from the Markdown; never edit generated LaTeX directly.
+3. Compile the PDF from the generated LaTeX source.
+4. Review the PDF for clipped tables, awkward page breaks, unreadable code, and missing characters.
+5. Stage the Markdown and LaTeX source together. Do not stage the PDF.
+
+If Pandoc or `xelatex` is unavailable, keep the Markdown work and report the missing dependency. Do not silently
+substitute an HTML/browser PDF renderer when the requested deliverable is LaTeX-based.
+
 ## Updating Catalogs
 
 Update `reference.catalog.json` when:
@@ -131,6 +152,7 @@ Update `reference.catalog.json` when:
 - a new version is added;
 - the default version changes;
 - a top-level prompt, skill, wrapper, or documentation path changes.
+- the research workflow entry point changes.
 
 Update `versions/<version>/version.catalog.json` when:
 

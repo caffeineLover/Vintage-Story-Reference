@@ -5,7 +5,7 @@ Versioned reference repository for Vintage Story decompiled assemblies, extracte
 For AI-enabled projects that want to use this repository without scanning the full reference trees, see `INDEX_USAGE.md`.
 For task-shaped examples that combine the available query sources, see `docs/QUERY_COOKBOOK.md`.
 For the architecture and maintenance model, see `docs/ARCHITECTURE.md` and `docs/MAINTAINING_REFERENCE.md`.
-For mod-specific notes and guides, see `docs/mods/`.
+For committed Markdown/LaTeX research and locally generated reader PDFs, see `docs/research/`.
 
 ## Versions
 
@@ -23,5 +23,6 @@ For mod-specific notes and guides, see `docs/mods/`.
 - `.codex/skills` - Project-local Codex skills for maintaining and querying this reference repository.
 - `tools` - Index builders, query helpers, class cross-references, and the `reference-query.py` wrapper.
 - `reference.catalog.json` - Machine-readable discovery catalog for versions, prompts, skills, tools, and docs.
+- `docs/research` - Topic-organized research with committed Markdown/LaTeX sources and local reader PDFs.
 
 The version project is an index project for browsing and search. It is not intended to rebuild Vintage Story.

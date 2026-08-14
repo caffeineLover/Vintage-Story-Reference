@@ -6,6 +6,7 @@
     "overview": "README.md",
     "consumer_usage": "INDEX_USAGE.md",
     "query_cookbook": "docs/QUERY_COOKBOOK.md",
+    "research_workflow": "docs/research/README.md",
     "architecture": "docs/ARCHITECTURE.md",
     "maintenance": "docs/MAINTAINING_REFERENCE.md",
     "project_memory": "docs/PROJECT_MEMORY.md"

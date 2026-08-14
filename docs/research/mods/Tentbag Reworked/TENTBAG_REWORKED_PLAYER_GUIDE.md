@@ -1,4 +1,8 @@
-# TentBag-Reworked Player Guide
+---
+title: TentBag-Reworked Player Guide
+subtitle: TentBag-Reworked 3.2.4 for Vintage Story 1.22.6
+date: 2026-08-14
+---
 
 TentBag-Reworked adds a craftable tent bag that can pack a small built structure into an item, then place it again
 later. It is meant for portable camps, tents, and other compact travel builds.
@@ -165,22 +169,30 @@ If TentBag-Reworked behaves differently from this guide, check with the server o
 
 This guide was written from the local indexed TentBag-Reworked `3.2.4` reference files.
 
-TentBag-Reworked source files under `versions/1.22.6/mods/tentbagreworked_3.2.4/`:
+Under `versions/1.22.6/mods/`, use the `tentbagreworked_3.2.4/` mod root. Its asset files are in
+`assets/tentbagreworked/`:
 
-- `assets/tentbagreworked/itemtypes/tentbagreworked.json`
-- `assets/tentbagreworked/recipes/grid/tentbagreworked.json`
-- `assets/tentbagreworked/config/tent.json`
-- `assets/tentbagreworked/lang/en.json`
-- `decompiled assembly/TentBagReworked/TentBagReworked/TentBagReworkedModSystem.cs`
-- `decompiled assembly/TentBagReworked/TentBagReworked/Behaviors/PackableBehavior.cs`
-- `decompiled assembly/TentBagReworked/TentBagReworked/TentHologramRenderer.cs`
-- `decompiled assembly/TentBagReworked/TentBagReworked/Config/TentBagReworkedConfig.cs`
-- `decompiled assembly/TentBagReworked/TentBagReworked/Util/TentArea.cs`
+- `itemtypes/tentbagreworked.json`
+- `recipes/grid/tentbagreworked.json`
+- `config/tent.json`
+- `lang/en.json`
 
-WorldEdit source files under `versions/1.22.6/API/`:
+Under the same mod root, decompiled sources in `decompiled assembly/TentBagReworked/`, then `TentBagReworked/`:
 
-- `VSCreativeMod_decompiled_1.22.6/Vintagestory/ServerMods/WorldEdit/WorldEdit.cs`
-- `VSCreativeMod_decompiled_1.22.6/Vintagestory/ServerMods/WorldEdit/WorldEditWorkspace.cs`
-- `VSCreativeMod_decompiled_1.22.6/Vintagestory/ServerMods/WorldEdit/ImportTool.cs`
-- `VintagestoryAPI_decompiled_1.22.6/Vintagestory/API/Common/BlockSchematic.cs`
-- `VintagestoryAPI_decompiled_1.22.6/Vintagestory/API/Common/EnumOrigin.cs`
+- `TentBagReworkedModSystem.cs`
+- `Behaviors/PackableBehavior.cs`
+- `TentHologramRenderer.cs`
+- `Config/TentBagReworkedConfig.cs`
+- `Util/TentArea.cs`
+
+Under the API root `versions/1.22.6/API/`, use the `VSCreativeMod` decompile for version `1.22.6`, then
+`Vintagestory/ServerMods/WorldEdit/`:
+
+- `WorldEdit.cs`
+- `WorldEditWorkspace.cs`
+- `ImportTool.cs`
+
+Under the same API root, use the `VintagestoryAPI` decompile for version `1.22.6`, then `Vintagestory/API/Common/`:
+
+- `BlockSchematic.cs`
+- `EnumOrigin.cs`

@@ -8,6 +8,9 @@ riderModule.iml
 *.user
 .codex/tmp/
 
+# Local reader copies generated from committed research Markdown/LaTeX sources.
+docs/research/**/*.pdf
+
 # Generated reference indexes. Keep each Index folder via its local .gitignore only.
 versions/*/Index/*
 !versions/*/Index/.gitignore

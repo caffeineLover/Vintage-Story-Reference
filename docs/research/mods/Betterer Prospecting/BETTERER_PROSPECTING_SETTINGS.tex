@@ -1,0 +1,325 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  11pt,
+  letterpaper,
+  titlepage]{article}
+\usepackage{xcolor}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Betterer Prospecting Settings Reference},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Betterer Prospecting Settings Reference}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Betterer Prospecting 3.4.5 for Vintage Story 1.22.6}
+\author{}
+\date{2026-08-14}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.08}
+This document describes selected Betterer Prospecting \texttt{3.4.5}
+settings as indexed for Vintage Story \texttt{1.22.6}. It is based on
+the decompiled mod code and the bundled Config Lib setting manifest.
+
+The setting key \texttt{ReprospectParellelism} is misspelled in the
+mod's code and assets. Keep that spelling when editing configuration
+files.
+
+\section{Short Answers}\label{short-answers}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Setting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Default
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What It Controls
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{ReprospectParellelism} & \texttt{0} & The worker concurrency
+used by the \texttt{/btrpr\ reprospect} server command. \\
+\texttt{BoreholeRadius} & \texttt{8} & The horizontal radius of the
+vertical Borehole scan cylinder. \\
+\texttt{BoreholeScansStone} & \texttt{false} & Whether Borehole mode
+reports rock/stone blocks in addition to ore. \\
+\texttt{BoreholeDmg} & See note below & The amount of prospector pick
+durability damage applied by a valid Borehole sample. \\
+\end{longtable}
+}
+
+\texttt{BoreholeDmg} has a mismatch between two bundled sources. The
+decompiled runtime config class initializes it to \texttt{2}, while the
+Config Lib setting manifest advertises a default of \texttt{4} with a
+range of \texttt{1} to \texttt{10}. Existing saved config values are
+authoritative at runtime.
+
+\section{Borehole Mode Context}\label{borehole-mode-context}
+
+Betterer Prospecting replaces the vanilla prospector pick item class and
+registers additional tool modes. Borehole mode is one of those modes
+when \texttt{AddBoreHoleMode} is enabled.
+
+When a player breaks a block with the prospector pick, Betterer
+Prospecting asks the active mode how much durability damage to apply.
+The returned value is passed to \texttt{DamageItem}. Borehole mode
+normally returns \texttt{BoreholeDmg}.
+
+Borehole mode only accepts samples from the top face of the clicked
+block. For a valid top-face sample, it walks a vertical cylinder
+centered on the clicked block, from the clicked Y level down to the
+bottom of the world. The cylinder radius comes from
+\texttt{BoreholeRadius}; the Config Lib manifest defaults that radius to
+\texttt{8}, and \texttt{0} makes the scan a straight vertical line.
+
+\section{\texorpdfstring{Matching \texttt{BoreholeRadius} To
+\texttt{ProximitySearchRadius\ =\ 5}}{Matching BoreholeRadius To ProximitySearchRadius = 5}}\label{matching-boreholeradius-to-proximitysearchradius-5}
+
+There is no single code-enforced optimum. If ``optimal'' means the
+smallest Borehole radius that preserves the same horizontal reach as
+\texttt{ProximitySearchRadius\ =\ 5}, use \texttt{BoreholeRadius\ =\ 5}.
+
+This is not the same as the bundled default. Betterer Prospecting ships
+\texttt{ProximitySearchRadius\ =\ 5}, but its Config Lib manifest ships
+\texttt{BoreholeRadius\ =\ 8}. That default makes Borehole mode a
+broader survey tool than Proximity mode.
+
+The reason is the scan shape. \texttt{ProximitySearchRadius} is used by
+\texttt{WalkBlocksSphere}, so a radius of \texttt{5} searches a bounded
+3D sphere around the clicked block. \texttt{BoreholeRadius} is used by
+\texttt{WalkBlocksCylinder}, so a radius of \texttt{5} searches the same
+5-block horizontal reach, but repeats that circular footprint from the
+clicked Y level down to the bottom of the world.
+
+Integer block positions scanned per horizontal Borehole layer:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+\texttt{BoreholeRadius} & Blocks Per Y Layer & Relative To Radius
+\texttt{5} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{5} & \texttt{81} & \texttt{1.00x} \\
+\texttt{8} & \texttt{197} & \texttt{2.43x} \\
+\texttt{10} & \texttt{317} & \texttt{3.91x} \\
+\end{longtable}
+}
+
+Because Borehole mode already scans far more depth than Proximity mode,
+raising \texttt{BoreholeRadius} above \texttt{5} increases coverage and
+scan cost quickly. Use \texttt{8} only when the intent is for Borehole
+samples to cover a wider column than Proximity samples. Use \texttt{0}
+for a strict vertical line.
+
+\section{\texorpdfstring{\texttt{BoreholeScansStone}}{BoreholeScansStone}}\label{boreholescansstone}
+
+\texttt{BoreholeScansStone} decides whether Borehole mode includes
+rock/stone block types in its results.
+
+With the default \texttt{false} value, Borehole mode does not add stone
+results. If \texttt{BoreholeScansOre} is still enabled, the scan reports
+only qualifying ore blocks found in the vertical cylinder.
+
+When \texttt{BoreholeScansStone} is \texttt{true}, the scan also calls
+the mod's rock-detection helper and adds qualifying rock types to the
+result list. Ore is checked first, so a block that qualifies as ore is
+handled by the ore path rather than the stone path.
+
+If both \texttt{BoreholeScansOre} and \texttt{BoreholeScansStone} are
+disabled, Borehole mode does not scan. It sends the
+\texttt{borehole-no-filter} message and returns \texttt{1} durability
+damage instead of \texttt{BoreholeDmg}.
+
+\section{\texorpdfstring{\texttt{BoreholeDmg}}{BoreholeDmg}}\label{boreholedmg}
+
+\texttt{BoreholeDmg} is the durability cost of a valid Borehole sample.
+
+The Borehole code returns this value after it finishes the scan and
+sends the player either the found-results message or the no-results
+message. That means a valid top-face Borehole sample consumes
+\texttt{BoreholeDmg} durability even when the scan finds no matching ore
+or stone.
+
+Two early rejection paths return \texttt{1} instead:
+
+\begin{itemize}
+\tightlist
+\item
+  both ore and stone scanning are disabled;
+\item
+  the player tries to take the sample from a face other than the top
+  face.
+\end{itemize}
+
+The bundled English text labels this setting as ``Borehole Damage'' and
+describes it as tool damage for Borehole mode. The Config Lib manifest
+constrains it to \texttt{1} through \texttt{10}.
+
+\section{\texorpdfstring{\texttt{ReprospectParellelism}}{ReprospectParellelism}}\label{reprospectparellelism}
+
+\texttt{ReprospectParellelism} affects the admin reprospecting command,
+not ordinary prospecting pick use.
+
+Betterer Prospecting registers \texttt{/btrpr\ reprospect} behind the
+\texttt{controlserver} privilege. The command recalculates stored
+prospector-map readings and is described by the mod as an expensive
+operation. During that recalculation, the mod uses
+\texttt{Parallel.ForEachAsync} over the stored readings for each player
+entry.
+
+The setting is used as \texttt{ParallelOptions.MaxDegreeOfParallelism}:
+
+\begin{itemize}
+\tightlist
+\item
+  values greater than \texttt{0} are used directly as the maximum number
+  of concurrent reprospecting workers;
+\item
+  \texttt{0} falls back to \texttt{Environment.ProcessorCount\ /\ 4}.
+\end{itemize}
+
+Higher values can finish reprospecting faster, but they increase CPU
+load while the command is running. The bundled English text says the
+same thing: higher numbers are faster but more CPU-intensive, and
+\texttt{0} uses one quarter of the available cores.
+
+The Config Lib manifest allows \texttt{0} through \texttt{100}. For
+normal servers, \texttt{0} is the conservative choice. Increase it only
+for planned maintenance, preferably while few players are online.
+
+\section{Notes And Quirks}\label{notes-and-quirks}
+
+\begin{itemize}
+\tightlist
+\item
+  The spelling \texttt{Parellelism} appears in the actual key and UI
+  translation. Do not silently correct it to \texttt{Parallelism} in
+  config files.
+\item
+  The decompiled \texttt{/btrpr\ reprospect} command accepts an optional
+  player argument, but the visible \texttt{3.4.5} method body loops
+  through the stored map-layer readings collection as a whole. Verify
+  in-game before relying on the command for per-player-only
+  reprospecting.
+\item
+  The Config Lib manifest and the direct \texttt{ModConfig} class
+  disagree on \texttt{BoreholeDmg}'s initial default. Check the saved
+  runtime config when diagnosing a server's actual Borehole durability
+  cost.
+\end{itemize}
+
+\section{Source Paths}\label{source-paths}
+
+All paths below are under
+\texttt{versions/1.22.6/mods/bettererprospecting\_3.4.5}.
+
+Under
+\texttt{decompiled\ assembly/BetterErProspecting/BetterErProspecting/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Config/ModConfig.cs}
+\item
+  \texttt{Item/ItemBetterErProspectingPick.cs}
+\item
+  \texttt{Prospecting/ProspectingSystem.cs}
+\end{itemize}
+
+Under \texttt{assets/bettererprospecting/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{config/configlib-patches.json}
+\item
+  \texttt{lang/en.json}
+\end{itemize}
+
+\end{document}

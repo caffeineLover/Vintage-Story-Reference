@@ -1,4 +1,8 @@
-# Betterer Prospecting Settings Reference
+---
+title: Betterer Prospecting Settings Reference
+subtitle: Betterer Prospecting 3.4.5 for Vintage Story 1.22.6
+date: 2026-08-14
+---
 
 This document describes selected Betterer Prospecting `3.4.5` settings as indexed for Vintage Story `1.22.6`.
 It is based on the decompiled mod code and the bundled Config Lib setting manifest.
@@ -121,8 +125,13 @@ for planned maintenance, preferably while few players are online.
 
 All paths below are under `versions/1.22.6/mods/bettererprospecting_3.4.5`.
 
-- `decompiled assembly/BetterErProspecting/BetterErProspecting/Config/ModConfig.cs`
-- `decompiled assembly/BetterErProspecting/BetterErProspecting/Item/ItemBetterErProspectingPick.cs`
-- `decompiled assembly/BetterErProspecting/BetterErProspecting/Prospecting/ProspectingSystem.cs`
-- `assets/bettererprospecting/config/configlib-patches.json`
-- `assets/bettererprospecting/lang/en.json`
+Under `decompiled assembly/BetterErProspecting/BetterErProspecting/`:
+
+- `Config/ModConfig.cs`
+- `Item/ItemBetterErProspectingPick.cs`
+- `Prospecting/ProspectingSystem.cs`
+
+Under `assets/bettererprospecting/`:
+
+- `config/configlib-patches.json`
+- `lang/en.json`
