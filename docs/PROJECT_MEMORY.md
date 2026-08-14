@@ -311,6 +311,16 @@ python -B tools\web-index\query_web_index.py --db versions\1.22.3\Index\web.sqli
   exceeded the default Windows Git path limit during staging.
 - Left `docs/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.pdf` and `tools/panserbjornrebjorn_1.0.0` untracked
   because they appear to be generated or misplaced local reference material, not required 1.22.6 commit content.
+- Rewrote Git history with `git-filter-repo` to remove `versions/1.22.3` and `versions/1.22.4` from all reachable
+  commits after creating the temporary mirror backup
+  `E:\Gaming\Vintage Story\mods\Vintage Story Reference.backup.git`. `git-filter-repo` removed the `origin` remote as
+  expected; it was restored to `https://github.com/caffeineLover/Vintage-Story-Reference.git`.
+- Ran `git gc --aggressive --prune=now` after the rewrite. Packed Git storage fell from about `695 MiB` before the
+  rewrite to about `647 MiB`; most storage remains because the current `versions/1.22.6` payload still contains a large
+  asset/mod reference set that Git stores in the current history.
+- Verified after the rewrite that `git rev-list --objects --all -- versions/1.22.3 versions/1.22.4` returns no
+  objects, `git fsck --no-progress` succeeds, `dotnet build "Vintage Story Reference.sln" --no-restore` succeeds, and
+  representative 1.22.6 asset/code queries still return results.
 
 ### 2026-08-10
 
