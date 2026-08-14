@@ -6,6 +6,7 @@ For AI-enabled projects that want to use this repository without scanning the fu
 For task-shaped examples that combine the available query sources, see `docs/QUERY_COOKBOOK.md`.
 For the architecture and maintenance model, see `docs/ARCHITECTURE.md` and `docs/MAINTAINING_REFERENCE.md`.
 For committed Markdown/LaTeX research and locally generated reader PDFs, see `docs/research/`.
+For the curated flat schematic library and intake policy, see `docs/SCHEMATIC_LIBRARY.md`.
 
 ## Versions
 
@@ -24,5 +25,6 @@ For committed Markdown/LaTeX research and locally generated reader PDFs, see `do
 - `tools` - Index builders, query helpers, class cross-references, and the `reference-query.py` wrapper.
 - `reference.catalog.json` - Machine-readable discovery catalog for versions, prompts, skills, tools, and docs.
 - `docs/research` - Topic-organized research with committed Markdown/LaTeX sources and local reader PDFs.
+- `schematics` - Flat curated schematic library, local intake folder, tracked manifest, and generated-index location.
 
 The version project is an index project for browsing and search. It is not intended to rebuild Vintage Story.

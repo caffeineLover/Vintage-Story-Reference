@@ -31,6 +31,10 @@ Pandoc-generated LaTeX committed for reproducibility. XeLaTeX compiles the user-
 ignored and not committed. `docs/research/README.md` defines the workflow and
 `tools/research-docs/pandoc-pdf.yaml` provides the shared rendering defaults.
 
+The schematic library scaffold lives under `schematics/`. `library/` is a flat tracked collection for approved JSON
+schematics, `inbox/` is an ignored local intake area, `manifest.json` is the tracked metadata source, and `Index/` is
+reserved for ignored rebuildable query artifacts. The manifest is currently empty.
+
 The code-index schema is now version `2`. Its `registrations` table stores supported literal Vintage Story
 registration calls, their call-site evidence, containing type, and an unambiguous registered-type declaration link
 when available. `tools/cross-reference/query_class_cross_reference.py` joins top-level asset `class` and `entityClass`
@@ -60,9 +64,9 @@ user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
 
-No active work is currently in progress. The old `docs/mods` tree is now `docs/research/mods`; both retained research
-items have committed Markdown/LaTeX sources and locally generated PDFs. The research workflow, ignore rules, catalogs,
-and maintainer instructions reflect the current Markdown-to-LaTeX-to-PDF policy.
+No active work is currently in progress. The schematic library structure is ready for intake, but no schematics or
+schematic index tooling have been added yet. The next useful action is to place candidate files in
+`schematics/inbox/` and explicitly request ingestion.
 
 ## Durable technical knowledge
 
@@ -219,6 +223,11 @@ independent, avoids duplicated relationship state, and lets version catalogs des
 join is category-aware so identical strings are compared only against the correct block, item, entity, or block-entity
 registry.
 
+Architecture decision: keep the initial curated schematic library flat under `schematics/library/`. Classification,
+authorship, compatibility, dependency, dimension, tag, provenance, and licensing fields belong in the tracked
+`schematics/manifest.json`, not directory names. The ignored inbox separates unreviewed drops from approved content;
+the ignored index directory separates rebuildable query data from authoritative schematic JSON files.
+
 ## External interfaces and integrations
 
 The web index source manifest is `versions/<version>/Web/sources.json`. Each source entry includes a public page URL, raw fetch URL, title, source type, applicability notes, and last-known edit date when available. For new versions, `do-new-web` copies or merges every source entry from the nearest previous version's source manifest before rebuilding the target `web.sqlite`.
@@ -248,6 +257,9 @@ The web index is a dated snapshot of fetched upstream content. If current docume
 Research `.tex` files are intentionally committed generated sources at the user's explicit direction. Research PDFs
 under `docs/research/` are ignored local reader copies and must not be staged. Update Markdown first, regenerate the
 LaTeX source, then compile and visually review the PDF; never hand-edit generated LaTeX or PDF output.
+
+The schematic library has no ingestion validator or search index yet. Third-party downloads must not enter the tracked
+library without recorded provenance and clear redistribution permission; a public download alone is insufficient.
 
 The asset index rebuild for 1.22.3 can take longer than two minutes. On 2026-07-14 it timed out at a 120-second command limit but succeeded with a 300-second limit in about 220 seconds.
 
@@ -335,6 +347,11 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `docs/QUERY_COOKBOOK.md` - Tested, task-shaped and cross-index query recipes for common Vintage Story research.
 - `docs/research/README.md` - Required Markdown/LaTeX/local-PDF research organization and rendering workflow.
 - `tools/research-docs/pandoc-pdf.yaml` - Shared Pandoc defaults for readable, letter-sized XeLaTeX PDFs.
+- `docs/SCHEMATIC_LIBRARY.md` - Flat schematic-library layout, intake, naming, licensing, and consumption policy.
+- `schematics/inbox` - Ignored local drop area for unreviewed schematic files.
+- `schematics/library` - Flat tracked directory for approved source schematic JSON files.
+- `schematics/manifest.json` - Tracked curated schematic metadata; initially contains an empty `schematics` array.
+- `schematics/Index` - Ignored location reserved for future generated schematic query artifacts.
 - `tools/asset-index` - Asset index builder and query helper.
 - `tools/code-index` - Decompiled C# code index builder and query helper.
 - `tools/cross-reference/query_class_cross_reference.py` - Category-aware query-time join from asset class facts to
@@ -402,6 +419,11 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 ## Session history
 
 ### 2026-08-14
+
+- Created the initial flat schematic-library scaffold under `schematics/`: ignored `inbox/`, tracked `library/`,
+  ignored `Index/`, and an empty tracked `manifest.json`. Added `docs/SCHEMATIC_LIBRARY.md` with intake, naming,
+  provenance/licensing, and consumption rules, then exposed the library through the root README, architecture doc,
+  `AGENTS.md`, and machine-readable catalog. No schematic files or index tooling were added.
 
 - Finalized the research artifact policy at the user's direction: commit canonical `.md` and generated `.tex`, but
   keep compiled `.pdf` reader copies local and ignored. Updated `.gitignore`, `AGENTS.md`, architecture/maintenance

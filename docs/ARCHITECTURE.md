@@ -18,6 +18,8 @@ This repository is a searchable reference archive for AI-assisted Vintage Story 
 - `docs/PROJECT_MEMORY.md` records durable project history, decisions, risks, and verified commands.
 - `docs/research/` stores topic-organized research: canonical Markdown for agents, generated and committed LaTeX
   source, and a matching local PDF for the user.
+- `schematics/` stores a flat curated schematic library and tracked manifest. Its ignored `inbox/` is the local intake
+  boundary, while its ignored `Index/` is reserved for rebuildable query artifacts.
 
 ## Prompt And Skill Roles
 
@@ -87,6 +89,8 @@ The repository keeps curated source material and rebuildable generated artifacts
 - Research LaTeX files are an explicit, user-requested exception to the ordinary generated-file rule. They are
   reproducible text sources committed beside their canonical Markdown under `docs/research/`. Compiled research PDFs
   remain local and ignored by Git.
+- Curated schematic JSON files and `schematics/manifest.json` are retained source/reference material. Unreviewed inbox
+  files and generated schematic indexes are local artifacts and remain ignored.
 - Each `Index` folder should be represented in Git by its local `.gitignore`; generated `.sqlite` and `.index.json`
   files should remain local unless the maintainer explicitly chooses a large-file publishing strategy.
 

@@ -7,6 +7,7 @@
     "consumer_usage": "INDEX_USAGE.md",
     "query_cookbook": "docs/QUERY_COOKBOOK.md",
     "research_workflow": "docs/research/README.md",
+    "schematic_library": "docs/SCHEMATIC_LIBRARY.md",
     "architecture": "docs/ARCHITECTURE.md",
     "maintenance": "docs/MAINTAINING_REFERENCE.md",
     "project_memory": "docs/PROJECT_MEMORY.md"
@@ -21,6 +22,14 @@
       "catalog": "versions/1.22.6/version.catalog.json",
       "description": "Vintage Story 1.22.6 API, asset, mod, web, indexed-code, and class-cross-reference payload."
     }
+  },
+  "schematics": {
+    "root": "schematics",
+    "inbox": "schematics/inbox",
+    "library": "schematics/library",
+    "manifest": "schematics/manifest.json",
+    "index": "schematics/Index",
+    "description": "Flat curated Vintage Story schematic library with local intake and rebuildable index locations."
   },
   "prompt_catalog": {
     "root": "prompts",

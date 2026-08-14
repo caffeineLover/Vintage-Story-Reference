@@ -66,3 +66,11 @@ When the user asks for research to be documented, keep the source and reader del
 - Do not edit generated LaTeX or PDF output directly. Update the Markdown, then regenerate both files.
 - If Pandoc or a LaTeX engine is unavailable, preserve the Markdown and report the missing dependency instead of
   silently substituting a different rendering system.
+
+
+## Schematic Library
+
+Before ingesting or cataloging Vintage Story schematics, read and follow `docs/SCHEMATIC_LIBRARY.md`. Keep unreviewed
+files in the ignored `schematics/inbox/`, approved JSON schematics flat under `schematics/library/`, and curated
+metadata in `schematics/manifest.json`. Do not commit third-party schematics without recorded provenance and clear
+redistribution permission.

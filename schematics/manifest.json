@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "manifest_purpose": "Curated metadata for the flat Vintage Story schematic library.",
+  "library_format": "flat",
+  "library_root": "schematics/library",
+  "schematics": []
+}
