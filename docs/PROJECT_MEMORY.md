@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-08-14
+Last updated: 2026-08-15
 
 ## Project overview
 
@@ -30,6 +30,12 @@ Documented research lives under `docs/research/`. Each completed item has canoni
 Pandoc-generated LaTeX committed for reproducibility. XeLaTeX compiles the user-facing PDF locally; research PDFs are
 ignored and not committed. `docs/research/README.md` defines the workflow and
 `tools/research-docs/pandoc-pdf.yaml` provides the shared rendering defaults.
+
+The Config Lib integration guide under `docs/research/mods/Config Lib` documents optional Config Lib `1.12.0`
+support for Vintage Story `1.22.6`. It covers asset-only YAML/patch definitions, JSON-backed code-mod configuration,
+runtime APIs and events, server/client ownership, migration, localization, verification, and the Betterer Prospecting
+consumer pattern. Its Markdown and generated LaTeX are tracked research sources; its compiled PDF is local and
+ignored.
 
 The schematic library scaffold lives under `schematics/`. `library/` is a flat tracked collection for approved JSON
 schematics, `inbox/` is an ignored local intake area, `manifest.json` is the tracked metadata source, and `Index/` is
@@ -101,6 +107,13 @@ rows, `54` entity rows, and `133` block-entity rows.
 Other Codex-assisted projects should read `INDEX_USAGE.md` when they need to use this repository as a Vintage Story knowledge source. They can paste `prompts/Vintage Story Research/Add to AGENTS.md` into their own `AGENTS.md` to learn the index-first research workflow. They should read or adopt the other files under `prompts/` when they need the user's agent operating standards.
 
 The Config Lib JSON API upstream source is the GitHub wiki page at `https://github.com/maltiez2/vsmod_configlib/wiki/JSON-API`. Its raw Markdown endpoint is `https://raw.githubusercontent.com/wiki/maltiez2/vsmod_configlib/JSON-API.md`.
+
+Config Lib `1.12.0` discovers assets named exactly `configlib-patches.json` in the Vintage Story `config` asset
+category. Without a `file` property it uses a domain YAML file; with `file` it manages the named JSON file under
+`ModConfig`. Its public runtime contracts include `IConfigProvider`, `IConfig`, and `ISetting`; the provider exposes
+config-loaded and setting-changed events, while config/setting assignment helpers copy current values onto matching
+object members. Optional code integrations should retain ordinary config loading, guard Config Lib resolution with
+`IsModEnabled("configlib")`, assign initial values after `ConfigsLoaded`, and keep C#/asset/Config Lib defaults aligned.
 
 The VS Village upstream source is the Vintage Story Mod DB page at `https://mods.vintagestory.at/vsvillage`. The builder extracts the page's description tab via the `moddb_description` HTML scope so the searchable index focuses on gameplay/design-reference content and current Mod DB metadata instead of full site navigation or file tables.
 
@@ -277,6 +290,10 @@ No open technical questions are currently recorded.
 
 ## Testing and verification
 
+The Config Lib integration research was rendered on 2026-08-15 with Pandoc and three XeLaTeX passes. The final PDF
+has `15` physical pages including the title page, and the final LaTeX log has zero overfull boxes. Visual spot checks
+covered the title, contents, JSON example, runtime API section, query examples, and implementation checklist.
+
 Current 1.22.6 verification performed on 2026-08-14:
 
 ```powershell
@@ -347,6 +364,10 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `docs/QUERY_COOKBOOK.md` - Tested, task-shaped and cross-index query recipes for common Vintage Story research.
 - `docs/research/README.md` - Required Markdown/LaTeX/local-PDF research organization and rendering workflow.
 - `tools/research-docs/pandoc-pdf.yaml` - Shared Pandoc defaults for readable, letter-sized XeLaTeX PDFs.
+- `docs/research/mods/Config Lib/CONFIG_LIB_INTEGRATION_GUIDE.md` - Canonical Config Lib `1.12.0` optional
+  integration guide for content mods and code mods targeting the retained Vintage Story `1.22.6` reference.
+- `docs/research/mods/Config Lib/CONFIG_LIB_INTEGRATION_GUIDE.tex` - Committed Pandoc-generated LaTeX source for
+  the local Config Lib integration reader PDF.
 - `docs/SCHEMATIC_LIBRARY.md` - Flat schematic-library layout, intake, naming, licensing, and consumption policy.
 - `schematics/inbox` - Ignored local drop area for unreviewed schematic files.
 - `schematics/library` - Flat tracked directory for approved source schematic JSON files.
@@ -417,6 +438,21 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `.codex/skills/new-version-mods` - Project-local Codex skill for downloading, staging, extracting, and decompiling selected compatible reference mods under `versions/<version>/mods`.
 
 ## Session history
+
+### 2026-08-15
+
+- Added `docs/research/mods/Config Lib/CONFIG_LIB_INTEGRATION_GUIDE.md`, documenting optional Config Lib `1.12.0`
+  integration for Vintage Story `1.22.6`. The guide covers the exact asset path, YAML and JSON-backed definitions,
+  normal fallback config loading, guarded live callbacks, setting/formatting fields, content-mod asset patching,
+  public runtime interfaces, managed registration, synchronization, defaults/migration, localization, limitations,
+  evidence, queries, and a release checklist.
+- Used the 1.22.6 mod manifest plus web, asset, and code indexes before inspecting Config Lib and Betterer Prospecting
+  source candidates. Verified the Config Lib asset loader, public `IConfigProvider`/`IConfig`/`ISetting` contracts,
+  `RegisterCustomManagedConfig`, event names, JSON `file` behavior, and Betterer Prospecting's optional guard and
+  default mismatch.
+- Generated `CONFIG_LIB_INTEGRATION_GUIDE.tex` with the shared Pandoc defaults and compiled the ignored local PDF
+  with three XeLaTeX passes. The final document has 15 physical pages, zero overfull boxes, and visually checked
+  title, contents, code-heavy sections, runtime API material, source queries, and checklist.
 
 ### 2026-08-14
 

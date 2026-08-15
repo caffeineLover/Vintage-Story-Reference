@@ -1,0 +1,1069 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  11pt,
+  letterpaper,
+  titlepage]{article}
+\usepackage{xcolor}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Config Lib Integration Guide},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Config Lib Integration Guide}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Config Lib 1.12.0 for Vintage Story 1.22.6}
+\author{}
+\date{2026-08-15}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.08}
+This document explains how a Vintage Story mod can support Config Lib
+while continuing to work when Config Lib is not installed. It covers
+content-mod asset patches, ordinary code-mod JSON configuration, live
+setting updates, and the public runtime API visible in Config Lib
+\texttt{1.12.0}.
+
+The findings apply to the Config Lib \texttt{1.12.0} reference retained
+for Vintage Story \texttt{1.22.6}. That Config Lib release was published
+for the Vintage Story \texttt{1.22.x} line through \texttt{1.22.1}, so
+the repository classifies it as a same-line fallback rather than an
+exact \texttt{1.22.6} release. Recheck Config Lib when targeting another
+game or Config Lib version.
+
+\section{Short Answer}\label{short-answer}
+
+Yes, a mod can implement Config Lib without making it a mandatory
+runtime dependency.
+
+The recommended design for an ordinary code mod is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Keep a normal configuration class and load it with Vintage Story's
+  \texttt{LoadModConfig\textless{}T\textgreater{}()} API.
+\item
+  Supply sensible defaults that work with no Config Lib installation.
+\item
+  Add
+  \texttt{assets/\textless{}modid\textgreater{}/config/configlib-patches.json}
+  to describe the Config Lib controls.
+\item
+  Set \texttt{file} in that asset to the same JSON filename loaded by
+  the mod.
+\item
+  If settings must take effect immediately, test
+  \texttt{IsModEnabled("configlib")} before resolving
+  \texttt{ConfigLibModSystem}, then subscribe to its configuration
+  events.
+\item
+  Keep the defaults in the C\# class, assets, and Config Lib definition
+  identical.
+\end{enumerate}
+
+Config Lib's upstream JSON-API documentation explicitly treats it as
+optional. If it is absent, its configuration files and asset patches are
+not applied; the consuming mod's ordinary JSON file or asset defaults
+remain in effect.
+
+\section{Choose An Integration Model}\label{choose-an-integration-model}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Model
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Saved File
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Best For
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C\# API Needed
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Generated YAML & Domain YAML file & Content mods and asset patching &
+No \\
+JSON-backed asset & Named JSON file & Existing code-mod config classes &
+Only for live callbacks \\
+Managed registration & JSON path from code & Code-first configuration &
+Yes \\
+\end{longtable}
+}
+
+The first two models are discovered from
+\texttt{configlib-patches.json}. The third is registered through Config
+Lib's public runtime API and must be registered early enough that Config
+Lib has not already sent its configuration registry to clients.
+
+\section{The Required Asset Location}\label{the-required-asset-location}
+
+Config Lib \texttt{1.12.0} scans the Vintage Story \texttt{config} asset
+category and selects assets whose filename is exactly:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{configlib{-}patches.json}
+\end{Highlighting}
+\end{Shaded}
+
+Place the file at:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{assets/\textless{}modid\textgreater{}/config/configlib{-}patches.json}
+\end{Highlighting}
+\end{Shaded}
+
+The asset domain becomes the Config Lib configuration domain. For a mod
+id of \texttt{examplemod}, the configuration is therefore retrieved with
+\texttt{GetConfig("examplemod")}, and Config Lib events report
+\texttt{examplemod} as their domain.
+
+The filename is significant. A differently named JSON file in the same
+directory is not discovered by the loader.
+
+\section{Recommended Code-Mod
+Implementation}\label{recommended-code-mod-implementation}
+
+\subsection{Keep A Normal Fallback
+Config}\label{keep-a-normal-fallback-config}
+
+Config Lib should enhance the mod's configuration experience rather than
+own the only viable configuration path. A minimal ordinary config class
+can look like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{public} \KeywordTok{sealed} \KeywordTok{class}\NormalTok{ ModConfig}
+\OperatorTok{\{}
+    \KeywordTok{public} \DataTypeTok{bool}\NormalTok{ Enabled }\OperatorTok{\{} \KeywordTok{get}\OperatorTok{;} \KeywordTok{set}\OperatorTok{;} \OperatorTok{\}} \OperatorTok{=} \KeywordTok{true}\OperatorTok{;}
+
+    \KeywordTok{public} \DataTypeTok{int}\NormalTok{ SearchRadius }\OperatorTok{\{} \KeywordTok{get}\OperatorTok{;} \KeywordTok{set}\OperatorTok{;} \OperatorTok{\}} \OperatorTok{=} \DecValTok{5}\OperatorTok{;}
+
+    \KeywordTok{public} \DataTypeTok{string}\NormalTok{ DisplayMode }\OperatorTok{\{} \KeywordTok{get}\OperatorTok{;} \KeywordTok{set}\OperatorTok{;} \OperatorTok{\}} \OperatorTok{=} \StringTok{"Detailed"}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Load and store it through the normal Vintage Story API before attempting
+Config Lib integration:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{private} \DataTypeTok{const} \DataTypeTok{string}\NormalTok{ ConfigFileName }\OperatorTok{=} \StringTok{"ExampleMod.json"}\OperatorTok{;}
+
+\KeywordTok{public}\NormalTok{ ModConfig Config }\OperatorTok{\{} \KeywordTok{get}\OperatorTok{;} \KeywordTok{private} \KeywordTok{set}\OperatorTok{;} \OperatorTok{\}} \OperatorTok{=} \KeywordTok{new}\OperatorTok{();}
+
+\KeywordTok{public} \KeywordTok{override} \DataTypeTok{void} \FunctionTok{Start}\OperatorTok{(}\NormalTok{ICoreAPI api}\OperatorTok{)}
+\OperatorTok{\{}
+    \KeywordTok{base}\OperatorTok{.}\FunctionTok{Start}\OperatorTok{(}\NormalTok{api}\OperatorTok{);}
+
+    \KeywordTok{try}
+    \OperatorTok{\{}
+\NormalTok{        Config }\OperatorTok{=}\NormalTok{ api}\OperatorTok{.}\FunctionTok{LoadModConfig}\OperatorTok{\textless{}}\NormalTok{ModConfig}\OperatorTok{\textgreater{}(}\NormalTok{ConfigFileName}\OperatorTok{)} \OperatorTok{??} \KeywordTok{new} \FunctionTok{ModConfig}\OperatorTok{();}
+\NormalTok{        api}\OperatorTok{.}\FunctionTok{StoreModConfig}\OperatorTok{(}\NormalTok{Config}\OperatorTok{,}\NormalTok{ ConfigFileName}\OperatorTok{);}
+    \OperatorTok{\}}
+    \KeywordTok{catch} \OperatorTok{(}\NormalTok{Exception exception}\OperatorTok{)}
+    \OperatorTok{\{}
+\NormalTok{        api}\OperatorTok{.}\FunctionTok{Logger}\OperatorTok{.}\FunctionTok{Error}\OperatorTok{(}\StringTok{"Unable to load ExampleMod configuration: \{0\}"}\OperatorTok{,}\NormalTok{ exception}\OperatorTok{);}
+\NormalTok{        Config }\OperatorTok{=} \KeywordTok{new} \FunctionTok{ModConfig}\OperatorTok{();}
+    \OperatorTok{\}}
+
+    \FunctionTok{AttachOptionalConfigLib}\OperatorTok{(}\NormalTok{api}\OperatorTok{);}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+This fallback is the behavior that protects the mod when Config Lib is
+missing, disabled, or unable to parse its definition. The exact
+exception policy is project-specific, but the mod should always retain a
+usable configuration object.
+
+\subsection{Describe The Same JSON File To Config
+Lib}\label{describe-the-same-json-file-to-config-lib}
+
+The corresponding \texttt{configlib-patches.json} can use Config Lib
+\texttt{1.12.0}'s array form:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"version"}\FunctionTok{:} \DecValTok{1}\FunctionTok{,}
+  \DataTypeTok{"file"}\FunctionTok{:} \StringTok{"ExampleMod.json"}\FunctionTok{,}
+  \DataTypeTok{"settings"}\FunctionTok{:} \OtherTok{[}
+    \FunctionTok{\{}
+      \DataTypeTok{"code"}\FunctionTok{:} \StringTok{"Enabled"}\FunctionTok{,}
+      \DataTypeTok{"type"}\FunctionTok{:} \StringTok{"boolean"}\FunctionTok{,}
+      \DataTypeTok{"ingui"}\FunctionTok{:} \StringTok{"examplemod:setting{-}enabled"}\FunctionTok{,}
+      \DataTypeTok{"comment"}\FunctionTok{:} \StringTok{"examplemod:setting{-}enabled{-}description"}\FunctionTok{,}
+      \DataTypeTok{"default"}\FunctionTok{:} \KeywordTok{true}\FunctionTok{,}
+      \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{1}
+    \FunctionTok{\}}\OtherTok{,}
+    \FunctionTok{\{}
+      \DataTypeTok{"code"}\FunctionTok{:} \StringTok{"SearchRadius"}\FunctionTok{,}
+      \DataTypeTok{"type"}\FunctionTok{:} \StringTok{"integer"}\FunctionTok{,}
+      \DataTypeTok{"ingui"}\FunctionTok{:} \StringTok{"examplemod:setting{-}search{-}radius"}\FunctionTok{,}
+      \DataTypeTok{"comment"}\FunctionTok{:} \StringTok{"examplemod:setting{-}search{-}radius{-}description"}\FunctionTok{,}
+      \DataTypeTok{"default"}\FunctionTok{:} \DecValTok{5}\FunctionTok{,}
+      \DataTypeTok{"range"}\FunctionTok{:} \FunctionTok{\{}
+        \DataTypeTok{"min"}\FunctionTok{:} \DecValTok{1}\FunctionTok{,}
+        \DataTypeTok{"max"}\FunctionTok{:} \DecValTok{20}\FunctionTok{,}
+        \DataTypeTok{"step"}\FunctionTok{:} \DecValTok{1}
+      \FunctionTok{\},}
+      \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{2}
+    \FunctionTok{\}}\OtherTok{,}
+    \FunctionTok{\{}
+      \DataTypeTok{"code"}\FunctionTok{:} \StringTok{"DisplayMode"}\FunctionTok{,}
+      \DataTypeTok{"type"}\FunctionTok{:} \StringTok{"string"}\FunctionTok{,}
+      \DataTypeTok{"ingui"}\FunctionTok{:} \StringTok{"examplemod:setting{-}display{-}mode"}\FunctionTok{,}
+      \DataTypeTok{"default"}\FunctionTok{:} \StringTok{"Detailed"}\FunctionTok{,}
+      \DataTypeTok{"values"}\FunctionTok{:} \OtherTok{[}
+        \StringTok{"Compact"}\OtherTok{,}
+        \StringTok{"Detailed"}
+      \OtherTok{]}\FunctionTok{,}
+      \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{3}
+    \FunctionTok{\}}
+  \OtherTok{]}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+When \texttt{file} is present, Config Lib treats the target as JSON
+instead of generating its default
+\texttt{ModConfig/\textless{}domain\textgreater{}.yaml} file. The
+\texttt{code} values act as paths into that JSON document. Simple
+top-level property names therefore match ordinary C\# property names
+naturally.
+
+Config Lib's JSON reader also uses its path implementation for nested
+values. Test nested paths with the target version rather than assuming
+that every JSONPath feature is available.
+
+\subsection{Apply Initial And Live
+Values}\label{apply-initial-and-live-values}
+
+Code that names Config Lib types needs a compile-time reference to
+Config Lib, but the runtime path can still be optional. The retained
+Betterer Prospecting example first checks
+\texttt{IsModEnabled("configlib")} and only then resolves
+\texttt{ConfigLibModSystem} and subscribes to events.
+
+A reusable pattern is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{private} \DataTypeTok{void} \FunctionTok{AttachOptionalConfigLib}\OperatorTok{(}\NormalTok{ICoreAPI api}\OperatorTok{)}
+\OperatorTok{\{}
+    \KeywordTok{if} \OperatorTok{(!}\NormalTok{api}\OperatorTok{.}\FunctionTok{ModLoader}\OperatorTok{.}\FunctionTok{IsModEnabled}\OperatorTok{(}\StringTok{"configlib"}\OperatorTok{))}
+    \OperatorTok{\{}
+        \KeywordTok{return}\OperatorTok{;}
+    \OperatorTok{\}}
+
+\NormalTok{    ConfigLibModSystem provider }\OperatorTok{=}
+\NormalTok{        api}\OperatorTok{.}\FunctionTok{ModLoader}\OperatorTok{.}\FunctionTok{GetModSystem}\OperatorTok{\textless{}}\NormalTok{ConfigLibModSystem}\OperatorTok{\textgreater{}(}\KeywordTok{true}\OperatorTok{);}
+
+\NormalTok{    provider}\OperatorTok{.}\FunctionTok{ConfigsLoaded} \OperatorTok{+=} \OperatorTok{()} \OperatorTok{=\textgreater{}}
+    \OperatorTok{\{}
+\NormalTok{        IConfig}\OperatorTok{?}\NormalTok{ config }\OperatorTok{=}\NormalTok{ provider}\OperatorTok{.}\FunctionTok{GetConfig}\OperatorTok{(}\NormalTok{Mod}\OperatorTok{.}\FunctionTok{Info}\OperatorTok{.}\FunctionTok{ModID}\OperatorTok{);}
+\NormalTok{        config}\OperatorTok{?.}\FunctionTok{AssignSettingsValues}\OperatorTok{(}\NormalTok{Config}\OperatorTok{);}
+        \FunctionTok{ApplyConfigDependentState}\OperatorTok{();}
+    \OperatorTok{\};}
+
+\NormalTok{    provider}\OperatorTok{.}\FunctionTok{SettingChanged} \OperatorTok{+=} \OperatorTok{(}\NormalTok{domain}\OperatorTok{,}\NormalTok{ \_}\OperatorTok{,}\NormalTok{ setting}\OperatorTok{)} \OperatorTok{=\textgreater{}}
+    \OperatorTok{\{}
+        \KeywordTok{if} \OperatorTok{(}\NormalTok{domain }\OperatorTok{!=}\NormalTok{ Mod}\OperatorTok{.}\FunctionTok{Info}\OperatorTok{.}\FunctionTok{ModID}\OperatorTok{)}
+        \OperatorTok{\{}
+            \KeywordTok{return}\OperatorTok{;}
+        \OperatorTok{\}}
+
+\NormalTok{        setting}\OperatorTok{.}\FunctionTok{AssignSettingValue}\OperatorTok{(}\NormalTok{Config}\OperatorTok{);}
+        \FunctionTok{ApplySettingChange}\OperatorTok{(}\NormalTok{setting}\OperatorTok{.}\FunctionTok{YamlCode}\OperatorTok{);}
+    \OperatorTok{\};}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{IConfig.AssignSettingsValues(object)} assigns all current
+settings to matching fields or properties on an object.
+\texttt{ISetting.AssignSettingValue(object)} assigns one setting. These
+methods return or operate through Config Lib's current parsed values,
+including values received from the server.
+
+The callbacks that follow assignment are important when a setting
+affects cached data, Harmony patches, registered tool modes, meshes, or
+other state that was constructed earlier. Changing the config object's
+property alone does not rebuild such state automatically.
+
+Use the nullable syntax and event-unsubscription pattern appropriate to
+the consuming project's target framework. Store delegate instances when
+they must be removed during \texttt{Dispose()}; an inline lambda cannot
+be reliably removed later by recreating a visually identical lambda.
+
+\section{Setting Definition
+Reference}\label{setting-definition-reference}
+
+Config Lib \texttt{1.12.0} accepts an array of setting and formatting
+blocks or the older grouped-object form documented by the upstream JSON
+API.
+
+\subsection{Array Form}\label{array-form}
+
+Each setting entry normally includes:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Property
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{code} & Unique setting identifier and JSON/YAML path used for
+object assignment. \\
+\texttt{type} & Value type such as \texttt{boolean}, \texttt{integer},
+\texttt{float}, \texttt{number}, \texttt{string}, \texttt{color}, or
+\texttt{other}. \\
+\texttt{default} & Reset value and fallback used when no saved value
+exists. \\
+\texttt{weight} & Sort order in the GUI and generated configuration
+presentation. \\
+\texttt{ingui} & Optional localization key for the GUI label. \\
+\texttt{comment} & Optional literal help text or localization key. \\
+\texttt{clientSide} & When \texttt{true}, keeps that setting client-side
+instead of treating it as server-controlled. \\
+\texttt{range} & Numeric \texttt{min}, \texttt{max}, and optional
+\texttt{step}; a complete min/max range produces a slider. \\
+\texttt{values} & Explicit allowed or suggested values for selection. \\
+\texttt{mapping} & Maps display/config labels to underlying values. \\
+\texttt{logarithmic} & Requests a logarithmic numeric slider. \\
+\end{longtable}
+}
+
+Config Lib's decompiled enum also contains internal \texttt{None} and
+\texttt{Constant} kinds. Constants are supplied separately through the
+definition's \texttt{constants} object; they are useful to expressions
+but are not ordinary editable controls.
+
+\subsection{Formatting Blocks}\label{formatting-blocks}
+
+Formatting blocks can appear among settings in the array form. For
+example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"type"}\FunctionTok{:} \StringTok{"separator"}\FunctionTok{,}
+  \DataTypeTok{"title"}\FunctionTok{:} \StringTok{"examplemod:settings{-}search{-}title"}\FunctionTok{,}
+  \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{10}\FunctionTok{,}
+  \DataTypeTok{"collapsible"}\FunctionTok{:} \KeywordTok{true}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Separators can carry a \texttt{title} or explanatory \texttt{text}.
+Config Lib attempts to resolve those strings as localization keys and
+otherwise displays them literally.
+
+\subsection{Grouped Form}\label{grouped-form}
+
+The indexed upstream JSON API documents settings grouped by type:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"version"}\FunctionTok{:} \DecValTok{1}\FunctionTok{,}
+  \DataTypeTok{"settings"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"boolean"}\FunctionTok{:} \FunctionTok{\{}
+      \DataTypeTok{"FEATURE\_ENABLED"}\FunctionTok{:} \FunctionTok{\{}
+        \DataTypeTok{"name"}\FunctionTok{:} \StringTok{"feature{-}enabled"}\FunctionTok{,}
+        \DataTypeTok{"ingui"}\FunctionTok{:} \StringTok{"examplemod:setting{-}feature{-}enabled"}\FunctionTok{,}
+        \DataTypeTok{"comment"}\FunctionTok{:} \StringTok{"examplemod:setting{-}feature{-}enabled{-}description"}\FunctionTok{,}
+        \DataTypeTok{"default"}\FunctionTok{:} \KeywordTok{true}\FunctionTok{,}
+        \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{1}
+      \FunctionTok{\}}
+    \FunctionTok{\},}
+    \DataTypeTok{"integer"}\FunctionTok{:} \FunctionTok{\{}
+      \DataTypeTok{"SEARCH\_RADIUS"}\FunctionTok{:} \FunctionTok{\{}
+        \DataTypeTok{"name"}\FunctionTok{:} \StringTok{"search{-}radius"}\FunctionTok{,}
+        \DataTypeTok{"default"}\FunctionTok{:} \DecValTok{5}\FunctionTok{,}
+        \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{2}\FunctionTok{,}
+        \DataTypeTok{"range"}\FunctionTok{:} \FunctionTok{\{}
+          \DataTypeTok{"min"}\FunctionTok{:} \DecValTok{1}\FunctionTok{,}
+          \DataTypeTok{"max"}\FunctionTok{:} \DecValTok{20}\FunctionTok{,}
+          \DataTypeTok{"step"}\FunctionTok{:} \DecValTok{1}
+        \FunctionTok{\}}
+      \FunctionTok{\}}
+    \FunctionTok{\}}
+  \FunctionTok{\}}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Without \texttt{file}, this form generates
+\texttt{ModConfig/examplemod.yaml}. The uppercase keys are setting codes
+used by asset patches, while \texttt{name} is the user-facing YAML key.
+The upstream documentation says YAML names should avoid spaces and
+characters such as \texttt{:}; hyphens and underscores are suitable
+separators.
+
+\section{Asset Patching For Content
+Mods}\label{asset-patching-for-content-mods}
+
+Config Lib can patch asset values without any consuming-mod C\# code.
+Patches are grouped by the value type they produce and then by asset
+location:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"version"}\FunctionTok{:} \DecValTok{1}\FunctionTok{,}
+  \DataTypeTok{"settings"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"float"}\FunctionTok{:} \FunctionTok{\{}
+      \DataTypeTok{"DAMAGE\_MULTIPLIER"}\FunctionTok{:} \FunctionTok{\{}
+        \DataTypeTok{"name"}\FunctionTok{:} \StringTok{"damage{-}multiplier"}\FunctionTok{,}
+        \DataTypeTok{"default"}\FunctionTok{:} \FloatTok{1.0}\FunctionTok{,}
+        \DataTypeTok{"weight"}\FunctionTok{:} \DecValTok{1}\FunctionTok{,}
+        \DataTypeTok{"range"}\FunctionTok{:} \FunctionTok{\{}
+          \DataTypeTok{"min"}\FunctionTok{:} \FloatTok{0.5}\FunctionTok{,}
+          \DataTypeTok{"max"}\FunctionTok{:} \FloatTok{2.0}\FunctionTok{,}
+          \DataTypeTok{"step"}\FunctionTok{:} \FloatTok{0.1}
+        \FunctionTok{\}}
+      \FunctionTok{\}}
+    \FunctionTok{\}}
+  \FunctionTok{\},}
+  \DataTypeTok{"patches"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"float"}\FunctionTok{:} \FunctionTok{\{}
+      \DataTypeTok{"examplemod:itemtypes/example{-}tool.json"}\FunctionTok{:} \FunctionTok{\{}
+        \DataTypeTok{"behaviors/0/properties/damage"}\FunctionTok{:} \StringTok{"value * DAMAGE\_MULTIPLIER"}
+      \FunctionTok{\}}
+    \FunctionTok{\}}
+  \FunctionTok{\}}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Here, \texttt{value} means the asset's original value at the patched
+path. Config Lib supports setting references, arithmetic, constants such
+as \texttt{pi} and \texttt{e}, and functions including trigonometric
+operations, absolute value, square root, rounding, logarithms, min/max,
+clamp, and conditional comparison helpers.
+
+Patches can target the consuming mod's assets, vanilla assets, JSON
+patch files, or another mod's assets. Cross-mod patching is useful for
+server configuration add-ons, but the target paths and load-order
+assumptions must be tested against the exact target versions.
+
+\subsection{Conditional Patches}\label{conditional-patches}
+
+The JSON API also supports boolean expressions that select between
+values. A representative expression is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"some/path"}\ErrorTok{:} \StringTok{"(FEATURE\_ENABLED) ? NEW\_VALUE : value"}
+\end{Highlighting}
+\end{Shaded}
+
+This keeps the original asset value when the feature is disabled.
+Parenthesize nontrivial arithmetic and boolean expressions clearly;
+compact expressions are easier to validate and diagnose from Config Lib
+logs.
+
+\section{Runtime API In Config Lib
+1.12.0}\label{runtime-api-in-config-lib-1.12.0}
+
+\subsection{\texorpdfstring{\texttt{IConfigProvider}}{IConfigProvider}}\label{iconfigprovider}
+
+\texttt{ConfigLibModSystem} implements \texttt{IConfigProvider}. Its
+relevant public surface includes:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Domains}, listing registered configuration domains;
+\item
+  \texttt{GetConfig(domain)} and \texttt{GetSetting(domain,\ code)};
+\item
+  \texttt{ConfigsLoaded}, \texttt{SettingChanged},
+  \texttt{ConfigWindowOpened}, and \texttt{ConfigWindowClosed} events;
+\item
+  \texttt{RegisterCustomConfig}, for a custom-drawn configuration
+  window;
+\item
+  \texttt{RegisterCustomManagedConfig}, for a configuration object
+  managed by Config Lib.
+\end{itemize}
+
+\texttt{SettingChanged} supplies the domain, owning \texttt{IConfig},
+and changed \texttt{ISetting}. Always filter the domain before modifying
+a consuming mod's state.
+
+\subsection{\texorpdfstring{\texttt{IConfig}}{IConfig}}\label{iconfig}
+
+The public interface exposes:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ConfigFilePath} and \texttt{Version};
+\item
+  \texttt{WriteToFile()}, \texttt{ReadFromFile()}, and
+  \texttt{RestoreToDefaults()};
+\item
+  \texttt{GetSetting(code)};
+\item
+  the per-config \texttt{SettingChanged} event;
+\item
+  \texttt{AssignSettingsValues(target)}.
+\end{itemize}
+
+Prefer this interface when no implementation-specific behavior is
+needed. Casting to Config Lib's concrete \texttt{Config} class couples
+the mod more tightly to the retained version.
+
+\subsection{\texorpdfstring{\texttt{ISetting}}{ISetting}}\label{isetting}
+
+The public setting interface exposes the current \texttt{Value},
+optional \texttt{MappingKey}, \texttt{DefaultValue},
+\texttt{SettingType}, \texttt{YamlCode}, validation metadata, and
+\texttt{AssignSettingValue(target)}.
+
+The assignment helper looks for a matching field or property on the
+supplied object. Keep setting codes aligned with the configuration
+object's actual member names, including capitalization and any
+historical misspellings that have already become part of the saved-file
+contract.
+
+\subsection{Managed Registration}\label{managed-registration}
+
+Config Lib \texttt{1.12.0} also exposes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{RegisterCustomManagedConfig}\OperatorTok{(}
+    \DataTypeTok{string}\NormalTok{ domain}\OperatorTok{,}
+    \DataTypeTok{object}\NormalTok{ configObject}\OperatorTok{,}
+    \DataTypeTok{string}\OperatorTok{?}\NormalTok{ path }\OperatorTok{=} \KeywordTok{null}\OperatorTok{,}
+\NormalTok{    Action}\OperatorTok{?}\NormalTok{ onSyncedFromServer }\OperatorTok{=} \KeywordTok{null}\OperatorTok{,}
+\NormalTok{    Action}\OperatorTok{\textless{}}\DataTypeTok{string}\OperatorTok{\textgreater{}?}\NormalTok{ onSettingChanged }\OperatorTok{=} \KeywordTok{null}\OperatorTok{,}
+\NormalTok{    Action}\OperatorTok{?}\NormalTok{ onConfigSaved }\OperatorTok{=} \KeywordTok{null}\OperatorTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+It derives a definition from the supplied object's fields and
+properties, uses \texttt{\textless{}domain\textgreater{}.json} when no
+path is provided, assigns changed values back to the object, and offers
+callbacks for synchronization, individual changes, and saves.
+
+The implementation rejects registration after Config Lib has already
+serialized its registry for clients. Register managed configurations
+during early mod startup, not from late gameplay events. This is an
+advanced alternative to the asset definition; the asset-driven JSON file
+is easier to inspect, localize, and support without Config Lib code
+references.
+
+\section{Load Order And
+Synchronization}\label{load-order-and-synchronization}
+
+Config Lib \texttt{1.12.0} registers its configuration recipe registry
+during \texttt{Start()} and loads discovered
+\texttt{configlib-patches.json} assets during \texttt{AssetsLoaded()}.
+After loading, it applies configured asset patches and raises
+\texttt{ConfigsLoaded}.
+
+The implementation distinguishes client-side settings from
+server-controlled settings:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{clientSide:\ true} marks a setting as local to the client;
+\item
+  server-controlled changes require the Vintage Story
+  \texttt{controlserver} privilege;
+\item
+  server changes are sent through Config Lib's network channel and
+  broadcast to other clients;
+\item
+  received settings are applied to the Config Lib configuration object
+  before callbacks are raised.
+\end{itemize}
+
+Do not use \texttt{clientSide:\ true} for values that affect
+authoritative gameplay, world state, recipes, damage, or server
+simulation. Conversely, purely visual or local convenience settings
+should not require server administration.
+
+Config Lib also publishes event-bus names in \texttt{1.12.0}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{configlib:\textless{}domain\textgreater{}:config{-}saved}
+\NormalTok{configlib:\textless{}domain\textgreater{}:setting{-}changed}
+\NormalTok{configlib:\textless{}domain\textgreater{}:setting{-}loaded}
+\NormalTok{configlib:config{-}reload}
+\end{Highlighting}
+\end{Shaded}
+
+The strongly typed provider events are normally simpler for a code mod
+that already references Config Lib. Event-bus integration can reduce
+direct coupling but still requires exact payload handling for the target
+Config Lib version.
+
+\section{Optional Dependency Rules}\label{optional-dependency-rules}
+
+The indexed upstream JSON documentation says Config Lib does not need to
+be listed in \texttt{modinfo.json} for the asset-driven integration.
+That is the cleanest option for content mods.
+
+For code mods that call Config Lib types:
+
+\begin{itemize}
+\tightlist
+\item
+  compile against the intended Config Lib API;
+\item
+  do not call or resolve its mod system until
+  \texttt{IsModEnabled("configlib")} succeeds;
+\item
+  isolate Config Lib-specific work in a guarded method;
+\item
+  keep all essential configuration loading outside that method;
+\item
+  verify a clean startup with Config Lib absent;
+\item
+  verify startup with Config Lib present but a malformed definition;
+\item
+  avoid packaging Config Lib's assembly as though it were part of the
+  consuming mod.
+\end{itemize}
+
+Betterer Prospecting \texttt{3.4.5} demonstrates an optional
+\texttt{modinfo.json} contract: its dependency list names only the game,
+while its guarded runtime path checks for Config Lib before resolving
+\texttt{ConfigLibModSystem}.
+
+\section{Defaults, Versions, And
+Migration}\label{defaults-versions-and-migration}
+
+The most important maintenance rule is to keep defaults consistent
+across all sources:
+
+\begin{itemize}
+\tightlist
+\item
+  C\# property or field initializers;
+\item
+  fallback asset values;
+\item
+  \texttt{configlib-patches.json} setting defaults;
+\item
+  any example configuration shipped in documentation.
+\end{itemize}
+
+Betterer Prospecting provides a concrete failure example. Its C\#
+\texttt{ModConfig} initializes \texttt{BoreholeDmg} to \texttt{2}, while
+its Config Lib manifest advertises \texttt{4}. The effective initial
+behavior can therefore depend on which file was created and whether
+Config Lib participated.
+
+The upstream YAML documentation uses \texttt{version} to regenerate an
+old generated configuration with new defaults and instructs authors to
+increase it when defaults need to be regenerated. Treat that as a
+migration boundary, not as a substitute for deliberate compatibility
+handling. In particular:
+
+\begin{itemize}
+\tightlist
+\item
+  do not bump the version merely because the mod itself received a
+  release;
+\item
+  preserve user choices where possible;
+\item
+  test the behavior of \texttt{version} separately for YAML and
+  \texttt{file}-backed JSON definitions;
+\item
+  document intentional resets or renamed keys;
+\item
+  never silently correct a misspelled setting key after users may
+  already have it in saved files.
+\end{itemize}
+
+\section{Localization}\label{localization}
+
+For setting labels, Config Lib uses \texttt{ingui} when present and
+otherwise falls back to the setting name/code. Comments can also be
+translation keys. If a key has no domain prefix, Config Lib attempts to
+use the consuming mod's asset domain; explicit
+\texttt{\textless{}modid\textgreater{}:\textless{}key\textgreater{}}
+values are clearer in shared examples.
+
+Add matching strings to the mod's language assets, for example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"setting{-}enabled"}\FunctionTok{:} \StringTok{"Enable feature"}\FunctionTok{,}
+  \DataTypeTok{"setting{-}enabled{-}description"}\FunctionTok{:} \StringTok{"Turns the example feature on or off."}\FunctionTok{,}
+  \DataTypeTok{"setting{-}search{-}radius"}\FunctionTok{:} \StringTok{"Search radius"}\FunctionTok{,}
+  \DataTypeTok{"setting{-}search{-}radius{-}description"}\FunctionTok{:} \StringTok{"Maximum horizontal search distance."}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Test both translated and missing-key behavior. Config Lib falls back to
+displaying literal text when a separator or description cannot be
+resolved as a translation.
+
+\section{Recommended Verification
+Matrix}\label{recommended-verification-matrix}
+
+Before release, test at least the following:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scenario
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Expected Result
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Config Lib absent & Mod loads; normal JSON/default configuration works;
+no Config Lib errors occur. \\
+Config Lib present, first run & Config appears in the GUI and the
+expected JSON/YAML file is generated or updated. \\
+Existing valid config & Saved values survive restart and appear
+correctly in the GUI. \\
+Invalid or partial config & Mod falls back safely or reports a useful
+error without losing unrelated functionality. \\
+Live setting edit & Matching config member changes and dependent runtime
+state refreshes. \\
+Dedicated server edit & Only authorized server settings change; clients
+receive the synchronized values. \\
+Client-only edit & Local visual/convenience behavior changes without
+modifying server-authoritative state. \\
+Reset to defaults & C\# defaults, asset defaults, and Config Lib
+defaults agree. \\
+Config Lib removed after use & The mod still reads its ordinary config
+or uses sensible fallback defaults. \\
+\end{longtable}
+}
+
+For asset patches, also inspect the target asset after loading and test
+with every targeted mod/version combination. An asset path that worked
+in one game patch or dependency release is not a permanent API.
+
+\section{Known Limitations And
+Uncertainty}\label{known-limitations-and-uncertainty}
+
+\begin{itemize}
+\tightlist
+\item
+  The upstream JSON-API page indexed here was last known edited on
+  \texttt{2024-05-14} and retrieved on \texttt{2026-08-10}. Config Lib
+  \texttt{1.12.0} contains newer behavior, including array-form
+  settings, JSON \texttt{file} backing, color settings, and managed
+  object registration that is not fully explained on that page.
+\item
+  The retained Config Lib release is a same-line fallback for Vintage
+  Story \texttt{1.22.6}, not an exact patch-tag match.
+\item
+  Decompiled source is behavioral evidence, not build-ready source and
+  not a substitute for the upstream public package/API documentation.
+\item
+  Config Lib's asset patch system is intentionally narrower than Vintage
+  Story's complete JSON patch feature set.
+\item
+  Optional direct C\# linkage should be tested in the consuming mod's
+  actual build and packaging arrangement. The Betterer Prospecting
+  pattern demonstrates that it can work, but it does not prove every
+  assembly layout is safe.
+\item
+  The precise GUI capabilities depend on Config Lib and its VSImGui
+  dependency being compatible with the client.
+\end{itemize}
+
+\section{Evidence And Source Paths}\label{evidence-and-source-paths}
+
+The research used the Vintage Story Reference \texttt{1.22.6} mod
+manifest, web index, asset index, and code index before opening the
+following narrow source candidates.
+
+\subsection{Indexed Upstream
+Documentation}\label{indexed-upstream-documentation}
+
+\begin{itemize}
+\tightlist
+\item
+  Config Lib JSON API:
+  \url{https://github.com/maltiez2/vsmod_configlib/wiki/JSON-API}
+\item
+  Indexed raw Markdown endpoint:
+  \url{https://raw.githubusercontent.com/wiki/maltiez2/vsmod_configlib/JSON-API.md}
+\item
+  Indexed retrieval time: \texttt{2026-08-10T03:39:34.076833+00:00}
+\item
+  Last-known upstream edit recorded by the source manifest:
+  \texttt{2024-05-14}
+\end{itemize}
+
+\subsection{Config Lib 1.12.0
+Reference}\label{config-lib-1.12.0-reference}
+
+All paths begin at \texttt{versions/1.22.6/mods/configlib\_1.12.0/}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{modinfo.json} --- retained package identity, VSImGui
+  dependency, and side metadata.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/ConfigLibModSystem.cs}
+  --- asset discovery, lifecycle, networking, public provider API,
+  managed registration, and event-bus constants.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/Config.cs} ---
+  YAML/JSON backing, version parsing, setting assignment, formatting,
+  constants, and file read/write behavior.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/ConfigPatches.cs} ---
+  collection and application of asset patches.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/ConfigSetting.cs} ---
+  setting parsing, validation, mapping, side metadata, and
+  reflection-based assignment.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/IConfigProvider.cs}
+  --- public provider contract.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/IConfig.cs} ---
+  public configuration contract.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/ISetting.cs} ---
+  public setting contract.
+\item
+  \texttt{decompiled\ assembly/configlib/ConfigLib/ConfigSettingType.cs}
+  --- setting type enum.
+\end{itemize}
+
+\subsection{Real Consumer: Betterer Prospecting
+3.4.5}\label{real-consumer-betterer-prospecting-3.4.5}
+
+All paths begin at
+\texttt{versions/1.22.6/mods/bettererprospecting\_3.4.5/}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{assets/bettererprospecting/config/configlib-patches.json} ---
+  array-form settings, JSON \texttt{file} backing, separators,
+  localization keys, ranges, client-side setting, and version
+  \texttt{31}.
+\item
+  \texttt{decompiled\ assembly/BetterErProspecting/BetterErProspecting/BetterErProspect.cs}
+  --- normal config loading, optional Config Lib guard, provider events,
+  object assignment, and runtime refresh behavior.
+\item
+  \texttt{decompiled\ assembly/BetterErProspecting/BetterErProspecting/Config/ModConfig.cs}
+  --- ordinary fallback config and the \texttt{BoreholeDmg} default
+  mismatch.
+\item
+  \texttt{modinfo.json} --- no hard Config Lib dependency declaration.
+\end{itemize}
+
+\subsection{Representative Index
+Queries}\label{representative-index-queries}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python }\OperatorTok{{-}}\NormalTok{B tools}\OperatorTok{/}\NormalTok{reference{-}query}\OperatorTok{.}\FunctionTok{py} \OperatorTok{{-}{-}}\NormalTok{version }\DecValTok{1.22}\OperatorTok{.}\DecValTok{6}\NormalTok{ \textasciigrave{}}
+\NormalTok{  mod }\OperatorTok{{-}{-}}\NormalTok{mod{-}id configlib }\OperatorTok{{-}{-}}\NormalTok{format json}
+
+\NormalTok{python }\OperatorTok{{-}}\NormalTok{B tools}\OperatorTok{/}\NormalTok{reference{-}query}\OperatorTok{.}\FunctionTok{py} \OperatorTok{{-}{-}}\NormalTok{version }\DecValTok{1.22}\OperatorTok{.}\DecValTok{6}\NormalTok{ \textasciigrave{}}
+\NormalTok{  web }\OperatorTok{{-}{-}}\NormalTok{source configlib{-}json{-}api }\OperatorTok{{-}{-}}\NormalTok{limit }\DecValTok{100}
+
+\DataTypeTok{python} \OperatorTok{{-}}\NormalTok{B tools}\OperatorTok{/}\NormalTok{reference{-}query}\OperatorTok{.}\FunctionTok{py} \OperatorTok{{-}{-}}\NormalTok{version }\DecValTok{1.22}\OperatorTok{.}\DecValTok{6}\NormalTok{ \textasciigrave{}}
+\NormalTok{  asset }\OperatorTok{{-}{-}}\NormalTok{search configlib }\OperatorTok{{-}{-}}\NormalTok{limit }\DecValTok{30}
+
+\DataTypeTok{python} \OperatorTok{{-}}\NormalTok{B tools}\OperatorTok{/}\NormalTok{reference{-}query}\OperatorTok{.}\FunctionTok{py} \OperatorTok{{-}{-}}\NormalTok{version }\DecValTok{1.22}\OperatorTok{.}\DecValTok{6}\NormalTok{ \textasciigrave{}}
+\NormalTok{  code }\OperatorTok{{-}{-}}\NormalTok{root }\StringTok{"configlib\_1.12.0/decompiled assembly"}\NormalTok{ \textasciigrave{}}
+  \OperatorTok{{-}{-}}\NormalTok{type IConfigProvider }\OperatorTok{{-}{-}}\NormalTok{limit }\DecValTok{10}
+
+\DataTypeTok{python} \OperatorTok{{-}}\NormalTok{B tools}\OperatorTok{/}\NormalTok{reference{-}query}\OperatorTok{.}\FunctionTok{py} \OperatorTok{{-}{-}}\NormalTok{version }\DecValTok{1.22}\OperatorTok{.}\DecValTok{6}\NormalTok{ \textasciigrave{}}
+\NormalTok{  code }\OperatorTok{{-}{-}}\NormalTok{root }\StringTok{"configlib\_1.12.0/decompiled assembly"}\NormalTok{ \textasciigrave{}}
+  \OperatorTok{{-}{-}}\NormalTok{member AssignSettingValue }\OperatorTok{{-}{-}}\NormalTok{limit }\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Implementation Checklist}\label{implementation-checklist}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Normal config loading works without Config Lib.
+\item[$\square$]
+  \texttt{configlib-patches.json} is under the exact domain/config path.
+\item[$\square$]
+  \texttt{file} matches the code mod's exact JSON filename when JSON
+  backing is intended.
+\item[$\square$]
+  Setting codes match config member names or intended JSON paths.
+\item[$\square$]
+  Defaults agree across C\#, assets, Config Lib, and documentation.
+\item[$\square$]
+  Server-authoritative and \texttt{clientSide} settings are classified
+  correctly.
+\item[$\square$]
+  Config Lib calls are guarded by \texttt{IsModEnabled("configlib")}.
+\item[$\square$]
+  Initial values are assigned after Config Lib reports configs loaded.
+\item[$\square$]
+  Live callbacks refresh any derived runtime state.
+\item[$\square$]
+  Event handlers are removed during disposal when the mod system can be
+  reloaded.
+\item[$\square$]
+  Localization keys exist and missing-key fallbacks were inspected.
+\item[$\square$]
+  Config Lib absent/present, client/server, restart, reset, and
+  migration cases were tested.
+\end{itemize}
+
+\end{document}
