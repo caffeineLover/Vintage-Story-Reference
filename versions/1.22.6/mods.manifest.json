@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "game_version": "1.22.6",
-  "last_updated": "2026-08-14",
+  "last_updated": "2026-08-16",
   "purpose": "Curated provenance, compatibility, content, and licensing metadata for selected reference mods and tools.",
   "compatibility_statuses": {
     "exact": "The selected Mod DB release explicitly lists Vintage Story 1.22.6.",
@@ -290,6 +290,46 @@
       }
     },
     {
+      "mod_id": "firearmsfork",
+      "name": "Firearms",
+      "version": "1.10.1",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/firearmsfork_1.10.1",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/firearmsfork",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/firearmsfork",
+        "source_repository": "https://github.com/Alodh1/Firearmsfork",
+        "local_metadata": "versions/1.22.6/mods/firearmsfork_1.10.1/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 48165,
+        "published_at_mod_db": "2026-07-05 20:34:40",
+        "archive_sha256": "54CD6C65FFF6D3AD47A0141E0C944F312176974D7BBCD2656440371DE7C8BAEC"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "firearmsfork_1.10.1/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
       "mod_id": "jaunt",
       "name": "Jaunt: Extended Riding System",
       "version": "3.1.0",
@@ -320,6 +360,47 @@
         "has_decompiled_code": true,
         "code_roots": [
           "jaunt_3.1.0/decompiled assembly"
+        ],
+        "has_native_binaries": false
+      },
+      "license": {
+        "file_present": false,
+        "status": "not-found-in-reference-folder"
+      }
+    },
+    {
+      "mod_id": "overhaulliblegacycompat",
+      "name": "Overhaul lib legacy compat",
+      "version": "1.2.5",
+      "package_type": "code",
+      "folder": "versions/1.22.6/mods/overhaulliblegacycompat_1.2.5",
+      "compatibility": {
+        "status": "same-line-fallback",
+        "target_game_version": "1.22.6",
+        "release_tags": [
+          "1.22.0",
+          "1.22.1",
+          "1.22.2",
+          "1.22.3",
+          "1.22.4"
+        ]
+      },
+      "sources": {
+        "mod_db_page": "https://mods.vintagestory.at/overhaulliblegacycompat",
+        "mod_db_api": "https://mods.vintagestory.at/api/mod/overhaulliblegacycompat",
+        "source_repository": "https://github.com/Alodh1/Overhaullib-Legacy",
+        "local_metadata": "versions/1.22.6/mods/overhaulliblegacycompat_1.2.5/modinfo.json"
+      },
+      "release": {
+        "mod_db_release_id": 50266,
+        "published_at_mod_db": "2026-07-23 14:52:58",
+        "archive_sha256": "66023E389D481E35717116F2C52608C2E6F175A4D597B5A51CC9EDBE476EC8D7"
+      },
+      "reference_content": {
+        "has_assets": true,
+        "has_decompiled_code": true,
+        "code_roots": [
+          "overhaulliblegacycompat_1.2.5/decompiled assembly"
         ],
         "has_native_binaries": false
       },

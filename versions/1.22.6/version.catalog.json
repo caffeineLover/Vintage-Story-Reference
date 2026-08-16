@@ -89,13 +89,13 @@
     }
   },
   "current_index_summary": {
-    "asset_files": 22103,
-    "code_files": 7957,
-    "code_types": 9016,
-    "code_members": 38277,
-    "code_registrations": 766,
-    "class_cross_reference_rows": 674,
-    "selected_mods": 16,
+    "asset_files": 22792,
+    "code_files": 8428,
+    "code_types": 9544,
+    "code_members": 40839,
+    "code_registrations": 820,
+    "class_cross_reference_rows": 710,
+    "selected_mods": 18,
     "web_sources": 4,
     "web_sections": 84
   },

@@ -149,10 +149,10 @@ Selected-mod manifest:
 E:\Gaming\Vintage Story\mods\Vintage Story Reference\versions\1.22.6\mods.manifest.json
 ```
 
-The asset index currently covers `22,103` files, including `11,066` JSON files with `10,717` parsed successfully and
-`349` parse-error rows retained for path/category lookup. The code index currently covers `7,957` C# files, `9,016`
-types, `38,277` members, and `766` literal registrations across `18` source roots. The class cross-reference currently
-joins `674` asset rows across `386` distinct class keys. The web index covers `4` copied sources and `84` sections.
+The asset index currently covers `22,792` files, including `11,618` JSON files with `11,269` parsed successfully and
+`349` parse-error rows retained for path/category lookup. The code index currently covers `8,428` C# files, `9,544`
+types, `40,839` members, and `820` literal registrations across `20` source roots. The class cross-reference currently
+joins `710` asset rows across `395` distinct class keys. The web index covers `4` copied sources and `84` sections.
 
 ## Recommended Workflow
 

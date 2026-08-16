@@ -1,0 +1,17 @@
+{
+  "type": "code",
+  "name": "Overhaul lib legacy compat",
+  "modid": "overhaulliblegacycompat",
+  "version": "1.2.5",
+
+  "description": "",
+  "authors": [ "Maltiez", "Alodh" ],
+
+  "dependencies": {
+    
+  },
+
+  "side" : "universal",
+  "requiredOnClient": true,
+  "requiredOnServer": true
+}

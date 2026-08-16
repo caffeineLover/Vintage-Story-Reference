@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-08-15
+Last updated: 2026-08-16
 
 ## Project overview
 
@@ -90,19 +90,18 @@ and delegates to the existing source-specific query helpers. It supports asset, 
 `--list-manifests` discovers curated manifests. The source-specific scripts remain the specialized interfaces and
 should not be duplicated inside the wrapper.
 
-The 1.22.6 mod manifest has `16` entries: `4` exact 1.22.6 Mod DB releases, `11` same-line fallbacks, and `1` external
-tool. All 16 manifest folders exist, every indexed code-root name in the manifest matches `code.index.json`, and no
+The 1.22.6 mod manifest has `18` entries: `4` exact 1.22.6 Mod DB releases, `13` same-line fallbacks, and `1` external
+tool. All 18 manifest folders exist, every indexed code-root name in the manifest matches `code.index.json`, and no
 explicit `LICENSE*` or `COPYING*` file is present in the retained mod folders. License-file absence is only a package
 observation, not a legal conclusion about upstream licensing.
 
 `tools/code-index/query_code_index.py --reference` exposes the existing conservative `references_hint` table. These
 results are bounded identifier hints, not a complete call graph; an empty result does not prove a symbol is unused.
 
-The 1.22.6 schema-2 code index contains `766` supported literal registrations: `256` block, `114` item, `139` block
-entity, `65` block behavior, `23` collectible behavior, `52` block-entity behavior, `65` entity behavior, `40` entity,
-`5` entity-renderer, and `7` inventory registrations. All 766 currently resolve to one best indexed type declaration.
-The category-aware class join produces `674` asset rows across `386` distinct class keys: `378` block rows, `109` item
-rows, `54` entity rows, and `133` block-entity rows.
+The 1.22.6 schema-2 code index contains `820` supported literal registrations: `258` block, `129` item, `140` block
+entity, `65` block behavior, `40` collectible behavior, `52` block-entity behavior, `78` entity behavior, `42` entity,
+`5` entity-renderer, and `11` inventory registrations. All 820 currently resolve to one best indexed type declaration.
+The category-aware class join produces `710` asset rows across `395` distinct class keys.
 
 Other Codex-assisted projects should read `INDEX_USAGE.md` when they need to use this repository as a Vintage Story knowledge source. They can paste `prompts/Vintage Story Research/Add to AGENTS.md` into their own `AGENTS.md` to learn the index-first research workflow. They should read or adopt the other files under `prompts/` when they need the user's agent operating standards.
 
@@ -120,9 +119,10 @@ The VS Village upstream source is the Vintage Story Mod DB page at `https://mods
 The retired 1.22.3 and 1.22.4 payloads are no longer available on disk. Use current 1.22.6 indexes for new work, and
 use Git history only if old-version provenance is required.
 
-As of the 2026-08-10 Simple VS Manager addition, the 1.22.6 asset index contains `22,103` files, including `11,066`
-JSON files with `10,717` parsed successfully and `349` parse-error rows retained for path/category lookup. The 1.22.6
-code index contains `7,957` C# files, `9,016` types, and `38,277` members across `18` source roots. The 1.22.6 web
+As of the 2026-08-16 Firearms Fork and Overhaul Lib Legacy Compat addition, the 1.22.6 asset index contains `22,792`
+files, including `11,618` JSON files with `11,269` parsed successfully and `349` parse-error rows retained for
+path/category lookup. The 1.22.6 code index contains `8,428` C# files, `9,544` types, and `40,839` members across `20`
+source roots. The 1.22.6 web
 index contains `4` copied source entries split into `84` sections. Generated manifests under `versions/1.22.6/Index`
 remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
 
@@ -171,11 +171,12 @@ The project-local skill for carrying curated web documentation forward is `.code
 
 Vintage Story 1.22.4 selected reference mods were seeded from the 1.22.3 mod set on 2026-07-21 and extended with TentBag-Reworked on 2026-07-25 and Betterer Prospecting on 2026-08-10. The target contains 15 unique mod ids under `versions/1.22.4/mods`: `A Panserbjorn Story Rebjorn (1.0.0)` for mod id `panserbjornrebjorn`, `allclasses_2.3.0`, `bettererprospecting_3.4.5`, `betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`, `jaunt_3.1.0`, `petai_5.1.1`, `primitivesurvival_5.0.6`, `rpvoicechat_2.5.8`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. `betterruins_0.6.3` was the only selected release with an exact Mod DB `1.22.4` tag; Betterer Prospecting 3.4.5 declares a `game` dependency of `1.22.0`, and TentBag-Reworked 3.2.4 and the other non-exact selected mods are same-line `1.22.x` fallbacks because Mod DB did not publish an exact `1.22.4` tag for those mod ids at selection time. The earlier seeded selection/download report is `.codex/tmp/mod-updates/1.22.4/selected-releases.json`; Betterer Prospecting was added later from a local ZIP and is documented in the 2026-08-10 session entry.
 
-Vintage Story 1.22.6 selected reference mods were seeded from the 1.22.4 mod set on 2026-08-10. The target contains 16
+Vintage Story 1.22.6 selected reference mods were seeded from the 1.22.4 mod set on 2026-08-10. The target contains 18
 unique reference entries under `versions/1.22.6/mods`: `allclasses_2.3.1`, `bettererprospecting_3.4.5`,
 `betterruins_0.6.3`, `bunnypet_1.0.4`, `cats_5.0.1`, `configlib_1.12.0`, `critcherscalculator_1.2.3`,
-`jaunt_3.1.0`, `panserbjornrebjorn_1.0.0`, `petai_5.1.1`, `primitivesurvival_5.1.0`, `rpvoicechat_2.5.8`,
-`simplevsmanager_2.3.0`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and `wolftaming_5.0.1`. Betterer Prospecting
+`firearmsfork_1.10.1`, `jaunt_3.1.0`, `overhaulliblegacycompat_1.2.5`, `panserbjornrebjorn_1.0.0`, `petai_5.1.1`,
+`primitivesurvival_5.1.0`, `rpvoicechat_2.5.8`, `simplevsmanager_2.3.0`, `tentbagreworked_3.2.4`, `vsimgui_1.2.7`, and
+`wolftaming_5.0.1`. Betterer Prospecting
 3.4.5, Primitive Survival 5.1.0, RPVoiceChat 2.5.8, and TentBag-Reworked 3.2.4 had exact Mod DB `1.22.6` releases.
 The other selected mods are same-line `1.22.x` fallbacks. Simple VS Manager 2.3.0 is a Mod DB `externaltool`, not a
 normal game mod package; it has no `modinfo.json` or game-version tag and was added for mod-manager workflow research.
@@ -290,6 +291,20 @@ No open technical questions are currently recorded.
 
 ## Testing and verification
 
+Current 1.22.6 verification performed on 2026-08-16:
+
+- The code index passed SQLite integrity checks with `8,428` files, `9,544` types, `40,839` members, `50,697`
+  reference hints, `820` registrations, and `20` source roots. Queries returned `Firearms.FirearmsModSystem`,
+  Firearms item registrations, and Overhaul Lib Legacy Compat types from the new roots.
+- The asset index passed SQLite integrity checks with `22,792` files and returned Firearms assets from the
+  `maltiezfirearms` domain plus Overhaul Lib Legacy Compat configuration and patch assets.
+- The tracked mod manifest has `18` unique entries for `18` retained folders; all local metadata paths and indexed
+  code-root names exist. Firearms Fork 1.10.1 and Overhaul Lib Legacy Compat 1.2.5 are current Mod DB releases recorded
+  as same-line fallbacks for target 1.22.6.
+- `dotnet build "Vintage Story Reference.sln" --no-restore` succeeded with zero warnings and errors. The maintained
+  metadata/documentation changes pass `git diff --check`; the complete staged third-party payload reports whitespace
+  already present in upstream translation, shape, shader, and metadata files, which was preserved without rewriting.
+
 The Config Lib integration research was rendered on 2026-08-15 with Pandoc and three XeLaTeX passes. The final PDF
 has `15` physical pages including the title page, and the final LaTeX log has zero overfull boxes. Visual spot checks
 covered the title, contents, JSON example, runtime API section, query examples, and implementation checklist.
@@ -402,6 +417,10 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `versions/1.22.6/Assets` - Full copied 1.22.6 client assets from the Linux client archive.
 - `versions/1.22.6/mods` - Selected 1.22.6 reference mod/tool set, with exact 1.22.6 Mod DB releases preferred and
   same-line 1.22.x fallbacks recorded when exact patch tags were unavailable.
+- `versions/1.22.6/mods/firearmsfork_1.10.1` - Firearms Fork 1.10.1 assets, managed assembly, and decompiled
+  `decompiled assembly/FirearmsFork` source root.
+- `versions/1.22.6/mods/overhaulliblegacycompat_1.2.5` - Overhaul Lib Legacy Compat 1.2.5 assets, managed assembly,
+  and decompiled `decompiled assembly/OverhaullibLegacyCompat` source root required by Firearms Fork.
 - `versions/1.22.6/mods/bettererprospecting_3.4.5` - Betterer Prospecting 3.4.5 reference mod folder containing
   assets, `BetterErProspecting.dll`, and a decompiled `decompiled assembly/BetterErProspecting` source root.
 - `versions/1.22.6/mods/bettererprospecting_3.4.5/assets/bettererprospecting/config/configlib-patches.json` -
@@ -438,6 +457,25 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `.codex/skills/new-version-mods` - Project-local Codex skill for downloading, staging, extracting, and decompiling selected compatible reference mods under `versions/<version>/mods`.
 
 ## Session history
+
+### 2026-08-16
+
+- Added the user-provided `firearmsfork_1.10.1.zip` and `overhaulliblegacycompat_1.2.5.zip` archives to the retained
+  1.22.6 reference mod set. Preserved staged archive and extraction copies under
+  `.codex/tmp/mod-updates/1.22.6/`.
+- Verified both archives against current Vintage Story Mod DB release metadata. Firearms Fork 1.10.1 release `48165`
+  lists game versions 1.22.0 through 1.22.3; Overhaul Lib Legacy Compat 1.2.5 release `50266` lists 1.22.0 through
+  1.22.4. Both are recorded as same-line fallbacks for target 1.22.6.
+- Decompiled `FirearmsFork.dll` into `firearmsfork_1.10.1/decompiled assembly/FirearmsFork`, producing `50` C# files,
+  and `OverhaullibLegacyCompat.dll` into
+  `overhaulliblegacycompat_1.2.5/decompiled assembly/OverhaullibLegacyCompat`, producing `421` C# files.
+- Updated `versions/1.22.6/mods.manifest.json` with archive hashes, Mod DB provenance, compatibility tags, source
+  repositories, content/code-root facts, and license-file absence for both mods.
+- Rebuilt the 1.22.6 code and asset indexes. The code index now contains `8,428` files, `9,544` types, `40,839`
+  members, `50,697` reference hints, and `820` registrations across `20` roots. The asset index now contains `22,792`
+  files, including `11,618` JSON files with `11,269` parsed successfully and `349` retained parse-error rows.
+- Updated the version catalog and index usage guide with current counts; representative mod, code, registration,
+  asset, and class-cross-reference queries succeeded. The browse-only solution built with zero warnings and errors.
 
 ### 2026-08-15
 
