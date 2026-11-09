@@ -1,0 +1,314 @@
+﻿{
+	"code": "metalpotdirty",
+	"classByType": {
+		"*-empty": "AllclassesCookingContainer",
+		"*-cooked": "AllclassesCookedContainer"
+	},
+	"entityclassByType": {
+		"*-cooked": "CookedContainer"
+	},
+	"behaviors": [
+		{ "name": "GroundStorable", "properties": { "layout": "Quadrants", "collisionBox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.4375, "z2": 1 } } },
+		{ "name": "Unplaceable" } 
+	],
+	"heldTpIdleAnimation": "holdbothhandslarge",
+	"heldTpUseAnimation": "twohandplaceblock",
+	"variantgroups": [
+		{ "code": "color", "states": ["copper", "bismuthbronze", "iron", "steel", "gold", "meteoriciron" ] },
+		{ "code": "type", "states": ["empty", "cooked"] }
+	],
+	"shape": { "base": "allclasses:block/metalpot/{color}" },
+	"texturesByType": {
+		"metalpotdirty-copper-*":
+		{
+		"transparent": { "base": "game:block/transparent" },
+		"ceramic": { "base": "game:block/metal/sheet/copper11" },
+		"dark": { "base": "game:block/metal/sheet/copper11", "overlays": [ "game:block/metal/overlay/dark" ] },
+		"lid": { "base": "game:block/metal/plate/copper", "overlays": [ "game:block/metal/overlay/crock" ] },
+        "lid-dirty2": { "base": "game:block/clay/lid-dirty" },
+		"liquid": { "base": "game:block/liquid/glue-cold" }
+		},
+		"metalpotdirty-bismuthbronze-*":
+		{
+		"transparent": { "base": "game:block/transparent" },
+		"ceramic": { "base": "game:block/metal/sheet/bismuthbronze14" },
+		"dark": { "base": "game:block/metal/sheet/bismuthbronze14", "overlays": [ "game:block/metal/overlay/dark" ] },
+		"lid": { "base": "game:block/metal/plate/bismuthbronze", "overlays": [ "game:block/metal/overlay/crock" ] },
+        "lid-dirty2": { "base": "game:block/clay/lid-dirty" },
+		"liquid": { "base": "game:block/liquid/glue-cold" }
+		},
+		"metalpotdirty-iron-*":
+		{
+		"transparent": { "base": "game:block/transparent" },
+		"ceramic": { "base": "game:block/metal/sheet/iron11" },
+		"dark": { "base": "game:block/metal/sheet/iron11", "overlays": [ "game:block/metal/overlay/dark" ] },
+		"lid": { "base": "game:block/metal/plate/iron", "overlays": [ "game:block/metal/overlay/crock" ] },
+        "lid-dirty2": { "base": "game:block/clay/lid-dirty" },
+		"liquid": { "base": "game:block/liquid/glue-cold" }
+		},
+		"metalpotdirty-steel-*":
+		{
+		"transparent": { "base": "game:block/transparent" },
+		"ceramic": { "base": "game:block/metal/sheet/steel13" },
+		"dark": { "base": "game:block/metal/sheet/steel13", "overlays": [ "game:block/metal/overlay/dark" ] },
+		"lid": { "base": "game:block/metal/plate/steel", "overlays": [ "game:block/metal/overlay/crock" ] },
+        "lid-dirty2": { "base": "game:block/clay/lid-dirty" },
+		"liquid": { "base": "game:block/liquid/glue-cold" }
+		},
+		"metalpotdirty-gold-*":
+		{
+		"transparent": { "base": "game:block/transparent" },
+		"ceramic": { "base": "game:block/metal/sheet/gold13" },
+		"meteoric": { "base": "game:block/metal/sheet/nickel3" },
+		"dark": { "base": "game:block/metal/sheet/gold13", "overlays": [ "game:block/metal/overlay/dark" ] },
+		"lid": { "base": "game:block/metal/plate/gold", "overlays": [ "game:block/metal/overlay/crock" ] },
+        "lid-dirty2": { "base": "game:block/clay/lid-dirty" },
+		"liquid": { "base": "game:block/liquid/glue-cold" }
+		},
+		"metalpotdirty-meteoriciron-*":
+		{
+		"transparent": { "base": "game:block/transparent" },
+		"ceramic": { "base": "game:block/metal/sheet/meteoriciron13" },
+		"meteoric": { "base": "game:block/metal/sheet/meteoriciron13" },
+		"dark": { "base": "game:block/metal/sheet/meteoriciron13", "overlays": [ "game:block/metal/overlay/dark" ] },
+		"lid": { "base": "game:block/metal/plate/meteoriciron", "overlays": [ "game:block/metal/overlay/crock" ] },
+        "lid-dirty2": { "base": "game:block/clay/lid-dirty" },
+		"liquid": { "base": "game:block/liquid/glue-cold" }
+		}
+	},
+	"attributes": {
+		"tempGlowMode": 1,
+		"shelvable": true,
+		"mealContainer": true,
+		"storageType": 1,
+		"maxTemperature": 220,
+		"emptiedBlockCode": "allclasses:metalpotdirty-{color}-empty",
+		"mealBlockCode": "allclasses:metalpotdirty-{color}-cooked",
+        "dirtiedBlockCode": "allclasses:metalpotdirty-{color}-cooked",
+		"attachShape": { "base": "game:item/wearable/hooved/cookpot" },
+        "isDirtyPot": true,
+		"wearableAttachment": true,
+		"wearableCategoryCode": "frontrightside",
+		"attachableToEntity": {
+			"categoryCode": "utilities",
+			"texturePrefixCode": "cookpot",
+			"attachedShapeBySlotCode": {
+				"frontrightside": { "base": "game:item/wearable/hooved/cookpotr-elk" },
+				"frontleftside": { "base": "game:item/wearable/hooved/cookpotl-elk" }
+			}
+		},
+		"inFirePitProps": {
+			"transform": {
+				"translation": { "x": 0, "y": 0.125, "z": 0 }
+			},
+			"useFirepitModel": "Wide"
+		},
+		"onTongTransform": {
+			"translation": { "x": -1.23, "y": -0.9, "z": -0.51 },
+			"rotation": { "x": 5, "y": 0, "z": 72 },
+			"scale": 0.8
+		},
+		"handbook": {
+			"groupBy": ["metalpotdirty-*-{type}"]
+		}
+	},
+	"attributesByType": {
+		"*-copper-*": {
+			"attachmentArea": {
+				"x1": 4,
+				"y1": 0,
+				"z1": 4,
+				"x2": 11,
+				"y2": 0,
+				"z2": 11
+			},
+			"onshelfTransform": {
+				"translation": { "x": 0, "y": -0.1, "z": 0 },
+				"scale": 0.8
+			},
+					"onDisplayTransform": {
+						"translation": { "x": 0.05, "y": 1.3, "z": 0.1 },
+						"origin": { "x": 0.5, "y": 0.5, "z": 0.5 },
+						"scale": 3.5
+					},
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 8,
+			"servingCapacity": 8,
+			"maxServingSize": 8,
+			"cookingSlotCapacityLitres": 8
+		},
+		"*-bismuthbronze-*": {
+			"attachmentArea": {
+				"x1": 4,
+				"y1": 0,
+				"z1": 4,
+				"x2": 11,
+				"y2": 0,
+				"z2": 11
+			},
+			"onshelfTransform": {
+				"translation": { "x": 0, "y": -0.1, "z": 0 },
+				"scale": 0.8
+			},
+					"onDisplayTransform": {
+						"translation": { "x": 0.05, "y": 1.3, "z": 0.1 },
+						"origin": { "x": 0.5, "y": 0.5, "z": 0.5 },
+						"scale": 3.5
+					},	
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 10,
+			"servingCapacity": 10,
+			"maxServingSize": 10,
+			"cookingSlotCapacityLitres": 10
+		},
+		"*-iron-*": {
+			"attachmentArea": {
+				"x1": 4,
+				"y1": 0,
+				"z1": 4,
+				"x2": 11,
+				"y2": 0,
+				"z2": 11
+			},
+			"onshelfTransform": {
+				"translation": { "x": 0, "y": -0.12, "z": 0 },
+				"scale": 0.78
+			},
+				"onDisplayTransform": {
+					"translation": { "x": 0.07, "y": 1.3, "z": 0 },
+					"origin": { "x": 0.5, "y": 0.5, "z": 0.5 },
+					"scale": 3.5
+		},
+		"groundStorageTransform": {
+			"rotation": { "x": 0, "y": -50, "z": 0 }
+		},
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 12,
+			"servingCapacity": 12,
+			"maxServingSize": 12,
+			"cookingSlotCapacityLitres": 12
+		},
+		"*-steel-*": {
+			"attachmentArea": {
+				"x1": 4,
+				"y1": 0,
+				"z1": 4,
+				"x2": 11,
+				"y2": 0,
+				"z2": 11
+			},
+			"onshelfTransform": {
+				"translation": { "x": 0, "y": -0.12, "z": 0 },
+				"rotation": { "x": 0, "y": 31, "z": 0 },
+				"scale": 0.78
+			},
+				"onDisplayTransform": {
+					"translation": { "x": 0.07, "y": 1.3, "z": 0 },
+					"origin": { "x": 0.5, "y": 0.5, "z": 0.5 },
+					"scale": 3.5
+		},
+		"groundStorageTransform": {
+			"rotation": { "x": 0, "y": -50, "z": 0 }
+		},
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 16,
+			"servingCapacity": 16,
+			"maxServingSize": 16,
+			"cookingSlotCapacityLitres": 16
+		},
+		"*-meteoriciron-*": {
+			"attachmentArea": {
+				"x1": 4,
+				"y1": 0,
+				"z1": 4,
+				"x2": 11,
+				"y2": 0,
+				"z2": 11
+			},
+			"onshelfTransform": {
+				"translation": { "x": 0, "y": -0.12, "z": 0 },
+				"rotation": { "x": 0, "y": 31, "z": 0 },
+				"scale": 0.73
+			},
+				"onDisplayTransform": {
+					"translation": { "x": 0.07, "y": 1.3, "z": 0 },
+					"origin": { "x": 0.5, "y": 0.5, "z": 0.5 },
+					"scale": 3.5
+		},
+		"groundStorageTransform": {
+			"rotation": { "x": 0, "y": -50, "z": 0 }
+		},
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 14,
+			"servingCapacity": 14,
+			"maxServingSize": 14,
+			"cookingSlotCapacityLitres": 14
+		},
+		"*-gold-*": {
+						"attachmentArea": {
+				"x1": 4,
+				"y1": 0,
+				"z1": 4,
+				"x2": 11,
+				"y2": 0,
+				"z2": 11
+			},
+			"onshelfTransform": {
+				"translation": { "x": 0, "y": -0.12, "z": 0 },
+				"rotation": { "x": 0, "y": 31, "z": 0 },
+				"scale": 0.73
+			},
+				"onDisplayTransform": {
+					"translation": { "x": 0.07, "y": 1.3, "z": 0 },
+					"origin": { "x": 0.5, "y": 0.5, "z": 0.5 },
+					"scale": 3.5
+				},
+		"groundStorageTransform": {
+			"rotation": { "x": 0, "y": -50, "z": 0 }
+		},
+			"cookingContainerSlots": 4,
+			"maxContainerSlotStackSize": 20,
+			"servingCapacity": 20,
+			"maxServingSize": 20,
+			"cookingSlotCapacityLitres": 20
+		}
+	},
+	"doNotRenderAtLod2": true,
+	"blockmaterial": "Metal",
+	"creativeinventory": { "general": ["*-empty"], "decorative": ["*-empty"], "allclasses": ["*-empty"] },
+	"replaceable": 400,
+	"resistance": 1.5,
+	"maxStackSizeByType": {
+		"*-cooked": 1,
+		"*-empty": 8
+	},
+	"lightAbsorption": 0,
+	"sounds": {
+		"walk": "game:walk/metal"
+	},
+	"sideopaque": {
+		"all": false
+	},
+	"sidesolid": {
+		"all": false
+	},
+	"collisionbox": { "x1": 0.28, "y1": 0, "z1": 0.28, "x2": 0.72, "y2": 0.35, "z2": 0.72 },
+	"selectionbox": { "x1": 0.28, "y1": 0, "z1": 0.28, "x2": 0.72, "y2": 0.35, "z2": 0.72 },
+	"guiTransform": {
+		"origin": { "x": 0.5, "y": 0.2, "z": 0.5 },
+		"scale": 2
+	},
+	"groundTransform": {
+		"scale": 3
+	},
+	"fpHandTransform": {
+		"translation": { "x": 0, "y": 0.1, "z": 0.5 },
+		"scale": 2
+	},
+	"tpHandTransform": {
+		"translation": { "x": -0.67, "y": 0.06, "z": -0.5 },
+		"rotation": { "x": -52, "y": 20, "z": -113 },
+		"origin": { "x": 0.5, "y": 0, "z": 0.5 },
+		"scale": 0.76
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Barrareiknir Critchers",
+  "hotkey-open-calculator": "Opna barrareikni",
+  "target-ingots": "Markmiðsbarrar:",
+  "metal-percentages": "Málmhlutföll:",
+  "required-nuggets": "Nauðsynlegir mölar:",
+  "close": "Loka",
+  "no-data": "Engin gögn",
+  "no-alloys-available": "Engar málmblöndur uppskriftir tiltækar.",
+  "crucible-slots-header": "Uppröðun deiglu:",
+  "crucible-impossible": "Ekki hægt að búa til {0} barra af {1} — fer yfir rúmmál deiglu. Hámark: {2} barrar.",
+  "slot-empty": "(tómt)"
+}

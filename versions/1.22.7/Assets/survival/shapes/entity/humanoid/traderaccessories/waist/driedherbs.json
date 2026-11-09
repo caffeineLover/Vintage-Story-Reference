@@ -1,0 +1,174 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/trader-female",
+		"collapsedPaths": "Root",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 8,
+	"textureHeight": 8,
+	"textureSizes": {
+		"driedherbs": [8,8]
+	},
+	"textures": {
+		"driedherbs": "entity/humanoid/traderaccessories/waist/driedherbs"
+	},
+	"elements": [
+		{
+			"name": "waist",
+			"stepParentName": "LowerTorso",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 5.0, 4.0, 6.0 ],
+			"rotationOrigin": [ 2.0, 2.0, 3.0 ],
+			"faces": {
+				"north": { "texture": "#null", "uv": [ 0.0, 0.0, 5.0, 4.0 ], "enabled": false },
+				"east": { "texture": "#null", "uv": [ 0.0, 0.0, 6.0, 4.0 ], "enabled": false },
+				"south": { "texture": "#null", "uv": [ 0.0, 0.0, 5.0, 4.0 ], "enabled": false },
+				"west": { "texture": "#null", "uv": [ 0.0, 0.0, 6.0, 4.0 ], "enabled": false },
+				"up": { "texture": "#null", "uv": [ 0.0, 0.0, 5.0, 6.0 ], "enabled": false },
+				"down": { "texture": "#null", "uv": [ 0.0, 0.0, 5.0, 6.0 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "bundleA1",
+					"from": [ -1.0, -3.5, 0.0 ],
+					"to": [ 0.0, 1.5, 1.0 ],
+					"rotationOrigin": [ -0.5, 1.0, 0.5 ],
+					"rotationX": 11.0,
+					"rotationY": 11.0,
+					"rotationZ": -11.0,
+					"faces": {
+						"north": { "texture": "#driedherbs", "uv": [ 1.0, 3.0, 2.0, 8.0 ] },
+						"east": { "texture": "#driedherbs", "uv": [ 0.5, 3.0, 1.5, 8.0 ] },
+						"south": { "texture": "#driedherbs", "uv": [ 1.0, 3.0, 2.0, 8.0 ] },
+						"west": { "texture": "#driedherbs", "uv": [ 0.0, 3.0, 1.0, 8.0 ] },
+						"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+						"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					},
+					"children": [
+						{
+							"name": "bundleA2",
+							"from": [ 0.0, 4.5, 0.0 ],
+							"to": [ 1.0, 7.5, 1.0 ],
+							"rotationOrigin": [ 0.5, 4.5, 0.5 ],
+							"rotationX": -11.0,
+							"rotationZ": 14.0,
+							"faces": {
+								"north": { "texture": "#driedherbs", "uv": [ 0.5, 0.0, 1.5, 3.0 ] },
+								"east": { "texture": "#driedherbs", "uv": [ 1.0, 0.0, 2.0, 3.0 ] },
+								"south": { "texture": "#driedherbs", "uv": [ 0.5, 0.0, 1.5, 3.0 ] },
+								"west": { "texture": "#driedherbs", "uv": [ 0.0, 0.0, 1.0, 3.0 ] },
+								"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "bundleB1",
+					"from": [ -1.0, -3.0, 2.0 ],
+					"to": [ 0.0, 2.0, 3.0 ],
+					"rotationOrigin": [ -0.5, 1.5, 2.5 ],
+					"rotationX": -11.0,
+					"rotationY": -30.0,
+					"rotationZ": 3.0,
+					"faces": {
+						"north": { "texture": "#driedherbs", "uv": [ 4.0, 3.0, 5.0, 8.0 ] },
+						"east": { "texture": "#driedherbs", "uv": [ 5.0, 3.0, 6.0, 8.0 ] },
+						"south": { "texture": "#driedherbs", "uv": [ 4.5, 3.0, 5.5, 8.0 ] },
+						"west": { "texture": "#driedherbs", "uv": [ 4.0, 3.0, 5.0, 8.0 ] },
+						"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+						"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					},
+					"children": [
+						{
+							"name": "bundleB2",
+							"from": [ 0.0, 4.5, 0.0 ],
+							"to": [ 1.0, 7.5, 1.0 ],
+							"rotationOrigin": [ 0.5, 4.5, 0.5 ],
+							"rotationX": 22.0,
+							"rotationZ": 6.0,
+							"faces": {
+								"north": { "texture": "#driedherbs", "uv": [ 5.0, 0.0, 6.0, 3.0 ] },
+								"east": { "texture": "#driedherbs", "uv": [ 4.0, 0.0, 5.0, 3.0 ] },
+								"south": { "texture": "#driedherbs", "uv": [ 4.5, 0.0, 5.5, 3.0 ] },
+								"west": { "texture": "#driedherbs", "uv": [ 5.0, 0.0, 6.0, 3.0 ] },
+								"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "bundleC1",
+					"from": [ -1.0, -3.0, 1.0 ],
+					"to": [ 0.0, 1.0, 2.0 ],
+					"rotationOrigin": [ -0.5, 0.5, 1.5 ],
+					"rotationX": -11.0,
+					"rotationY": -3.0,
+					"rotationZ": -22.0,
+					"faces": {
+						"north": { "texture": "#driedherbs", "uv": [ 2.5, 4.0, 3.5, 8.0 ] },
+						"east": { "texture": "#driedherbs", "uv": [ 2.0, 3.5, 3.0, 7.5 ] },
+						"south": { "texture": "#driedherbs", "uv": [ 3.0, 3.0, 4.0, 7.0 ] },
+						"west": { "texture": "#driedherbs", "uv": [ 2.5, 3.5, 3.5, 7.5 ] },
+						"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+						"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					},
+					"children": [
+						{
+							"name": "bundleC2",
+							"from": [ 0.0, 3.5, 0.0 ],
+							"to": [ 1.0, 6.5, 1.0 ],
+							"rotationOrigin": [ 0.5, 3.5, 0.5 ],
+							"rotationX": 8.0,
+							"rotationZ": 22.0,
+							"faces": {
+								"north": { "texture": "#driedherbs", "uv": [ 2.5, 0.0, 3.5, 3.0 ] },
+								"east": { "texture": "#driedherbs", "uv": [ 3.0, 0.0, 4.0, 3.0 ] },
+								"south": { "texture": "#driedherbs", "uv": [ 2.5, 0.0, 3.5, 3.0 ] },
+								"west": { "texture": "#driedherbs", "uv": [ 2.0, 0.0, 3.0, 3.0 ] },
+								"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "bundleA3",
+					"from": [ 0.0, -3.0, -1.0 ],
+					"to": [ 1.0, 2.0, 0.0 ],
+					"rotationOrigin": [ 0.5, 1.0, -0.5 ],
+					"rotationX": 8.0,
+					"rotationY": 11.0,
+					"rotationZ": -8.0,
+					"faces": {
+						"north": { "texture": "#driedherbs", "uv": [ 7.0, 3.0, 8.0, 8.0 ] },
+						"east": { "texture": "#driedherbs", "uv": [ 6.0, 3.0, 7.0, 8.0 ] },
+						"south": { "texture": "#driedherbs", "uv": [ 6.5, 3.0, 7.5, 8.0 ] },
+						"west": { "texture": "#driedherbs", "uv": [ 7.0, 3.0, 8.0, 8.0 ] },
+						"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+						"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					},
+					"children": [
+						{
+							"name": "bundleA4",
+							"from": [ 0.0, 4.5, 0.0 ],
+							"to": [ 1.0, 7.5, 1.0 ],
+							"rotationOrigin": [ 0.5, 4.5, 0.5 ],
+							"rotationX": -28.0,
+							"rotationZ": 14.0,
+							"faces": {
+								"north": { "texture": "#driedherbs", "uv": [ 7.0, 0.0, 8.0, 3.0 ] },
+								"east": { "texture": "#driedherbs", "uv": [ 6.5, 0.0, 7.5, 3.0 ] },
+								"south": { "texture": "#driedherbs", "uv": [ 7.0, 0.0, 8.0, 3.0 ] },
+								"west": { "texture": "#driedherbs", "uv": [ 6.0, 0.0, 7.0, 3.0 ] },
+								"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

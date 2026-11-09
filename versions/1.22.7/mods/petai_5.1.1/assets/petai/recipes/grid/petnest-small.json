@@ -1,0 +1,22 @@
+[
+    {
+        "ingredientPattern": "CC",
+        "ingredients": {
+            "C": {
+                "type": "item",
+                "code": "game:cloth-*",
+                "name": "color",
+                "skipVariants": [
+                    "mordant"
+                ]
+            }
+        },
+        "width": 2,
+        "height": 1,
+        "output": {
+            "type": "block",
+            "code": "petnest-small-{color}",
+            "quantity": 1
+        }
+    }
+]

@@ -1,0 +1,13 @@
+{
+  "dialog-title": "เครื่องคิดเลขแท่งโลหะของ Critcher",
+  "hotkey-open-calculator": "เปิดเครื่องคิดเลขแท่งโลหะ",
+  "target-ingots": "จำนวนแท่งเป้าหมาย:",
+  "metal-percentages": "สัดส่วนโลหะ:",
+  "required-nuggets": "ก้อนโลหะที่ต้องการ:",
+  "close": "ปิด",
+  "no-data": "ไม่มีข้อมูล",
+  "no-alloys-available": "ไม่มีสูตรโลหะผสมที่ใช้ได้",
+  "crucible-slots-header": "การจัดวางเบ้าหลอม:",
+  "crucible-impossible": "ไม่สามารถสร้าง {0} แท่ง{1}ได้ — เกินความจุเบ้าหลอม สูงสุดที่ทำได้: {2} แท่ง",
+  "slot-empty": "(ว่าง)"
+}

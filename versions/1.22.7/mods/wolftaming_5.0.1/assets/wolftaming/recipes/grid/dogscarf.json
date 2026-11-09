@@ -1,0 +1,26 @@
+{
+    "ingredientPattern": "C,K",
+    "ingredients": {
+        "K": {
+            "type": "item",
+            "code": "game:knife-*",
+            "isTool": true,
+            "toolDurabilityCost": 10
+        },
+        "C": {
+            "type": "item",
+            "code": "game:cloth-*",
+            "name": "color",
+            "skipVariants": [
+                "mordant"
+            ]
+        }
+    },
+    "width": 1,
+    "height": 2,
+    "output": {
+        "type": "item",
+        "code": "dogscarf-{color}",
+        "quantity": 1
+    }
+}

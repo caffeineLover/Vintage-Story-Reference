@@ -1,0 +1,274 @@
+using System;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ProtoBuf;
+using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
+
+namespace Vintagestory.API.Common;
+
+/// <summary>
+/// This is a representation of an item stack in JSON.
+/// It resembles a standard in-game item stack but can be stored before the game is loaded.
+/// </summary>
+/// <example>
+/// <code language="json">
+/// "output": {
+/// 	"type": "item",
+/// 	"code": "knifeblade-flint",
+/// 	"stacksize": 1
+/// },
+/// </code>
+/// <code language="json">
+/// "output": {
+/// 	"type": "block",
+/// 	"code": "ladder-wood-north",
+/// 	"quantity": 3
+/// },
+/// </code>
+/// </example>
+[DocumentAsJson]
+[ProtoContract]
+public class JsonItemStack : IRecipeOutput, IByteSerializable, ICloneable, IConcreteCloneable<JsonItemStack>
+{
+	/// <summary>
+	/// Block or Item?
+	/// </summary>
+	[ProtoMember(1)]
+	[DocumentAsJson("Recommended", "Block", false)]
+	public EnumItemClass Type;
+
+	/// <summary>
+	/// The asset location code of the block or item.
+	/// </summary>
+	[ProtoMember(2)]
+	[DocumentAsJson("Required", "", false)]
+	public AssetLocation Code;
+
+	/// <summary>
+	/// Amount of items in this stacks
+	/// </summary>
+	[ProtoMember(3)]
+	[DocumentAsJson("Optional", "1", false)]
+	public int StackSize = 1;
+
+	/// <summary>
+	/// Tree Attributes that should be attached to the resulting itemstack.
+	/// </summary>
+	[JsonProperty]
+	[JsonConverter(typeof(JsonAttributesConverter))]
+	[ProtoMember(4)]
+	[DocumentAsJson("Optional", "None", false)]
+	public JsonObject? Attributes;
+
+	/// <summary>
+	/// The resolved item after conversion.
+	/// </summary>
+	public ItemStack? ResolvedItemstack;
+
+	/// <summary>
+	/// Alias of <see cref="F:Vintagestory.API.Common.JsonItemStack.StackSize" />. No real need to use this instead of it.
+	/// </summary>
+	[DocumentAsJson("Optional", "1", false)]
+	public int Quantity
+	{
+		get
+		{
+			return StackSize;
+		}
+		set
+		{
+			StackSize = value;
+		}
+	}
+
+	/// <summary>
+	/// Was added for interface.<br />
+	/// Field 'ResolvedItemstack' is left for compatibility reasons
+	/// </summary>
+	public ItemStack? ResolvedItemStack
+	{
+		get
+		{
+			return ResolvedItemstack;
+		}
+		set
+		{
+			ResolvedItemstack = value;
+		}
+	}
+
+	public static JsonItemStack? FromString(string jsonItemstack)
+	{
+		return JsonObject.FromJson(jsonItemstack).AsObject<JsonItemStack>();
+	}
+
+	/// <summary>
+	/// Sets itemstack.block or itemstack.item
+	/// </summary>
+	/// <param name="resolver"></param>
+	/// <param name="sourceForErrorLogging"></param>
+	/// <param name="assetLoc"></param>
+	/// <param name="printWarningOnError"></param>
+	public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, AssetLocation assetLoc, bool printWarningOnError = true)
+	{
+		if (Type == EnumItemClass.Block)
+		{
+			Block block = resolver.GetBlock(Code);
+			if (block == null || block.IsMissing)
+			{
+				if (printWarningOnError)
+				{
+					resolver.Logger.Warning("Failed resolving a blocks blockdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
+				}
+				return false;
+			}
+			ResolvedItemStack = new ItemStack(block, StackSize);
+		}
+		else
+		{
+			Item item = resolver.GetItem(Code);
+			if (item == null || item.IsMissing)
+			{
+				if (printWarningOnError)
+				{
+					resolver.Logger.Warning("Failed resolving a blocks itemdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
+				}
+				return false;
+			}
+			ResolvedItemStack = new ItemStack(item, StackSize);
+		}
+		if (Attributes != null && Attributes.ToAttribute() is ITreeAttribute treeAttribute)
+		{
+			ResolvedItemStack.Attributes = treeAttribute;
+		}
+		return true;
+	}
+
+	public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, bool printWarningOnError)
+	{
+		if (Type == EnumItemClass.Block)
+		{
+			Block block = resolver.GetBlock(Code);
+			if (block == null || block.IsMissing)
+			{
+				if (printWarningOnError)
+				{
+					resolver.Logger.Warning("Failed resolving a blocks blockdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
+				}
+				return false;
+			}
+			ResolvedItemStack = new ItemStack(block, StackSize);
+		}
+		else
+		{
+			Item item = resolver.GetItem(Code);
+			if (item == null || item.IsMissing)
+			{
+				if (printWarningOnError)
+				{
+					resolver.Logger.Warning("Failed resolving a blocks itemdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
+				}
+				return false;
+			}
+			ResolvedItemStack = new ItemStack(item, StackSize);
+		}
+		if (Attributes != null && Attributes.ToAttribute() is ITreeAttribute treeAttribute)
+		{
+			ResolvedItemStack.Attributes = treeAttribute;
+		}
+		return true;
+	}
+
+	public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
+	{
+		return Resolve(world, sourceForErrorLogging, printWarningOnError: true);
+	}
+
+	public virtual bool Matches(IWorldAccessor worldForResolve, ItemStack inputStack)
+	{
+		return ResolvedItemStack?.Equals(worldForResolve, inputStack, GlobalConstants.IgnoredStackAttributes) ?? false;
+	}
+
+	/// <summary>
+	/// Creates a deep copy of this object
+	/// </summary>
+	/// <returns></returns>
+	public virtual JsonItemStack Clone()
+	{
+		JsonItemStack result = new JsonItemStack();
+		CloneTo(result);
+		return result;
+	}
+
+	/// <summary>
+	/// Loads the ItemStack from the reader.
+	/// </summary>
+	/// <param name="reader">The reader to get the ItemStack from</param>
+	/// <param name="instancer">The instancer for the ItemStack.</param>
+	public virtual void FromBytes(BinaryReader reader, IClassRegistryAPI instancer)
+	{
+		Type = (EnumItemClass)reader.ReadInt16();
+		Code = new AssetLocation(reader.ReadString());
+		StackSize = reader.ReadInt32();
+		if (reader.ReadBoolean())
+		{
+			ResolvedItemStack = new ItemStack(reader);
+		}
+		if (reader.ReadBoolean())
+		{
+			Attributes = new JsonObject(JToken.Parse(reader.ReadString()));
+		}
+	}
+
+	/// <summary>
+	/// Loads the ItemStack from the reader.
+	/// </summary>
+	public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+	{
+		FromBytes(reader, resolver.ClassRegistry);
+	}
+
+	/// <summary>
+	/// Saves the ItemStack to file.
+	/// </summary>
+	/// <param name="writer">The writer to save the item to.</param>
+	public virtual void ToBytes(BinaryWriter writer)
+	{
+		writer.Write((short)Type);
+		writer.Write(Code.ToShortString());
+		writer.Write(StackSize);
+		writer.Write(ResolvedItemStack != null);
+		ResolvedItemStack?.ToBytes(writer);
+		string jsonAttruibutes = Attributes?.ToString();
+		writer.Write(jsonAttruibutes != null);
+		if (jsonAttruibutes != null)
+		{
+			writer.Write(jsonAttruibutes);
+		}
+	}
+
+	public virtual void FillPlaceHolder(string key, string value)
+	{
+		Code = Code.CopyWithPath(Code.Path.Replace("{" + key + "}", value));
+		Attributes?.FillPlaceHolder(key, value);
+	}
+
+	object ICloneable.Clone()
+	{
+		return Clone();
+	}
+
+	protected virtual void CloneTo(object stack)
+	{
+		if (stack is JsonItemStack jsonItemStack)
+		{
+			jsonItemStack.Code = Code.Clone();
+			jsonItemStack.ResolvedItemStack = ResolvedItemStack?.Clone();
+			jsonItemStack.StackSize = StackSize;
+			jsonItemStack.Type = Type;
+			jsonItemStack.Attributes = Attributes?.Clone();
+		}
+	}
+}

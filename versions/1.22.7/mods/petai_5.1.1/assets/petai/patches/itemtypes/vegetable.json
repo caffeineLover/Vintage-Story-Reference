@@ -1,0 +1,13 @@
+[
+    {
+        "side": "server",
+        "op": "add",
+        "path": "/behaviors",
+        "value": [
+            {
+                "name": "considerpetfood"
+            }
+        ],
+        "file": "game:itemtypes/food/vegetable.json"
+    }
+]

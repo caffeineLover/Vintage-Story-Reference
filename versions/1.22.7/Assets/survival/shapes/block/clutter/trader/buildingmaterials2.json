@@ -1,0 +1,117 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"sisal-rug": "block/cloth/sisal-rug",
+		"quartzglass": "block/glass/quartzglass",
+		"side": "block/stone/quartz/pillar/side",
+		"topbottom": "block/stone/quartz/pillar/topbottom"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 7.0, 0.0, 8.0 ],
+			"to": [ 7.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 7.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "mat",
+					"from": [ -7.0, 0.01, -8.0 ],
+					"to": [ 9.0, 0.01, 8.0 ],
+					"renderPass": 1,
+					"rotationOrigin": [ 1.0, 0.0, 0.0 ],
+					"faces": {
+						"up": { "texture": "#sisal-rug", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "pillar",
+					"from": [ -6.0, 0.0, -7.0 ],
+					"to": [ -0.5, 16.0, -1.5 ],
+					"rotationOrigin": [ -3.45, 0.0, -4.45 ],
+					"rotationY": -19.0,
+					"faces": {
+						"north": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ] },
+						"east": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ] },
+						"south": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ] },
+						"west": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ] },
+						"up": { "texture": "#topbottom", "uv": [ 0.0, 0.0, 5.5, 5.5 ] },
+						"down": { "texture": "#topbottom", "uv": [ 0.0, 0.0, 5.5, 5.5 ] }
+					}
+				},
+				{
+					"name": "pillar2",
+					"from": [ -0.5, 0.0, -8.0 ],
+					"to": [ 5.0, 5.5, 8.0 ],
+					"rotationOrigin": [ 2.25, 2.55, 0.0 ],
+					"rotationY": -30.0,
+					"faces": {
+						"north": { "texture": "#topbottom", "uv": [ 0.0, 0.0, 5.5, 5.5 ] },
+						"east": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ], "rotation": 90 },
+						"south": { "texture": "#topbottom", "uv": [ 0.0, 0.0, 5.5, 5.5 ] },
+						"west": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ], "rotation": 90 },
+						"up": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ] },
+						"down": { "texture": "#side", "uv": [ 0.0, 0.0, 5.5, 16.0 ] }
+					},
+					"children": [
+						{
+							"name": "glass pane",
+							"from": [ -0.5, 0.0, 2.0 ],
+							"to": [ 0.0, 13.0, 15.0 ],
+							"renderPass": 3,
+							"rotationOrigin": [ 0.0, 0.0, 9.0 ],
+							"rotationZ": 2.0,
+							"faces": {
+								"north": { "texture": "#quartzglass", "uv": [ 13.5, 1.0, 14.0, 14.0 ] },
+								"east": { "texture": "#quartzglass", "uv": [ 0.0, 0.5, 13.0, 13.5 ] },
+								"south": { "texture": "#quartzglass", "uv": [ 8.0, 2.5, 8.5, 15.5 ] },
+								"west": { "texture": "#quartzglass", "uv": [ 1.5, 0.0, 14.5, 13.0 ] },
+								"up": { "texture": "#quartzglass", "uv": [ 3.0, 2.5, 3.5, 15.5 ] },
+								"down": { "texture": "#quartzglass", "uv": [ 2.5, 1.5, 3.0, 14.5 ] }
+							}
+						},
+						{
+							"name": "glass pane2",
+							"from": [ 6.5, 0.0, 2.0 ],
+							"to": [ 7.0, 13.0, 15.0 ],
+							"renderPass": 3,
+							"rotationOrigin": [ 7.0, 0.0, 9.0 ],
+							"rotationZ": 10.0,
+							"faces": {
+								"north": { "texture": "#quartzglass", "uv": [ 0.5, 2.5, 1.0, 15.5 ] },
+								"east": { "texture": "#quartzglass", "uv": [ 2.5, 0.0, 15.5, 13.0 ] },
+								"south": { "texture": "#quartzglass", "uv": [ 13.0, 0.0, 13.5, 13.0 ] },
+								"west": { "texture": "#quartzglass", "uv": [ 1.0, 0.0, 14.0, 13.0 ] },
+								"up": { "texture": "#quartzglass", "uv": [ 6.5, 1.0, 7.0, 14.0 ] },
+								"down": { "texture": "#quartzglass", "uv": [ 9.0, 2.0, 9.5, 15.0 ] }
+							}
+						},
+						{
+							"name": "glass pane3",
+							"from": [ 3.5, 5.5, 2.0 ],
+							"to": [ 4.0, 18.5, 15.0 ],
+							"renderPass": 3,
+							"rotationOrigin": [ 4.0, 5.5, 9.0 ],
+							"rotationZ": 25.0,
+							"faces": {
+								"north": { "texture": "#quartzglass", "uv": [ 13.5, 2.5, 14.0, 15.5 ] },
+								"east": { "texture": "#quartzglass", "uv": [ 1.5, 0.0, 14.5, 13.0 ] },
+								"south": { "texture": "#quartzglass", "uv": [ 7.5, 2.0, 8.0, 15.0 ] },
+								"west": { "texture": "#quartzglass", "uv": [ 0.5, 1.5, 13.5, 14.5 ] },
+								"up": { "texture": "#quartzglass", "uv": [ 11.5, 1.0, 12.0, 14.0 ] },
+								"down": { "texture": "#quartzglass", "uv": [ 12.5, 0.0, 13.0, 13.0 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

@@ -1,0 +1,188 @@
+[
+{
+    "op":"addmerge",
+    "file":"game:entities/animal/mammal/hare-adult.json",
+    "path":"/server/behaviors/-",
+    "value":{
+        "code":"tameable",
+        "tameEntityCode": "bunnypet:bunny-{type}-adult-{gender}",
+        "size":"small",
+        "disobediencePerDay":"0.2",
+        "treat":[
+            { "code":"vegetable-turnip", "domain":"game", "progress":"0.15", "cooldown":"2"},
+            { "code":"vegetable-parsnip", "domain": "game", "progress": "0.10", "cooldown": "3"},
+            { "code":"vegetable-carrot", "domain":"game", "progress":"0.10", "cooldown":"3"},
+            { "code":"vegetable-pumpkin", "domain":"game", "progress":"0.10", "cooldown":"4"},
+
+            { "code":"grain-flax", "domain":"game", "progress":"0.2", "cooldown":"10"},
+            { "code":"grain-sunflower", "domain":"game", "progress":"0.35", "cooldown":"14"},
+           
+            { "code":"fruit-blackberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-raspberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-strawberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-blueberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cranberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-whitecurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-blackcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cherry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cloudberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-yellowapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pinkapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-peach", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pear", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pomegranate", "domain":"game", "progress":"0.2", "cooldown":"10"},
+           
+            { "code":"drygrass", "domain":"game", "progress":"0.05", "cooldown":"1"}
+        ]
+    }
+},
+
+{
+    "op": "addmerge",
+    "file":"game:entities/animal/mammal/hare-adult.json",
+    "path": "/client/behaviors/-",
+    "value": {
+        "code": "tameable",
+        "size": "small",
+        "treat": [
+            { "code":"vegetable-turnip", "domain":"game", "progress":"0.15", "cooldown":"2"},
+            { "code":"vegetable-parsnip", "domain": "game", "progress": "0.10", "cooldown": "3"},
+            { "code":"vegetable-carrot", "domain":"game", "progress":"0.10", "cooldown":"3"},
+            { "code":"vegetable-pumpkin", "domain":"game", "progress":"0.10", "cooldown":"4"},
+
+            { "code":"grain-flax", "domain":"game", "progress":"0.2", "cooldown":"10"},
+            { "code":"grain-sunflower", "domain":"game", "progress":"0.35", "cooldown":"14"},
+           
+            { "code":"fruit-blackberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-raspberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-strawberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-blueberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cranberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-whitecurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-blackcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cherry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cloudberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-yellowapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pinkapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-peach", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pear", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pomegranate", "domain":"game", "progress":"0.2", "cooldown":"10"},
+           
+            { "code":"drygrass", "domain":"game", "progress":"0.05", "cooldown":"1"}
+        ]
+    }
+},
+
+{
+    "op":"addmerge",
+    "file":"game:entities/animal/mammal/hare-baby.json",
+    "path":"/server/behaviors/-",
+    "value":{
+        "code":"tameable",
+        "tameEntityCode": "bunnypet:bunny-{type}-baby-{gender}",
+        "size":"small",
+        "disobediencePerDay":"0.1",
+        "treat":[
+            { "code":"vegetable-turnip", "domain":"game", "progress":"0.15", "cooldown":"2"},
+            { "code":"vegetable-parsnip", "domain": "game", "progress": "0.10", "cooldown": "3"},
+            { "code":"vegetable-carrot", "domain":"game", "progress":"0.10", "cooldown":"3"},
+            { "code":"vegetable-pumpkin", "domain":"game", "progress":"0.10", "cooldown":"4"},
+
+            { "code":"grain-flax", "domain":"game", "progress":"0.2", "cooldown":"10"},
+            { "code":"grain-sunflower", "domain":"game", "progress":"0.35", "cooldown":"14"},
+           
+            { "code":"fruit-blackberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-raspberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-strawberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-blueberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cranberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-whitecurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-blackcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cherry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cloudberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-yellowapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pinkapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-peach", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pear", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pomegranate", "domain":"game", "progress":"0.2", "cooldown":"10"},
+           
+            { "code":"drygrass", "domain":"game", "progress":"0.05", "cooldown":"1"}
+        ]
+    }
+},
+
+{
+    "op": "addmerge",
+    "file":"game:entities/animal/mammal/hare-baby.json",
+    "path": "/client/behaviors/-",
+    "value": {
+        "code": "tameable",
+        "size": "small",
+        "treat": [
+            { "code":"vegetable-turnip", "domain":"game", "progress":"0.15", "cooldown":"2"},
+            { "code":"vegetable-parsnip", "domain": "game", "progress": "0.10", "cooldown": "3"},
+            { "code":"vegetable-carrot", "domain":"game", "progress":"0.10", "cooldown":"3"},
+            { "code":"vegetable-pumpkin", "domain":"game", "progress":"0.10", "cooldown":"4"},
+
+            { "code":"grain-flax", "domain":"game", "progress":"0.2", "cooldown":"10"},
+            { "code":"grain-sunflower", "domain":"game", "progress":"0.35", "cooldown":"14"},
+           
+            { "code":"fruit-blackberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-raspberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-strawberry", "domain":"game", "progress":"0.35", "cooldown":"8"},
+            { "code":"fruit-blueberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cranberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-whitecurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-blackcurrant", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cherry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-cloudberry", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-redapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-yellowapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pinkapple", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-peach", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pear", "domain":"game", "progress":"0.25", "cooldown":"10"},
+            { "code":"fruit-pomegranate", "domain":"game", "progress":"0.2", "cooldown":"10"},
+           
+            { "code":"drygrass", "domain":"game", "progress":"0.05", "cooldown":"1"}
+        ]
+    }
+},
+
+{
+    "op": "addEach",
+    "path": "/client/behaviors/-",
+    "file": "game:entities/animal/mammal/hare-adult.json",
+    "value": [
+            { "code": "multiply", "enabledByType": { "*-female": true, "*": false } }
+        ]
+},
+{
+    "op": "addEach",
+    "path": "/server/behaviors/-",
+    "file": "game:entities/animal/mammal/hare-adult.json",
+    "value": 
+        [
+            {
+            "code": "multiply",
+            "enabledByType": { "*-female": true, "*": false },
+            "spawnEntityCodes": [ {"code":"hare-{type}-baby-male"}, {"code": "hare-{type}-baby-female"} ],
+            "requiresNearbyEntityCode": "bunnypet:bunny-*-adult-male",
+            "requiresNearbyEntityRange": 10,
+            "spawnQuantityMin": 1,
+            "spawnQuantityMax": 4,
+            "eatAnyway": true,
+            "pregnancyDays": 5,
+            "multiplyCooldownDaysMin": 2,
+            "multiplyCooldownDaysMax": 5,
+            "portionsEatenForMultiply": 2
+            }
+        ]
+}
+]

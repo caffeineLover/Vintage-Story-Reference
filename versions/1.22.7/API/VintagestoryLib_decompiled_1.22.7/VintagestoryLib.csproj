@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>VintagestoryLib</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>15.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI">
+    </Reference>
+    <Reference Include="cairo-sharp">
+    </Reference>
+    <Reference Include="protobuf-net">
+    </Reference>
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="CommandLine">
+    </Reference>
+    <Reference Include="SkiaSharp">
+    </Reference>
+    <Reference Include="Open.Nat">
+    </Reference>
+    <Reference Include="Mono.Nat">
+    </Reference>
+    <Reference Include="Mono.Cecil">
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis">
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp">
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+    </Reference>
+    <Reference Include="Microsoft.Data.Sqlite">
+    </Reference>
+    <Reference Include="0Harmony">
+    </Reference>
+    <Reference Include="OpenTK.Windowing.Desktop">
+    </Reference>
+    <Reference Include="OpenTK.Audio.OpenAL">
+    </Reference>
+    <Reference Include="OpenTK.Mathematics">
+    </Reference>
+    <Reference Include="OpenTK.Windowing.Common">
+    </Reference>
+    <Reference Include="OpenTK.Windowing.GraphicsLibraryFramework">
+    </Reference>
+    <Reference Include="DnsClient">
+    </Reference>
+    <Reference Include="OpenTK.Graphics" />
+    <Reference Include="csvorbis" />
+    <Reference Include="csogg" />
+    <Reference Include="xplatforminterface">
+    </Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,123 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"goldcap": "block/plant/mushroom/goldcap",
+		"mycelium2": "block/plant/mushroom/mycelium2"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "stem20",
+					"from": [ -0.7, -0.2, -0.7 ],
+					"to": [ 0.5, 2.3, 0.5 ],
+					"rotationOrigin": [ -0.1, -0.2, -0.1 ],
+					"rotationX": 8.0,
+					"rotationY": -6.0,
+					"rotationZ": 3.0,
+					"faces": {
+						"north": { "texture": "#goldcap", "uv": [ 5.5, 13.5, 6.5, 16.0 ] },
+						"east": { "texture": "#goldcap", "uv": [ 4.0, 13.5, 5.0, 16.0 ] },
+						"south": { "texture": "#goldcap", "uv": [ 5.5, 13.5, 6.5, 16.0 ] },
+						"west": { "texture": "#goldcap", "uv": [ 5.0, 13.5, 6.0, 16.0 ] },
+						"down": { "texture": "#goldcap", "uv": [ 5.5, 14.0, 6.5, 15.0 ], "windMode": [-1,-1,-1,-1] }
+					},
+					"children": [
+						{
+							"name": "stemup22",
+							"from": [ 0.0, 2.1, 0.0 ],
+							"to": [ 1.2, 3.6, 1.2 ],
+							"rotationOrigin": [ 0.8, 2.1, 0.6 ],
+							"rotationX": -8.0,
+							"rotationZ": -6.0,
+							"faces": {
+								"north": { "texture": "#goldcap", "uv": [ 6.0, 11.5, 7.0, 13.0 ] },
+								"east": { "texture": "#goldcap", "uv": [ 5.5, 12.0, 6.5, 13.5 ] },
+								"south": { "texture": "#goldcap", "uv": [ 5.5, 13.0, 6.5, 14.5 ] },
+								"west": { "texture": "#goldcap", "uv": [ 5.0, 12.5, 6.0, 14.0 ] }
+							},
+							"children": [
+								{
+									"name": "cap23",
+									"from": [ -0.5, 1.3, -0.5 ],
+									"to": [ 2.0, 2.8, 2.0 ],
+									"rotationOrigin": [ 0.8, 1.3, 0.8 ],
+									"rotationY": -22.0,
+									"rotationZ": 6.0,
+									"faces": {
+										"north": { "texture": "#goldcap", "uv": [ 10.5, 5.5, 13.0, 7.0 ] },
+										"east": { "texture": "#goldcap", "uv": [ 13.0, 2.0, 14.5, 4.5 ], "rotation": 90 },
+										"south": { "texture": "#goldcap", "uv": [ 11.0, 1.0, 13.5, 2.5 ], "rotation": 180 },
+										"west": { "texture": "#goldcap", "uv": [ 11.5, 5.5, 14.0, 7.0 ] },
+										"up": { "texture": "#goldcap", "uv": [ 11.0, 1.5, 13.5, 4.0 ] },
+										"down": { "texture": "#goldcap", "uv": [ 9.5, 9.5, 12.0, 12.0 ] }
+									},
+									"children": [
+										{
+											"name": "cap24",
+											"from": [ 0.5, 1.0, 0.5 ],
+											"to": [ 2.0, 2.5, 2.0 ],
+											"faces": {
+												"north": { "texture": "#goldcap", "uv": [ 12.0, 2.5, 13.5, 4.0 ] },
+												"east": { "texture": "#goldcap", "uv": [ 12.5, 1.5, 14.0, 3.0 ] },
+												"south": { "texture": "#goldcap", "uv": [ 11.0, 3.5, 12.5, 5.0 ] },
+												"west": { "texture": "#goldcap", "uv": [ 11.0, 3.0, 12.5, 4.5 ] },
+												"up": { "texture": "#goldcap", "uv": [ 11.0, 1.5, 12.5, 3.0 ] }
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "veil",
+							"from": [ -0.1, 2.1, -0.1 ],
+							"to": [ 1.3, 2.1, 1.3 ],
+							"rotationOrigin": [ 0.7, 2.1, 0.4 ],
+							"faces": {
+								"up": { "texture": "#goldcap", "uv": [ 2.5, 1.5, 3.5, 2.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "voxel23",
+					"from": [ 0.8, 0.0, -1.8 ],
+					"to": [ 1.8, 1.0, -0.8 ],
+					"rotationOrigin": [ 1.3, 0.0, -1.3 ],
+					"rotationY": -6.0,
+					"faces": {
+						"north": { "texture": "#goldcap", "uv": [ 0.5, 15.0, 1.5, 16.0 ] },
+						"east": { "texture": "#goldcap", "uv": [ 2.5, 14.5, 3.5, 15.5 ] },
+						"south": { "texture": "#goldcap", "uv": [ 1.0, 14.0, 2.0, 15.0 ] },
+						"west": { "texture": "#goldcap", "uv": [ 1.5, 14.5, 2.5, 15.5 ] },
+						"up": { "texture": "#goldcap", "uv": [ 1.0, 15.0, 2.0, 16.0 ] },
+						"down": { "texture": "#goldcap", "uv": [ 1.0, 15.0, 2.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "mycelium",
+					"from": [ -2.0, 0.1, -2.0 ],
+					"to": [ 2.0, 0.1, 2.0 ],
+					"renderPass": 3,
+					"rotationOrigin": [ 0.0, 0.1, 0.0 ],
+					"faces": {
+						"up": { "texture": "#mycelium2", "uv": [ 6.0, 6.0, 10.0, 10.0 ] }
+					}
+				}
+			]
+		}
+	]}

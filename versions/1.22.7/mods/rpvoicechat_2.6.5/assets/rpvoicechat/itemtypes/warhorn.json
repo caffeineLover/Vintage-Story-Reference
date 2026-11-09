@@ -1,0 +1,69 @@
+{
+  "code": "warhorn",
+  "class": "soundemitting",
+  "enabled": true,
+  "maxstacksize": 1,
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "tools": [ "*" ],
+    "rpvoicechat": [ "*" ]
+  },
+  "shape": {
+    "base": "item/warhorn"
+  },
+  "attributes": {
+    "soundAudibleDistance": 128,
+    "soundVolume": 0.6,
+    "soundDuration": 3,
+    "rightClickSounds": [
+      "item/warhorn/warhorn_blow_1",
+      "item/warhorn/warhorn_blow_2",
+      "item/warhorn/warhorn_blow_3"
+    ],
+    "handbook": {
+      "extraSections": [
+        {
+          "title": "rpvoicechat:Handbook.Usage.item-warhorn.Title",
+          "text": "rpvoicechat:Handbook.Usage.item-warhorn.Text"
+        }
+      ]
+    }
+  },
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 16,
+      "y": -57,
+      "z": 0
+    },
+    "origin": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0.25
+    },
+    "scale": 1.6
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -0.6,
+      "y": -0.45,
+      "z": -0.3
+    },
+    "rotation": {
+      "x": 90,
+      "y": 0,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.7,
+      "y": 0.1,
+      "z": 0
+    },
+    "scale": 1
+  }
+}

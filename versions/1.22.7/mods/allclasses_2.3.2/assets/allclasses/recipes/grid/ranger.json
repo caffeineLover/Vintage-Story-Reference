@@ -1,0 +1,143 @@
+[
+	{
+		"ingredientPattern": "_SR,SPR,_SR",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:stick"
+			},
+			"P": {
+				"type": "item",
+				"code": "game:hide-raw-large"
+			},
+			"R": {
+				"type": "item",
+				"code": "game:rope"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"output": {
+			"type": "item",
+			"code": "game:bow-simple",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "_SR,SPR,_SR",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:stick"
+			},
+			"P": {
+				"type": "item",
+				"code": "game:hide-raw-huge"
+			},
+			"R": {
+				"type": "item",
+				"code": "game:rope"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"output": {
+			"type": "item",
+			"code": "game:bow-simple",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "_SR,SPR,_SR",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:stick"
+			},
+			"P": {
+				"type": "item",
+				"code": "game:hide-raw-medium"
+			},
+			"R": {
+				"type": "item",
+				"code": "game:rope"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"output": {
+			"type": "item",
+			"code": "game:bow-crude",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "_SR,SPR,_SR",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:stick"
+			},
+			"P": {
+				"type": "item",
+				"code": "game:hide-raw-small",
+				"quantity": 2
+			},
+			"R": {
+				"type": "item",
+				"code": "game:rope"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"output": {
+			"type": "item",
+			"code": "game:bow-crude",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H,P,S",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"H": { "type": "item", "code": "game:flint" },
+			"P": { "type": "item", "code": "game:rope" },
+			"S": { "type": "item", "code": "game:stick" }
+		},
+		"width": 1,
+		"height": 3,
+		"output": { "type": "item", "code": "game:arrow-crude", "quantity": 4  }
+	},
+		{
+		"ingredientPattern": "MFT,BLT,MFT",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"B": { "type": "item", "code": "game:bowstave-recurve-dry" },
+			"T": { "type": "item", "code": "game:flaxtwine" },
+			"L": { "type": "item", "code": "game:leather-normal-plain" },
+			"F": { "type": "item", "code": "game:bone" },
+			"M": { "type": "item", "code": "game:bushmeat-raw" }
+		},
+		"width": 3,
+		"height": 3,
+		"output": { "type": "item", "code": "game:bow-recurve", "quantity": 1  }
+	},
+		{
+		"ingredientPattern": "MFT,BLT,MFT",
+		"requiresTrait": "sentry",
+		"ingredients": {
+			"B": { "type": "item", "code": "game:bowstave-recurve-dry" },
+			"T": { "type": "item", "code": "game:flaxtwine" },
+			"L": { "type": "item", "code": "game:hide-pelt-bear-*-body" },
+			"F": { "type": "item", "code": "game:bone" },
+			"M": { "type": "item", "code": "game:bushmeat-raw" }
+		},
+		"width": 3,
+		"height": 3,
+		"output": { "type": "item", "code": "game:bow-recurve", "quantity": 1  }
+	}
+]

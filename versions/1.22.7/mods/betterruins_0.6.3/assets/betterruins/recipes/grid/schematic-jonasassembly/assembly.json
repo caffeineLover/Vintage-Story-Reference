@@ -1,0 +1,103 @@
+[
+ 
+    
+    
+    
+    {
+        "ingredientPattern": "XP_,_GN,_PB",
+        "ingredients": {
+            "B": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "G": {type: "Item", code: "game:gear-rusty" , quantity: 3},
+            "P": {type: "Item", code: "game:rod-cupronickel" },
+            "N": {type: "Item", code: "game:metalnailsandstrips-iron" }
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-gearbox01" }
+        
+    },
+    {
+        "ingredientPattern": "XP_,JGN,_PB",
+        "ingredients": {
+            "B": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "G": {type: "Item", code: "game:gear-rusty" , quantity: 5},
+            "P": {type: "Item", code: "game:rod-cupronickel" },
+            "J": {type: "Item", code: "game:metalnailsandstrips-iron" },
+            "N": {type: "Item", code: "game:metalnailsandstrips-cupronickel" }
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-gearbox02" }
+        
+    },
+    {
+        "ingredientPattern": "X__,NGN,_B_",
+        "ingredients": {
+            "B": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "G": {type: "Item", code: "game:gear-rusty" , quantity: 3},
+            "N": {type: "Item", code: "game:metalnailsandstrips-cupronickel" }
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-oscillator01" }
+        
+    },
+    {
+        "ingredientPattern": "XJ_,GNG,_OB",
+        "ingredients": {
+            "B": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "G": {type: "Item", code: "game:gear-rusty" , quantity: 1},
+            "O": {type: "Item", code: "game:metalplate-iron" },
+            "J": {type: "Item", code: "game:metalnailsandstrips-iron" },
+            "N": {type: "Item", code: "game:metalnailsandstrips-cupronickel" }
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-spring01" }
+        
+    },
+    {
+        "ingredientPattern": "XM_,_N_,_B_",
+        "ingredients": {
+            "B": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "M": {type: "Block", code: "game:metal-parts", quantity: 2 },
+            "N": {type: "Item", code: "game:metalnailsandstrips-cupronickel" }
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-joint01" }
+        
+    },
+    {
+        "ingredientPattern": "XM_,GGG,MBM",
+        "ingredients": {
+            "B": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "M": {type: "Block", code: "game:metal-parts", quantity: 1 },
+            "G": {type: "Item", code: "game:gear-rusty" , quantity: 1}
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-gears01" }
+        
+    },
+    {
+        "ingredientPattern": "XN_,BGB,_E_",
+        "ingredients": {
+            "E": {type: "Item", code: "game:jonasframes*" },
+            "X": {type: "Item", code: "betterruins:br-schematic-jonasassembly", "consume": false },
+            "N": {type: "Item", code: "game:metalnailsandstrips-cupronickel" },
+            "B": {type: "Item", code: "game:metalnailsandstrips-iron" },
+            "G": {type: "Item", code: "game:gear-rusty" , quantity: 5}
+        },
+        "width": 3,
+        "height": 3,
+        "output": {type: "Item", code: "game:jonasframes-gears02" }
+        
+    },
+]

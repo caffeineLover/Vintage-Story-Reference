@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Калькулятар зліткаў ад Critcher",
+  "hotkey-open-calculator": "Адкрыць калькулятар зліткаў",
+  "target-ingots": "Мэтавая колькасць зліткаў:",
+  "metal-percentages": "Долі металаў:",
+  "required-nuggets": "Патрэбна самародкаў:",
+  "close": "Зачыніць",
+  "no-data": "Няма даных",
+  "no-alloys-available": "Няма даступных рэцэптаў сплаваў.",
+  "crucible-slots-header": "Раскладка тыгля:",
+  "crucible-impossible": "Немагчыма стварыць {0} зліткаў ({1}) — перавышана ёмістасць тыгля. Максімум: {2} зліткаў.",
+  "slot-empty": "(пуста)"
+}

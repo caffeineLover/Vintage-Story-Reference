@@ -40,9 +40,10 @@ This repository is a searchable reference archive for AI-assisted Vintage Story 
 Catalogs should point to existing manifests, scripts, prompts, and skills. They should not duplicate large generated details that already live in generated index manifests.
 
 The root catalog's `default_game_version` is the version that ordinary consumers should query when they do not have a
-stronger target-version requirement. As of 2026-08-14, `1.22.6` is the only retained indexed version in the repository.
-Older version references may remain in project history and memory for provenance, but current research workflows should
-not assume those older payloads are present on disk.
+stronger target-version requirement. The newest retained Vintage Story release is always the catalog default. The
+repository currently retains indexed `1.22.6` and `1.22.7` payloads, so `1.22.7` is the default. References to versions
+older than `1.22.6` may remain in project history and memory for provenance, but current research workflows should not
+assume those older payloads are present on disk.
 
 ## Tool Roles
 

@@ -27,8 +27,9 @@ Determine the target Vintage Story version in this order:
 
 1. Use the version explicitly named by the user.
 2. Use the version implied by a file path or folder currently being discussed, such as `versions/1.22.3`.
-3. If there is only one `versions/<version>` folder, use it.
-4. If multiple version folders exist and the user did not specify one, ask which version to use.
+3. Use `reference.catalog.json` `default_game_version` when no stronger target-version signal exists.
+4. If the catalog has no valid default and there is only one `versions/<version>` folder, use it; otherwise ask which
+   version to use.
 
 ## Index Artifacts
 

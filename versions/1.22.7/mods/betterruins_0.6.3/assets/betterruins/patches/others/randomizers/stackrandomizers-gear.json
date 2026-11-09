@@ -1,0 +1,458 @@
+[
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "game:stick",
+      "chance": 100,
+      "quantity": {
+        "avg": 7,
+        "var": 6
+      }
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "clothes-butterflypin-temporal",
+      "chance": 2
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "metalbit-silver",
+      "quantity": {
+        "avg": 4,
+        "var": 2
+      },
+      "chance": 2
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "metalbit-gold",
+      "quantity": {
+        "avg": 3,
+        "var": 2
+      },
+      "chance": 2
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "gear-temporal",
+      "chance": 2
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+
+
+
+
+
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "block",
+      "code": "resonator-north",
+      "chance": 1
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "block",
+      "code": "omoktabletop",
+      "chance": 1
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+
+
+
+
+
+
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-door",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-bed",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-chest",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-crate",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-gaslamp",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-jonaslamp",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-banner",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-table",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-stone",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-wood",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-ancient",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-candle",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-road",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-mechanical",
+      "chance": 1.5
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-jonaspart",
+      "chance": 1.5
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-jonasassembly",
+      "chance": 1.5
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-roofing",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-palisade",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:locatormap-coalmine",
+      "attributes": { "randomX": 0, "randomZ": 0 },
+      "chance": 8
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:locatormap-mine1",
+      "attributes": { "randomX": 0, "randomZ": 0 },
+      "chance": 4
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:locatormap-mine2",
+      "attributes": { "randomX": 0, "randomZ": 0 },
+      "chance": 4
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-farmer",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-shipwright",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-weaver",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-artisan",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-pipes",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-gravedigger",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-cartwright",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-alchemist",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-carpenter",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:br-schematic-toymaker",
+      "chance": 3
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  },
+  {
+    "op": "add",
+    "path": "/attributesByType/*-gear/stacks/-",
+    "value": {
+      "type": "item",
+      "code": "betterruins:locatormap-agedsunrift",
+      "attributes": { "randomX": 0, "randomZ": 0 },
+      "chance": 2
+    },
+    "file": "game:itemtypes/meta/stackrandomizer.json",
+    "side": "Server"
+  }
+]

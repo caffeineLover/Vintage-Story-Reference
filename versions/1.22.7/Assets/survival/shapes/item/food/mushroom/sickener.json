@@ -1,0 +1,66 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"sickener": [16,16]
+	},
+	"textures": {
+		"sickener": "block/plant/mushroom/sickener"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 6.7, 0.0, 6.7 ],
+			"to": [ 6.7, 0.0, 6.7 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "cap4",
+					"from": [ -1.0, 3.5, -1.0 ],
+					"to": [ 3.5, 4.5, 3.5 ],
+					"faces": {
+						"north": { "texture": "#sickener", "uv": [ 10.0, 0.0, 14.5, 1.0 ], "rotation": 180 },
+						"east": { "texture": "#sickener", "uv": [ 8.0, 1.5, 9.0, 6.0 ], "rotation": 270 },
+						"south": { "texture": "#sickener", "uv": [ 10.0, 7.0, 14.5, 8.0 ] },
+						"west": { "texture": "#sickener", "uv": [ 15.0, 1.5, 16.0, 6.0 ], "rotation": 90 },
+						"up": { "texture": "#sickener", "uv": [ 9.5, 1.5, 14.0, 6.0 ] },
+						"down": { "texture": "#sickener", "uv": [ 9.5, 10.5, 14.0, 15.0 ] }
+					},
+					"children": [
+						{
+							"name": "cap5",
+							"from": [ 0.5, 1.0, 0.5 ],
+							"to": [ 4.0, 1.5, 4.0 ],
+							"rotationOrigin": [ 0.5, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#sickener", "uv": [ 10.5, 1.5, 14.0, 2.0 ] },
+								"east": { "texture": "#sickener", "uv": [ 9.5, 1.5, 10.0, 5.0 ], "rotation": 90 },
+								"south": { "texture": "#sickener", "uv": [ 10.0, 5.0, 13.5, 5.5 ] },
+								"west": { "texture": "#sickener", "uv": [ 13.5, 2.0, 14.0, 5.5 ], "rotation": 90 },
+								"up": { "texture": "#sickener", "uv": [ 10.5, 2.0, 14.0, 5.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "stem3",
+					"from": [ 0.5, 0.0, 0.5 ],
+					"to": [ 2.0, 3.5, 2.0 ],
+					"rotationOrigin": [ 0.0, 0.5, 0.0 ],
+					"faces": {
+						"north": { "texture": "#sickener", "uv": [ 2.5, 12.5, 4.0, 16.0 ] },
+						"east": { "texture": "#sickener", "uv": [ 0.0, 11.5, 1.5, 15.0 ] },
+						"south": { "texture": "#sickener", "uv": [ 1.5, 12.0, 3.0, 15.5 ] },
+						"west": { "texture": "#sickener", "uv": [ 0.5, 12.0, 2.0, 15.5 ] },
+						"down": { "texture": "#sickener", "uv": [ 2.0, 14.5, 3.5, 16.0 ] }
+					}
+				}
+			]
+		}
+	]}

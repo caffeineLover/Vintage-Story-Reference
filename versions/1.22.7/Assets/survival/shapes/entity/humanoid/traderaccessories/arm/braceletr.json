@@ -1,0 +1,106 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/trader-female",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 8,
+	"textureHeight": 8,
+	"textureSizes": {
+		"material": [8,8],
+		"gem": [4,4]
+	},
+	"textures": {
+		"gem": "entity/humanoid/seraphclothes/neck/gem/sapphire",
+		"material": "entity/humanoid/traderaccessories/jewelry/silver"
+	},
+	"elements": [
+		{
+			"name": "hidelowerarm",
+			"stepParentName": "LowerArmR",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 2.5, 5.0, 2.0 ],
+			"rotationOrigin": [ 1.2, 2.0, 1.0 ],
+			"faces": {
+				"north": { "texture": "#null", "uv": [ 0.0, 0.0, 2.5, 5.0 ], "enabled": false },
+				"east": { "texture": "#null", "uv": [ 0.0, 0.0, 2.0, 5.0 ], "enabled": false },
+				"south": { "texture": "#null", "uv": [ 0.0, 0.0, 2.5, 5.0 ], "enabled": false },
+				"west": { "texture": "#null", "uv": [ 0.0, 0.0, 2.0, 5.0 ], "enabled": false },
+				"up": { "texture": "#null", "uv": [ 0.0, 0.0, 2.5, 2.0 ], "enabled": false },
+				"down": { "texture": "#null", "uv": [ 0.0, 0.0, 2.5, 2.0 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "S",
+					"from": [ -0.3, 1.0, 1.9 ],
+					"to": [ 2.8, 2.0, 2.3 ],
+					"rotationOrigin": [ 1.2, 1.5, 2.1 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 5.0, 4.5, 8.0, 5.5 ] },
+						"east": { "texture": "#material", "uv": [ 6.0, 3.0, 6.5, 4.0 ] },
+						"south": { "texture": "#material", "uv": [ 5.0, 5.0, 8.0, 6.0 ] },
+						"west": { "texture": "#material", "uv": [ 5.0, 3.5, 5.5, 4.5 ] },
+						"up": { "texture": "#material", "uv": [ 4.5, 4.5, 7.5, 5.0 ] },
+						"down": { "texture": "#material", "uv": [ 4.0, 3.0, 7.0, 3.5 ] }
+					}
+				},
+				{
+					"name": "N",
+					"from": [ -0.3, 1.0, -0.3 ],
+					"to": [ 2.8, 2.0, 0.1 ],
+					"rotationOrigin": [ 1.2, 1.5, -0.1 ],
+					"faces": {
+						"north": { "texture": "#material", "uv": [ 5.0, 4.5, 8.0, 5.5 ] },
+						"east": { "texture": "#material", "uv": [ 6.0, 3.0, 6.5, 4.0 ] },
+						"south": { "texture": "#material", "uv": [ 5.0, 5.0, 8.0, 6.0 ] },
+						"west": { "texture": "#material", "uv": [ 5.0, 3.5, 5.5, 4.5 ] },
+						"up": { "texture": "#material", "uv": [ 4.5, 4.5, 7.5, 5.0 ] },
+						"down": { "texture": "#material", "uv": [ 4.0, 3.0, 7.0, 3.5 ] }
+					}
+				},
+				{
+					"name": "W",
+					"from": [ -0.3, 1.0, 0.1 ],
+					"to": [ 0.1, 2.0, 1.9 ],
+					"rotationOrigin": [ -0.3, 1.5, 1.1 ],
+					"faces": {
+						"north": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 1.0 ], "enabled": false },
+						"east": { "texture": "#material", "uv": [ 4.5, 2.5, 6.0, 3.5 ] },
+						"south": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 1.0 ], "enabled": false },
+						"west": { "texture": "#material", "uv": [ 3.5, 2.5, 5.0, 3.5 ] },
+						"up": { "texture": "#material", "uv": [ 5.5, 3.5, 6.0, 5.0 ] },
+						"down": { "texture": "#material", "uv": [ 5.5, 5.0, 6.0, 6.5 ] }
+					}
+				},
+				{
+					"name": "E",
+					"from": [ 2.4, 1.0, 0.1 ],
+					"to": [ 2.8, 2.0, 1.9 ],
+					"rotationOrigin": [ 2.6, 1.5, 1.1 ],
+					"faces": {
+						"north": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 1.0 ], "enabled": false },
+						"east": { "texture": "#material", "uv": [ 4.5, 2.5, 6.0, 3.5 ] },
+						"south": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 1.0 ], "enabled": false },
+						"west": { "texture": "#material", "uv": [ 3.5, 2.5, 5.0, 3.5 ] },
+						"up": { "texture": "#material", "uv": [ 5.5, 3.5, 6.0, 5.0 ] },
+						"down": { "texture": "#material", "uv": [ 5.5, 5.0, 6.0, 6.5 ] }
+					}
+				},
+				{
+					"name": "gem",
+					"from": [ 0.9, 1.2, -0.5 ],
+					"to": [ 1.5, 1.8, -0.3 ],
+					"rotationOrigin": [ 1.2, 1.5, -0.5 ],
+					"rotationZ": -45.0,
+					"faces": {
+						"north": { "texture": "#gem", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "windMode": [-1,-1,-1,-1] },
+						"east": { "texture": "#gem", "uv": [ 0.5, 0.5, 1.0, 1.0 ] },
+						"south": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+						"west": { "texture": "#gem", "uv": [ 2.5, 0.0, 3.0, 0.5 ] },
+						"up": { "texture": "#gem", "uv": [ 2.0, 1.5, 2.5, 2.0 ] },
+						"down": { "texture": "#gem", "uv": [ 3.0, 2.0, 3.5, 2.5 ] }
+					}
+				}
+			]
+		}
+	]}

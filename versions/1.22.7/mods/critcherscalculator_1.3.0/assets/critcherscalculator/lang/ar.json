@@ -1,0 +1,13 @@
+{
+  "dialog-title": "حاسبة السبائك من Critcher",
+  "hotkey-open-calculator": "فتح حاسبة السبائك",
+  "target-ingots": "السبائك المطلوبة:",
+  "metal-percentages": "نسب المعادن:",
+  "required-nuggets": "القطع المطلوبة:",
+  "close": "إغلاق",
+  "no-data": "لا توجد بيانات",
+  "no-alloys-available": "لا توجد وصفات سبائك متاحة.",
+  "crucible-slots-header": "تخطيط البوتقة:",
+  "crucible-impossible": "لا يمكن صنع {0} سبيكة من {1} — تجاوز سعة البوتقة. الحد الأقصى: {2}.",
+  "slot-empty": "(فارغ)"
+}

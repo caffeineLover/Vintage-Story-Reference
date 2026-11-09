@@ -1,0 +1,65 @@
+{
+  "code": "creature",
+  "class": "ItemCreature",
+  "maxstacksize": 1,
+  "variantgroups": [
+    { "code": "main", "states": ["tamedbear"] },
+    { "code": "type", "states": [ "black", "brown", "sun", "panda", "polar" ] },
+    { "code": "age", "states": [ "adult" ] },
+    { "code": "gender", "states": [ "male", "female" ] }
+  ],
+  "shapeByType": {
+    "*": {
+      "base": "bear/{type}-adult"
+    }
+  },
+  "textureByType": {
+    "*": { "base": "game:entity/animal/mammal/bear/{type}-adult1" }
+  },
+  "creativeinventory": { "general": ["*"], "items": ["*"], "creatures": ["*"], "bjorn": ["*"] },
+  "guiTransformByType": {
+    "*": {
+      "rotate": true,
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 180,
+        "y": -115,
+        "z": 6
+      },
+      "origin": {
+        "x": 0.5,
+        "y": 0.74,
+        "z": 0.5
+      },
+      "scale": 0.8
+    }
+  },
+  "tpHandTransformByType": {
+    "*": {
+      "translation": {
+        "x": -0.7,
+        "y": -0.8,
+        "z": -0.6
+      },
+      "rotation": {
+        "x": 1,
+        "y": 172,
+        "z": 26
+      },
+      "scale": 0.44
+    }
+  },
+  "groundTransformByType": {
+    "*": {
+      "translation": {
+        "x": 0,
+        "y": 0.1,
+        "z": 0
+      }
+    }
+  }
+}

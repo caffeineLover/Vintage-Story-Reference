@@ -1,0 +1,61 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"texbone": "block/creature/bone/bone1"
+	},
+	"elements": [
+		{
+			"name": "hook1",
+			"from": [ 7.8, 0.0, 8.0 ],
+			"to": [ 8.2, 0.4, 10.5 ],
+			"rotationOrigin": [ 7.8, 0.0, 8.0 ],
+			"faces": {
+				"north": { "texture": "#texbone", "uv": [ 7.5, 9.0, 8.0, 9.5 ] },
+				"east": { "texture": "#texbone", "uv": [ 8.0, 9.5, 10.5, 10.0 ] },
+				"south": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+				"west": { "texture": "#texbone", "uv": [ 7.5, 11.0, 10.0, 11.5 ] },
+				"up": { "texture": "#texbone", "uv": [ 7.5, 12.0, 8.0, 14.5 ] },
+				"down": { "texture": "#texbone", "uv": [ 3.0, 13.0, 3.5, 15.5 ] }
+			},
+			"children": [
+				{
+					"name": "hook2",
+					"from": [ 0.0, 0.0, 2.5 ],
+					"to": [ 1.5, 0.4, 2.9 ],
+					"rotationOrigin": [ 0.0, 0.0, 2.5 ],
+					"rotationX": 0.1,
+					"rotationY": 44.0,
+					"faces": {
+						"north": { "texture": "#texbone", "uv": [ 10.5, 14.5, 12.0, 15.0 ] },
+						"east": { "texture": "#texbone", "uv": [ 8.0, 9.5, 8.5, 10.0 ] },
+						"south": { "texture": "#texbone", "uv": [ 6.5, 13.5, 8.0, 14.0 ] },
+						"west": { "texture": "#texbone", "uv": [ 7.0, 10.0, 7.5, 10.5 ] },
+						"up": { "texture": "#texbone", "uv": [ 10.0, 13.5, 11.5, 14.0 ] },
+						"down": { "texture": "#texbone", "uv": [ 9.0, 13.5, 10.5, 14.0 ] }
+					}
+				},
+				{
+					"name": "hook3",
+					"from": [ -0.2, 0.0, -0.6 ],
+					"to": [ 0.4, 0.4, 0.0 ],
+					"rotationOrigin": [ -0.2, 0.0, -0.6 ],
+					"rotationX": 0.1,
+					"faces": {
+						"north": { "texture": "#texbone", "uv": [ 10.5, 14.5, 11.0, 15.0 ] },
+						"east": { "texture": "#texbone", "uv": [ 8.0, 9.5, 8.5, 10.0 ] },
+						"south": { "texture": "#texbone", "uv": [ 6.5, 13.5, 7.0, 14.0 ] },
+						"west": { "texture": "#texbone", "uv": [ 7.0, 10.0, 7.5, 10.5 ] },
+						"up": { "texture": "#texbone", "uv": [ 10.0, 13.5, 10.5, 14.0 ] },
+						"down": { "texture": "#texbone", "uv": [ 9.0, 13.5, 9.5, 14.0 ] }
+					}
+				}
+			]
+		}
+	]}

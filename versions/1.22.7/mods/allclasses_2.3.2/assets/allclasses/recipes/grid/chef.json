@@ -1,0 +1,280 @@
+[
+ 	{
+  "ingredientPattern": "SSS,SRS,SSS",
+  "requiresTrait": "culinary",
+  "ingredients": {
+	"R": {
+      "type": "item", 
+	  "code": "game:redmeat-cured", "quantity": 2
+    },
+	"S": {
+      "type": "item", 
+	  "code": "game:salt", "quantity": 1
+    }
+	},
+  "width": 3,
+  "height": 3,
+  "shapeless": false,
+  "output": { "type": "item", "code": "game:redmeat-vintage", "quantity": 1  }
+	},
+  {
+    "ingredientPattern": "H,P,C",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-copper",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "game:claypot-*-fired",
+        "allowedVariants": [
+					"blue",
+					"fire",
+					"black",
+					"brown",
+					"cream",
+					"gray",
+					"orange",
+					"red",
+					"tan"
+				]
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpot-copper-fired",
+      "quantity": 1
+    }
+    },
+  {
+    "ingredientPattern": "H,P,C",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-bismuthbronze",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-copper-fired"
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpot-bismuthbronze-fired",
+      "quantity": 1
+    }
+    },
+  {
+    "ingredientPattern": "H,P,C",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-iron",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-bismuthbronze-fired"
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpot-iron-fired",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "_H_,_PU,_C_",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-meteoriciron",
+        "quantity": 1
+      },
+      "U": {
+        "type": "item",
+        "code": "game:rod-meteoriciron",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-iron-fired"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpot-meteoriciron-fired",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "_H_,UPU,_C_",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-steel",
+        "quantity": 1
+      },
+      "U": {
+        "type": "item",
+        "code": "game:rod-steel",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-iron-fired"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpot-steel-fired",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "_H_,UP_,_C_",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-gold",
+        "quantity": 1
+      },
+      "U": {
+        "type": "item",
+        "code": "game:rod-gold",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-iron-fired"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpot-gold-fired",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "_H_,_PU,_C_",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-tinbronze",
+        "quantity": 1
+      },
+      "U": {
+        "type": "item",
+        "code": "game:rod-tinbronze",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-copper-fired"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "game:dirtyclaypot-tinbronze-empty",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "_H_,UPU,_C_",
+    "requiresTrait": "culinary",
+    "shapeless": true,
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-gold",
+        "quantity": 1
+      },
+      "U": {
+        "type": "item",
+        "code": "game:rod-blackbronze",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      },
+      "C": {
+        "type": "block",
+        "code": "allclasses:metalpot-iron-fired"
+      }
+    },
+    "width": 3,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "game:dirtyclaypot-blackbronze-empty",
+      "quantity": 1
+    }
+  }
+]

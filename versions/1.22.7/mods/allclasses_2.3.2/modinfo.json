@@ -1,0 +1,18 @@
+{
+    "type": "code",
+    "modid": "allclasses",
+    "name": "Allclasses",
+    "description": "Adds 12 new Classes,Horde of New Traits and rebalancing the system.",
+    "authors": [
+        "DejFidOFF for Tábor servers - www.vintagestory.cz"
+    ],
+    "Contributors": [
+    ],
+    "version": "2.3.2",
+    "dependencies": {
+        "game": "1.22.0"
+    },
+    "side": "Universal",
+    "requiredonclient": true,
+    "requiredonserver": true
+}

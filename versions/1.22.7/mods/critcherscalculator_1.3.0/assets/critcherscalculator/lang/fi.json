@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critcherin harkkölaskin",
+  "hotkey-open-calculator": "Avaa harkkölaskin",
+  "target-ingots": "Tavoiteharkot:",
+  "metal-percentages": "Metalliosuudet:",
+  "required-nuggets": "Tarvittavat hippuset:",
+  "close": "Sulje",
+  "no-data": "Ei tietoja",
+  "no-alloys-available": "Seosreseptejä ei saatavilla.",
+  "crucible-slots-header": "Sulatusuunin asettelu:",
+  "crucible-impossible": "Ei voida valmistaa {0} harkkoa ({1}) — sulatusuunin kapasiteetti ylitetty. Enintään: {2} harkkoa.",
+  "slot-empty": "(tyhjä)"
+}

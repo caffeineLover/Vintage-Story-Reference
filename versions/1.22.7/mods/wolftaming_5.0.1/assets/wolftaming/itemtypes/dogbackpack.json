@@ -1,0 +1,94 @@
+{
+	"code": "dogbackpack",
+	"shape": {
+		"base": "backpack/dog-wolf"
+	},
+	"attributes": {
+		"attachableToEntity": {
+			"categoryCode": "backpack-dog",
+			"attachedShapeBySlotCode": {
+				"backpack-wolf": {
+					"base": "wolftaming:backpack/dog-wolf"
+				},
+				"backpack-hunting": {
+					"base": "wolftaming:backpack/dog-wolf"
+				},
+				"backpack-shepherd": {
+					"base": "wolftaming:backpack/dog-wolf"
+				},
+				"backpack-peach": {
+					"base": "wolftaming:backpack/dog-wolf"
+				}
+			}
+		},
+		"backpack": {
+			"quantitySlots": 8
+		}
+	},
+	"maxstacksize": 1,
+	"heldTpIdleAnimation": "holdbothhandslarge",
+	"behaviors": [ { "name": "HeldBag" } ],
+	"creativeinventory": {
+		"general": [
+			"*"
+		],
+		"items": [
+			"*"
+		],
+		"clothing": [
+			"*"
+		]
+	},
+	"guiTransform": {
+		"translation": {
+			"x": 24,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 34,
+			"z": 179
+		},
+		"origin": {
+			"x": 0,
+			"y": 0.3,
+			"z": 0.9
+		},
+		"scale": 1.5
+	},
+	"groundTransform": {
+		"scale": 2
+	},
+	"fpHandTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0.3,
+			"z": 0
+		},
+		"rotation": {
+			"x": 180,
+			"y": 66,
+			"z": 180
+		},
+		"scale": 1.5
+	},
+	"tpHandTransform": {
+		"translation": {
+			"x": 0.4,
+			"y": 0,
+			"z": 0.5
+		},
+		"rotation": {
+			"x": 11,
+			"y": 16,
+			"z": -80
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 0.59
+	}
+}

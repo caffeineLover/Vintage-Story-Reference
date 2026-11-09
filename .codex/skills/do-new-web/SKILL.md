@@ -23,7 +23,9 @@ Use this workflow as part of `do-new-version` after the target version folder ex
 - Build `versions/<version>/Index/web.sqlite` and `versions/<version>/Index/web.index.json` from the target source manifest.
 - Track `versions/<version>/Index/.gitignore` so the `Index` folder exists in Git, but do not stage or commit `web.sqlite` or `web.index.json` unless the user explicitly asks and generated-index versioning has been confirmed.
 - Update `versions/<version>/version.catalog.json` so it includes the `web` index entry after the index is built.
-- Do not mark the target version as the default in `reference.catalog.json` unless the user asks.
+- Preserve the invariant that the newest retained Vintage Story release is always the root catalog default. If the
+  target is the newest retained release, set it as `reference.catalog.json` `default_game_version`; when backfilling
+  an older release, keep the newest retained release as the default.
 - Update `docs/PROJECT_MEMORY.md` before finishing the work session.
 
 ## Version Selection
@@ -74,8 +76,10 @@ python -B tools\web-index\build_web_index.py --version <target>
    - `tools/web-index/build_web_index.py`
    - `tools/web-index/query_web_index.py`
 10. Update `current_index_summary.web_sources` and `current_index_summary.web_sections` from the generated web manifest.
-11. Update root docs or catalogs that describe the target version if they currently say the version has no web index.
-12. Validate with representative queries:
+11. Ensure `reference.catalog.json` defaults to the newest retained release. If this changes the default, update root
+    documentation and examples in the same change.
+12. Update root docs or catalogs that describe the target version if they currently say the version has no web index.
+13. Validate with representative queries:
 
 ```powershell
 python -B tools\reference-query.py --version <target> --list-indexes
@@ -84,7 +88,9 @@ python -B tools\reference-query.py --version <target> web --search "configlib-pa
 python -B tools\reference-query.py --version <target> web --source rpvoicechat-server-administration --search "bitrate" --limit 5
 ```
 
-13. Summarize the source version used, target manifest path, copied or merged source count, Git staging status for `sources.json`, generated web index counts, generated index Git status, catalog/doc updates, and validation commands.
+14. Summarize the source version used, target manifest path, copied or merged source count, Git staging status for
+    `sources.json`, generated web index counts, generated index Git status, catalog/doc updates, the retained release
+    that is now the default, and validation commands.
 
 ## Validation
 

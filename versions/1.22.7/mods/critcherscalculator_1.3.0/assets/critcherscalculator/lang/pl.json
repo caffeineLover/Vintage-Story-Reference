@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Kalkulator sztab Critchera",
+  "hotkey-open-calculator": "Otwórz kalkulator sztab",
+  "target-ingots": "Docelowa liczba sztab:",
+  "metal-percentages": "Udziały metali:",
+  "required-nuggets": "Potrzebne bryłki:",
+  "close": "Zamknij",
+  "no-data": "Brak danych",
+  "no-alloys-available": "Brak dostępnych receptur stopów.",
+  "crucible-slots-header": "Układ tygla:",
+  "crucible-impossible": "Nie można wytworzyć {0} sztab ({1}) — przekroczono pojemność tygla. Maksymalnie: {2} sztab.",
+  "slot-empty": "(puste)"
+}

@@ -1,0 +1,18 @@
+[
+    {
+        "op": "addmerge",
+        "path": "/behaviors/-",
+        "value": {
+            "name": "considerpetfood"
+        },
+        "file": "game:itemtypes/food/fruit.json"
+    },
+    {
+        "op": "addmerge",
+        "path": "/behaviors/-",
+        "value": {
+            "name": "considerpetfood"
+        },
+        "file": "game:itemtypes/food/vegetable.json"
+    }
+]

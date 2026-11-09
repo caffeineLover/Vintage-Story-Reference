@@ -1,8 +1,8 @@
 # Vintage Story Reference Query Cookbook
 
-This cookbook gives agents repeatable, task-shaped ways to research Vintage Story `1.22.6` without scanning the raw
-reference trees. Use `INDEX_USAGE.md` for the complete index schema and command reference; use this document when the
-starting point is a modding question rather than an index name.
+This cookbook gives agents repeatable, task-shaped ways to research the catalog-default Vintage Story `1.22.7`
+reference without scanning the raw trees. Use `INDEX_USAGE.md` for the complete index schema and command reference;
+use this document when the starting point is a modding question rather than an index name.
 
 ## Setup
 
@@ -10,7 +10,7 @@ From PowerShell:
 
 ```powershell
 $vsref = 'E:\Gaming\Vintage Story\mods\Vintage Story Reference'
-$v = '1.22.6'
+$v = '1.22.7'
 ```
 
 Use the unified wrapper for routine work:
@@ -49,7 +49,7 @@ python -B "$vsref\tools\reference-query.py" --version $v asset `
 The result's `rel_path` is the candidate source file. Open only that file:
 
 ```powershell
-Get-Content -LiteralPath "$vsref\versions\1.22.6\Assets\survival\blocktypes\wood\displaycase.json"
+Get-Content -LiteralPath "$vsref\versions\1.22.7\Assets\survival\blocktypes\wood\displaycase.json"
 ```
 
 If the text search is noisy, query a known compact JSON fact such as `code`, `class`, or `entityClass`:
@@ -168,7 +168,7 @@ python -B "$vsref\tools\reference-query.py" --version $v asset `
   --fact-key class --fact-value ItemTentBag --limit 10
 
 python -B "$vsref\tools\reference-query.py" --version $v code `
-  --root tentbagreworked_3.2.4 --type ItemTentBag --limit 10
+  --root tentbagreworked_3.2.5 --type ItemTentBag --limit 10
 ```
 
 For the vanilla side, query the analogous asset class, base type, or member in the built-in roots. Compare the exact
@@ -177,7 +177,7 @@ mod as though it were licensed, build-ready source.
 
 ## Check A Reference Mod's Compatibility And Provenance
 
-List exact 1.22.6 entries:
+List exact 1.22.7 entries:
 
 ```powershell
 python -B "$vsref\tools\reference-query.py" --version $v mod `

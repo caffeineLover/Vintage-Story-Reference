@@ -1,0 +1,11 @@
+[
+  {
+    "file": "game:itemtypes/resource/honeycomb.json",
+    "op": "add",
+    "path": "/behaviors/-",
+    "value": {
+      "name": "considerpetfood",
+      "properties": {}
+    }
+  }
+]

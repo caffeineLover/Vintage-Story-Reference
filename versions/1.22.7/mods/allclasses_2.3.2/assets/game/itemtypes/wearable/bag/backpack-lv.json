@@ -1,0 +1,63 @@
+{
+  "code": "backpack-lv",
+  "maxstacksize": 1,
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "SingleCenter",
+        "collisionBox": {
+          "x1": 0.25,
+          "y1": 0,
+          "z1": 0.25,
+          "x2": 0.75,
+          "y2": 0.375,
+          "z2": 0.75
+        }
+      }
+    },
+    { "name": "HeldBag" },
+    {
+      "name": "GroundStoredHeldBag",
+      "properties": {
+        "dialogTitleLangCode": "backpackcontents"
+      }
+    }
+  ],
+  "attributes": {
+    "attachableToEntity": {
+      "categoryCode": "backpack",
+      "attachedShape": { "base": "item/bag/backpack-lv-attached" }
+    },
+    "wearableAttachment": true,
+    "backpackByType": {
+      "*": { "quantitySlots": 15 },
+      "backpack-lv": { "quantitySlots": 15 },
+      "*-lv": { "quantitySlots": 15 }
+    }
+  },
+  "shape": { "base": "item/bag/backpack-lv" },
+  "storageFlags": 2,
+  "creativeinventory": {
+    "general": ["*"],
+    "items": ["*"],
+    "allclasses": ["*"]
+  },
+  "guiTransform": {
+    "rotation": { "x": 0, "y": -27, "z": -180 },
+    "origin": { "x": 0.5, "y": 0.2, "z": 0.4 },
+    "scaleXyz": { "x": -2.8, "y": 2.8, "z": 2.8 }
+  },
+  "tpHandTransform": {
+    "translation": { "x": 0, "y": 0, "z": 0 },
+    "rotation": { "x": -6, "y": 1, "z": 3 },
+    "origin": { "x": 0.4, "y": 6, "z": -0.1 },
+    "scale": 1.08
+  },
+  "groundTransform": {
+    "translation": { "x": 0, "y": 0, "z": 0 },
+    "rotation": { "x": 180, "y": 33, "z": -180 },
+    "origin": { "x": 0.5, "y": 0, "z": 0.5 },
+    "scale": 6
+  }
+}

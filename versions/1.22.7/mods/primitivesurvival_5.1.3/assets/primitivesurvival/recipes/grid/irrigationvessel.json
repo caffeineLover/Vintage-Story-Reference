@@ -1,0 +1,116 @@
+[
+  {
+    "ingredientPattern": "HKV",
+    "enabled": true,
+    "shapeless": false,
+    "ingredients": {
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"],
+        "isTool": true
+      },
+      "K": {
+        "type": "item",
+        "tags": ["tool-chisel"],
+        "isTool": true
+      },
+      "V": {
+        "type": "block",
+        "code": "game:storagevessel-blue-fired",
+        "quantity": 1
+      }
+    },
+    "name": "irrigationvessel-normal",
+    "width": 3,
+    "height": 1,
+    "output": {
+      "type": "block",
+      "code": "primitivesurvival:irrigationvessel-normal",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "K,H",
+    "enabled": true,
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 1
+      },
+      "H": {
+        "type": "block",
+        "code": "primitivesurvival:irrigationvessel-normal",
+        "quantity": 1
+      }
+    },
+    "copyAttributesFrom": "H",
+    "width": 2,
+    "height": 1,
+    "output": {
+      "type": "block",
+      "code": "game:storagevessel-blue-fired",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "HKV",
+    "enabled": true,
+    "shapeless": false,
+    "ingredients": {
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"],
+        "isTool": true
+      },
+      "K": {
+        "type": "item",
+        "tags": ["tool-chisel"],
+        "isTool": true
+      },
+      "V": {
+        "type": "block",
+        "code": "game:storagevessel-*-fired",
+        "name": "type",
+        "allowedVariants": [ "fire", "black", "brown", "cream", "gray", "orange", "earthyorange", "red", "tan" ],
+        "quantity": 1
+      }
+    },
+    "name": "irrigationvessel-colored",
+    "width": 3,
+    "height": 1,
+    "output": {
+      "type": "block",
+      "code": "primitivesurvival:irrigationvessel-{type}",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "K,H",
+    "enabled": true,
+    "shapeless": false,
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "code": "game:resin",
+        "quantity": 1
+      },
+      "H": {
+        "type": "block",
+        "code": "primitivesurvival:irrigationvessel-*",
+        "name": "type",
+        "allowedVariants": [ "fire", "black", "brown", "cream", "gray", "orange", "red", "tan" ],
+        "quantity": 1
+      }
+    },
+    "copyAttributesFrom": "H",
+    "width": 2,
+    "height": 1,
+    "output": {
+      "type": "block",
+      "code": "game:storagevessel-{type}-fired",
+      "quantity": 1
+    }
+  }
+]

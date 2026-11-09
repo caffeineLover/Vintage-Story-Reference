@@ -1,0 +1,25 @@
+using System;
+
+namespace Concentus.Enums
+{
+	// Token: 0x02000068 RID: 104
+	public enum OpusFramesize
+	{
+		// Token: 0x04000373 RID: 883
+		OPUS_FRAMESIZE_ARG = 5000,
+		// Token: 0x04000374 RID: 884
+		OPUS_FRAMESIZE_2_5_MS,
+		// Token: 0x04000375 RID: 885
+		OPUS_FRAMESIZE_5_MS,
+		// Token: 0x04000376 RID: 886
+		OPUS_FRAMESIZE_10_MS,
+		// Token: 0x04000377 RID: 887
+		OPUS_FRAMESIZE_20_MS,
+		// Token: 0x04000378 RID: 888
+		OPUS_FRAMESIZE_40_MS,
+		// Token: 0x04000379 RID: 889
+		OPUS_FRAMESIZE_60_MS,
+		// Token: 0x0400037A RID: 890
+		OPUS_FRAMESIZE_VARIABLE = 5010
+	}
+}

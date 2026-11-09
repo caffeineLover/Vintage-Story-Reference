@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critcher tuskószámolója",
+  "hotkey-open-calculator": "Tuskószámoló megnyitása",
+  "target-ingots": "Cél tuskószám:",
+  "metal-percentages": "Fémarányok:",
+  "required-nuggets": "Szükséges rögök:",
+  "close": "Bezárás",
+  "no-data": "Nincs adat",
+  "no-alloys-available": "Nincsenek elérhető ötvözet-receptek.",
+  "crucible-slots-header": "Tégelyberendezés:",
+  "crucible-impossible": "Nem készíthető {0} tuskó ({1}) — meghaladja a tégely kapacitását. Maximum: {2} tuskó.",
+  "slot-empty": "(üres)"
+}

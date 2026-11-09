@@ -1,0 +1,22 @@
+{
+	"dialog-title": "Critcher의 주괴 계산기",
+	"hotkey-open-calculator": "주괴 계산기 열기",
+	"target-ingots": "목표 주괴 수량:",
+	"metal-percentages": "금속 비율:",
+	"required-nuggets": "필요한 조각 수:",
+	"close": "닫기",
+	"no-data": "데이터 없음",
+	"no-alloys-available": "사용 가능한 합금 레시피가 없습니다.",
+	"alloy-tinbronze": "주석 청동",
+	"alloy-bismuthbronze": "비스무트 청동",
+	"alloy-blackbronze": "헤파티존",
+	"alloy-brass": "황동",
+	"alloy-cupronickel": "백동",
+	"alloy-electrum": "호박금",
+	"alloy-molybdochalkos": "몰리브도칼코스",
+	"alloy-leadsolder": "납 땜납 합금",
+	"alloy-silversolder": "은 땜납 합금",
+	"crucible-slots-header": "도가니 배치:",
+	"crucible-impossible": "{1} 주괴 {0}개를 제작할 수 없습니다 — 도가니 용량을 초과했습니다. 최대 제작 가능 수량: {2}개.",
+	"slot-empty": "(비어 있음)"
+}

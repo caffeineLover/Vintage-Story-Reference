@@ -1,0 +1,69 @@
+[
+    {
+        "ingredientPattern": "H,C,R",
+        "requiresTrait": "mercantile",
+        "width": 1,
+        "height": 3,
+        "ingredients": {
+            "H": {
+                "type": "item",
+                "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+            },
+            "C": {
+                "type": "item",
+                "tags": ["tool-chisel"], "isTool": true, "toolDurabilityCost": 2
+            },
+            "R": {
+                "type": "item",
+                "code": "game:ingot-gold",
+            "quantity": 1
+            }
+        },
+        "output": {
+            "type": "item",
+            "code": "game:gear-rusty",
+            "quantity": 4
+        }
+    },
+    {
+        "ingredientPattern": "TKT,LVL,NBN",
+        "requiresTrait": "mercantile",
+        "width": 3,
+        "height": 3,
+        "ingredients": {
+            "K": {
+                "type": "item",
+                "tags": ["tool-knife"], "isTool": true, "toolDurabilityCost": 2
+            },
+            "T": {
+                "type": "item",
+                "code": "game:rod-gold"
+            },
+            "L": {
+                "type": "item",
+                "code": "game:leather-sturdy-plain",
+            "quantity": 4
+            },
+            "V": {
+                "type": "item",
+                "code": "game:flaxtwine",
+            "quantity": 4
+            },
+            "N": {
+                "type": "item",
+                "code": "game:metalbit-gold",
+            "quantity": 4
+            },
+            "B": {
+                "type": "item",
+                "code": "game:hunterbackpack",
+            "quantity": 1
+            }
+        },
+        "output": {
+            "type": "item",
+            "code": "game:backpack-lv",
+            "quantity": 1
+        }
+    }
+]

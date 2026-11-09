@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Lingota kalkulilo de Critcher",
+  "hotkey-open-calculator": "Malfermi lingotan kalkulilon",
+  "target-ingots": "Celaj lingotoj:",
+  "metal-percentages": "Metalprocentoj:",
+  "required-nuggets": "Bezonataj pecetoj:",
+  "close": "Fermi",
+  "no-data": "Neniuj datumoj",
+  "no-alloys-available": "Neniuj alojaj receptoj disponeblaj.",
+  "crucible-slots-header": "Krucibla aranĝo:",
+  "crucible-impossible": "Ne eblas krei {0} lingotojn de {1} — krucibla kapacito superita. Maksimumo: {2} lingotoj.",
+  "slot-empty": "(malplena)"
+}

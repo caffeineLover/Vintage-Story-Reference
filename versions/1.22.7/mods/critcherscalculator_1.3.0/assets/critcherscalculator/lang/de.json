@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Critchers Barren-Rechner",
+	"hotkey-open-calculator": "Barren-Rechner öffnen",
+	"target-ingots": "Zielanzahl Barren:",
+	"metal-percentages": "Metall-Anteile:",
+	"required-nuggets": "Benötigte Klumpen:",
+	"close": "Schließen",
+	"no-data": "Keine Daten",
+	"alloy-tinbronze": "Zinnbronze",
+	"alloy-bismuthbronze": "Bismutbronze",
+	"alloy-blackbronze": "Schwarzbronze",
+	"alloy-brass": "Messing",
+	"alloy-cupronickel": "Kupfernickel",
+	"alloy-electrum": "Elektrum",
+	"alloy-molybdochalkos": "Kupferblei",
+	"alloy-leadsolder": "Bleilot",
+	"alloy-silversolder": "Silberlot",
+	"crucible-slots-header": "Schmelztiegel-Anordnung:",
+	"crucible-impossible": "{0} Barren {1} können nicht hergestellt werden — Schmelztiegelkapazität überschritten. Maximal herstellbar: {2} Barren.",
+	"slot-empty": "(leer)"
+}

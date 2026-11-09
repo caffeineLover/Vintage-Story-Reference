@@ -10,8 +10,10 @@ For the curated flat schematic library and intake policy, see `docs/SCHEMATIC_LI
 
 ## Versions
 
-- `versions/1.22.6` - Vintage Story 1.22.6 five-assembly API, assets, selected mods/tools, tracked mod manifest,
-  web sources, code/asset/web indexes, and asset-class-to-registration cross-references.
+- `versions/1.22.7` (catalog default) - Vintage Story 1.22.7 five-assembly API, assets, selected mods/tools, tracked
+  mod manifest, web sources, code/asset/web indexes, and asset-class-to-registration cross-references.
+- `versions/1.22.6` - Vintage Story 1.22.6 five-assembly API, assets, selected mods/tools, tracked
+  mod manifest, web sources, code/asset/web indexes, and asset-class-to-registration cross-references.
 
 ## Layout
 

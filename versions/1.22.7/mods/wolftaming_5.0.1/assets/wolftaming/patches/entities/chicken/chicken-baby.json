@@ -1,0 +1,28 @@
+[
+    {
+        "side": "server",
+        "op": "addeach",
+        "path": "/server/behaviors/10/aitasks/0/entityCodes/-",
+        "value": [
+            "dog-wolf-male",
+            "dog-wolf-female",
+            "dog-hunting-male",
+            "dog-hunting-female"
+        ],
+        "file": "game:entities/animal/bird/chicken-baby.json"
+    },
+    {
+        "side": "server",
+        "op": "add",
+        "path": "/server/behaviors/10/aitasks/-",
+        "value": {
+            "code": "stayclosetoshepherd",
+            "priority": 1.4,
+            "movespeed": 0.01,
+            "maxDistance": 7,
+            "searchRange": 10,
+            "animation": "Run"
+        },
+        "file": "game:entities/animal/bird/chicken-baby.json"
+    }
+]

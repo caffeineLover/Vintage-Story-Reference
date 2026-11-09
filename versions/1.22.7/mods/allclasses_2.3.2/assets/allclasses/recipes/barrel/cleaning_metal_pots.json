@@ -1,0 +1,56 @@
+[
+  {
+    "code": "metalpots-clearing-copper",
+    "sealHours": 48,
+    "ingredients": [
+      {"type":"item","code":"game:sulfate-full-chromite","litres":1,"consumeLitres":1},
+      {"type":"block","code":"allclasses:metalpotdirty-copper-empty","name":"copper metal pot","quantity":1}
+    ],
+    "output":{"type":"block","code":"allclasses:metalpot-copper-fired","name":"copper metal pot","stackSize":1}
+  },
+  {
+    "code": "metalpots-clearing-bismuthbronze",
+    "sealHours": 72,
+    "ingredients": [
+      {"type":"item","code":"game:sulfate-full-chromite","litres":1,"consumeLitres":1},
+      {"type":"block","code":"allclasses:metalpotdirty-bismuthbronze-empty","name":"bismuthbronze metal pot","quantity":1}
+    ],
+    "output":{"type":"block","code":"allclasses:metalpot-bismuthbronze-fired","name":"bismuthbronze metal pot","stackSize":1}
+  },
+  {
+    "code": "metalpots-clearing-iron",
+    "sealHours": 96,
+    "ingredients": [
+      {"type":"item","code":"game:sulfate-full-chromite","litres":1,"consumeLitres":1},
+      {"type":"block","code":"allclasses:metalpotdirty-iron-empty","name":"iron metal pot","quantity":1}
+    ],
+    "output":{"type":"block","code":"allclasses:metalpot-iron-fired","name":"iron metal pot","stackSize":1}
+  },
+  {
+    "code": "metalpots-clearing-steel",
+    "sealHours": 120,
+    "ingredients": [
+      {"type":"item","code":"game:sulfate-full-chromite","litres":2,"consumeLitres":2},
+      {"type":"block","code":"allclasses:metalpotdirty-steel-empty","name":"steel metal pot","quantity":1}
+    ],
+    "output":{"type":"block","code":"allclasses:metalpot-steel-fired","name":"steel metal pot","stackSize":1}
+  },
+  {
+    "code": "metalpots-clearing-meteoriciron",
+    "sealHours": 144,
+    "ingredients": [
+      {"type":"item","code":"game:sulfate-full-chromite","litres":2,"consumeLitres":2},
+      {"type":"block","code":"allclasses:metalpotdirty-meteoriciron-empty","name":"meteoric iron metal pot","quantity":1}
+    ],
+    "output":{"type":"block","code":"allclasses:metalpot-meteoriciron-fired","name":"meteoric iron metal pot","stackSize":1}
+  },
+  {
+    "code": "metalpots-clearing-gold",
+    "sealHours": 168,
+    "ingredients": [
+      {"type":"item","code":"game:sulfate-full-chromite","litres":2,"consumeLitres":2},
+      {"type":"block","code":"allclasses:metalpotdirty-gold-empty","name":"gold metal pot","quantity":1}
+    ],
+    "output":{"type":"block","code":"allclasses:metalpot-gold-fired","name":"gold metal pot","stackSize":1}
+  }
+]

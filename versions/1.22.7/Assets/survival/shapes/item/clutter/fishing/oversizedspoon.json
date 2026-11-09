@@ -1,0 +1,119 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"mossy": [16,16]
+	},
+	"textures": {
+		"mossy": "block/wood/debarked/mossy"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "shaft1",
+					"from": [ -13.0, -0.75, -0.75 ],
+					"to": [ 3.0, 0.75, 0.75 ],
+					"faces": {
+						"north": { "texture": "#mossy", "uv": [ 0.0, 8.0, 16.0, 9.5 ] },
+						"south": { "texture": "#mossy", "uv": [ 0.0, 6.0, 16.0, 7.5 ] },
+						"west": { "texture": "#mossy", "uv": [ 10.0, 2.0, 11.5, 3.5 ] },
+						"up": { "texture": "#mossy", "uv": [ 0.0, 3.0, 16.0, 4.5 ] },
+						"down": { "texture": "#mossy", "uv": [ 0.0, 12.5, 16.0, 14.0 ] }
+					},
+					"children": [
+						{
+							"name": "shaft2",
+							"from": [ 16.0, 0.0, 0.0 ],
+							"to": [ 27.0, 1.5, 1.5 ],
+							"rotationOrigin": [ 16.0, 0.75, 0.75 ],
+							"faces": {
+								"north": { "texture": "#mossy", "uv": [ 4.0, 6.5, 15.0, 8.0 ] },
+								"south": { "texture": "#mossy", "uv": [ 4.5, 11.5, 15.5, 13.0 ] },
+								"up": { "texture": "#mossy", "uv": [ 0.5, 10.5, 11.5, 12.0 ] },
+								"down": { "texture": "#mossy", "uv": [ 0.5, 1.0, 11.5, 2.5 ] }
+							},
+							"children": [
+								{
+									"name": "main",
+									"from": [ 11.0, -1.75, -1.0 ],
+									"to": [ 18.0, 3.25, -0.5 ],
+									"rotationOrigin": [ 12.0, 0.75, -0.5 ],
+									"faces": {
+										"north": { "texture": "#mossy", "uv": [ 7.0, 9.0, 14.0, 14.0 ] },
+										"east": { "texture": "#mossy", "uv": [ 8.0, 5.0, 8.5, 10.0 ] },
+										"south": { "texture": "#mossy", "uv": [ 2.5, 0.5, 9.5, 5.5 ] },
+										"west": { "texture": "#mossy", "uv": [ 10.5, 1.0, 11.0, 6.0 ] },
+										"up": { "texture": "#mossy", "uv": [ 5.0, 10.5, 12.0, 11.0 ] },
+										"down": { "texture": "#mossy", "uv": [ 4.5, 9.0, 11.5, 9.5 ] }
+									},
+									"children": [
+										{
+											"name": "D",
+											"from": [ 0.0, 0.0, 0.5 ],
+											"to": [ 0.5, 5.0, 3.5 ],
+											"rotationOrigin": [ 0.0, 2.5, 0.5 ],
+											"faces": {
+												"east": { "texture": "#mossy", "uv": [ 6.5, 10.5, 9.5, 15.5 ] },
+												"south": { "texture": "#mossy", "uv": [ 13.5, 4.5, 14.0, 9.5 ] },
+												"west": { "texture": "#mossy", "uv": [ 3.0, 10.5, 6.0, 15.5 ] },
+												"up": { "texture": "#mossy", "uv": [ 6.0, 3.0, 6.5, 6.0 ] },
+												"down": { "texture": "#mossy", "uv": [ 2.5, 8.5, 3.0, 11.5 ] }
+											}
+										},
+										{
+											"name": "S1",
+											"from": [ 0.5, 0.0, 0.5 ],
+											"to": [ 7.0, 0.5, 3.5 ],
+											"rotationOrigin": [ 0.5, 0.0, 0.5 ],
+											"faces": {
+												"east": { "texture": "#mossy", "uv": [ 3.0, 13.0, 6.0, 13.5 ] },
+												"south": { "texture": "#mossy", "uv": [ 5.0, 8.5, 11.5, 9.0 ] },
+												"up": { "texture": "#mossy", "uv": [ 1.5, 7.5, 8.0, 10.5 ] },
+												"down": { "texture": "#mossy", "uv": [ 8.0, 4.5, 14.5, 7.5 ] }
+											}
+										},
+										{
+											"name": "S2",
+											"from": [ 0.5, 4.5, 0.5 ],
+											"to": [ 7.0, 5.0, 3.5 ],
+											"rotationOrigin": [ 0.5, 4.5, 0.5 ],
+											"faces": {
+												"east": { "texture": "#mossy", "uv": [ 11.5, 12.5, 14.5, 13.0 ] },
+												"south": { "texture": "#mossy", "uv": [ 8.5, 13.0, 15.0, 13.5 ] },
+												"up": { "texture": "#mossy", "uv": [ 6.0, 9.5, 12.5, 12.5 ] },
+												"down": { "texture": "#mossy", "uv": [ 7.5, 2.5, 14.0, 5.5 ] }
+											}
+										},
+										{
+											"name": "D2",
+											"from": [ 6.5, 0.5, 0.5 ],
+											"to": [ 7.0, 4.5, 3.5 ],
+											"rotationOrigin": [ 6.5, 2.5, 0.5 ],
+											"faces": {
+												"east": { "texture": "#mossy", "uv": [ 9.5, 9.0, 12.5, 13.0 ] },
+												"south": { "texture": "#mossy", "uv": [ 2.0, 2.0, 2.5, 6.0 ] },
+												"west": { "texture": "#mossy", "uv": [ 8.5, 5.0, 11.5, 9.0 ] },
+												"up": { "texture": "#mossy", "uv": [ 0.5, 6.5, 1.0, 9.5 ] },
+												"down": { "texture": "#mossy", "uv": [ 12.0, 2.0, 12.5, 5.0 ] }
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]}

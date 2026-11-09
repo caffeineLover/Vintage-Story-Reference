@@ -1,0 +1,147 @@
+{
+	"editor": {
+		"backDropShape": "entity/animal/mammal/hooved/pig/eurasian/adult",
+		"collapsedPaths": "Root/Feet Guide,Root/Origin/Rear/Midsection/Chest/Neck/Head/L Ear,Root/Origin/Rear/Midsection/Chest/Neck/Head/HeadTop,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/L Eye,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw,Root/Origin/Rear/Midsection/Chest/Neck/Head2/MouthUp2,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Eye,Root/Origin/Rear/Midsection/Chest/Neck/Head/L Cheek,Root/Origin/Rear/Midsection/Chest/Neck/Head/HeadMisc,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Jaw,Root/Origin/Rear/Tail,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/L Ear,Root/Origin/Rear/Midsection/Chest/Neck/Head/HeadMisc/R Cheek,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Horn attachment/R antler Hub,Root/Origin/Rear/L Haunch/L LegUp/L LegLow/L Hind Pastern/L Hind Hoof,Root/Origin/Rear/Midsection/Chest/Hump/Hump2,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Ear/R Ear3/R EarWisp1,Root/Origin/Rear/Midsection/Chest/Neck/Head2/L Eye3,Root/Origin/Rear/Midsection/Chest/Neck/Head2/L Ear4,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Ear/R Ear3,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/MouthUp,Root/Origin/Rear/Midsection/Chest/Neck/Head2/R Ear4,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Cheek,Root/Origin/Rear/Midsection/Chest/Neck/Head2/R Eye3,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Horn attachment,Root/Origin/Rear/Midsection/Chest/Neck/Head2/HeadMisc2,Root/Origin/Rear/Midsection/Chest/Neck/Head/L Eye,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Horn attachment/L antler base 1,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Ear,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp,Root/Origin/Rear/R Haunch,Root/Origin/Rear/Midsection/Chest/Neck/Head/HeadMisc/L Cheek,Root/Origin/Rear/Midsection/Chest/Neck/Head2/Jaw3,Root/Origin/Rear/Midsection/Chest/Hump,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Mouth up,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/R Ear,Root/Origin/Rear/L Haunch,Root/Origin/Rear/R Haunch/R LegUp/R LegLow/R Hind Pastern/R Hind Hoof,Root/Origin/Rear/Midsection/Chest/L Shoulder/L ArmUp/L ArmMid/L ArmLow/L Front Pastern/L Front Hoof,Root/Horn attachment,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Snout,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/R Eye,Root/Origin/Rear/Midsection/Chest/R Shoulder/R Arm/R Forearm/R Hand/R Fingers/R Front Hoof,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/R TuskBase,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/L TuskBase,Root/Origin/Rear/Midsection/Chest/L Shoulder/L Arm/L Forearm/L Hand/L Fingers/L Front Hoof,Root/Origin/Rear/Midsection/Chest/R Shoulder/R ArmUp/R ArmMid/R ArmLow/R Front Pastern/R Front Hoof,Root/Origin/Rear/R Thigh/R Calf/R Foot/R Toes/R Hind Hoof,Root/Origin/Rear/L Thigh/L Calf/L Foot/L Toes/L Hind Hoof",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 60,
+	"textureHeight": 80,
+	"textureSizes": {
+		"antlertexture": [60,80]
+	},
+	"textures": {
+		"antlertexture": "entity/animal/mammal/hooved/pig/eurasian-adult"
+	},
+	"elements": [
+		{
+			"name": "JawOrigin",
+			"stepParentName": "Jaw",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 2.3, 2.0, 2.0 ],
+			"unwrapMode": 5,
+			"unwrapRotation": 1,
+			"autoUnwrap": false,
+			"uv": [ 51.5, 71.5 ],
+			"rotationOrigin": [ 1.9107, 1.0, 0.65 ],
+			"faces": {
+				"north": { "texture": "#antlertexture", "uv": [ 52.0, 71.5, 53.5, 73.5 ], "rotation": 270, "autoUv": false, "enabled": false },
+				"east": { "texture": "#null", "uv": [ 2.0, 2.0, 4.0, 4.0 ], "enabled": false },
+				"south": { "texture": "#antlertexture", "uv": [ 55.5, 71.5, 57.0, 73.5 ], "rotation": 90, "autoUv": false, "enabled": false },
+				"west": { "texture": "#antlertexture", "uv": [ 53.5, 73.5, 55.5, 75.5 ], "enabled": false },
+				"up": { "texture": "#antlertexture", "uv": [ 53.5, 71.5, 55.5, 73.5 ], "rotation": 90, "enabled": false },
+				"down": { "texture": "#antlertexture", "uv": [ 57.0, 71.5, 59.0, 73.5 ], "rotation": 270, "enabled": false }
+			},
+			"children": [
+				{
+					"name": "L TuskBase",
+					"from": [ -0.2, 0.0, 2.0 ],
+					"to": [ 0.6, 1.0, 2.5 ],
+					"unwrapMode": 3,
+					"uv": [ 56.5, 76.0 ],
+					"rotationOrigin": [ -0.2, 1.0, 2.0 ],
+					"rotationX": 20.0,
+					"rotationZ": 5.0,
+					"faces": {
+						"north": { "texture": "#antlertexture", "uv": [ 58.0, 76.5, 58.5, 77.5 ], "windMode": [-1,-1,-1,-1] },
+						"east": { "texture": "#antlertexture", "uv": [ 57.5, 76.5, 58.0, 77.5 ] },
+						"south": { "texture": "#antlertexture", "uv": [ 57.0, 76.5, 57.5, 77.5 ] },
+						"west": { "texture": "#antlertexture", "uv": [ 56.5, 76.5, 57.0, 77.5 ] },
+						"up": { "texture": "#antlertexture", "uv": [ 57.0, 76.0, 57.5, 76.5 ] },
+						"down": { "texture": "#antlertexture", "uv": [ 57.0, 77.5, 57.5, 78.0 ], "rotation": 180 }
+					},
+					"children": [
+						{
+							"name": "L Tusk1",
+							"from": [ 0.2, 1.0, 0.0 ],
+							"to": [ 0.6, 1.5, 0.4 ],
+							"uv": [ 0.5, 3.5 ],
+							"rotationOrigin": [ 0.2, 1.0, 0.4 ],
+							"faces": {
+								"north": { "texture": "#antlertexture", "uv": [ 0.5, 4.0, 1.0, 4.5 ] },
+								"east": { "texture": "#antlertexture", "uv": [ 1.0, 4.0, 1.5, 4.5 ] },
+								"south": { "texture": "#antlertexture", "uv": [ 1.5, 4.0, 2.0, 4.5 ] },
+								"west": { "texture": "#antlertexture", "uv": [ 2.0, 4.0, 2.5, 4.5 ] },
+								"up": { "texture": "#antlertexture", "uv": [ 0.5, 3.5, 1.0, 4.0 ] },
+								"down": { "texture": "#null", "uv": [ 58.5, 79.0, 59.0, 79.5 ], "enabled": false }
+							},
+							"children": [
+								{
+									"name": "L Tusk2",
+									"from": [ 0.05, 0.5, 0.05 ],
+									"to": [ 0.35, 1.0, 0.35 ],
+									"uv": [ 0.5, 2.0 ],
+									"rotationOrigin": [ 0.05, 0.5, 0.35 ],
+									"rotationX": -15.0,
+									"faces": {
+										"north": { "texture": "#antlertexture", "uv": [ 0.5, 2.5, 1.0, 3.0 ] },
+										"east": { "texture": "#antlertexture", "uv": [ 1.0, 2.5, 1.5, 3.0 ] },
+										"south": { "texture": "#antlertexture", "uv": [ 1.5, 2.5, 2.0, 3.0 ] },
+										"west": { "texture": "#antlertexture", "uv": [ 2.0, 2.5, 2.5, 3.0 ] },
+										"up": { "texture": "#antlertexture", "uv": [ 0.5, 2.0, 1.0, 2.5 ] },
+										"down": { "texture": "#null", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "enabled": false }
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "R TuskBase",
+					"from": [ -0.2, 0.0, -0.5 ],
+					"to": [ 0.6, 1.0, 0.0 ],
+					"unwrapMode": 3,
+					"uv": [ 51.0, 76.0 ],
+					"rotationOrigin": [ -0.2, 1.0, 0.0 ],
+					"rotationX": -20.0,
+					"rotationZ": 5.0,
+					"faces": {
+						"north": { "texture": "#antlertexture", "uv": [ 52.5, 76.5, 53.0, 77.5 ], "windMode": [-1,-1,-1,-1] },
+						"east": { "texture": "#antlertexture", "uv": [ 52.0, 76.5, 52.5, 77.5 ] },
+						"south": { "texture": "#antlertexture", "uv": [ 51.5, 76.5, 52.0, 77.5 ] },
+						"west": { "texture": "#antlertexture", "uv": [ 51.0, 76.5, 51.5, 77.5 ] },
+						"up": { "texture": "#antlertexture", "uv": [ 51.5, 76.0, 52.0, 76.5 ] },
+						"down": { "texture": "#antlertexture", "uv": [ 51.5, 77.5, 52.0, 78.0 ], "rotation": 180 }
+					},
+					"children": [
+						{
+							"name": "R Tusk1",
+							"from": [ 0.2, 1.0, 0.1 ],
+							"to": [ 0.6, 1.5, 0.5 ],
+							"uv": [ 4.0, 3.5 ],
+							"rotationOrigin": [ 0.2, 1.0, 0.1 ],
+							"faces": {
+								"north": { "texture": "#antlertexture", "uv": [ 4.0, 4.0, 4.5, 4.5 ] },
+								"east": { "texture": "#antlertexture", "uv": [ 4.5, 4.0, 5.0, 4.5 ] },
+								"south": { "texture": "#antlertexture", "uv": [ 5.0, 4.0, 5.5, 4.5 ] },
+								"west": { "texture": "#antlertexture", "uv": [ 5.5, 4.0, 6.0, 4.5 ] },
+								"up": { "texture": "#antlertexture", "uv": [ 4.0, 3.5, 4.5, 4.0 ] },
+								"down": { "texture": "#null", "uv": [ 48.5, 79.0, 49.0, 79.5 ], "enabled": false }
+							},
+							"children": [
+								{
+									"name": "R Tusk2",
+									"from": [ 0.05, 0.5, 0.05 ],
+									"to": [ 0.35, 1.0, 0.35 ],
+									"uv": [ 4.0, 2.0 ],
+									"rotationOrigin": [ 0.05, 0.5, 0.05 ],
+									"rotationX": 15.0,
+									"faces": {
+										"north": { "texture": "#antlertexture", "uv": [ 4.0, 2.5, 4.5, 3.0 ] },
+										"east": { "texture": "#antlertexture", "uv": [ 4.5, 2.5, 5.0, 3.0 ] },
+										"south": { "texture": "#antlertexture", "uv": [ 5.0, 2.5, 5.5, 3.0 ] },
+										"west": { "texture": "#antlertexture", "uv": [ 5.5, 2.5, 6.0, 3.0 ] },
+										"up": { "texture": "#antlertexture", "uv": [ 4.0, 2.0, 4.5, 2.5 ] },
+										"down": { "texture": "#null", "uv": [ 51.5, 79.0, 52.0, 79.5 ], "enabled": false }
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

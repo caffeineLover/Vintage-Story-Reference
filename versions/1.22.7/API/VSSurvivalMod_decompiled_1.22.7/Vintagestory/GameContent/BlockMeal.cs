@@ -1,0 +1,1023 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
+
+namespace Vintagestory.GameContent;
+
+public class BlockMeal : BlockContainer, IBlockMealContainer, IContainedMeshSource, IContainedInteractable, IContainedCustomName, IGroundStoredParticleEmitter, IHandBookPageCodeProvider
+{
+	private MealMeshCache? meshCache;
+
+	private Vec3d gsSmokePos = new Vec3d(0.5, 0.125, 0.5);
+
+	protected bool displayContentsInfo = true;
+
+	protected virtual bool PlacedBlockEating => true;
+
+	public static BlockMeal[]? AllMealBowls(ICoreAPI api)
+	{
+		return ObjectCacheUtil.TryGet<BlockMeal[]>(api, "allMealBowls");
+	}
+
+	public static BlockMeal RandomMealBowl(ICoreAPI api)
+	{
+		BlockMeal[] allMealBowls = AllMealBowls(api);
+		return allMealBowls[api.World.Rand.Next(allMealBowls.Length)];
+	}
+
+	public override void OnLoaded(ICoreAPI api)
+	{
+		base.OnLoaded(api);
+		if (CollisionBoxes[0] != null)
+		{
+			gsSmokePos.Y = CollisionBoxes[0].MaxY;
+		}
+		ObjectCacheUtil.GetOrCreate(api, "allMealBowls", delegate
+		{
+			List<BlockMeal> list = new List<BlockMeal>();
+			foreach (Block current in api.World.Blocks)
+			{
+				if (current is BlockMeal item && current.FirstCodePart().Contains("bowl"))
+				{
+					list.Add(item);
+				}
+			}
+			return list.ToArray();
+		});
+		meshCache = api.ModLoader.GetModSystem<MealMeshCache>();
+	}
+
+	public override string GetHeldTpUseAnimation(ItemSlot activeHotbarSlot, Entity forEntity)
+	{
+		return "eat";
+	}
+
+	public virtual float[] GetNutritionHealthMul(BlockPos? pos, ItemSlot slot, EntityAgent? forEntity)
+	{
+		return new float[2] { 1f, 1f };
+	}
+
+	public override void OnHeldIdle(ItemSlot slot, EntityAgent byEntity)
+	{
+		if (byEntity.World.Side == EnumAppSide.Client && GetTemperature(byEntity.World, slot.Itemstack) > 50f && byEntity.World.Rand.NextDouble() < 0.07)
+		{
+			float sideWays = 0.35f;
+			if ((byEntity as EntityPlayer)?.Player is IClientPlayer { CameraMode: not EnumCameraMode.FirstPerson })
+			{
+				sideWays = 0f;
+			}
+			Vec3d pos = byEntity.Pos.XYZ.Add(0.0, byEntity.LocalEyePos.Y - 0.5, 0.0).Ahead(0.33000001311302185, byEntity.Pos.Pitch, byEntity.Pos.Yaw).Ahead(sideWays, 0f, byEntity.Pos.Yaw + (float)Math.PI / 2f);
+			BlockCookedContainer.smokeHeld.MinPos = pos.AddCopy(-0.05, 0.1, -0.05);
+			byEntity.World.SpawnParticles(BlockCookedContainer.smokeHeld);
+		}
+	}
+
+	public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling)
+	{
+		if (!tryHeldBeginEatMeal(slot, byEntity, ref handHandling))
+		{
+			base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handHandling);
+		}
+	}
+
+	public override bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+	{
+		return tryHeldContinueEatMeal(secondsUsed, slot, byEntity);
+	}
+
+	public override void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+	{
+		tryFinishEatMeal(secondsUsed, slot, byEntity, handleAllServingsConsumed: true);
+	}
+
+	protected virtual bool tryHeldBeginEatMeal(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handHandling)
+	{
+		if (!byEntity.Controls.ShiftKey && GetContentNutritionProperties(api.World, slot, byEntity) != null)
+		{
+			byEntity.World.RegisterCallback(delegate
+			{
+				if (byEntity.Controls.HandUse == EnumHandInteract.HeldItemInteract)
+				{
+					byEntity.PlayEntitySound("eat", (byEntity as EntityPlayer)?.Player);
+				}
+			}, 500);
+			handHandling = EnumHandHandling.PreventDefault;
+			return true;
+		}
+		return false;
+	}
+
+	protected bool tryPlacedBeginEatMeal(ItemSlot slot, IPlayer byPlayer)
+	{
+		if (GetContentNutritionProperties(api.World, slot, byPlayer.Entity) != null)
+		{
+			api.World.RegisterCallback(delegate
+			{
+				if (byPlayer.Entity.Controls.HandUse == EnumHandInteract.BlockInteract)
+				{
+					byPlayer.Entity.PlayEntitySound("eat", byPlayer);
+				}
+			}, 500);
+			byPlayer.Entity.StartAnimation("eat");
+			return true;
+		}
+		return false;
+	}
+
+	protected virtual bool tryHeldContinueEatMeal(float secondsUsed, ItemSlot slot, EntityAgent byEntity)
+	{
+		if (GetContentNutritionProperties(byEntity.World, slot, byEntity) == null)
+		{
+			return false;
+		}
+		Vec3d pos = byEntity.Pos.AheadCopy(0.4000000059604645).XYZ.Add(byEntity.LocalEyePos);
+		pos.Y -= 0.4000000059604645;
+		IPlayer player = (byEntity as EntityPlayer)?.Player;
+		if (secondsUsed > 0.5f && (int)(30f * secondsUsed) % 7 == 1)
+		{
+			ItemStack[] contents = GetNonEmptyContents(byEntity.World, slot.Itemstack);
+			if (contents.Length != 0)
+			{
+				ItemStack rndStack = contents[byEntity.World.Rand.Next(contents.Length)];
+				byEntity.World.SpawnCubeParticles(pos, rndStack, 0.3f, 4, 1f, player);
+			}
+		}
+		if (byEntity.World is IClientWorldAccessor)
+		{
+			ModelTransform tf = new ModelTransform();
+			tf.Origin.Set(1.1f, 0.5f, 0.5f);
+			tf.EnsureDefaultValues();
+			tf.Translation.X -= Math.Min(1.7f, secondsUsed * 4f * 1.8f) / FpHandTransform.ScaleXYZ.X;
+			tf.Translation.Y += Math.Min(0.4f, secondsUsed * 1.8f) / FpHandTransform.ScaleXYZ.X;
+			tf.Scale = 1f + Math.Min(0.5f, secondsUsed * 4f * 1.8f) / FpHandTransform.ScaleXYZ.X;
+			tf.Rotation.X += Math.Min(40f, secondsUsed * 350f * 0.75f) / FpHandTransform.ScaleXYZ.X;
+			if (secondsUsed > 0.5f)
+			{
+				tf.Translation.Y += GameMath.Sin(30f * secondsUsed) / 10f / FpHandTransform.ScaleXYZ.Y;
+			}
+			return secondsUsed <= 1.5f;
+		}
+		return true;
+	}
+
+	protected bool tryPlacedContinueEatMeal(float secondsUsed, ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (byPlayer.Entity.Controls.ShiftKey && GetContentNutritionProperties(api.World, slot, byPlayer.Entity) != null)
+		{
+			ItemStack stack = slot.Itemstack;
+			if (stack != null)
+			{
+				if (api.Side == EnumAppSide.Client)
+				{
+					ModelTransform tf = new ModelTransform();
+					tf.Origin.Set(1.1f, 0.5f, 0.5f);
+					tf.EnsureDefaultValues();
+					if (ItemClass == EnumItemClass.Item)
+					{
+						if (secondsUsed > 0.5f)
+						{
+							tf.Translation.X = GameMath.Sin(30f * secondsUsed) / 10f;
+						}
+						tf.Translation.Z += 0f - Math.Min(1.6f, secondsUsed * 4f * 1.57f);
+						tf.Translation.Y += Math.Min(0.15f, secondsUsed * 2f);
+						tf.Rotation.Y -= Math.Min(85f, secondsUsed * 350f * 1.5f);
+						tf.Rotation.X += Math.Min(40f, secondsUsed * 350f * 0.75f);
+						tf.Rotation.Z += Math.Min(30f, secondsUsed * 350f * 0.75f);
+					}
+					else
+					{
+						tf.Translation.X -= Math.Min(1.7f, secondsUsed * 4f * 1.8f) / FpHandTransform.ScaleXYZ.X;
+						tf.Translation.Y += Math.Min(0.4f, secondsUsed * 1.8f) / FpHandTransform.ScaleXYZ.X;
+						tf.Scale = 1f + Math.Min(0.5f, secondsUsed * 4f * 1.8f) / FpHandTransform.ScaleXYZ.X;
+						tf.Rotation.X += Math.Min(40f, secondsUsed * 350f * 0.75f) / FpHandTransform.ScaleXYZ.X;
+						if (secondsUsed > 0.5f)
+						{
+							tf.Translation.Y += GameMath.Sin(30f * secondsUsed) / 10f / FpHandTransform.ScaleXYZ.Y;
+						}
+					}
+					if (secondsUsed > 0.5f && (int)(30f * secondsUsed) % 7 == 1)
+					{
+						ItemStack[] contents = GetNonEmptyContents(api.World, stack);
+						if (contents.Length != 0)
+						{
+							ItemStack rndStack = contents[api.World.Rand.Next(contents.Length)];
+							api.World.SpawnCubeParticles(blockSel.Position.ToVec3d().Add(0.5, 0.125, 0.5), rndStack, 0.2f, 4, 0.5f);
+						}
+					}
+					return secondsUsed <= 1.5f;
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	protected virtual bool tryFinishEatMeal(float secondsUsed, ItemSlot slot, EntityAgent byEntity, bool handleAllServingsConsumed)
+	{
+		FoodNutritionProperties[] multiProps = GetContentNutritionProperties(byEntity.World, slot, byEntity);
+		if (byEntity.World.Side == EnumAppSide.Client || multiProps == null || (double)secondsUsed < 1.45)
+		{
+			return false;
+		}
+		ItemStack foodSourceStack = slot.Itemstack;
+		if (foodSourceStack != null)
+		{
+			IPlayer player = (byEntity as EntityPlayer)?.Player;
+			if (player != null)
+			{
+				slot.MarkDirty();
+				float servingsLeft = GetQuantityServings(byEntity.World, foodSourceStack);
+				ItemStack[] stacks = GetNonEmptyContents(api.World, foodSourceStack);
+				if (stacks.Length == 0)
+				{
+					servingsLeft = 0f;
+				}
+				else
+				{
+					string recipeCode = GetRecipeCode(api.World, foodSourceStack);
+					servingsLeft = Consume(byEntity.World, player, slot, stacks, servingsLeft, string.IsNullOrEmpty(recipeCode));
+				}
+				if (servingsLeft <= 0f)
+				{
+					if (handleAllServingsConsumed)
+					{
+						if (Attributes["eatenBlock"].Exists)
+						{
+							Block block = byEntity.World.GetBlock(new AssetLocation(Attributes["eatenBlock"].AsString()));
+							if (slot.Empty || slot.StackSize == 1)
+							{
+								slot.Itemstack = new ItemStack(block);
+							}
+							else if (!player.InventoryManager.TryGiveItemstack(new ItemStack(block), slotNotifyEffect: true))
+							{
+								byEntity.World.SpawnItemEntity(new ItemStack(block), byEntity.Pos.XYZ);
+							}
+						}
+						else
+						{
+							slot.TakeOut(1);
+							slot.MarkDirty();
+						}
+					}
+				}
+				else if (slot.Empty || slot.StackSize == 1)
+				{
+					(foodSourceStack.Collectible as BlockMeal)?.SetQuantityServings(byEntity.World, foodSourceStack, servingsLeft);
+					slot.Itemstack = foodSourceStack;
+				}
+				else
+				{
+					ItemStack splitStack = slot.TakeOut(1);
+					(foodSourceStack.Collectible as BlockMeal)?.SetQuantityServings(byEntity.World, splitStack, servingsLeft);
+					ItemStack originalStack = slot.Itemstack;
+					slot.Itemstack = splitStack;
+					if (!player.InventoryManager.TryGiveItemstack(originalStack, slotNotifyEffect: true))
+					{
+						byEntity.World.SpawnItemEntity(originalStack, byEntity.Pos.XYZ);
+					}
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public bool OnContainedInteractStart(BlockEntityContainer be, ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (!byPlayer.Entity.Controls.ShiftKey)
+		{
+			return false;
+		}
+		return tryPlacedBeginEatMeal(slot, byPlayer);
+	}
+
+	public bool OnContainedInteractStep(float secondsUsed, BlockEntityContainer be, ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (!byPlayer.Entity.Controls.ShiftKey)
+		{
+			return false;
+		}
+		return tryPlacedContinueEatMeal(secondsUsed, slot, byPlayer, blockSel);
+	}
+
+	public void OnContainedInteractStop(float secondsUsed, BlockEntityContainer be, ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (tryFinishEatMeal(secondsUsed, slot, byPlayer.Entity, handleAllServingsConsumed: true))
+		{
+			be.MarkDirty(redrawOnClient: true);
+		}
+	}
+
+	public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (!PlacedBlockEating)
+		{
+			return base.OnBlockInteractStart(world, byPlayer, blockSel);
+		}
+		ItemStack stack = OnPickBlock(world, blockSel.Position);
+		if (!byPlayer.Entity.Controls.ShiftKey)
+		{
+			if (byPlayer.InventoryManager.TryGiveItemstack(stack, slotNotifyEffect: true))
+			{
+				world.BlockAccessor.SetBlock(0, blockSel.Position);
+				world.PlaySoundAt(Sounds.Place, byPlayer, byPlayer);
+				return true;
+			}
+			return false;
+		}
+		if (world.BlockAccessor.GetBlockEntity(blockSel.Position) is BlockEntityMeal bemeal)
+		{
+			DummySlot dummySlot = new DummySlot(stack, bemeal.inventory);
+			dummySlot.MarkedDirty += () => true;
+			return tryPlacedBeginEatMeal(dummySlot, byPlayer);
+		}
+		return false;
+	}
+
+	public override bool OnBlockInteractStep(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (!PlacedBlockEating)
+		{
+			return base.OnBlockInteractStep(secondsUsed, world, byPlayer, blockSel);
+		}
+		if (!byPlayer.Entity.Controls.ShiftKey)
+		{
+			return false;
+		}
+		ItemStack stack = OnPickBlock(world, blockSel.Position);
+		return tryPlacedContinueEatMeal(secondsUsed, new DummySlot(stack), byPlayer, blockSel);
+	}
+
+	public override void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		if (!PlacedBlockEating)
+		{
+			base.OnBlockInteractStop(secondsUsed, world, byPlayer, blockSel);
+		}
+		if (!byPlayer.Entity.Controls.ShiftKey || !(world.BlockAccessor.GetBlockEntity(blockSel.Position) is BlockEntityMeal bemeal))
+		{
+			return;
+		}
+		ItemStack stack = OnPickBlock(world, blockSel.Position);
+		DummySlot dummySlot = new DummySlot(stack, bemeal.inventory);
+		dummySlot.MarkedDirty += () => true;
+		if (tryFinishEatMeal(secondsUsed, dummySlot, byPlayer.Entity, handleAllServingsConsumed: false))
+		{
+			float servingsLeft = GetQuantityServings(world, stack);
+			if (bemeal.QuantityServings <= 0f)
+			{
+				Block block = world.GetBlock(new AssetLocation(Attributes["eatenBlock"].AsString()));
+				ArgumentNullException.ThrowIfNull(block, "block");
+				world.BlockAccessor.SetBlock(block.BlockId, blockSel.Position);
+			}
+			else
+			{
+				bemeal.QuantityServings = servingsLeft;
+				bemeal.MarkDirty(redrawOnClient: true);
+			}
+		}
+	}
+
+	public virtual float Consume(IWorldAccessor world, IPlayer eatingPlayer, ItemSlot inSlot, ItemStack[] contentStacks, float remainingServings, bool mulwithStackSize)
+	{
+		float[] nmul = GetNutritionHealthMul(null, inSlot, eatingPlayer.Entity);
+		FoodNutritionProperties[] multiProps = GetContentNutritionProperties(world, inSlot, contentStacks, eatingPlayer.Entity, mulwithStackSize, nmul[0], nmul[1]);
+		if (multiProps == null)
+		{
+			return remainingServings;
+		}
+		float totalHealth = 0f;
+		float totalIntox = 0f;
+		float totalPsyche = 0f;
+		EntityBehaviorHunger ebh = eatingPlayer.Entity.GetBehavior<EntityBehaviorHunger>();
+		if (ebh == null)
+		{
+			throw new Exception(eatingPlayer.Entity.Code.ToString() + "does not have EntityBehaviorHunger defined properly");
+		}
+		float satiablePoints = ebh.MaxSaturation - ebh.Saturation;
+		float mealSatpoints = 0f;
+		foreach (FoodNutritionProperties nutriProps in multiProps)
+		{
+			if (nutriProps != null)
+			{
+				mealSatpoints += nutriProps.Satiety;
+			}
+		}
+		float servingsNeeded = GameMath.Clamp(satiablePoints / Math.Max(1f, mealSatpoints), 0f, 1f);
+		float servingsToEat = Math.Min(remainingServings, servingsNeeded);
+		float temp = inSlot.Itemstack?.Collectible.GetTemperature(world, inSlot.Itemstack) ?? 20f;
+		EntityBehaviorBodyTemperature bh = eatingPlayer.Entity.GetBehavior<EntityBehaviorBodyTemperature>();
+		if (bh != null && Math.Abs(temp - bh.CurBodyTemperature) > 10f)
+		{
+			float intensity = Math.Min(1f, (temp - bh.CurBodyTemperature) / 30f);
+			bh.CurBodyTemperature += GameMath.Clamp(mealSatpoints * servingsToEat / 80f * intensity, 0f, 5f);
+		}
+		foreach (FoodNutritionProperties nutriProps2 in multiProps)
+		{
+			if (nutriProps2 != null)
+			{
+				float mul = servingsToEat;
+				float sat = mul * nutriProps2.Satiety;
+				float satLossDelay = Math.Min(1.3f, mul * 3f) * 10f + sat / 70f * 60f;
+				eatingPlayer.Entity.ReceiveSaturation(sat, nutriProps2.FoodCategory, satLossDelay);
+				if (nutriProps2.EatenStack?.ResolvedItemstack != null && !eatingPlayer.InventoryManager.TryGiveItemstack(nutriProps2.EatenStack.ResolvedItemstack.Clone(), slotNotifyEffect: true))
+				{
+					world.SpawnItemEntity(nutriProps2.EatenStack.ResolvedItemstack.Clone(), eatingPlayer.Entity.Pos.XYZ);
+				}
+				totalHealth += mul * nutriProps2.Health;
+				totalIntox += mul * nutriProps2.Intoxication;
+				totalPsyche += mul * nutriProps2.Psychedelic;
+			}
+		}
+		float intox = eatingPlayer.Entity.WatchedAttributes.GetFloat("intoxication");
+		eatingPlayer.Entity.WatchedAttributes.SetFloat("intoxication", Math.Min(1.1f, intox + totalIntox));
+		float psyche = eatingPlayer.Entity.WatchedAttributes.GetFloat("psychedelic");
+		eatingPlayer.Entity.WatchedAttributes.SetFloat("psychedelic", Math.Min(2f, psyche + totalPsyche));
+		if (totalHealth != 0f)
+		{
+			eatingPlayer.Entity.ReceiveDamage(new DamageSource
+			{
+				Source = EnumDamageSource.Internal,
+				Type = ((totalHealth > 0f) ? EnumDamageType.Heal : EnumDamageType.Poison)
+			}, Math.Abs(totalHealth));
+		}
+		return Math.Max(0f, remainingServings - servingsToEat);
+	}
+
+	public override FoodNutritionProperties? GetNutritionProperties(IWorldAccessor world, ItemStack itemstack, Entity forEntity)
+	{
+		return null;
+	}
+
+	public static FoodNutritionProperties[] GetContentNutritionProperties(IWorldAccessor world, ItemSlot inSlot, ItemStack?[]? contentStacks, EntityAgent? forEntity, bool mulWithStacksize = false, float nutritionMul = 1f, float healthMul = 1f)
+	{
+		List<FoodNutritionProperties> foodProps = new List<FoodNutritionProperties>();
+		if (contentStacks != null)
+		{
+			ItemStack mealStack = inSlot.Itemstack;
+			if (mealStack != null)
+			{
+				bool timeFrozen = mealStack.Attributes.GetBool("timeFrozen");
+				string recipeCode = mealStack.Attributes.GetString("recipeCode");
+				List<CookingRecipeIngredient> cookingIngreds = world.Api.GetCookingRecipe(recipeCode)?.Ingredients?.Select((CookingRecipeIngredient cookingRecipeIngredient) => cookingRecipeIngredient.Clone()).ToList();
+				foreach (ItemStack contentStack in contentStacks)
+				{
+					if (contentStack == null)
+					{
+						continue;
+					}
+					float mul = contentStack.StackSize;
+					ItemStack nutriStack = contentStack.Clone();
+					nutriStack.StackSize = 1;
+					if (!mulWithStacksize)
+					{
+						nutriStack.StackSize = (int)(BlockLiquidContainerBase.GetContainableProps(nutriStack)?.ItemsPerLitre ?? 1f);
+						CookingRecipeIngredient ingred = cookingIngreds?.FirstOrDefault((CookingRecipeIngredient ing) => ing.Matches(nutriStack));
+						if (ingred != null)
+						{
+							mul = ingred.GetMatchingStack(nutriStack)?.StackSize ?? 1;
+							nutriStack.StackSize = (int)((float)nutriStack.StackSize * ingred.PortionSizeLitres);
+							ingred.MaxQuantity--;
+							if (ingred.MaxQuantity == 0)
+							{
+								cookingIngreds.Remove(ingred);
+							}
+						}
+						else
+						{
+							mul = 1f;
+						}
+					}
+					FoodNutritionProperties stackProps = GetIngredientStackNutritionProperties(world, nutriStack, forEntity);
+					if (stackProps != null)
+					{
+						FoodNutritionProperties props = stackProps.Clone();
+						float spoilState = 0f;
+						DummySlot slot = new DummySlot(contentStack, inSlot.Inventory);
+						if (!timeFrozen)
+						{
+							spoilState = contentStack.Collectible.UpdateAndGetTransitionState(world, slot, EnumTransitionType.Perish)?.TransitionLevel ?? 0f;
+						}
+						float satLossMul = GlobalConstants.FoodSpoilageSatLossMul(spoilState, mealStack, forEntity);
+						float healthLoss = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, mealStack, forEntity);
+						props.Satiety *= satLossMul * nutritionMul * mul;
+						props.Health *= healthLoss * healthMul * mul;
+						props.Intoxication *= mul;
+						props.Psychedelic *= mul;
+						foodProps.Add(props);
+					}
+				}
+				return foodProps.ToArray();
+			}
+		}
+		return foodProps.ToArray();
+	}
+
+	public static FoodNutritionProperties? GetIngredientStackNutritionProperties(IWorldAccessor world, ItemStack? stack, EntityAgent? forEntity)
+	{
+		if (stack == null)
+		{
+			return null;
+		}
+		CollectibleObject obj = stack.Collectible;
+		ItemStack cookedstack = obj.GetCombustibleProperties(world, stack, null)?.SmeltedStack?.ResolvedItemstack;
+		WaterTightContainableProps liquidProps = BlockLiquidContainerBase.GetContainableProps(stack);
+		FoodNutritionProperties nutriProps = liquidProps?.NutritionPropsPerLitreWhenInMeal?.Clone();
+		if (liquidProps != null && nutriProps != null)
+		{
+			float litre = (float)stack.StackSize / liquidProps.ItemsPerLitre;
+			nutriProps.Health *= litre;
+			nutriProps.Satiety *= litre;
+			nutriProps.Intoxication *= litre;
+			nutriProps.Psychedelic *= litre;
+		}
+		if (nutriProps == null)
+		{
+			nutriProps = obj.Attributes?["nutritionPropsWhenInMeal"]?.AsObject<FoodNutritionProperties>();
+		}
+		if (cookedstack != null)
+		{
+			obj = cookedstack.Collectible;
+			liquidProps = BlockLiquidContainerBase.GetContainableProps(cookedstack);
+		}
+		if (liquidProps != null && nutriProps == null)
+		{
+			nutriProps = liquidProps.NutritionPropsPerLitre?.Clone();
+			if (nutriProps != null)
+			{
+				nutriProps.Satiety *= 1.3f;
+				float litre2 = (float)stack.StackSize / liquidProps.ItemsPerLitre;
+				nutriProps.Health *= litre2;
+				nutriProps.Satiety *= litre2;
+				nutriProps.Intoxication *= litre2;
+				nutriProps.Psychedelic *= litre2;
+			}
+		}
+		if (nutriProps == null)
+		{
+			nutriProps = obj.GetNutritionProperties(world, stack, forEntity)?.Clone();
+			if (nutriProps != null)
+			{
+				nutriProps.Satiety *= 1.3f;
+			}
+		}
+		return nutriProps;
+	}
+
+	public FoodNutritionProperties[]? GetContentNutritionProperties(IWorldAccessor world, ItemSlot inSlot, EntityAgent forEntity)
+	{
+		ItemStack[] stacks = GetNonEmptyContents(world, inSlot.Itemstack);
+		if (stacks == null || stacks.Length == 0)
+		{
+			return null;
+		}
+		float[] nmul = GetNutritionHealthMul(null, inSlot, forEntity);
+		return GetContentNutritionProperties(world, inSlot, stacks, forEntity, GetRecipeCode(world, inSlot.Itemstack) == null, nmul[0], nmul[1]);
+	}
+
+	public virtual string GetContentNutritionFacts(IWorldAccessor world, ItemSlot inSlotorFirstSlot, ItemStack[] contentStacks, EntityAgent? forEntity, bool mulWithStacksize = false, float nutritionMul = 1f, float healthMul = 1f)
+	{
+		FoodNutritionProperties[] props = GetContentNutritionProperties(world, inSlotorFirstSlot, contentStacks, forEntity, mulWithStacksize, nutritionMul, healthMul);
+		Dictionary<EnumFoodCategory, float> totalSaturation = new Dictionary<EnumFoodCategory, float>();
+		float totalHealth = 0f;
+		foreach (FoodNutritionProperties prop in props)
+		{
+			if (prop != null)
+			{
+				totalSaturation.TryGetValue(prop.FoodCategory, out var sat);
+				totalHealth += prop.Health;
+				totalSaturation[prop.FoodCategory] = sat + prop.Satiety;
+			}
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.AppendLine(Lang.Get("Nutrition Facts"));
+		foreach (KeyValuePair<EnumFoodCategory, float> val in totalSaturation)
+		{
+			sb.AppendLine(Lang.Get("nutrition-facts-line-satiety", Lang.Get("foodcategory-" + val.Key.ToString().ToLowerInvariant()), Math.Round(val.Value)));
+		}
+		if (totalHealth != 0f)
+		{
+			sb.AppendLine("- " + Lang.Get("Health: {0}{1} hp", (totalHealth > 0f) ? "+" : "", totalHealth));
+		}
+		return sb.ToString();
+	}
+
+	public string GetContentNutritionFacts(IWorldAccessor world, ItemSlot inSlot, EntityAgent? forEntity, bool mulWithStacksize = false)
+	{
+		float[] nmul = GetNutritionHealthMul(null, inSlot, forEntity);
+		return GetContentNutritionFacts(world, inSlot, GetNonEmptyContents(world, inSlot.Itemstack), forEntity, mulWithStacksize, nmul[0], nmul[1]);
+	}
+
+	public void SetContents(string? recipeCode, ItemStack containerStack, ItemStack?[] stacks, float quantityServings = 1f)
+	{
+		base.SetContents(containerStack, stacks);
+		if (recipeCode != null)
+		{
+			containerStack.Attributes.SetString("recipeCode", recipeCode);
+		}
+		containerStack.Attributes.SetFloat("quantityServings", quantityServings);
+		if (stacks.Length != 0)
+		{
+			SetTemperature(api.World, containerStack, stacks[0]?.Collectible.GetTemperature(api.World, stacks[0]) ?? 20f);
+		}
+	}
+
+	public float GetQuantityServings(IWorldAccessor world, ItemStack byItemStack)
+	{
+		return (float)byItemStack.Attributes.GetDecimal("quantityServings");
+	}
+
+	public void SetQuantityServings(IWorldAccessor world, ItemStack? byItemStack, float value)
+	{
+		if (byItemStack != null)
+		{
+			if (value <= 0f)
+			{
+				byItemStack.Attributes.RemoveAttribute("recipeCode");
+				byItemStack.Attributes.RemoveAttribute("quantityServings");
+				byItemStack.Attributes.RemoveAttribute("contents");
+			}
+			else
+			{
+				byItemStack.Attributes.SetFloat("quantityServings", value);
+			}
+		}
+	}
+
+	public string? GetRecipeCode(IWorldAccessor world, ItemStack? containerStack)
+	{
+		return containerStack?.Attributes.GetString("recipeCode");
+	}
+
+	public CookingRecipe? GetCookingRecipe(IWorldAccessor world, ItemStack? containerStack)
+	{
+		string recipecode = GetRecipeCode(world, containerStack);
+		return api.GetCookingRecipe(recipecode);
+	}
+
+	public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
+	{
+		MultiTextureMeshRef meshref = meshCache.GetOrCreateMealInContainerMeshRef(this, GetCookingRecipe(capi.World, itemstack), GetNonEmptyContents(capi.World, itemstack));
+		if (meshref != null)
+		{
+			renderinfo.ModelRef = meshref;
+		}
+	}
+
+	public virtual MeshData? GenMesh(ItemSlot slot, ITextureAtlasAPI targetAtlas, BlockPos? forBlockPos)
+	{
+		if (!(api is ICoreClientAPI capi))
+		{
+			return null;
+		}
+		return meshCache.GenMealInContainerMesh(this, GetCookingRecipe(capi.World, slot.Itemstack), GetNonEmptyContents(capi.World, slot.Itemstack));
+	}
+
+	public virtual string GetMeshCacheKey(ItemSlot slot)
+	{
+		return meshCache.GetMealHashCode(slot.Itemstack).ToString();
+	}
+
+	public override ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos)
+	{
+		ItemStack stack = base.OnPickBlock(world, pos);
+		if (world.BlockAccessor.GetBlockEntity(pos) is BlockEntityMeal bem)
+		{
+			SetContents(bem.RecipeCode, stack, bem.GetNonEmptyContentStacks(), bem.QuantityServings);
+		}
+		return stack;
+	}
+
+	public override BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
+	{
+		return new BlockDropItemStack[1]
+		{
+			new BlockDropItemStack(handbookStack)
+		};
+	}
+
+	public virtual string HandbookPageCodeForStack(IWorldAccessor world, ItemStack stack)
+	{
+		string code = GetRecipeCode(world, stack);
+		if (code != null)
+		{
+			return "handbook-mealrecipe-" + code;
+		}
+		return GuiHandbookItemStackPage.PageCodeForStack(stack);
+	}
+
+	public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)
+	{
+		return new ItemStack[1] { OnPickBlock(world, pos) };
+	}
+
+	public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+	{
+		ItemStack mealStack = inSlot.Itemstack;
+		if (mealStack == null)
+		{
+			return;
+		}
+		base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+		float temp = GetTemperature(world, mealStack);
+		if (temp > 20f)
+		{
+			dsc.AppendLine(Lang.Get("Temperature: {0}°C", (int)temp));
+		}
+		CookingRecipe recipe = GetCookingRecipe(world, mealStack);
+		ItemStack[] stacks = GetNonEmptyContents(world, mealStack);
+		DummyInventory dummyInv = new DummyInventory(api);
+		ItemSlot dummySlot = BlockCrock.GetDummySlotForFirstPerishableStack(api.World, stacks, null, dummyInv);
+		dummyInv.OnAcquireTransitionSpeed += delegate(EnumTransitionType transType, ItemStack stack, float mul)
+		{
+			float num = inSlot.Inventory?.GetTransitionSpeedMul(transType, mealStack) ?? 1f;
+			if (transType != EnumTransitionType.Perish)
+			{
+				mul = 0f;
+			}
+			return num * GetContainingTransitionModifierContained(world, inSlot, transType);
+		};
+		TransitionState perishState = dummySlot.Itemstack?.Collectible.UpdateAndGetTransitionStates(api.World, dummySlot)?.FirstOrDefault((TransitionState state) => state.Props.Type == EnumTransitionType.Perish);
+		if (perishState != null)
+		{
+			dummySlot.Itemstack?.Collectible.AppendPerishableInfoText(dummySlot, dsc, world, perishState, nowSpoiling: false);
+		}
+		float servings = GetQuantityServings(world, mealStack);
+		if (recipe != null)
+		{
+			if (Math.Round(servings, 1) < 0.05)
+			{
+				dsc.AppendLine(Lang.Get("{1}% serving of {0}", recipe.GetOutputName(world, stacks).UcFirst(), Math.Round(servings * 100f, 0)));
+			}
+			else
+			{
+				dsc.AppendLine(Lang.Get("{0} serving of {1}", Math.Round(servings, 1), recipe.GetOutputName(world, stacks).UcFirst()));
+			}
+		}
+		else if (mealStack.Attributes.HasAttribute("quantityServings"))
+		{
+			if (Math.Round(servings, 1) < 0.05)
+			{
+				dsc.AppendLine(Lang.Get("meal-servingsleft-percent", Math.Round(servings * 100f, 0)));
+			}
+			else
+			{
+				dsc.AppendLine(Lang.Get("{0} servings left", Math.Round(servings, 1)));
+			}
+		}
+		else if (displayContentsInfo && !MealMeshCache.ContentsRotten(stacks))
+		{
+			dsc.AppendLine(Lang.Get("Contents: {0}", Lang.Get("meal-ingredientlist-" + stacks.Length, stacks.Select((ItemStack stack) => Lang.Get("{0}x {1}", stack.StackSize, stack.GetName())))));
+		}
+		if (!MealMeshCache.ContentsRotten(stacks))
+		{
+			servings = Math.Min(1f, servings);
+			float[] nmul = GetNutritionHealthMul(null, inSlot, null);
+			string facts = GetContentNutritionFacts(world, inSlot, stacks, null, recipe == null, servings * nmul[0], servings * nmul[1]);
+			if (facts != null)
+			{
+				dsc.Append(facts);
+			}
+		}
+	}
+
+	public string GetContainedName(ItemSlot inSlot, int quantity)
+	{
+		return GetHeldItemName(inSlot.Itemstack);
+	}
+
+	public string GetContainedInfo(ItemSlot inSlot)
+	{
+		CookingRecipe recipe = GetCookingRecipe(api.World, inSlot.Itemstack);
+		ItemStack[] stacks = GetNonEmptyContents(api.World, inSlot.Itemstack);
+		if (!(inSlot.Itemstack?.Block is BlockMeal contBlock))
+		{
+			return Lang.Get("unknown");
+		}
+		string emptyCode = contBlock.Attributes?["eatenBlock"].AsString();
+		string emptyName = new ItemStack((emptyCode == null) ? contBlock : api.World.GetBlock(emptyCode)).GetName();
+		if (stacks.Length == 0)
+		{
+			return Lang.GetWithFallback("contained-empty-container", "{0} (Empty)", emptyName);
+		}
+		string outputName = recipe?.GetOutputName(api.World, stacks).UcFirst() ?? stacks[0].GetName();
+		float servings = inSlot.Itemstack?.Attributes.GetFloat("quantityServings", 1f) ?? 1f;
+		if (MealMeshCache.ContentsRotten(stacks))
+		{
+			outputName = Lang.Get("Rotten Food");
+			servings = 1f;
+		}
+		return Lang.Get("contained-food-singleservingmax", Math.Round(servings, 1), outputName, emptyName, PerishableInfoCompactContainer(api, inSlot));
+	}
+
+	public override void OnGroundIdle(EntityItem entityItem)
+	{
+		base.OnGroundIdle(entityItem);
+		IWorldAccessor world = entityItem.World;
+		if (world.Side != EnumAppSide.Server)
+		{
+			return;
+		}
+		Block eatenBlock = world.GetBlock(new AssetLocation(Attributes["eatenBlock"].AsString("")));
+		if (eatenBlock == null || !entityItem.Swimming || !(world.Rand.NextDouble() < 0.01))
+		{
+			return;
+		}
+		ItemStack[] stacks = GetNonEmptyContents(world, entityItem.Itemstack);
+		if (MealMeshCache.ContentsRotten(stacks))
+		{
+			for (int i = 0; i < stacks.Length; i++)
+			{
+				if (stacks[i] != null && stacks[i].StackSize > 0 && stacks[i].Collectible.Code.Path == "rot")
+				{
+					world.SpawnItemEntity(stacks[i], entityItem.Pos.XYZ);
+				}
+			}
+		}
+		else
+		{
+			ItemStack rndStack = stacks[world.Rand.Next(stacks.Length)];
+			world.SpawnCubeParticles(entityItem.Pos.XYZ, rndStack, 0.3f, 25);
+		}
+		entityItem.Itemstack = new ItemStack(eatenBlock);
+		entityItem.WatchedAttributes.MarkPathDirty("itemstack");
+	}
+
+	public override int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex = -1)
+	{
+		if (capi.World.BlockAccessor.GetBlockEntity(pos) is BlockEntityContainer bem)
+		{
+			ItemStack[] stacks = bem.GetNonEmptyContentStacks(cloned: false);
+			if (stacks != null && stacks.Length != 0)
+			{
+				return GetRandomContentColor(capi, stacks);
+			}
+		}
+		return base.GetRandomColor(capi, pos, facing, rndIndex);
+	}
+
+	public override int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
+	{
+		ItemStack[] stacks = GetNonEmptyContents(capi.World, stack);
+		if (stacks == null || stacks.Length == 0)
+		{
+			return base.GetRandomColor(capi, stack);
+		}
+		return GetRandomContentColor(capi, stacks);
+	}
+
+	public override TransitionState[]? UpdateAndGetTransitionStates(IWorldAccessor world, ItemSlot inslot)
+	{
+		ItemStack mealStack = inslot.Itemstack;
+		if (mealStack == null)
+		{
+			return null;
+		}
+		ItemStack[] stacks = GetNonEmptyContents(world, mealStack);
+		ItemStack[] array = stacks;
+		for (int i = 0; i < array.Length; i++)
+		{
+			array[i].StackSize *= (int)Math.Max(1f, mealStack.Attributes.TryGetFloat("quantityServings") ?? 1f);
+		}
+		SetContents(mealStack, stacks);
+		TransitionState[] states = base.UpdateAndGetTransitionStates(world, inslot);
+		stacks = GetNonEmptyContents(world, mealStack);
+		if (stacks.Length == 0 || MealMeshCache.ContentsRotten(stacks))
+		{
+			for (int j = 0; j < stacks.Length; j++)
+			{
+				TransitionableProperties spoilProps = stacks[j].Collectible.GetTransitionableProperties(world, stacks[j], null)?.FirstOrDefault((TransitionableProperties props) => props.Type == EnumTransitionType.Perish);
+				if (spoilProps != null)
+				{
+					stacks[j] = stacks[j].Collectible.OnTransitionNow(GetContentInDummySlot(inslot, stacks[j]), spoilProps);
+				}
+			}
+			SetContents(mealStack, stacks);
+			mealStack.Attributes.RemoveAttribute("recipeCode");
+			mealStack.Attributes.RemoveAttribute("quantityServings");
+		}
+		array = stacks;
+		for (int i = 0; i < array.Length; i++)
+		{
+			array[i].StackSize /= (int)Math.Max(1f, mealStack.Attributes.TryGetFloat("quantityServings") ?? 1f);
+		}
+		SetContents(mealStack, stacks);
+		if (stacks.Length == 0)
+		{
+			AssetLocation loc = AssetLocation.CreateOrNull(Attributes?["eatenBlock"]?.AsString());
+			if ((object)loc != null)
+			{
+				Block block = world.GetBlock(loc);
+				if (block != null)
+				{
+					inslot.Itemstack = new ItemStack(block);
+					inslot.MarkDirty();
+				}
+			}
+		}
+		return states;
+	}
+
+	protected override ItemSlot GetContentInDummySlot(ItemSlot inslot, ItemStack itemstack)
+	{
+		DummyInventory dummyInv = new DummyInventory(api);
+		DummySlot dummySlot = new DummySlot(itemstack, dummyInv);
+		dummySlot.MarkedDirty += delegate
+		{
+			inslot.Inventory?.DidModifyItemSlot(inslot);
+			return true;
+		};
+		dummyInv.OnAcquireTransitionSpeed += delegate(EnumTransitionType transType, ItemStack stack, float mulByConfig)
+		{
+			float num = inslot.Inventory?.InvokeTransitionSpeedDelegates(transType, stack, mulByConfig) ?? 1f;
+			if (transType != EnumTransitionType.Perish)
+			{
+				num = 0f;
+			}
+			return num * GetContainingTransitionModifierContained(api.World, inslot, transType);
+		};
+		return dummySlot;
+	}
+
+	public override string GetHeldItemName(ItemStack? itemStack)
+	{
+		ItemStack[] contentStacks = GetContents(api.World, itemStack);
+		string recipeCode = itemStack?.Collectible.GetCollectibleInterface<IBlockMealContainer>()?.GetRecipeCode(api.World, itemStack);
+		string code = Lang.Get("mealrecipe-name-" + recipeCode + "-in-container");
+		if (recipeCode == null)
+		{
+			if (MealMeshCache.ContentsRotten(contentStacks))
+			{
+				code = Lang.Get("Rotten Food");
+			}
+			else if (contentStacks.Length != 0)
+			{
+				code = contentStacks[0].GetName();
+			}
+		}
+		return Lang.GetMatching(Code?.Domain + ":" + ItemClass.Name() + "-" + Code?.Path, code);
+	}
+
+	public virtual int GetRandomContentColor(ICoreClientAPI capi, ItemStack[] stacks)
+	{
+		ItemStack rndStack = stacks[capi.World.Rand.Next(stacks.Length)];
+		return rndStack.Collectible.GetRandomColor(capi, rndStack);
+	}
+
+	public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
+	{
+		WorldInteraction worldInteraction = new WorldInteraction
+		{
+			ActionLangCode = "blockhelp-meal-pickup",
+			MouseButton = EnumMouseButton.Right
+		};
+		WorldInteraction worldInteraction2 = new WorldInteraction
+		{
+			ActionLangCode = "blockhelp-meal-eat",
+			MouseButton = EnumMouseButton.Right,
+			HotKeyCode = "shift"
+		};
+		WorldInteraction[] placedBlockInteractionHelp = base.GetPlacedBlockInteractionHelp(world, selection, forPlayer);
+		int num = 0;
+		WorldInteraction[] array = new WorldInteraction[2 + placedBlockInteractionHelp.Length];
+		array[num] = worldInteraction;
+		num++;
+		array[num] = worldInteraction2;
+		num++;
+		ReadOnlySpan<WorldInteraction> readOnlySpan = new ReadOnlySpan<WorldInteraction>(placedBlockInteractionHelp);
+		readOnlySpan.CopyTo(new Span<WorldInteraction>(array).Slice(num, readOnlySpan.Length));
+		num += readOnlySpan.Length;
+		return array;
+	}
+
+	public WorldInteraction[] GetContainedInteractionHelp(BlockEntityContainer be, ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel)
+	{
+		return new WorldInteraction[1]
+		{
+			new WorldInteraction
+			{
+				ActionLangCode = "blockhelp-meal-eat",
+				MouseButton = EnumMouseButton.Right,
+				HotKeyCode = "shift"
+			}
+		};
+	}
+
+	public virtual bool ShouldSpawnGSParticles(IWorldAccessor world, ItemStack stack)
+	{
+		return world.Rand.NextDouble() < (double)((GetTemperature(world, stack) - 50f) / 320f / 8f);
+	}
+
+	public virtual void DoSpawnGSParticles(IAsyncParticleManager manager, BlockPos pos, Vec3f offset)
+	{
+		BlockCookedContainer.smokeHeld.MinPos = pos.ToVec3d().AddCopy(gsSmokePos).AddCopy(offset);
+		manager.Spawn(BlockCookedContainer.smokeHeld);
+	}
+}

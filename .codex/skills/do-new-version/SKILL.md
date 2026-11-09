@@ -14,6 +14,9 @@ This skill includes selected reference mod updates by invoking `new-version-mods
 ## Hard Rules
 
 - Determine the exact Vintage Story version from the user request before creating files.
+- The newest retained Vintage Story release is always the root catalog default. When adding a release newer than every
+  retained version, set `reference.catalog.json` `default_game_version` to it and update default-version documentation
+  and examples in the same change. When backfilling an older release, keep the newest retained release as the default.
 - Verify the current official release/download details before downloading a package.
 - Do not overwrite an existing `versions/<version>/API` or `versions/<version>/Assets` payload without explicit user approval.
 - Stage downloaded archives, extracted game files, and temporary tools outside the kept reference tree, such as under a temp directory or `.codex/tmp/new-version/<version>/`.
@@ -120,8 +123,8 @@ python -B tools\asset-index\build_asset_index.py --version <version>
 18. Create or update `versions/<version>/version.catalog.json` so the `code`, `asset`, and `web` indexes point at the
     new SQLite databases, manifests, source manifests, build scripts, and query scripts; the `mods` manifest points at
     `mods.manifest.json`; and the `classes` cross-reference supplies `--asset-db` and `--code-db` inputs to
-    `tools/cross-reference/query_class_cross_reference.py`. Add the version to `reference.catalog.json`. Do not mark
-    it as the default unless the user asks.
+    `tools/cross-reference/query_class_cross_reference.py`. Add the version to `reference.catalog.json`; when it is the
+    newest retained release, make it `default_game_version` and update default-version documentation and examples.
 19. Validate the solution and indexes with representative queries. Prefer the unified wrapper after catalogs are updated:
 
 ```powershell
@@ -133,7 +136,7 @@ python -B tools\reference-query.py --version <version> mod --limit 5
 python -B tools\reference-query.py --version <version> asset --search copper --limit 5
 python -B tools\reference-query.py --version <version> asset --category recipes --limit 5
 python -B tools\reference-query.py --version <version> code --type ICoreAPI --limit 5
-python -B tools\reference-query.py --version <version> code --member StartServer --limit 5
+python -B tools\reference-query.py --version <version> code --member StartServerSide --root VintagestoryAPI --limit 5
 python -B tools\reference-query.py --version <version> code --registration BlockDisplayCase --limit 5
 python -B tools\reference-query.py --version <version> class --asset-class BlockDisplayCase --limit 5
 python -B tools\reference-query.py --version <version> code --search BlockEntity --limit 5
@@ -145,4 +148,7 @@ python -B tools\reference-query.py --version <version> web --search "configlib-p
 
 ## Reporting
 
-When finishing, report the populated API, Assets, mods, and Web paths, the five assemblies decompiled, whether checksum verification was available, the selected mods downloaded or skipped, the copied web source count, the code-index, asset-index, and web-index count summaries, the wrapper project added to the solution, and which catalogs were updated.
+When finishing, report the populated API, Assets, mods, and Web paths, the five assemblies decompiled, whether checksum
+verification was available, the selected mods downloaded or skipped, the copied web source count, the code-index,
+asset-index, and web-index count summaries, the wrapper project added to the solution, which catalogs were updated,
+and which retained release is now the default.

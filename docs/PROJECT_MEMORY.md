@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-08-16
+Last updated: 2026-09-07
 
 ## Project overview
 
@@ -8,19 +8,33 @@ Vintage Story Reference is a local reference library for AI-assisted Vintage Sto
 
 ## Current state
 
-The repository currently retains Vintage Story `1.22.6` as the only indexed reference version. Existing asset, code,
-and web index tooling lives under `tools/asset-index`, `tools/code-index`, and `tools/web-index`, with generated index
-artifacts under `versions/1.22.6/Index`.
+The repository currently retains indexed Vintage Story `1.22.6` and `1.22.7` reference versions. The root catalog
+uses `1.22.7` as its default. The newest retained Vintage Story release is always the catalog default; future
+new-version work must promote a newer retained release and update default-version documentation and examples in the
+same change. Asset, code, and web index tooling lives under `tools/asset-index`, `tools/code-index`, and
+`tools/web-index`, with generated index artifacts under each version's `Index` folder.
+
+The `versions/1.22.7` payload contains the five flattened official API decompiles, full client assets, 18 selected
+reference mods/tools, four curated web sources, and locally generated asset/code/web indexes. The 1.22.7 asset index
+contains `22,837` files; the code index contains `8,607` files, `9,732` types, `95,780` members, `689,732` bounded
+reference hints, and `836` literal registrations; the web index contains `4` sources and `99` sections.
 
 The Config Lib JSON API GitHub wiki page, VS Village Mod DB page, RPVoiceChat Server Administration wiki page, and
 RPVoiceChat GitHub README are indexed as curated external documentation for 1.22.6. The source manifest is
 `versions/1.22.6/Web/sources.json`; the generated SQLite index is `versions/1.22.6/Index/web.sqlite`; the generated
 manifest is `versions/1.22.6/Index/web.index.json`.
 
+The same four curated source slugs are copied into `versions/1.22.7/Web/sources.json` and indexed in
+`versions/1.22.7/Index/web.sqlite`. The generated 1.22.7 web manifest records `99` sections from the 2026-09-07 fetch.
+
 Selected reference-mod metadata is tracked in `versions/1.22.6/mods.manifest.json`. It contains one entry for every
 retained mod/tool folder and records identity, version, exact/fallback compatibility, source provenance, retained
 asset/code availability, native-binary presence, indexed code roots, and explicit license-file presence. Query it
 through `tools/mod-manifest/query_mod_manifest.py` or the `mod` target in `tools/reference-query.py`.
+
+The matching `versions/1.22.7/mods.manifest.json` has `18` unique entries: `11` exact 1.22.7 releases, `6` same-line
+fallbacks, and `1` external tool. All 18 package archives and extraction roots are preserved under
+`.codex/tmp/mod-updates/1.22.7`.
 
 `docs/QUERY_COOKBOOK.md` provides tested, task-shaped workflows for block/item lookup, asset-to-code tracing, class
 registration research, recipe input/output lookup, vanilla-versus-mod comparison, mod provenance, and curated web
@@ -50,11 +64,11 @@ The repository also contains a root-level `prompts/` catalog for reusable Codex 
 
 The repository now has machine-readable discovery catalogs. `reference.catalog.json` is the root catalog for docs, prompts, skills, tools, and available versions. Each version should have `versions/<version>/version.catalog.json` for version-specific reference roots, indexes, manifests, and query/build scripts.
 
-The `versions/1.22.6/API` tree is populated with decompiled `VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`,
-`VSEssentials`, and `VSSurvivalMod` sources. Decompiled API trees intentionally use flattened assembly wrapper folders
-and do not keep `.sln` files. The 1.22.6 version folder has copied full client assets, selected reference mods/tools,
-copied curated web sources, plus code, asset, and web indexes. The root solution contains only the browse-only wrapper
-project for `1.22.6`.
+The `versions/1.22.6/API` and `versions/1.22.7/API` trees are populated with decompiled `VintagestoryAPI`,
+`VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod` sources. Decompiled API trees intentionally use
+flattened assembly wrapper folders and do not keep `.sln` files. Both version folders have copied full client assets,
+selected reference mods/tools, copied curated web sources, plus code, asset, and web indexes. The root solution contains
+browse-only wrapper projects for both retained versions.
 
 Generated files inside `versions/<version>/Index` are local rebuildable output and should not be staged or pushed by
 default. Each `Index` folder should exist in Git via a tracked `versions/<version>/Index/.gitignore` file that ignores
@@ -70,9 +84,9 @@ user/reference material unless the user explicitly asks to clean or commit them.
 
 ## Active work
 
-No active work is currently in progress. The schematic library structure is ready for intake, but no schematics or
-schematic index tooling have been added yet. The next useful action is to place candidate files in
-`schematics/inbox/` and explicitly request ingestion.
+No active work is currently in progress. The 1.22.7 reference payload and indexes are complete and 1.22.7 is the
+catalog default. The schematic library structure remains ready for intake, but no schematics or schematic index
+tooling have been added yet.
 
 ## Durable technical knowledge
 
@@ -89,6 +103,10 @@ For routine consumer queries, prefer `tools/reference-query.py`. It reads the ca
 and delegates to the existing source-specific query helpers. It supports asset, code, mod/mods, and web targets;
 `--list-manifests` discovers curated manifests. The source-specific scripts remain the specialized interfaces and
 should not be duplicated inside the wrapper.
+
+The newest retained Vintage Story release is always `reference.catalog.json`'s `default_game_version`. When a newer
+release is added, promote it in the root catalog and update default-version documentation and examples in the same
+change. Backfilling an older release does not change the default.
 
 The 1.22.6 mod manifest has `18` entries: `4` exact 1.22.6 Mod DB releases, `13` same-line fallbacks, and `1` external
 tool. All 18 manifest folders exist, every indexed code-root name in the manifest matches `code.index.json`, and no
@@ -116,15 +134,22 @@ object members. Optional code integrations should retain ordinary config loading
 
 The VS Village upstream source is the Vintage Story Mod DB page at `https://mods.vintagestory.at/vsvillage`. The builder extracts the page's description tab via the `moddb_description` HTML scope so the searchable index focuses on gameplay/design-reference content and current Mod DB metadata instead of full site navigation or file tables.
 
-The retired 1.22.3 and 1.22.4 payloads are no longer available on disk. Use current 1.22.6 indexes for new work, and
+The retired 1.22.3 and 1.22.4 payloads are no longer available on disk. Use current 1.22.7 indexes for new work, and
 use Git history only if old-version provenance is required.
 
 As of the 2026-08-16 Firearms Fork and Overhaul Lib Legacy Compat addition, the 1.22.6 asset index contains `22,792`
 files, including `11,618` JSON files with `11,269` parsed successfully and `349` parse-error rows retained for
-path/category lookup. The 1.22.6 code index contains `8,428` C# files, `9,544` types, and `40,839` members across `20`
-source roots. The 1.22.6 web
-index contains `4` copied source entries split into `84` sections. Generated manifests under `versions/1.22.6/Index`
-remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
+path/category lookup. The 1.22.6 code index was rebuilt with parser tool `1.1.4` on 2026-09-07 and contains `8,428`
+C# files, `9,543` types, `94,449` members, and `679,367` bounded reference hints across `20` source roots. The 1.22.6
+web index contains `4` copied source entries split into `84` sections. Generated manifests under
+`versions/1.22.6/Index` remain the exact source of truth for timestamps, roots, hashes, and detailed counts.
+
+The 1.22.7 asset index contains `22,837` files, including `11,660` JSON files with `11,311` parsed successfully and
+`349` parse-error rows retained for path/category lookup. The 1.22.7 code index contains `8,607` C# files, `9,732`
+types, `95,780` members, `689,732` bounded reference hints, and `836` registrations across `20` source roots. All 836
+registrations resolve to an indexed type declaration. The category-aware class join produces `722` asset rows across
+`407` case-insensitive class keys. The 1.22.7 web index contains `4` copied sources split into `99` sections. Generated
+manifests under `versions/1.22.7/Index` remain the exact source of truth.
 
 RPVoiceChat 2.5.8 is indexed from `versions/1.22.6/mods/rpvoicechat_2.5.8`. Its asset root is
 `versions/1.22.6/mods/rpvoicechat_2.5.8/assets`, and its C# source root is
@@ -159,6 +184,22 @@ Vintage Story 1.22.6 full assets were copied from the public Linux client archiv
 `c00c436cab612b436747b4bb5f39049b`. The Windows dedicated server package contains a reduced `assets` folder; do not
 use server-only assets as the final full `versions/<version>/Assets` payload.
 
+Vintage Story 1.22.7 API sources were produced from the public Windows dedicated server ZIP
+`vs_server_win-x64_1.22.7.zip` from the Vintage Story CDN. The downloaded ZIP was verified against the official MD5
+`c5bcd15a558041533ed3b88f707bb19e`; its locally computed SHA-256 is
+`E72F27DE387C53342A6AEDAFB181FDFB154816E263FEC41C31823C9AFD69C65C`. Decompilation used `ilspycmd`
+`10.1.1.8388` with nested directories, PDB variable names, and reference paths to the extracted server root, `Lib`,
+and `Mods`. The five flattened wrappers contain `1,122`, `1,009`, `51`, `524`, and `1,296` C# files respectively for
+`VintagestoryAPI`, `VintagestoryLib`, `VSCreativeMod`, `VSEssentials`, and `VSSurvivalMod`. Temporary `<HintPath>`
+entries were removed, and no `.sln` or `.slnx` files remain below `versions/1.22.7/API`.
+
+Vintage Story 1.22.7 full assets were copied from the public Linux client archive
+`vs_client_linux-x64_1.22.7.tar.gz`. The download was verified against the official MD5
+`ecfa56411b0a2912ebba29839fa98a3f`; its locally computed SHA-256 is
+`483CC6827A50C08C5C41CCD0262C6F1223C104E54CA7135C46605278D89F5DE1`. The retained base asset tree matches the
+extracted archive at `19,983` files and `837,864,218` bytes, with `creative`, `game`, and `survival` directly below
+`versions/1.22.7/Assets`.
+
 Rider/JetBrains `no index` labels on version folders refer to IDE solution/project indexing, not the repository's SQLite reference indexes. On 2026-07-21, `versions/1.22.4/VintageStory.Reference.1.22.4.csproj` was added and nested under a `1.22.4` solution folder beside the existing `1.22.3` wrapper. Version wrapper projects disable default compile/resource items and include `version.catalog.json`, `API`, `Assets`, `mods`, and `Web` as `None` items so Rider can browse the reference payload without compiling decompiled game sources. If Rider still displays stale `no index` labels after this change, reload the solution or refresh IDE indexes.
 
 Future new Vintage Story releases should use the project-local `do-new-version` Codex skill. It records the preferred workflow: create a browse-only `versions/<version>/VintageStory.Reference.<version>.csproj` and solution entry, create `versions/<version>/API` and `versions/<version>/Assets`, decompile `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and `Mods/VSSurvivalMod.dll` from the official release package into flattened wrapper folders, copy full client assets, use `new-version-mods` to download/decompile current compatible selected reference mods, use `do-new-web` to copy/index curated web sources from the nearest previous version, avoid keeping decompiler-generated `.sln` or `.slnx` files, build the code, asset, and web indexes, and update catalogs so other agents can discover the indexed API, assets, mod references, and web references.
@@ -183,6 +224,17 @@ normal game mod package; it has no `modinfo.json` or game-version tag and was ad
 The original selected-mod selection/download/decompilation report is `.codex/tmp/mod-updates/1.22.6/selected-releases.json`;
 Simple VS Manager provenance is recorded in `versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md`.
 
+Vintage Story 1.22.7 selected reference mods were seeded from the 1.22.6 manifest on 2026-09-07. The target contains
+18 unique folders under `versions/1.22.7/mods`. Eleven packages were updated: Allclasses 2.3.2, BetterEr Prospecting
+3.4.8, Cats 5.0.2, Config Lib 1.13.2, Critcher's Calculator 1.3.0, Firearms 1.10.2, Overhaul Lib Legacy Compat 1.2.10,
+A Panserbjørn Story: Rebjørn 1.0.1, Primitive Survival 5.1.3, RP Voice Chat 2.6.5, and TentBag Reworked 3.2.5. The
+remaining selected versions are BetterRuins 0.6.3, Pet Bunny 1.0.4, Jaunt 3.1.0, Pet AI 5.1.1, Simple VS Manager
+2.3.0, Dear ImGui 1.2.7, and Wolf Taming 5.0.1. Eleven releases explicitly list 1.22.7; Pet Bunny, Cats, Jaunt,
+Pet AI, Dear ImGui, and Wolf Taming are documented same-line fallbacks; Simple VS Manager remains an external tool.
+Across the set, `38` managed DLLs were decompiled, `10` native DLLs were retained without decompilation, and native
+binaries occur in RP Voice Chat, Simple VS Manager, and Dear ImGui. The detailed report is
+`.codex/tmp/mod-updates/1.22.7/selected-releases.json`.
+
 TentBag-Reworked 3.2.4 default player behavior: an Empty Tent Bag is crafted from one cloth, four rope, and four sticks; cloth color controls bag color. An empty bag packs a default 7x7x7 area above the top face of the clicked ground block and becomes a Packed Tent Bag. A packed bag unpacks above the clicked block and returns to an empty bag. Survival-mode pack and unpack actions consume satiety at the default `BuildEffort` value of `2` per saved non-air block. Defaults include packed-tent hologram preview, empty-bag grab-area preview, 90-degree rotation, waypoint creation on unpack, waypoint removal on pack, and banned blocks such as liquids, crops, ores, rocks, anvils, and forges. The player-facing guide is `docs/research/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md`.
 
 TentBag-Reworked also ships `assets/tentbagreworked/config/tent.json`, a `7 x 3 x 6` WorldEdit/BlockSchematic sample tent. `TentBagReworkedModSystem.EnsureTentSchematicExists` copies it to `<GamePaths.DataPath>/WorldEdit/tent.json` on server startup if the target file is absent. It is not a pre-packed tent bag or player-granted item; players/admins with WorldEdit can use it as a template and then pack it into a tent bag if desired.
@@ -198,7 +250,7 @@ sections: `configlib-json-api`, `vsvillage-moddb`, `rpvoicechat-server-administr
 
 Vintage Story 1.22.4 display cases (`displaycase` and `talldisplaycase`) were verified to use `BlockDisplayCase`,
 `DisplayCase`, and the `UnstableFalling` behavior. Their JSON set `sidesolid: { all: false }`, so the default
-`Block.CanAttachBlockAt` returned false for the top face. Re-query 1.22.6 before applying this to current work; the
+`Block.CanAttachBlockAt` returned false for the top face. Re-query 1.22.7 before applying this to current work; the
 old 1.22.4 payload has been retired.
 
 Betterer Prospecting 3.4.5 settings verified on 2026-08-10: `BoreholeScansStone` defaults false and controls whether Borehole mode adds rock/stone results after ore checks; `BoreholeDmg` is the durability cost returned by a valid Borehole sample, although `ModConfig` initializes it to `2` while the Config Lib manifest advertises default `4`; `ReprospectParellelism` is intentionally misspelled in the mod assets and controls `Parallel.ForEachAsync` concurrency for `/btrpr reprospect`, using the explicit value when greater than zero or `Environment.ProcessorCount / 4` when set to zero.
@@ -285,15 +337,39 @@ string key and `typeof(...)` value. Dynamic keys, helper-wrapped calls, factorie
 runtime patches are not inferred. Empty registration or class-cross-reference results do not prove that no runtime
 relationship exists.
 
+The code index remains a conservative regex parser rather than a full C# lexer. Complex interpolated or raw strings
+with nested literal braces can still defeat structural masking; no such imbalance affects the retained 1.22.6 or
+1.22.7 corpora as currently indexed. It also deliberately omits declarations whose terminating semicolon appears
+alone on the following line, avoiding false methods from multiline expression continuations; the retained corpora do
+not use that declaration layout. Treat query results as navigation hints and open the returned source for exact
+behavior.
+
 ## Open questions
 
 No open technical questions are currently recorded.
 
 ## Testing and verification
 
-Current 1.22.6 verification performed on 2026-08-16:
+Current 1.22.7 verification performed on 2026-09-07:
 
-- The code index passed SQLite integrity checks with `8,428` files, `9,544` types, `40,839` members, `50,697`
+- All three SQLite databases passed `PRAGMA integrity_check`; their table counts match the generated manifests.
+- The tracked mod manifest matches all 18 target folders, has unique ids and folders, and matches all 17 available
+  `modinfo.json` id/version pairs. Exact releases include a 1.22.7 tag; same-line fallbacks do not claim one.
+- API validation found the expected root `.csproj` and substantial C# output in all five wrappers, with no API
+  `.sln`/`.slnx`, `<HintPath>`, or staging-path residue. The base asset copy matches its extracted source by file count
+  and total bytes.
+- `tools/reference-query.py` lists both versions with 1.22.7 as the default, all 1.22.7 indexes, the class
+  cross-reference, and the mod manifest. Representative mod, copper, recipe, `ICoreAPI`, `StartServerSide`,
+  `BlockDisplayCase`, `BlockEntity`, Config Lib, and RPVoiceChat queries returned expected results.
+- All 13 code-index parser regression tests pass through root `unittest` discovery, both retained code databases use
+  tool `1.1.4`, and exact `StartServerSide` member queries return the expected `ModSystem` declaration in both versions.
+- `dotnet build "Vintage Story Reference.sln"` succeeded with zero warnings and zero errors.
+- Maintained metadata and documentation pass scoped `git diff --cached --check`; the complete imported API, asset, and
+  mod payload reports decompiler/upstream whitespace that was intentionally preserved.
+
+Current 1.22.6 verification performed on 2026-09-07:
+
+- The code index passed SQLite integrity checks with `8,428` files, `9,543` types, `94,449` members, `679,367`
   reference hints, `820` registrations, and `20` source roots. Queries returned `Firearms.FirearmsModSystem`,
   Firearms item registrations, and Overhaul Lib Legacy Compat types from the new roots.
 - The asset index passed SQLite integrity checks with `22,792` files and returned Firearms assets from the
@@ -367,6 +443,11 @@ On 2026-07-14, those commands succeeded. After the RPVoiceChat rebuild, `git dif
 ## Useful commands
 
 ```powershell
+python -B tools\reference-query.py --version 1.22.7 --list-indexes
+python -B tools\reference-query.py --version 1.22.7 mod --compatibility exact --limit 20
+python -B tools\reference-query.py --version 1.22.7 asset --search copper --limit 20
+python -B tools\reference-query.py --version 1.22.7 code --type ICoreAPI --limit 20
+python -B tools\reference-query.py --version 1.22.7 web --search "configlib-patches json" --limit 20
 python -B tools\reference-query.py --version 1.22.6 mod --mod-id tentbagreworked --format json
 python -B tools\reference-query.py --version 1.22.6 asset --search copper --limit 20
 python -B tools\reference-query.py --version 1.22.6 code --type ICoreAPI --limit 20
@@ -390,6 +471,7 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `schematics/Index` - Ignored location reserved for future generated schematic query artifacts.
 - `tools/asset-index` - Asset index builder and query helper.
 - `tools/code-index` - Decompiled C# code index builder and query helper.
+- `tests/test_build_code_index.py` - Root-discoverable regression coverage for conservative type/member parsing.
 - `tools/cross-reference/query_class_cross_reference.py` - Category-aware query-time join from asset class facts to
   literal C# registrations and resolved type declarations.
 - `tools/mod-manifest/query_mod_manifest.py` - Query helper for tracked selected-mod compatibility and provenance.
@@ -397,12 +479,16 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `tools/reference-query.py` - Unified query wrapper that resolves catalog paths and delegates to source-specific query helpers.
 - `prompts` - Reusable Codex agent prompt standards for project memory, coding standards, project/Git hygiene, and Vintage Story research.
 - `.codex/skills` - Project-local Codex skills for indexing assets, indexing decompiled C# code, and updating reference mod folders.
-- `reference.catalog.json` - Root machine-readable discovery catalog. The default and only listed version is `1.22.6`.
+- `reference.catalog.json` - Root machine-readable discovery catalog. It lists `1.22.6` and `1.22.7`, with `1.22.7`
+  as the default because the newest retained release is always the default.
 - `versions/1.22.6/version.catalog.json` - Version-specific discovery catalog for the retained 1.22.6 reference payload.
+- `versions/1.22.7/version.catalog.json` - Version-specific discovery catalog for the retained 1.22.7 reference payload.
 - `versions/1.22.6/mods.manifest.json` - Tracked selected-mod/tool identity, compatibility, provenance, content, code-root,
   native-binary, and license-file metadata.
+- `versions/1.22.7/mods.manifest.json` - Tracked 1.22.7 selected-mod/tool manifest with 18 unique entries.
 - `versions/1.22.6/VintageStory.Reference.1.22.6.csproj` - Non-compiling Rider/MSBuild wrapper project that includes
   the version and mod catalogs, API, assets, mods, and Web source manifest as browseable `None` items.
+- `versions/1.22.7/VintageStory.Reference.1.22.7.csproj` - Matching browse-only wrapper for the 1.22.7 payload.
 - `docs/ARCHITECTURE.md` - Explanation of repository roles and design boundaries.
 - `docs/MAINTAINING_REFERENCE.md` - Maintainer workflows for adding versions, mods, websites, and refreshing indexes.
 - `docs/research/mods/Tentbag Reworked/TENTBAG_REWORKED_PLAYER_GUIDE.md` - Canonical TentBag-Reworked 3.2.4 guide.
@@ -450,6 +536,11 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `versions/1.22.6/Index/assets.sqlite` - Generated 1.22.6 asset index for the copied full client assets and selected
   mod assets.
 - `versions/1.22.6/Index/web.sqlite` - Generated 1.22.6 web documentation index.
+- `versions/1.22.7/API` - Five flattened official 1.22.7 assembly decompiles.
+- `versions/1.22.7/Assets` - Full 1.22.7 Linux-client asset payload.
+- `versions/1.22.7/mods` - Selected 1.22.7 reference mod/tool set with decompiled managed assemblies.
+- `versions/1.22.7/Web/sources.json` - Copied four-source curated web manifest for 1.22.7.
+- `versions/1.22.7/Index` - Local generated 1.22.7 code, asset, and web index artifacts; only `.gitignore` is tracked.
 - `.codex/skills/do-new-version` - Project-local Codex skill for creating a new version wrapper project, API tree,
   Assets tree, selected mods tree, copied web source manifest, and corresponding code/asset/web indexes from official
   Vintage Story release packages and carried-forward curated sources.
@@ -457,6 +548,55 @@ python -B tools\reference-query.py --version 1.22.6 web --search "configlib-patc
 - `.codex/skills/new-version-mods` - Project-local Codex skill for downloading, staging, extracting, and decompiling selected compatible reference mods under `versions/<version>/mods`.
 
 ## Session history
+
+### 2026-09-07
+
+- Added Vintage Story `1.22.7` alongside retained `1.22.6` and promoted `1.22.7` to `default_game_version`. Recorded the
+  standing rule that the newest retained Vintage Story release is always the catalog default.
+- Updated the new-version and web-copy skills to preserve that default invariant, and updated the asset/code indexer
+  skills to use the catalog default when no stronger version signal exists. Skill validation and fresh behavior
+  pressure tests passed after the changes.
+- Verified the official stable release through the Vintage Story 1.22.7 news post and
+  `https://api.vintagestory.at/stable.json`. The release was published on 2026-08-16.
+- Downloaded `vs_server_win-x64_1.22.7.zip` and `vs_client_linux-x64_1.22.7.tar.gz` into ignored staging under
+  `.codex/tmp/new-version/1.22.7/downloads`. Their local byte counts and MD5 hashes exactly match the official
+  manifest: server `c5bcd15a558041533ed3b88f707bb19e`; client `ecfa56411b0a2912ebba29839fa98a3f`.
+- Copied the complete Linux-client assets into `versions/1.22.7/Assets`. The base tree matches its extracted source at
+  `19,983` files and `837,864,218` bytes and exposes `creative`, `game`, and `survival` directly.
+- Decompiled `VintagestoryAPI.dll`, `VintagestoryLib.dll`, `Mods/VSCreativeMod.dll`, `Mods/VSEssentials.dll`, and
+  `Mods/VSSurvivalMod.dll` with `ilspycmd` `10.1.1.8388`. The flattened wrappers contain `1,122`, `1,009`, `51`,
+  `524`, and `1,296` C# files respectively. Removed temporary `<HintPath>` entries and verified no generated `.sln`
+  or `.slnx` files remain under the API tree.
+- Populated `versions/1.22.7/mods` from all 18 entries in the 1.22.6 seed manifest. Used 11 exact 1.22.7 releases,
+  six documented same-line fallbacks, and the unchanged Simple VS Manager external-tool reference. Eleven selected
+  package versions changed from the 1.22.6 set.
+- Preserved all 18 mod archives and extraction roots under `.codex/tmp/mod-updates/1.22.7`. Verified every archive
+  SHA-256 against both `.codex/tmp/mod-updates/1.22.7/selected-releases.json` and the tracked
+  `versions/1.22.7/mods.manifest.json`.
+- Inspected 48 DLLs across the selected set, decompiled all 38 managed DLLs, and retained 10 native DLLs without
+  treating them as decompilation failures. RP Voice Chat also retains `RNNoise.so`; native binaries are present in
+  RP Voice Chat, Simple VS Manager, and Dear ImGui.
+- Copied all four curated web source slugs from `versions/1.22.6/Web/sources.json`, staged the 1.22.7 source manifest,
+  and rebuilt the web index with `4` sources and `99` sections.
+- Fixed the conservative code-index parser so ordinary Allman-style declarations and constructors with `base`/`this`
+  initializers are indexed, while declaration-shaped LINQ/async-lambda continuations, block comments, and braces in
+  character literals do not corrupt member extraction. Delegate declarations now use their declared name and full
+  semicolon-terminated span, one-line bodies and constructor arguments with object initializers have accurate bounds,
+  and legal contextual-keyword identifiers remain indexable. Added 13 root-discoverable regression tests, bumped the
+  tool to `1.1.4`, and rebuilt both retained code indexes. The 1.22.7 schema-2 index now has `8,607` source files,
+  `9,732` types, `95,780` members, `689,732` reference hints, and `836` fully resolved literal registrations across
+  `20` roots; the rebuilt 1.22.6 index has `8,428` files, `9,543` types, `94,449` members, `679,367` reference hints,
+  and `820` registrations.
+- Built the 1.22.7 asset index with `22,837` files, including `11,660` JSON files with `11,311` parsed successfully and
+  `349` retained parse-error rows. The class cross-reference returns `722` rows across `407` case-insensitive class
+  keys.
+- Added `versions/1.22.7/VintageStory.Reference.1.22.7.csproj` to `Vintage Story Reference.sln` under a matching
+  solution folder. The full solution builds with zero warnings and zero errors.
+- Added `versions/1.22.7/version.catalog.json`, added 1.22.7 to `reference.catalog.json`, and updated `README.md`,
+  `INDEX_USAGE.md`, and `docs/ARCHITECTURE.md` so both retained versions and the 1.22.7 default are discoverable.
+- Verified SQLite integrity for all three generated indexes; validated the 18-entry mod manifest against folders,
+  metadata, compatibility tags, hashes, and code roots; and ran representative mod, asset, recipe, API type/member,
+  registration, class cross-reference, code text, web source, Config Lib, and RPVoiceChat queries.
 
 ### 2026-08-16
 

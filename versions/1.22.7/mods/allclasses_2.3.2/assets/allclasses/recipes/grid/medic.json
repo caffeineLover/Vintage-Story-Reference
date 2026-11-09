@@ -1,0 +1,115 @@
+[
+	{
+		"ingredientPattern": "B,L",
+		"recipeGroup": 2,
+		"requiresTrait": "stitch_doctor",
+		"ingredients": {
+			"B": { "type": "item", "code": "game:armor-head-tailored-*-linen", "name": "color"  },
+			"L": { "type": "item", "code": "game:cloth-*", "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"copyAttributesFrom": 'B',
+		"averageDurability": false,
+		"name": "gambeson helmet repair",
+		"output": { "type": "item", "code": "game:armor-head-tailored-{color}-linen"  }
+	},
+	{
+		"ingredientPattern": "B,L",
+		"recipeGroup": 2,
+		"requiresTrait": "stitch_doctor",
+		"ingredients": {
+			"B": { "type": "item", "code": "game:armor-body-tailored-*-linen", "name": "color"  },
+			"L": { "type": "item", "code": "game:cloth-*", "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"copyAttributesFrom": 'B',
+		"averageDurability": false,
+		"name": "gambeson body armor repair",
+		"output": { "type": "item", "code": "game:armor-body-tailored-{color}-linen"  }
+	},
+	{
+		"ingredientPattern": "B,L",
+		"recipeGroup": 2,
+		"requiresTrait": "stitch_doctor",
+		"ingredients": {
+			"B": { "type": "item", "code": "game:armor-legs-tailored-*-linen", "name": "color"  },
+			"L": { "type": "item", "code": "game:cloth-*", "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] }
+		},
+		"width": 1,
+		"height": 2,
+		"shapeless": true,
+		"copyAttributesFrom": 'B',
+		"averageDurability": false,
+		"name": "gambeson leg armor repair",
+		"output": { "type": "item", "code": "game:armor-legs-tailored-{color}-linen"  }
+	},
+    {
+		"ingredientPattern": "TST,L_L",
+		"recipeGroup": 1,
+		"requiresTrait": "stitch_doctor",
+		"ingredients": {
+			"L": { "type": "item", "code": "game:cloth-*", "quantity": 1, "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] },
+			"T": { "type": "item", "code": "game:flaxtwine", "quantity": 1 },
+			"S": { "type": "item", "code": "game:sewingkit", "quantity": 1 }
+		},
+		"width": 3,
+		"height": 2,
+		"name": "gambeson helmet",
+		"output": { "type": "item", "code": "game:armor-head-tailored-{color}-linen"  }
+	},
+	{
+		"ingredientPattern": "L_L,MMM,LSL",
+		"recipeGroup": 1,
+		"requiresTrait": "stitch_doctor",
+		"ingredients": {
+			"L": { "type": "item", "code": "game:cloth-*", "quantity": 1, "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] },
+			"M": { "type": "item", "code": "game:cloth-*", "quantity": 2, "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] },
+			"S": { "type": "item", "code": "game:sewingkit", "quantity": 1 }
+
+		},
+		"width": 3,
+		"height": 3,
+		"name": "gambeson body armor",
+		"output": { "type": "item", "code": "game:armor-body-tailored-{color}-linen"  }
+	},
+	{
+		"ingredientPattern": "LSL,L_L,T_T",
+		"recipeGroup": 1,
+		"requiresTrait": "stitch_doctor",
+		"ingredients": {
+			"L": { "type": "item", "code": "game:cloth-*", "quantity": 1, "name": "color", "allowedVariants": ["plain", "blue", "brown", "gray", "black", "green", "orange", "pink", "purple", "red", "white", "yellow"] },
+			"T": { "type": "item", "code": "game:flaxtwine", "quantity": 1 },
+			"S": { "type": "item", "code": "game:sewingkit", "quantity": 1 }
+		},
+		"width": 3,
+		"height": 3,
+		"name": "gambeson leg armor",
+		"output": { "type": "item", "code": "game:armor-legs-tailored-{color}-linen"  }
+	},
+    {
+        "ingredientPattern": "FFS,FF_",
+        "requiresTrait": "stitch_doctor",
+        "ingredients": {
+            "F": { "type": "item", "code": "game:flaxtwine" },
+            "S": { "type": "item", "code": "game:stick" }
+        },
+        "width": 3,
+        "height": 2,
+        "output": { "type": "item", "code": "game:sewingkit"  }
+    },
+	{
+		"ingredientPattern": "LLL,LTL,LLL",
+		"requiresTrait": "surgeon",
+		"ingredients": {
+			"T": { "type": "block", "code": "game:flower-*", "allowedVariants": ["catmint-free", "cornflower-free", "forgetmenot-free", "edelweiss-free", "horsetail-free", "orangemallow-free", "wilddaisy-free", "westerngorse-free", "cowparsley-free", "goldenpoppy-free", "lilyofthevalley-free", "woad-free","redtopgrass-free","lupine-*"], "quantity": 4 },
+			"L": { "type": "item", "code": "game:drygrass", "quantity": 1 }
+		},
+		"width": 3,
+		"height": 3,
+		"output": { "type": "item", "code": "allclasses:poultice-grass-flower", "quantity": 4 }
+	}
+]

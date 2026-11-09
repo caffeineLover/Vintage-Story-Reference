@@ -1,0 +1,86 @@
+{
+	"mainpurpose": "Lumberjack axe",
+	"code": "axe-lumberjack",
+	"tags": ["tool", "tool-axe"],
+	"damagedby": ["blockbreaking", "attacking"],
+	"tool": "axe",
+	"class": "ItemAxe",
+	"storageFlags": 5,
+	"attributes": {
+		"handbook": {
+			"groupBy": ["axe-*"]
+		},
+		"toolrackTransform": {
+			"rotation": { "y": 2.5, "z": -1 },
+			"translation": { "x": -0.2, "y": 0.75 },
+			"scale": 1.25
+		},
+		"groundStorageTransform": {
+			"translation": { "x": -0.05, "y": 0.3, "z": -0.2 },
+			"rotation": { "x": 26, "y": 88, "z": -87 },
+			"scale": 0.88
+		},		
+		"slotRefillIdentifier": "axe-lumberjack"
+	},
+	"behaviors": [{ 
+		"name": "GroundStorable",
+		"properties": {
+			"layout": "WallHalves",
+			"wallOffY": 1,
+			"sprintKey": true,
+			"selectionBox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.1, "z2": 1 },
+			"collisionBox": { "x1": 0, "y1": 0, "z1": 0, "x2": 0, "y2": 0, "z2": 0 }
+		}
+	}],	
+	"variantgroups": [
+		{ "code": "metal", "states": ["steel"] }
+	],
+	"shape": { "base": "item/tool/lumberjackaxe" },
+	"heldTpHitAnimation": "axechop",
+	"texturesByType": {
+		"*": {
+			"metal": { "base": "game:block/metal/ingot/{metal}" }
+		}
+	},
+	"tooltierbytype": {
+		"*-steel": 5
+	},
+	"miningspeedbytype": {		
+		"axe-lumberjack-steel": {
+			"wood": 15,
+			"leaves": 7,
+            "plant": 11
+		}
+	},
+	"attackpowerbytype": {
+		"axe-lumberjack-steel": 5
+	},
+	"attackRange": 2,
+	"durabilitybytype": {
+		"axe-lumberjack-steel": 4000
+	},
+	"creativeinventory": { "general": ["*"], "items": ["*"], "tools": ["*"], "allclasses": ["*"] },
+	"guiTransform": {
+		"translation": { "x": 0, "y": 0, "z": 0 },
+		"rotation": { "x": -106, "y": 48, "z": 12 },
+		"origin": { "x": 0.61, "y": 0, "z": 0.47 },
+		"scale": 1.32
+	},
+	"fpHandTransform": {
+		"translation": { "x": -0.2, "y": -0.2, "z": 0 },
+		"rotation": { "x": 15, "y": 15, "z": 90 },
+		"scale": 2.45
+	},
+	"groundTransform": {
+		"translation": { "x": 0, "y": 0, "z": 0 },
+		"rotation": { "x": 0, "y": 0, "z": 0 },
+		"origin": { "x": 0.5, "y": -0.1, "z": 0.5 },
+		"scale": 3.4
+	},
+	"tpHandTransform": {
+		"translation": { "x": -1.1, "y": 0, "z": -0.7 },
+		"rotation": { "x": -81, "y": 0, "z": 0 },
+		"origin": { "x": 0.5, "y": 0, "z": 0.5 },
+		"scale": 0.8
+	}
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "file": "game:recipes/cooking/meatystew",
+    "side": "server",
+    "op": "add",
+    "path": "/ingredients/0/validStacks/-",
+    "value": {
+      "type": "item",
+      "code": "primitivesurvival:crabmeat-raw",
+      "shapeElement": "bowl/meat stew/*",
+      "textureMapping": [ "meat", "group4" ]
+    }
+  },
+  {
+    "file": "game:recipes/cooking/meatystew",
+    "side": "server",
+    "op": "add",
+    "path": "/ingredients/3/validStacks/-",
+    "value": {
+      "type": "item",
+      "code": "primitivesurvival:crabmeat-raw",
+      "shapeElement": "bowl/red meat/*",
+      "textureMapping": ["meat", "group1"]
+    }
+  },
+  {
+    "file": "game:recipes/cooking/meatystew",
+    "side": "server",
+    "op": "add",
+    "path": "/ingredients/4/validStacks/-",
+    "value": {
+      "type": "item",
+      "code": "primitivesurvival:crabmeat-raw",
+      "shapeElement": "bowl/red meat 2/*",
+      "textureMapping": ["meat", "group1"]
+    }
+  },
+  {
+    "file": "game:recipes/cooking/soup",
+    "side": "server",
+    "op": "add",
+    "path": "/ingredients/4/validStacks/-",
+    "value": {
+      "type": "item",
+      "code": "primitivesurvival:crabmeat-raw",
+      "shapeElement": "bowl/meat/*",
+      "textureMapping": [ "meat", "group1" ]
+    }
+  },
+  {
+    "file": "game:blocktypes/clay/fired/pot",
+    "side": "server",
+    "op": "add",
+    "path": "/attributesByType/claypot-blue-cooked/textureMapping/crabmeat-raw",
+    "value": ["meat", "group4"]
+  }
+]

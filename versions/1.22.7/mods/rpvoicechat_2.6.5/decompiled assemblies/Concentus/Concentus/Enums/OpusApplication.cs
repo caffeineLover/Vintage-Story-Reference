@@ -1,0 +1,17 @@
+using System;
+
+namespace Concentus.Enums
+{
+	// Token: 0x02000063 RID: 99
+	public enum OpusApplication
+	{
+		// Token: 0x04000335 RID: 821
+		OPUS_APPLICATION_UNIMPLEMENTED,
+		// Token: 0x04000336 RID: 822
+		OPUS_APPLICATION_VOIP = 2048,
+		// Token: 0x04000337 RID: 823
+		OPUS_APPLICATION_AUDIO,
+		// Token: 0x04000338 RID: 824
+		OPUS_APPLICATION_RESTRICTED_LOWDELAY = 2051
+	}
+}

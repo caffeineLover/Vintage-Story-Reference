@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Critcherのインゴット計算機",
+	"hotkey-open-calculator": "インゴット計算機を開く",
+	"target-ingots": "目標インゴット数:",
+	"metal-percentages": "金属の割合:",
+	"required-nuggets": "必要なナゲット:",
+	"close": "閉じる",
+	"no-data": "データなし",
+	"alloy-tinbronze": "スズ青銅",
+	"alloy-bismuthbronze": "ビスマス青銅",
+	"alloy-blackbronze": "黒青銅",
+	"alloy-brass": "真鍮",
+	"alloy-cupronickel": "白銅",
+	"alloy-electrum": "エレクトラム",
+	"alloy-molybdochalkos": "モリブドカルコス",
+	"alloy-leadsolder": "鉛ロウ",
+	"alloy-silversolder": "銀ロウ",
+	"crucible-slots-header": "るつぼの配置：",
+	"crucible-impossible": "{1}を{0}インゴット作成できません — るつぼの容量を超えています。最大作成可能：{2}インゴット。",
+	"slot-empty": "（空）"
+}

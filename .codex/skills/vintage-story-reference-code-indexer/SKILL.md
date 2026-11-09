@@ -29,8 +29,9 @@ Determine the target Vintage Story version in this order:
 
 1. Use the version explicitly named by the user.
 2. Use the version implied by a file path or folder currently being discussed, such as `versions/1.22.3`.
-3. If there is only one `versions/<version>` folder, use it.
-4. If multiple version folders exist and the user did not specify one, ask which version to use.
+3. Use `reference.catalog.json` `default_game_version` when no stronger target-version signal exists.
+4. If the catalog has no valid default and there is only one `versions/<version>` folder, use it; otherwise ask which
+   version to use.
 
 ## Index Artifacts
 
@@ -70,7 +71,8 @@ When the user asks to build or refresh the code index:
 - Run Python index/query commands with `python -B` so validation does not create `__pycache__` folders. If a cache folder appears under `tools/code-index`, remove it after verifying the path is inside the repository.
 - For conservative text parsing, start member extraction at the actual type opening brace. Starting before the brace can produce an index with valid type counts but zero members.
 - Discover mod source roots recursively. Decompiled mod code may live under names like `decompiled assembly`, `decompiled assemblies`, or package-specific `*-decompiled` folders.
-- For version `1.22.3`, a healthy full build after the flattened API layout indexed about `4,324` C# files, `4,465` types, and `21,242` members. Use those only as a rough sanity check, not a hard requirement for later versions.
+- Use the generated manifest's source-root and file counts for sanity checks; do not carry historical version counts
+  forward as thresholds for newer payloads.
 
 ## Source Roots
 
@@ -146,11 +148,13 @@ Keep root `INDEX_USAGE.md` concise and stable. It should tell other projects:
 
 Before reporting that a code index is ready, verify:
 
+- `python -B -m unittest discover -v` finds and passes the code-index parser regressions.
 - The SQLite file opens.
 - `index_meta` exists and reports the expected version.
 - Counts for source files and type declarations approximately match the source tree.
 - A type-name query returns a known API type.
-- A member query returns methods or properties for a known type.
+- An exact `--member StartServerSide --root VintagestoryAPI` query returns the ordinary Allman-style `ModSystem`
+  method declaration.
 - A full-text query returns plausible candidates.
 - A literal registration query returns its call site and resolved type declaration.
 - A representative `class` cross-reference returns both asset and C# evidence.

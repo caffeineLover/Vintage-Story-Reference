@@ -1,0 +1,14 @@
+{
+	"type": "code",
+	"name": "Critcher's Calculator",
+	"modid": "critcherscalculator",
+	"version": "1.3.0",
+	"side": "Client",
+	"description": "A standalone ingot creation calculator for Vintage Story. Press F9 to open.",
+	"authors": [
+		"Critcher"
+	],
+	"dependencies": {
+		"game": "1.22.2"
+	}
+}

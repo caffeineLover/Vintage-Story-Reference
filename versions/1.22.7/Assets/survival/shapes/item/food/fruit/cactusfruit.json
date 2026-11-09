@@ -1,0 +1,130 @@
+{
+	"editor": {
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 8,
+	"textureHeight": 8,
+	"textureSizes": {
+		"cactusfruit": [8,8]
+	},
+	"textures": {
+		"cactusfruit": "item/food/fruit/cactusfruit"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "fruit1",
+					"from": [ -2.5, 0.0, -3.0 ],
+					"to": [ 0.5, 2.0, -1.0 ],
+					"rotationOrigin": [ -1.0, 1.0, -2.0 ],
+					"rotationY": 22.0,
+					"faces": {
+						"north": { "texture": "#cactusfruit", "uv": [ 1.5, 2.5, 3.5, 5.5 ], "rotation": 90 },
+						"east": { "texture": "#cactusfruit", "uv": [ 6.0, 6.0, 8.0, 8.0 ] },
+						"south": { "texture": "#cactusfruit", "uv": [ 1.0, 1.5, 3.0, 4.5 ], "rotation": 270 },
+						"west": { "texture": "#cactusfruit", "uv": [ 6.0, 0.0, 8.0, 2.0 ] },
+						"up": { "texture": "#cactusfruit", "uv": [ 1.0, 1.5, 3.0, 4.5 ], "rotation": 270 },
+						"down": { "texture": "#cactusfruit", "uv": [ 1.0, 1.5, 3.0, 4.5 ], "rotation": 90 }
+					},
+					"children": [
+						{
+							"name": "bottom1",
+							"from": [ 3.0, 0.4, 0.4 ],
+							"to": [ 3.5, 1.6, 1.6 ],
+							"rotationOrigin": [ 3.0, 1.0, 1.0 ],
+							"faces": {
+								"north": { "texture": "#cactusfruit", "uv": [ 0.0, 0.0, 0.5, 1.0 ] },
+								"east": { "texture": "#cactusfruit", "uv": [ 0.0, 0.0, 1.0, 1.0 ] },
+								"south": { "texture": "#cactusfruit", "uv": [ 0.0, 0.0, 0.5, 1.0 ] },
+								"up": { "texture": "#cactusfruit", "uv": [ 0.0, 0.0, 0.5, 1.0 ] },
+								"down": { "texture": "#cactusfruit", "uv": [ 0.0, 0.0, 0.5, 1.0 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "fruit2",
+					"from": [ 1.5, 0.0, -1.5 ],
+					"to": [ 3.5, 2.0, 1.5 ],
+					"rotationOrigin": [ 2.5, 1.0, 0.0 ],
+					"rotationY": 22.0,
+					"faces": {
+						"north": { "texture": "#cactusfruit", "uv": [ 6.0, 4.0, 8.0, 6.0 ], "rotation": 90 },
+						"east": { "texture": "#cactusfruit", "uv": [ 4.0, 3.0, 6.0, 6.0 ], "rotation": 270 },
+						"south": { "texture": "#cactusfruit", "uv": [ 6.0, 0.0, 8.0, 2.0 ], "rotation": 270 },
+						"west": { "texture": "#cactusfruit", "uv": [ 1.5, 4.0, 3.5, 7.0 ], "rotation": 90 },
+						"up": { "texture": "#cactusfruit", "uv": [ 1.5, 3.5, 3.5, 6.5 ], "rotation": 180 },
+						"down": { "texture": "#cactusfruit", "uv": [ 1.0, 3.5, 3.0, 6.5 ], "rotation": 180 }
+					},
+					"children": [
+						{
+							"name": "bottom2",
+							"from": [ 0.4, 0.4, -0.5 ],
+							"to": [ 1.6, 1.6, 0.0 ],
+							"rotationOrigin": [ 1.0, 1.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#cactusfruit", "uv": [ 1.0, 6.0, 2.0, 7.0 ] },
+								"east": { "texture": "#cactusfruit", "uv": [ 3.0, 6.0, 3.5, 7.0 ] },
+								"west": { "texture": "#cactusfruit", "uv": [ 6.0, 4.0, 6.5, 5.0 ] },
+								"up": { "texture": "#cactusfruit", "uv": [ 6.5, 5.0, 7.5, 5.5 ] },
+								"down": { "texture": "#cactusfruit", "uv": [ 2.5, 7.0, 3.5, 7.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "fruit3",
+					"from": [ -2.5, -0.3, 0.5 ],
+					"to": [ -0.5, 1.7, 3.5 ],
+					"rotationOrigin": [ -1.5, 0.7, 2.0 ],
+					"rotationY": 75.0,
+					"faces": {
+						"north": { "texture": "#cactusfruit", "uv": [ 2.5, 3.5, 4.5, 5.5 ], "rotation": 90 },
+						"east": { "texture": "#cactusfruit", "uv": [ 3.5, 2.0, 5.5, 5.0 ], "rotation": 270 },
+						"south": { "texture": "#cactusfruit", "uv": [ 6.0, 0.0, 8.0, 2.0 ], "rotation": 270 },
+						"west": { "texture": "#cactusfruit", "uv": [ 1.5, 2.5, 3.5, 5.5 ], "rotation": 90 },
+						"up": { "texture": "#cactusfruit", "uv": [ 1.5, 2.5, 3.5, 5.5 ], "rotation": 180 },
+						"down": { "texture": "#cactusfruit", "uv": [ 1.5, 2.0, 3.5, 5.0 ], "rotation": 180 }
+					},
+					"children": [
+						{
+							"name": "bottom3",
+							"from": [ 0.4, 0.4, -0.5 ],
+							"to": [ 1.6, 1.6, 0.0 ],
+							"rotationOrigin": [ 1.0, 1.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#cactusfruit", "uv": [ 4.0, 2.5, 5.0, 3.5 ] },
+								"east": { "texture": "#cactusfruit", "uv": [ 3.0, 3.0, 3.5, 4.0 ] },
+								"west": { "texture": "#cactusfruit", "uv": [ 3.5, 2.5, 4.0, 3.5 ] },
+								"up": { "texture": "#cactusfruit", "uv": [ 3.5, 2.0, 4.5, 2.5 ] },
+								"down": { "texture": "#cactusfruit", "uv": [ 2.5, 4.0, 3.5, 4.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "fruit4",
+					"from": [ -1.0, 0.0, -1.0 ],
+					"to": [ 1.0, 3.0, 1.0 ],
+					"rotationOrigin": [ 0.0, 0.0, 0.0 ],
+					"rotationY": -17.0,
+					"faces": {
+						"north": { "texture": "#cactusfruit", "uv": [ 3.5, 5.0, 5.5, 8.0 ] },
+						"east": { "texture": "#cactusfruit", "uv": [ 2.5, 5.0, 4.5, 8.0 ] },
+						"south": { "texture": "#cactusfruit", "uv": [ 0.0, 5.0, 2.0, 8.0 ] },
+						"west": { "texture": "#cactusfruit", "uv": [ 2.0, 5.0, 4.0, 8.0 ] },
+						"up": { "texture": "#cactusfruit", "uv": [ 6.0, 2.0, 8.0, 4.0 ] },
+						"down": { "texture": "#cactusfruit", "uv": [ 6.0, 4.0, 8.0, 6.0 ] }
+					}
+				}
+			]
+		}
+	]}

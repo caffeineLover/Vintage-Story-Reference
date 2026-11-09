@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critcherova kalkulačka ingotů",
+  "hotkey-open-calculator": "Otevřít kalkulačku ingotů",
+  "target-ingots": "Cílový počet ingotů:",
+  "metal-percentages": "Podíly kovů:",
+  "required-nuggets": "Potřebné nugety:",
+  "close": "Zavřít",
+  "no-data": "Žádná data",
+  "no-alloys-available": "Žádné recepty na slitiny nejsou k dispozici.",
+  "crucible-slots-header": "Rozložení kelímku:",
+  "crucible-impossible": "Nelze vyrobit {0} ingotů ({1}) — překročena kapacita kelímku. Maximum: {2} ingotů.",
+  "slot-empty": "(prázdný)"
+}

@@ -1,0 +1,39 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"back": "block/wood/bookshelves/sides",
+		"bookshelf": "block/wood/bookshelves/bookshelf",
+		"front": "block/wood/bookshelves/back"
+	},
+	"elements": [
+		{
+			"name": "origin",
+			"from": [ 8.0, 0.0, 8.0 ],
+			"to": [ 8.0, 0.0, 8.0 ],
+			"rotationOrigin": [ 8.0, 0.0, 8.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "bottom",
+					"from": [ -8.0, 0.0, -8.0 ],
+					"to": [ 8.0, 16.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#back", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+						"east": { "texture": "#bookshelf", "uv": [ 8.0, 0.0, 16.0, 16.0 ] },
+						"south": { "texture": "#front", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+						"west": { "texture": "#bookshelf", "uv": [ 8.0, 0.0, 16.0, 16.0 ] },
+						"up": { "texture": "#bookshelf", "uv": [ 8.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+						"down": { "texture": "#bookshelf", "uv": [ 8.0, 0.0, 16.0, 16.0 ], "rotation": 90 }
+					}
+				}
+			]
+		}
+	]}

@@ -1,0 +1,157 @@
+{
+	"code": "dogcollar",
+	"shape": {
+		"base": "collar/dog-wolf/collar"
+	},
+	"attributes": {
+		"attachableToEntity": {
+			"categoryCode": "collar-dog",
+			"attachedShapeBySlotCode": {
+				"collar-wolf": {
+					"base": "wolftaming:collar/dog-wolf/collar"
+				},
+				"collar-hunting": {
+					"base": "wolftaming:collar/dog-wolf/collar"
+				},
+				"collar-shepherd": {
+					"base": "wolftaming:collar/dog-wolf/collar"
+				},
+				"collar-peach": {
+					"base": "wolftaming:collar/dog-wolf/collar"
+				},
+				"collar-corgi": {
+					"base": "wolftaming:collar/dog-corgi/collar"
+				}
+			}
+		},
+		"handbook": {
+			"groupBy": [
+				"dogcollar-{type}-*"
+			]
+		}
+	},
+	"maxstacksize": 1,
+	"variantgroups": [
+		{
+			"code": "type",
+			"states": [
+				"chipped",
+				"spiked",
+				"basic"
+			]
+		},
+		{
+			"code": "metal",
+			"states": [
+				"copper",
+				"tinbronze",
+				"blackbronze",
+				"gold",
+				"silver",
+				"iron"
+			]
+		}
+	],
+	"textures": {
+		"spikes": {
+			"baseByType": {
+				"dogcollar-chipped-*": "game:block/transparent",
+				"dogcollar-spiked-*": "game:block/metal/plate/{metal}",
+				"dogcollar-basic-*": "game:block/transparent"
+			}
+		},
+		"dogtag": {
+			"baseByType": {
+				"dogcollar-chipped-*": "game:block/metal/plate/{metal}",
+				"dogcollar-spiked-*": "game:block/transparent",
+				"dogcollar-basic-*": "game:block/transparent"
+			}
+		},
+		"metal": {
+			"base": "game:block/metal/plate/{metal}"
+		}
+	},
+	"creativeinventory": {
+		"general": [
+			"*"
+		],
+		"items": [
+			"*"
+		],
+		"clothing": [
+			"*"
+		]
+	},
+	"guiTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 45,
+			"z": -45
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0.4
+		},
+		"scale": 2
+	},
+	"groundTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": 90
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 3.5
+	},
+	"fpHandTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": -45
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 2.41
+	},
+	"tpHandTransform": {
+		"translation": {
+			"x": 0,
+			"y": -0.5,
+			"z": 0
+		},
+		"rotation": {
+			"x": 1,
+			"y": 57,
+			"z": 18
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 0.65
+	}
+}

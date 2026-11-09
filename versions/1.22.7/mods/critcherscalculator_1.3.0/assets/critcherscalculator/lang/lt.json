@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critcher lydinių skaičiuoklė",
+  "hotkey-open-calculator": "Atidaryti lydinių skaičiuoklę",
+  "target-ingots": "Tiksliniai luitai:",
+  "metal-percentages": "Metalų procentai:",
+  "required-nuggets": "Reikalingi grynuoliai:",
+  "close": "Uždaryti",
+  "no-data": "Nėra duomenų",
+  "no-alloys-available": "Nėra lydinio receptų.",
+  "crucible-slots-header": "Tiglio išdėstymas:",
+  "crucible-impossible": "Negalima pagaminti {0} luitų ({1}) — viršyta tiglio talpa. Daugiausiai: {2} luitų.",
+  "slot-empty": "(tuščia)"
+}

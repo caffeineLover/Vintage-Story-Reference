@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critchers tackkalkylator",
+  "hotkey-open-calculator": "Öppna tackkalkylator",
+  "target-ingots": "Önskade tackor:",
+  "metal-percentages": "Metallandelar:",
+  "required-nuggets": "Nödvändiga klumpar:",
+  "close": "Stäng",
+  "no-data": "Inga data",
+  "no-alloys-available": "Inga legeringsrecept tillgängliga.",
+  "crucible-slots-header": "Degeluppställning:",
+  "crucible-impossible": "Kan inte tillverka {0} tackor av {1} — överskrider degelns kapacitet. Maximalt möjligt: {2} tackor.",
+  "slot-empty": "(tom)"
+}

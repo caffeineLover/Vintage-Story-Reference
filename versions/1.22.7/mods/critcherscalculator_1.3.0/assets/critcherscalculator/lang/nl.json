@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critchers barrencalculator",
+  "hotkey-open-calculator": "Barrencalculator openen",
+  "target-ingots": "Gewenste barren:",
+  "metal-percentages": "Metaalpercentages:",
+  "required-nuggets": "Benodigde brokken:",
+  "close": "Sluiten",
+  "no-data": "Geen gegevens",
+  "no-alloys-available": "Geen legeringsrecepten beschikbaar.",
+  "crucible-slots-header": "Kroes-indeling:",
+  "crucible-impossible": "Kan geen {0} barren van {1} maken — kroescapaciteit overschreden. Maximaal mogelijk: {2} barren.",
+  "slot-empty": "(leeg)"
+}

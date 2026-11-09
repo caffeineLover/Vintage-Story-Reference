@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critcher-ов калкулатор полуга",
+  "hotkey-open-calculator": "Отвори калкулатор полуга",
+  "target-ingots": "Циљани број полуга:",
+  "metal-percentages": "Удели метала:",
+  "required-nuggets": "Потребне грудве:",
+  "close": "Затвори",
+  "no-data": "Нема података",
+  "no-alloys-available": "Нема доступних рецепата за легуре.",
+  "crucible-slots-header": "Распоред лонца:",
+  "crucible-impossible": "Не може се направити {0} полуга ({1}) — премашен капацитет лонца. Максимум: {2} полуга.",
+  "slot-empty": "(празно)"
+}

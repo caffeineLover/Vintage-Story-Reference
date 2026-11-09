@@ -19,14 +19,19 @@ from pathlib import Path
 
 
 SCHEMA_VERSION = 2
-TOOL_VERSION = "1.1.0"
+TOOL_VERSION = "1.1.4"
 PARSER_MODE = "conservative-regex"
 
 TYPE_RE = re.compile(
     r"^\s*(?P<mods>(?:(?:public|protected|internal|private|sealed|abstract|static|partial|readonly|unsafe|new)\s+)*)"
-    r"(?P<kind>class|interface|struct|enum|delegate|record)\s+"
+    r"(?P<kind>class|interface|struct|enum|record)\s+"
     r"(?P<name>[A-Za-z_][A-Za-z0-9_`]*)(?P<generics>\s*<[^>{};]+>)?"
     r"(?:\s*:\s*(?P<bases>[^{;]+))?"
+)
+DELEGATE_RE = re.compile(
+    r"^\s*(?P<mods>(?:(?:public|protected|internal|private|sealed|abstract|static|partial|readonly|unsafe|new)\s+)*)"
+    r"delegate\s+(?:ref\s+)?[A-Za-z_][A-Za-z0-9_`.<>,\[\]\?@\s]*?\s+"
+    r"(?P<name>[A-Za-z_][A-Za-z0-9_`]*)(?:\s*<[^>{};]+>)?\s*\("
 )
 NAMESPACE_RE = re.compile(r"^\s*namespace\s+(?P<namespace>[A-Za-z_][A-Za-z0-9_.]*)")
 ATTRIBUTE_RE = re.compile(r"^\s*\[[^\]]+\]\s*$")
@@ -34,12 +39,14 @@ METHOD_RE = re.compile(
     r"^\s*(?P<mods>(?:(?:public|protected|internal|private|static|virtual|override|abstract|sealed|extern|unsafe|async|partial|new)\s+)*)"
     r"(?P<return>[A-Za-z_][A-Za-z0-9_`.<>,\[\]\?@\s]*?)\s+"
     r"(?P<name>[A-Za-z_][A-Za-z0-9_`]*)\s*"
-    r"\((?P<params>[^;{}()]*(?:\([^)]*\)[^;{}()]*)*)\)\s*(?:where\b|[;{=>])"
+    r"\((?P<params>[^;{}()]*(?:\([^)]*\)[^;{}()]*)*)\)\s*"
+    r"(?P<terminator>where\b|;|\{|=>|$)"
 )
 CTOR_RE = re.compile(
     r"^\s*(?P<mods>(?:(?:public|protected|internal|private|static|extern|unsafe|new)\s+)*)"
     r"(?P<name>[A-Za-z_][A-Za-z0-9_`]*)\s*"
-    r"\((?P<params>[^;{}()]*(?:\([^)]*\)[^;{}()]*)*)\)\s*(?:where\b|[;{=>])"
+    r"\((?P<params>[^;{}()]*(?:\([^)]*\)[^;{}()]*)*)\)\s*"
+    r"(?P<terminator>:\s*(?:base|this)\b|;|\{|=>|$)"
 )
 PROPERTY_RE = re.compile(
     r"^\s*(?P<mods>(?:(?:public|protected|internal|private|static|virtual|override|abstract|sealed|unsafe|new|required)\s+)*)"
@@ -503,12 +510,14 @@ def index_source_file(
     try:
         text = path.read_text(encoding="utf-8-sig", errors="replace")
         lines = text.splitlines()
-        namespace_hint = find_namespace_hint(lines)
-        declarations = parse_types(lines)
+        clean_lines = sanitize_lines(lines)
+        namespace_hint = find_namespace_hint(clean_lines)
+        declarations = parse_types(lines, clean_lines)
         parse_status = "ok"
     except Exception as exc:
         text = ""
         lines = []
+        clean_lines = []
         namespace_hint = None
         declarations = []
         parse_status = f"error: {type(exc).__name__}: {str(exc)[:160]}"
@@ -567,7 +576,7 @@ def index_source_file(
         kind_counts[decl.kind] = kind_counts.get(decl.kind, 0) + 1
         symbol_text_parts.extend([decl.name, decl.full_name, decl.kind, decl.modifiers, decl.bases, decl.attributes])
 
-        members = parse_members(lines, decl)
+        members = parse_members(lines, decl, clean_lines)
         for member in members:
             member_accessibility = accessibility_from_modifiers(member.modifiers)
             member_cur = conn.execute(
@@ -605,7 +614,7 @@ def index_source_file(
                 ]
             )
 
-            for token, line_no in reference_tokens(lines, member.start_line, member.end_line):
+            for token, line_no in reference_tokens(clean_lines, member.start_line, member.end_line):
                 conn.execute(
                     "INSERT INTO references_hint(file_id, member_id, token, line) VALUES (?, ?, ?, ?)",
                     (file_id, member_id, token, line_no),
@@ -661,24 +670,35 @@ def find_namespace_hint(lines: list[str]) -> str | None:
     return None
 
 
-def parse_types(lines: list[str]) -> list[TypeDecl]:
+def parse_types(lines: list[str], clean_lines: list[str] | None = None) -> list[TypeDecl]:
+    if clean_lines is None:
+        clean_lines = sanitize_lines(lines)
+
     declarations: list[TypeDecl] = []
     current_namespace = ""
-    for idx, line in enumerate(lines):
+    for idx, line in enumerate(clean_lines):
         ns_match = NAMESPACE_RE.match(line)
         if ns_match:
             current_namespace = ns_match.group("namespace")
 
         match = TYPE_RE.match(line)
-        if not match:
+        delegate_match = DELEGATE_RE.match(line)
+        if not match and not delegate_match:
             continue
 
-        kind = match.group("kind")
-        name = clean_symbol_name(match.group("name"))
-        modifiers = normalize_space(match.group("mods") or "")
-        bases = normalize_space(match.group("bases") or "")
+        if delegate_match:
+            kind = "delegate"
+            name = clean_symbol_name(delegate_match.group("name"))
+            modifiers = normalize_space(delegate_match.group("mods") or "")
+            bases = ""
+            end_index = find_statement_end(clean_lines, idx)
+        else:
+            kind = match.group("kind")
+            name = clean_symbol_name(match.group("name"))
+            modifiers = normalize_space(match.group("mods") or "")
+            bases = normalize_space(match.group("bases") or "")
+            end_index = find_block_end(clean_lines, idx)
         start_line = idx + 1
-        end_index = find_block_end(lines, idx)
         end_line = end_index + 1
         declarations.append(
             TypeDecl(
@@ -697,26 +717,47 @@ def parse_types(lines: list[str]) -> list[TypeDecl]:
     return declarations
 
 
-def parse_members(lines: list[str], decl: TypeDecl) -> list[MemberDecl]:
+def parse_members(
+    lines: list[str],
+    decl: TypeDecl,
+    clean_lines: list[str] | None = None,
+) -> list[MemberDecl]:
+    if clean_lines is None:
+        clean_lines = sanitize_lines(lines)
+
     members: list[MemberDecl] = []
-    open_index = find_opening_brace(lines, decl.start_index, decl.end_index)
+    open_index = find_opening_brace(clean_lines, decl.start_index, decl.end_index)
     if open_index is None:
         return members
     start = open_index + 1
     end = decl.end_index
     depth = 1
+    parenthesis_depth = 0
+    skip_through = -1
     for idx in range(start, end):
-        line = strip_line_comment(lines[idx]).strip()
+        line = clean_lines[idx].strip()
+        if idx <= skip_through:
+            depth += brace_delta(clean_lines[idx])
+            parenthesis_depth = max(0, parenthesis_depth + parenthesis_delta(clean_lines[idx]))
+            continue
         if not line:
-            depth += brace_delta(lines[idx])
+            depth += brace_delta(clean_lines[idx])
+            parenthesis_depth = max(0, parenthesis_depth + parenthesis_delta(clean_lines[idx]))
             continue
 
-        if depth == 1 and not ATTRIBUTE_RE.match(line):
-            member = parse_member_line(lines, idx, decl)
+        if depth == 1 and parenthesis_depth == 0 and DELEGATE_RE.match(line):
+            skip_through = find_statement_end(clean_lines, idx)
+        elif depth == 1 and parenthesis_depth == 0 and not ATTRIBUTE_RE.match(line):
+            field_match = FIELD_RE.match(line)
+            member = parse_member_line(lines, idx, decl, clean_lines)
             if member:
                 members.append(member)
+                skip_through = max(skip_through, member.end_line - 1)
+            elif field_match and "=" in line:
+                skip_through = find_statement_end(clean_lines, idx)
 
-        depth += brace_delta(lines[idx])
+        depth += brace_delta(clean_lines[idx])
+        parenthesis_depth = max(0, parenthesis_depth + parenthesis_delta(clean_lines[idx]))
         if depth < 1:
             depth = 1
     return dedupe_members(members)
@@ -729,22 +770,31 @@ def find_opening_brace(lines: list[str], start_idx: int, end_idx: int) -> int | 
     return None
 
 
-def parse_member_line(lines: list[str], idx: int, decl: TypeDecl) -> MemberDecl | None:
-    line = normalize_space(strip_line_comment(lines[idx]))
+def parse_member_line(
+    lines: list[str],
+    idx: int,
+    decl: TypeDecl,
+    clean_lines: list[str] | None = None,
+) -> MemberDecl | None:
+    if clean_lines is None:
+        clean_lines = sanitize_lines(lines)
+
+    line = normalize_space(clean_lines[idx])
     if not line or line.startswith("#") or any(line.startswith(keyword + " ") for keyword in MEMBER_KEYWORDS):
         return None
-    if TYPE_RE.match(line):
+    if TYPE_RE.match(line) or DELEGATE_RE.match(line):
         return None
 
     attributes = collect_attributes(lines, idx)
-    end_line = find_member_end(lines, idx)
+    end_line = find_member_end(clean_lines, idx)
+    signature = normalize_space(strip_comments_preserve_layout(lines[idx]))
 
     event_match = EVENT_RE.match(line)
     if event_match:
         return MemberDecl(
             kind="event",
             name=clean_symbol_name(event_match.group("name")),
-            signature=line,
+            signature=signature,
             return_type=normalize_space(event_match.group("type")),
             modifiers=normalize_space(event_match.group("mods") or ""),
             start_line=idx + 1,
@@ -753,11 +803,20 @@ def parse_member_line(lines: list[str], idx: int, decl: TypeDecl) -> MemberDecl 
         )
 
     ctor_match = CTOR_RE.match(line)
-    if ctor_match and clean_symbol_name(ctor_match.group("name")) == decl.name:
+    if (
+        ctor_match
+        and clean_symbol_name(ctor_match.group("name")) == decl.name
+        and has_valid_declaration_continuation(
+            clean_lines,
+            idx,
+            ctor_match.group("terminator"),
+            allow_constructor_initializer=True,
+        )
+    ):
         return MemberDecl(
             kind="constructor",
             name=decl.name,
-            signature=line,
+            signature=signature,
             return_type="",
             modifiers=normalize_space(ctor_match.group("mods") or ""),
             start_line=idx + 1,
@@ -766,15 +825,23 @@ def parse_member_line(lines: list[str], idx: int, decl: TypeDecl) -> MemberDecl 
         )
 
     method_match = METHOD_RE.match(line)
-    if method_match:
+    if method_match and has_valid_declaration_continuation(
+        clean_lines,
+        idx,
+        method_match.group("terminator"),
+        allow_constructor_initializer=False,
+    ):
         name = clean_symbol_name(method_match.group("name"))
+        return_type = normalize_space(method_match.group("return"))
         if name in MEMBER_KEYWORDS:
+            return None
+        if re.match(r"^from\s+.+\s+in$", return_type):
             return None
         return MemberDecl(
             kind="method",
             name=name,
-            signature=line,
-            return_type=normalize_space(method_match.group("return")),
+            signature=signature,
+            return_type=return_type,
             modifiers=normalize_space(method_match.group("mods") or ""),
             start_line=idx + 1,
             end_line=end_line,
@@ -789,7 +856,7 @@ def parse_member_line(lines: list[str], idx: int, decl: TypeDecl) -> MemberDecl 
         return MemberDecl(
             kind="property",
             name=name,
-            signature=line,
+            signature=signature,
             return_type=normalize_space(property_match.group("type")),
             modifiers=normalize_space(property_match.group("mods") or ""),
             start_line=idx + 1,
@@ -805,15 +872,37 @@ def parse_member_line(lines: list[str], idx: int, decl: TypeDecl) -> MemberDecl 
         return MemberDecl(
             kind="field",
             name=name,
-            signature=line,
+            signature=signature,
             return_type=normalize_space(field_match.group("type")),
             modifiers=normalize_space(field_match.group("mods") or ""),
             start_line=idx + 1,
-            end_line=idx + 1,
+            end_line=end_line,
             attributes=attributes,
         )
 
     return None
+
+
+def has_valid_declaration_continuation(
+    lines: list[str],
+    idx: int,
+    terminator: str,
+    *,
+    allow_constructor_initializer: bool,
+) -> bool:
+    if terminator:
+        return True
+
+    for candidate in lines[idx + 1 :]:
+        clean = normalize_space(strip_strings_and_comments(candidate))
+        if not clean:
+            continue
+        if clean.startswith(("{", "=>", "where ")):
+            return True
+        if allow_constructor_initializer and re.match(r"^:\s*(?:base|this)\b", clean):
+            return True
+        return False
+    return False
 
 
 def dedupe_members(members: list[MemberDecl]) -> list[MemberDecl]:
@@ -853,7 +942,14 @@ def find_block_end(lines: list[str], start_idx: int) -> int:
         if "{" in strip_strings_and_comments(lines[idx]):
             opened = True
         depth += delta
-        if opened and depth <= 0 and idx > start_idx:
+        if opened and depth <= 0:
+            return idx
+    return start_idx
+
+
+def find_statement_end(lines: list[str], start_idx: int) -> int:
+    for idx in range(start_idx, min(len(lines), start_idx + 200)):
+        if ";" in lines[idx]:
             return idx
     return start_idx
 
@@ -861,15 +957,28 @@ def find_block_end(lines: list[str], start_idx: int) -> int:
 def find_member_end(lines: list[str], start_idx: int) -> int:
     depth = 0
     opened = False
+    parenthesis_depth = 0
     for idx in range(start_idx, min(len(lines), start_idx + 400)):
         clean = strip_strings_and_comments(lines[idx])
-        if ";" in clean and not opened:
-            return idx + 1
-        if "{" in clean:
-            opened = True
-        depth += brace_delta(lines[idx])
-        if opened and depth <= 0 and idx > start_idx:
-            return idx + 1
+        for char in clean:
+            if opened:
+                if char == "{":
+                    depth += 1
+                elif char == "}":
+                    depth -= 1
+                    if depth <= 0:
+                        return idx + 1
+                continue
+
+            if char == "(":
+                parenthesis_depth += 1
+            elif char == ")":
+                parenthesis_depth = max(0, parenthesis_depth - 1)
+            elif char == "{" and parenthesis_depth == 0:
+                opened = True
+                depth = 1
+            elif char == ";" and parenthesis_depth == 0:
+                return idx + 1
     return start_idx + 1
 
 
@@ -878,55 +987,21 @@ def brace_delta(line: str) -> int:
     return clean.count("{") - clean.count("}")
 
 
-def strip_line_comment(line: str) -> str:
-    clean = []
-    in_string = False
-    escape = False
-    i = 0
-    while i < len(line):
-        ch = line[i]
-        nxt = line[i + 1] if i + 1 < len(line) else ""
-        if in_string:
-            clean.append(ch)
-            if escape:
-                escape = False
-            elif ch == "\\":
-                escape = True
-            elif ch == '"':
-                in_string = False
-            i += 1
-            continue
-        if ch == '"':
-            in_string = True
-            clean.append(ch)
-            i += 1
-            continue
-        if ch == "/" and nxt == "/":
-            break
-        clean.append(ch)
-        i += 1
-    return "".join(clean)
+def parenthesis_delta(line: str) -> int:
+    clean = strip_strings_and_comments(line)
+    return clean.count("(") - clean.count(")")
 
 
-def strip_strings_and_comments(line: str) -> str:
-    line = strip_line_comment(line)
-    result = []
-    in_string = False
-    escape = False
-    for ch in line:
-        if in_string:
-            if escape:
-                escape = False
-            elif ch == "\\":
-                escape = True
-            elif ch == '"':
-                in_string = False
-            continue
-        if ch == '"':
-            in_string = True
-            continue
-        result.append(ch)
-    return "".join(result)
+def strip_strings_and_comments(text: str) -> str:
+    return COMMENT_OR_LITERAL_RE.sub(lambda match: mask_preserve_layout(match.group(0)), text)
+
+
+def sanitize_lines(lines: list[str]) -> list[str]:
+    return strip_strings_and_comments("\n".join(lines)).split("\n")
+
+
+def mask_preserve_layout(value: str) -> str:
+    return "".join("\n" if char == "\n" else "\r" if char == "\r" else " " for char in value)
 
 
 def split_bases(bases: str) -> tuple[str, str]:
@@ -1014,7 +1089,7 @@ def strip_comments_preserve_layout(text: str) -> str:
             return match.group(0)
 
         # Newlines remain intact so extracted locations still address the original decompiled source file.
-        return "".join("\n" if char == "\n" else "\r" if char == "\r" else " " for char in match.group(0))
+        return mask_preserve_layout(match.group(0))
 
     return COMMENT_OR_LITERAL_RE.sub(replace_match, text)
 

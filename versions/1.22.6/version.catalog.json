@@ -91,8 +91,8 @@
   "current_index_summary": {
     "asset_files": 22792,
     "code_files": 8428,
-    "code_types": 9544,
-    "code_members": 40839,
+    "code_types": 9543,
+    "code_members": 94449,
     "code_registrations": 820,
     "class_cross_reference_rows": 710,
     "selected_mods": 18,
@@ -100,7 +100,7 @@
     "web_sections": 84
   },
   "notes": [
-    "This is the only retained Vintage Story reference version. It has decompiled built-in API sources for VintagestoryAPI, VintagestoryLib, VSCreativeMod, VSEssentials, and VSSurvivalMod, copied full client assets, selected reference mods and tools, copied curated web sources, a code index, an asset index, and a web index.",
+    "This retained Vintage Story 1.22.6 payload has decompiled built-in API sources for VintagestoryAPI, VintagestoryLib, VSCreativeMod, VSEssentials, and VSSurvivalMod, copied full client assets, selected reference mods and tools, copied curated web sources, a code index, an asset index, and a web index.",
     "Betterer Prospecting 3.4.5, Primitive Survival 5.1.0, RPVoiceChat 2.5.8, and TentBag-Reworked 3.2.4 had exact Mod DB 1.22.6 releases. The other selected mods use the newest same-line 1.22.x release as a documented fallback; see versions/1.22.6/mods.manifest.json for tracked release evidence and provenance.",
     "Simple VS Manager 2.3.0 was added as a Mod DB external-tool reference for mod-manager workflow research. It is not a normal game mod package, has no modinfo.json, and is documented at versions/1.22.6/mods/simplevsmanager_2.3.0/REFERENCE_SOURCE.md.",
     "Curated web sources were copied forward from earlier curated manifests and re-indexed for 1.22.6.",

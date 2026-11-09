@@ -1,0 +1,90 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/trader-female",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"material": [16,16],
+		"blue": [8,8],
+		"silver": [8,8]
+	},
+	"textures": {
+		"blue": "entity/humanoid/traderaccessories/jewelry/blue",
+		"material": "entity/humanoid/traderaccessories/jewelry/silver"
+	},
+	"elements": [
+		{
+			"name": "waist",
+			"stepParentName": "UpperFootL",
+			"from": [ -1.0, 0.7, 2.0 ],
+			"to": [ 1.0, 3.7, 4.0 ],
+			"autoUnwrap": false,
+			"uv": [ 0.0, 1.0 ],
+			"rotationOrigin": [ 0.0, 3.7, 3.0 ],
+			"rotationY": 44.0,
+			"rotationZ": -8.0,
+			"faces": {
+				"north": { "texture": "#blue", "uv": [ 3.5, 1.5, 5.5, 4.5 ] },
+				"east": { "texture": "#blue", "uv": [ 0.0, 4.0, 2.0, 7.0 ] },
+				"south": { "texture": "#blue", "uv": [ 2.5, 2.5, 4.5, 5.5 ] },
+				"west": { "texture": "#blue", "uv": [ 3.5, 3.0, 5.5, 6.0 ] },
+				"up": { "texture": "#blue", "uv": [ 5.0, 0.5, 7.0, 2.5 ] },
+				"down": { "texture": "#blue", "uv": [ 4.0, 1.5, 6.0, 3.5 ] }
+			},
+			"children": [
+				{
+					"name": "PouchBottom",
+					"from": [ 0.2, -0.5, 0.2 ],
+					"to": [ 1.8, 0.0, 1.8 ],
+					"autoUnwrap": false,
+					"uv": [ 4.0, 10.5 ],
+					"rotationOrigin": [ 0.2, -0.5, 0.2 ],
+					"faces": {
+						"north": { "texture": "#blue", "uv": [ 2.5, 1.5, 4.0, 2.0 ] },
+						"east": { "texture": "#blue", "uv": [ 2.5, 3.5, 4.0, 4.0 ] },
+						"south": { "texture": "#blue", "uv": [ 5.5, 1.5, 7.0, 2.0 ] },
+						"west": { "texture": "#blue", "uv": [ 3.0, 6.0, 4.5, 6.5 ] },
+						"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.5, 1.5 ], "enabled": false },
+						"down": { "texture": "#blue", "uv": [ 2.0, 3.5, 3.5, 5.0 ] }
+					}
+				},
+				{
+					"name": "PouchTop",
+					"from": [ 0.2, 3.5, 0.2 ],
+					"to": [ 1.8, 4.0, 1.8 ],
+					"uv": [ 0.0, 1.0 ],
+					"rotationOrigin": [ 0.2, 3.5, 0.2 ],
+					"faces": {
+						"north": { "texture": "#blue", "uv": [ 0.0, 2.5, 1.5, 3.0 ] },
+						"east": { "texture": "#blue", "uv": [ 1.5, 2.5, 3.0, 3.0 ] },
+						"south": { "texture": "#blue", "uv": [ 3.0, 2.5, 4.5, 3.0 ] },
+						"west": { "texture": "#blue", "uv": [ 4.5, 2.5, 6.0, 3.0 ] },
+						"up": { "texture": "#blue", "uv": [ 0.0, 1.0, 1.5, 2.5 ] },
+						"down": { "texture": "#blue", "uv": [ 1.5, 1.0, 3.0, 2.5 ] }
+					},
+					"children": [
+						{
+							"name": "PouchTie",
+							"from": [ 0.3, -0.5, 0.3 ],
+							"to": [ 1.3, 0.0, 1.3 ],
+							"autoUnwrap": false,
+							"uv": [ 8.0, 14.5 ],
+							"rotationOrigin": [ 0.8, -0.5, 0.8 ],
+							"rotationY": 45.0,
+							"faces": {
+								"north": { "texture": "#material", "uv": [ 13.0, 3.0, 14.0, 4.0 ] },
+								"east": { "texture": "#material", "uv": [ 4.0, 5.0, 5.0, 6.0 ] },
+								"south": { "texture": "#material", "uv": [ 9.0, 6.0, 10.0, 7.0 ] },
+								"west": { "texture": "#material", "uv": [ 3.0, 3.0, 4.0, 4.0 ] },
+								"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

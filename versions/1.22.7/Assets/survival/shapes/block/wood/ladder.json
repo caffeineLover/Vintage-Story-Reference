@@ -1,0 +1,70 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"ladder": "block/wood/debarked/oak"
+	},
+	"elements": [
+		{
+			"name": "VerticalPole",
+			"from": [ 2.0, 0.0, 0.0 ],
+			"to": [ 4.0, 16.0, 2.0 ],
+			"rotationOrigin": [ 1.0, 0.0, 0.0 ],
+			"faces": {
+				"north": { "texture": "#ladder", "uv": [ 0.0, 11.0, 16.0, 13.0 ], "rotation": 90 },
+				"east": { "texture": "#ladder", "uv": [ 0.0, 9.0, 16.0, 11.0 ], "rotation": 270 },
+				"south": { "texture": "#ladder", "uv": [ 0.0, 11.5, 16.0, 13.5 ], "rotation": 90 },
+				"west": { "texture": "#ladder", "uv": [ 0.0, 7.5, 16.0, 9.5 ], "rotation": 270 },
+				"up": { "texture": "#ladder", "uv": [ 6.5, 5.0, 8.5, 7.0 ] },
+				"down": { "texture": "#ladder", "uv": [ 0.5, 9.0, 2.5, 11.0 ] }
+			}
+		},
+		{
+			"name": "VerticalPole2",
+			"from": [ 12.0, 0.0, 0.0 ],
+			"to": [ 14.0, 16.0, 2.0 ],
+			"rotationOrigin": [ 12.0, 0.0, 0.0 ],
+			"faces": {
+				"north": { "texture": "#ladder", "uv": [ 0.0, 9.0, 16.0, 11.0 ], "rotation": 90 },
+				"east": { "texture": "#ladder", "uv": [ 0.0, 9.0, 16.0, 11.0 ], "rotation": 270 },
+				"south": { "texture": "#ladder", "uv": [ 0.0, 1.5, 16.0, 3.5 ], "rotation": 90 },
+				"west": { "texture": "#ladder", "uv": [ 0.0, 12.0, 16.0, 14.0 ], "rotation": 270 },
+				"up": { "texture": "#ladder", "uv": [ 2.5, 11.5, 4.5, 13.5 ] },
+				"down": { "texture": "#ladder", "uv": [ 2.5, 12.5, 4.5, 14.5 ] }
+			}
+		},
+		{
+			"name": "HorizontalPole1",
+			"from": [ 1.5, 3.0, 2.0 ],
+			"to": [ 14.5, 5.0, 3.0 ],
+			"rotationOrigin": [ 1.5, 3.0, 2.0 ],
+			"faces": {
+				"north": { "texture": "#ladder", "uv": [ 0.0, 6.0, 13.0, 8.0 ] },
+				"east": { "texture": "#ladder", "uv": [ 12.5, 6.5, 13.5, 8.5 ], "windMode": [-1,-1,-1,-1] },
+				"south": { "texture": "#ladder", "uv": [ 2.5, 12.0, 15.5, 14.0 ] },
+				"west": { "texture": "#ladder", "uv": [ 12.5, 9.0, 13.5, 11.0 ], "windMode": [-1,-1,-1,-1] },
+				"up": { "texture": "#ladder", "uv": [ 0.5, 7.5, 13.5, 8.5 ] },
+				"down": { "texture": "#ladder", "uv": [ 0.0, 8.5, 13.0, 9.5 ] }
+			}
+		},
+		{
+			"name": "HorizontalPole2",
+			"from": [ 1.5, 11.0, 2.0 ],
+			"to": [ 14.5, 13.0, 3.0 ],
+			"rotationOrigin": [ 1.5, 11.0, 2.0 ],
+			"faces": {
+				"north": { "texture": "#ladder", "uv": [ 0.0, 2.5, 13.0, 4.5 ] },
+				"east": { "texture": "#ladder", "uv": [ 3.0, 5.5, 4.0, 7.5 ], "windMode": [-1,-1,-1,-1] },
+				"south": { "texture": "#ladder", "uv": [ 1.0, 10.0, 14.0, 12.0 ] },
+				"west": { "texture": "#ladder", "uv": [ 1.5, 10.5, 2.5, 12.5 ], "windMode": [-1,-1,-1,-1] },
+				"up": { "texture": "#ladder", "uv": [ 2.5, 13.0, 15.5, 14.0 ] },
+				"down": { "texture": "#ladder", "uv": [ 1.0, 11.0, 14.0, 12.0 ] }
+			}
+		}
+	]}

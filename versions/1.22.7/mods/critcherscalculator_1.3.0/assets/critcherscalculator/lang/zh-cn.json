@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Critcher 的锭计算器",
+	"hotkey-open-calculator": "打开锭计算器",
+	"target-ingots": "目标锭数：",
+	"metal-percentages": "金属百分比：",
+	"required-nuggets": "所需矿块：",
+	"close": "关闭",
+	"no-data": "无数据",
+	"alloy-tinbronze": "锡铜",
+	"alloy-bismuthbronze": "铋铜",
+	"alloy-blackbronze": "黑铜",
+	"alloy-brass": "黄铜",
+	"alloy-cupronickel": "白铜",
+	"alloy-electrum": "琥珀金",
+	"alloy-molybdochalkos": "铅铜",
+	"alloy-leadsolder": "铅焊料",
+	"alloy-silversolder": "银焊料",
+	"crucible-slots-header": "坩埚布局：",
+	"crucible-impossible": "无法制作 {0} 个{1}锭——超出坩埚容量。最多可制作：{2} 个。",
+	"slot-empty": "（空）"
+}

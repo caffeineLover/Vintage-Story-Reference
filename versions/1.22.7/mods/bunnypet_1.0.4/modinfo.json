@@ -1,0 +1,13 @@
+{
+  "type": "content",
+  "modid": "bunnypet",
+  "name": "Pet Bunny",
+  "description" : "Have your fluffy friends as pets. Hares are now tamable. Requires Pet Ai.",
+  "authors": ["Eques72"],
+  "version": "1.0.4",
+  "side": "universal",
+  "Dependencies": { 
+	"game": "1.22.0",
+	"petai": "5.1.1"
+  }
+}

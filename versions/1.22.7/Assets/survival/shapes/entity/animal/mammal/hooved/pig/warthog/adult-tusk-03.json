@@ -1,0 +1,194 @@
+{
+	"editor": {
+		"backDropShape": "entity/animal/mammal/hooved/pig/warthog/adult",
+		"collapsedPaths": "Root/Feet Guide,Root/Origin/Rear/Midsection/Chest/Neck/Head/L Ear,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/R TopTusk/R TopTusk2/R TopTusk3,Root/Origin/Rear/Midsection/Chest/RightFrontStorage,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/L TopTusk1/L TopTusk2/L TopTusk3,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/L TopTusk1/L TopTusk2,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/L Eye,Root/MouthUp,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Snout/TopTusk1/TopTuskL2,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Eye,Root/R Eye,Root/Origin/Rear/Midsection/Chest/Neck/Head/HeadMisc,Root/Origin/Rear/Midsection/Chest/ChestMane,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Jaw,Root/Origin/Rear/Tail,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/L Ear,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Snout,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Horn attachment/R antler Hub,Root/Origin/Rear/Midsection/Chest/Neck/L Eye,Root/Origin/Rear/L Haunch/L LegUp/L LegLow/L Hind Pastern/L Hind Hoof,Root/HeadMisc,Root/Origin/Rear/Midsection/Chest/Neck/R Eye,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/MouthUp,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/R TopTusk,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Horn attachment,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/R TopTusk/R TopTusk2/R TopTusk3/R TopTusk4,Root/Origin/Rear/Midsection/Chest/Neck/Head/Jaw/L EyeBubble,Root/MouthUp/Snout,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Horn attachment/L antler base 1,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Ear,Root/Origin/Rear/Midsection/Chest/R Shoulder,Root/Origin/Rear/R Haunch,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/L TopTusk1,Root/Origin/Rear/Midsection/Chest/L Shoulder,Root/R EyeBubble,Root/MouthUp/Nose/Nose2,Root/Origin/Rear/Midsection/Chest/Neck/Head/Jaw,Root/Origin/Rear/Midsection/Chest/Neck/Head/L EyeBubble,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/Mouth up,Root/TopLTuskBase,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/R Ear,Root/Origin/Rear/L Haunch,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/Jaw2/R TuskBase/R Tusk1,Root/Origin/Rear/R Haunch/R LegUp/R LegLow/R Hind Pastern/R Hind Hoof,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/L TopTusk1/L TopTusk2/L TopTusk3/L TopTusk4,Root/Origin/Rear/Midsection/Chest/L Shoulder/L ArmUp/L ArmMid/L ArmLow/L Front Pastern/L Front Hoof,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/Jaw2,Root/Horn attachment,Root/MouthUp/Nose,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Snout,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/Jaw2/L TuskBase/L Tusk,Root/L Eye,Root/Origin/Rear/Midsection/Chest/Neck/Neck2/Head/R Eye,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/Jaw2/L TuskBase,Root/Origin/Rear/Midsection/Chest/R Shoulder/R Arm/R Forearm/R Hand/R Fingers/R Front Hoof,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Nose/Nose2/TopTusks/R TopTusk/R TopTusk2,Root/Origin/Rear/Midsection/Chest/L Shoulder/L Arm/L Forearm/L Hand/L Fingers/L Front Hoof,Root/Origin/Rear/RearMane,Root/Origin/Rear/Midsection/Chest/Neck/Head/R EyeBubble,Root/Origin/Rear/Midsection/Chest/R Shoulder/R ArmUp/R ArmMid/R ArmLow/R Front Pastern/R Front Hoof,Root/Origin/Rear/R Thigh/R Calf/R Foot/R Toes/R Hind Hoof,Root/Origin/Rear/L Thigh/L Calf/L Foot/L Toes/L Hind Hoof,Root/Origin/Rear/Midsection/Chest/Neck/Head/Jaw/Jaw2,Root/Origin/Rear/Midsection/Chest/Neck/Head/MouthUp/Jaw/Jaw2/R TuskBase",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 60,
+	"textureHeight": 80,
+	"textureSizes": {
+		"hide": [60,80]
+	},
+	"textures": {
+		"hide": "entity/animal/mammal/hooved/pig/warthog-adult"
+	},
+	"elements": [
+		{
+			"name": "TopTusks",
+			"stepParentName": "Nose2",
+			"from": [ 1.0, 0.12, -0.25 ],
+			"to": [ 1.7, 0.82, 2.95 ],
+			"unwrapMode": 5,
+			"unwrapRotation": 1,
+			"uv": [ 50.0, 78.5 ],
+			"rotationOrigin": [ 1.0019, 0.9195, -0.25 ],
+			"rotationZ": -15.0,
+			"faces": {
+				"north": { "texture": "#hide", "uv": [ 50.0, 79.0, 50.5, 79.5 ], "rotation": 270 },
+				"east": { "texture": "#hide", "uv": [ 50.5, 78.5, 53.5, 79.0 ], "rotation": 180 },
+				"south": { "texture": "#hide", "uv": [ 53.5, 79.0, 54.0, 79.5 ], "rotation": 90 },
+				"west": { "texture": "#hide", "uv": [ 50.5, 79.5, 53.5, 80.0 ] },
+				"up": { "texture": "#hide", "uv": [ 50.5, 79.0, 53.5, 79.5 ], "rotation": 90 },
+				"down": { "texture": "#hide", "uv": [ 54.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+			},
+			"children": [
+				{
+					"name": "L TopTusk",
+					"from": [ 0.05, 0.0, 3.2 ],
+					"to": [ 0.65, 0.6, 4.2 ],
+					"unwrapMode": 5,
+					"unwrapRotation": 1,
+					"uv": [ 54.5, 78.5 ],
+					"rotationOrigin": [ 0.05, 0.0, 3.2 ],
+					"rotationX": -30.0,
+					"faces": {
+						"north": { "texture": "#null", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270, "enabled": false },
+						"east": { "texture": "#hide", "uv": [ 54.5, 78.5, 55.5, 79.0 ], "rotation": 180 },
+						"south": { "texture": "#hide", "uv": [ 55.5, 79.0, 56.0, 79.5 ], "rotation": 90 },
+						"west": { "texture": "#hide", "uv": [ 54.5, 79.5, 55.5, 80.0 ] },
+						"up": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.5, 79.5 ], "rotation": 90 },
+						"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+					},
+					"children": [
+						{
+							"name": "L TopTusk2",
+							"from": [ 0.05, 0.0, 1.0 ],
+							"to": [ 0.55, 0.5, 2.0 ],
+							"unwrapMode": 5,
+							"unwrapRotation": 1,
+							"uv": [ 54.5, 78.5 ],
+							"rotationOrigin": [ 0.05, 0.0, 1.0 ],
+							"rotationX": -30.0,
+							"faces": {
+								"north": { "texture": "#null", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270, "enabled": false },
+								"east": { "texture": "#hide", "uv": [ 54.5, 78.5, 55.5, 79.0 ], "rotation": 180 },
+								"south": { "texture": "#hide", "uv": [ 55.5, 79.0, 56.0, 79.5 ], "rotation": 90 },
+								"west": { "texture": "#hide", "uv": [ 54.5, 79.5, 55.5, 80.0 ] },
+								"up": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.5, 79.5 ], "rotation": 90 },
+								"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+							},
+							"children": [
+								{
+									"name": "L TopTusk3",
+									"from": [ 0.05, 0.0, 1.0 ],
+									"to": [ 0.45, 0.4, 2.0 ],
+									"unwrapMode": 5,
+									"unwrapRotation": 1,
+									"uv": [ 54.5, 78.5 ],
+									"rotationOrigin": [ 0.05, 0.0, 1.0 ],
+									"rotationX": -30.0,
+									"faces": {
+										"north": { "texture": "#null", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270, "enabled": false },
+										"east": { "texture": "#hide", "uv": [ 54.5, 78.5, 55.5, 79.0 ], "rotation": 180 },
+										"south": { "texture": "#hide", "uv": [ 55.5, 79.0, 56.0, 79.5 ], "rotation": 90 },
+										"west": { "texture": "#hide", "uv": [ 54.5, 79.5, 55.5, 80.0 ] },
+										"up": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.5, 79.5 ], "rotation": 90 },
+										"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+									},
+									"children": [
+										{
+											"name": "L TopTusk4",
+											"from": [ 0.05, 0.0, 1.0 ],
+											"to": [ 0.35, 0.3, 2.0 ],
+											"unwrapMode": 5,
+											"unwrapRotation": 1,
+											"uv": [ 54.5, 78.5 ],
+											"rotationOrigin": [ 0.05, 0.0, 1.0 ],
+											"rotationX": -30.0,
+											"faces": {
+												"north": { "texture": "#null", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270, "enabled": false },
+												"east": { "texture": "#hide", "uv": [ 54.5, 78.5, 55.5, 79.0 ], "rotation": 180 },
+												"south": { "texture": "#hide", "uv": [ 55.5, 79.0, 56.0, 79.5 ], "rotation": 90 },
+												"west": { "texture": "#hide", "uv": [ 54.5, 79.5, 55.5, 80.0 ] },
+												"up": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.5, 79.5 ], "rotation": 90 },
+												"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "R TopTusk",
+					"from": [ 0.05, 0.0, -0.8 ],
+					"to": [ 0.65, 0.6, 0.2 ],
+					"unwrapMode": 5,
+					"unwrapRotation": 1,
+					"uv": [ 54.5, 78.5 ],
+					"rotationOrigin": [ 0.05, 0.0, 0.2 ],
+					"rotationX": 30.0,
+					"faces": {
+						"north": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270 },
+						"east": { "texture": "#hide", "uv": [ 55.0, 78.5, 56.0, 79.0 ], "rotation": 180 },
+						"south": { "texture": "#null", "uv": [ 56.0, 79.0, 56.5, 79.5 ], "rotation": 90, "enabled": false },
+						"west": { "texture": "#hide", "uv": [ 55.0, 79.5, 56.0, 80.0 ] },
+						"up": { "texture": "#hide", "uv": [ 55.0, 79.0, 56.0, 79.5 ], "rotation": 90 },
+						"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+					},
+					"children": [
+						{
+							"name": "R TopTusk2",
+							"from": [ 0.05, 0.0, -1.0 ],
+							"to": [ 0.55, 0.5, 0.0 ],
+							"unwrapMode": 5,
+							"unwrapRotation": 1,
+							"uv": [ 54.5, 78.5 ],
+							"rotationOrigin": [ 0.05, 0.0, 0.0 ],
+							"rotationX": 30.0,
+							"faces": {
+								"north": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270 },
+								"east": { "texture": "#hide", "uv": [ 55.0, 78.5, 56.0, 79.0 ], "rotation": 180 },
+								"south": { "texture": "#null", "uv": [ 56.0, 79.0, 56.5, 79.5 ], "rotation": 90, "enabled": false },
+								"west": { "texture": "#hide", "uv": [ 55.0, 79.5, 56.0, 80.0 ] },
+								"up": { "texture": "#hide", "uv": [ 55.0, 79.0, 56.0, 79.5 ], "rotation": 90 },
+								"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+							},
+							"children": [
+								{
+									"name": "R TopTusk3",
+									"from": [ 0.05, 0.0, -1.0 ],
+									"to": [ 0.45, 0.4, 0.0 ],
+									"unwrapMode": 5,
+									"unwrapRotation": 1,
+									"uv": [ 54.5, 78.5 ],
+									"rotationOrigin": [ 0.05, 0.0, 0.0 ],
+									"rotationX": 30.0,
+									"faces": {
+										"north": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270 },
+										"east": { "texture": "#hide", "uv": [ 55.0, 78.5, 56.0, 79.0 ], "rotation": 180 },
+										"south": { "texture": "#null", "uv": [ 56.0, 79.0, 56.5, 79.5 ], "rotation": 90, "enabled": false },
+										"west": { "texture": "#hide", "uv": [ 55.0, 79.5, 56.0, 80.0 ] },
+										"up": { "texture": "#hide", "uv": [ 55.0, 79.0, 56.0, 79.5 ], "rotation": 90 },
+										"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+									},
+									"children": [
+										{
+											"name": "R TopTusk4",
+											"from": [ 0.05, 0.0, -1.0 ],
+											"to": [ 0.35, 0.3, 0.0 ],
+											"unwrapMode": 5,
+											"unwrapRotation": 1,
+											"uv": [ 54.5, 78.5 ],
+											"rotationOrigin": [ 0.05, 0.0, 0.0 ],
+											"rotationX": 30.0,
+											"faces": {
+												"north": { "texture": "#hide", "uv": [ 54.5, 79.0, 55.0, 79.5 ], "rotation": 270 },
+												"east": { "texture": "#hide", "uv": [ 55.0, 78.5, 56.0, 79.0 ], "rotation": 180 },
+												"south": { "texture": "#null", "uv": [ 56.0, 79.0, 56.5, 79.5 ], "rotation": 90, "enabled": false },
+												"west": { "texture": "#hide", "uv": [ 55.0, 79.5, 56.0, 80.0 ] },
+												"up": { "texture": "#hide", "uv": [ 55.0, 79.0, 56.0, 79.5 ], "rotation": 90 },
+												"down": { "texture": "#hide", "uv": [ 56.0, 79.0, 57.0, 79.5 ], "rotation": 270 }
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]}

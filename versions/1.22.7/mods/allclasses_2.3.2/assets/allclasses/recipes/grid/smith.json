@@ -1,0 +1,216 @@
+[
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-copper", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "block", "code": "game:log-placed-*-ud", "name": "wood", "quantity": 1 },
+		"K": { "type": "item", "code": "game:knifeblade-copper", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-basic", "quantity": 1  }
+},
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-bismuthbronze", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"K": { "type": "item", "code": "game:knifeblade-bismuthbronze", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-simple", "quantity": 1  }
+},
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-tinbronze", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"K": { "type": "item", "code": "game:knifeblade-tinbronze", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-simple", "quantity": 1  }
+},
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-blackbronze", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"K": { "type": "item", "code": "game:knifeblade-blackbronze", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-simple", "quantity": 1  }
+},
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-iron", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"K": { "type": "item", "code": "game:knifeblade-iron", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-standard", "quantity": 1  }
+},
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-meteoriciron", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"K": { "type": "item", "code": "game:knifeblade-meteoriciron", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-standard", "quantity": 1  }
+},
+{
+	"ingredientPattern": "HS,LK",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"H": { "type": "item", "code": "game:hammerhead-steel", "quantity": 1 },
+		"S": { "type": "item", "code": "game:stick", "quantity": 2 },
+		"L": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"K": { "type": "item", "code": "game:knifeblade-steel", "quantity": 1 }
+	},
+	"width": 2,
+	"height": 2,
+	"recipeGroup": 3,
+	"shapeless": true,
+	"output": { "type": "item", "code": "tools-advanced", "quantity": 1  }
+},
+{
+	"ingredientPattern": "_T_,BPB,_B_",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"T": { "type": "item", "code": "game:flaxtwine" },
+		"B": { "type": "item", "code": "game:plank-*", "quantity": 4 },
+		"P": { "type": "item", "code": "game:blastingpowder", "quantity": 4 }
+	},
+	"width": 3,
+	"height": 3,
+	"recipeGroup": 2,
+	"output": { "type": "block", "code": "game:bomb-ore", "quantity": 8  }
+},
+{
+	"ingredientPattern": "_T_,CPC,_C_",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"T": { "type": "item", "code": "game:drygrass", "quantity": 2  },
+		"C": { "type": "item", "code": "game:clay-*", "quantity": 2 },
+		"P": { "type": "item", "code": "game:blastingpowder", "quantity": 4 }
+	},
+	"width": 3,
+	"height": 3,
+	"recipeGroup": 2,
+	"output": { "type": "block", "code": "game:bomb-ore", "quantity": 4  }
+},
+{
+  "ingredientPattern": "CPS",
+  "requiresTrait": "smith",
+  "ingredients": {
+    "S": { "type": "item", "code": "game:saltpeter", "quantity": 1 },
+	"P": { "type": "item", "code": "game:rot", "quantity": 2 },
+    "C": { "type": "item", "code": "game:charcoal", "quantity": 1 }
+  },
+  "width": 3,
+  "height": 1,
+  "recipeGroup": 2,
+  "shapeless": false,
+  "output": { "type": "item", "code": "game:blastingpowder", "quantity": 2 }
+},
+{
+	"ingredientPattern": "H_,PR",
+	"requiresTrait": "smith",
+	"ingredients": {
+		"P": { "type": "item", "code": "game:metalplate-copper", "quantity": 1  },
+		"R": { "type": "item", "code": "game:rod-copper", "quantity": 1  },
+		"H": { "type": "item", "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10 }
+	},
+	"width": 2,
+	"height": 2,
+	"averageDurability": false,
+	"output": { "type": "block", "code": "allclasses:metalpan-copper", "quantity": 1  }
+},
+{
+    "ingredientPattern": "H,P,M",
+    "requiresTrait": "smith",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-tinbronze",
+        "quantity": 1
+      },
+      "M": {
+        "type": "block",
+        "code": "allclasses:metalpan-copper",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpan-tinbronze",
+      "quantity": 1
+    }
+  },
+  {
+    "ingredientPattern": "H,P,M",
+    "requiresTrait": "smith",
+    "ingredients": {
+      "P": {
+        "type": "item",
+        "code": "game:metalplate-iron",
+        "quantity": 1
+      },
+      "M": {
+        "type": "block",
+        "code": "allclasses:metalpan-tinbronze",
+        "quantity": 1
+      },
+      "H": {
+        "type": "item",
+        "tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 10
+      }
+    },
+    "width": 1,
+    "height": 3,
+    "averageDurability": false,
+    "output": {
+      "type": "block",
+      "code": "allclasses:metalpan-iron",
+      "quantity": 1
+    }
+  }
+ ]

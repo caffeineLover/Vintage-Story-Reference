@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog_purpose": "Machine-readable discovery catalog for the Vintage Story Reference repository.",
-  "default_game_version": "1.22.6",
+  "default_game_version": "1.22.7",
   "documentation": {
     "overview": "README.md",
     "consumer_usage": "INDEX_USAGE.md",
@@ -21,6 +21,11 @@
       "path": "versions/1.22.6",
       "catalog": "versions/1.22.6/version.catalog.json",
       "description": "Vintage Story 1.22.6 API, asset, mod, web, indexed-code, and class-cross-reference payload."
+    },
+    "1.22.7": {
+      "path": "versions/1.22.7",
+      "catalog": "versions/1.22.7/version.catalog.json",
+      "description": "Vintage Story 1.22.7 API, asset, mod, web, indexed-code, and class-cross-reference payload."
     }
   },
   "schematics": {

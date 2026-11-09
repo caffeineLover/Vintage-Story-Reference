@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "slug": "configlib-json-api",
+      "title": "Config Lib JSON API",
+      "site": "GitHub Wiki",
+      "source_type": "github_wiki_markdown",
+      "url": "https://github.com/maltiez2/vsmod_configlib/wiki/JSON-API",
+      "raw_url": "https://raw.githubusercontent.com/wiki/maltiez2/vsmod_configlib/JSON-API.md",
+      "last_known_edited": "2024-05-14",
+      "applies_to": "Config Lib JSON configuration API for Vintage Story mods",
+      "notes": "Curated external documentation source requested by the user. The index stores searchable section text but does not keep a separate local HTML or Markdown snapshot."
+    },
+    {
+      "slug": "vsvillage-moddb",
+      "title": "VS Village Mod DB Page",
+      "site": "Vintage Story Mod DB",
+      "source_type": "html",
+      "url": "https://mods.vintagestory.at/vsvillage",
+      "raw_url": "https://mods.vintagestory.at/vsvillage",
+      "html_scope": "moddb_description",
+      "last_known_edited": "2026-06-09",
+      "applies_to": "VS Village gameplay overview, village founding, villager behavior, features, roadmap, compatibility notes, and current Mod DB metadata",
+      "notes": "Curated external documentation source requested by the user. The builder extracts the Mod DB description tab into searchable text but does not keep a separate local HTML snapshot."
+    },
+    {
+      "slug": "rpvoicechat-server-administration",
+      "title": "RPVoiceChat Server Administration",
+      "site": "GitHub Wiki",
+      "source_type": "github_wiki_markdown",
+      "url": "https://github.com/Ridderrasmus/RPVoiceChat/wiki/Server-Administration",
+      "raw_url": "https://raw.githubusercontent.com/wiki/Ridderrasmus/RPVoiceChat/Server-Administration.md",
+      "last_known_edited": "2026-07-14",
+      "applies_to": "RPVoiceChat server configuration, network settings, codec bitrates, communication system settings, sound-emitting object ranges, and /rpvc administration commands",
+      "notes": "Curated external documentation source requested by the user for RPVoiceChat 2.5.8. The index stores searchable section text but does not keep a separate local Markdown snapshot."
+    },
+    {
+      "slug": "rpvoicechat-github-readme",
+      "title": "RPVoiceChat GitHub README",
+      "site": "GitHub",
+      "source_type": "github_markdown",
+      "url": "https://github.com/Ridderrasmus/RPVoiceChat",
+      "raw_url": "https://raw.githubusercontent.com/Ridderrasmus/RPVoiceChat/development/README.md",
+      "last_known_edited": "2026-07-14",
+      "applies_to": "RPVoiceChat project overview, installation, usage, configuration entry points, developer documentation links, maintainers, licensing, and Opus/RNNoise dependency notes",
+      "notes": "Curated external project page source requested by the user. The GitHub repository currently uses the development branch for the visible README."
+    }
+  ]
+}

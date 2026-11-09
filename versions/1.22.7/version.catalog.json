@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "game_version": "1.22.7",
+  "version_root": "versions/1.22.7",
+  "purpose": "Version-specific discovery catalog for Vintage Story 1.22.7 reference material.",
+  "reference_roots": {
+    "api": "versions/1.22.7/API",
+    "assets": "versions/1.22.7/Assets",
+    "mods": "versions/1.22.7/mods",
+    "web_sources": "versions/1.22.7/Web"
+  },
+  "indexes": {
+    "asset": {
+      "database": "versions/1.22.7/Index/assets.sqlite",
+      "manifest": "versions/1.22.7/Index/assets.index.json",
+      "build_script": "tools/asset-index/build_asset_index.py",
+      "query_script": "tools/asset-index/query_asset_index.py",
+      "use_for": [
+        "assets",
+        "JSON",
+        "recipes",
+        "blocks",
+        "items",
+        "textures",
+        "shapes",
+        "lang files",
+        "worldgen",
+        "patches"
+      ]
+    },
+    "code": {
+      "database": "versions/1.22.7/Index/code.sqlite",
+      "manifest": "versions/1.22.7/Index/code.index.json",
+      "build_script": "tools/code-index/build_code_index.py",
+      "query_script": "tools/code-index/query_code_index.py",
+      "use_for": [
+        "API symbols",
+        "decompiled C#",
+        "types",
+        "methods",
+        "members",
+        "inheritance",
+        "literal class registrations",
+        "source locations"
+      ]
+    },
+    "web": {
+      "database": "versions/1.22.7/Index/web.sqlite",
+      "manifest": "versions/1.22.7/Index/web.index.json",
+      "source_manifest": "versions/1.22.7/Web/sources.json",
+      "build_script": "tools/web-index/build_web_index.py",
+      "query_script": "tools/web-index/query_web_index.py",
+      "use_for": [
+        "curated external documentation",
+        "Config Lib JSON API behavior",
+        "indexed mod overview pages",
+        "RPVoiceChat server and project documentation"
+      ]
+    }
+  },
+  "cross_references": {
+    "classes": {
+      "inputs": {
+        "--asset-db": "versions/1.22.7/Index/assets.sqlite",
+        "--code-db": "versions/1.22.7/Index/code.sqlite"
+      },
+      "query_script": "tools/cross-reference/query_class_cross_reference.py",
+      "use_for": [
+        "asset class to registration lookup",
+        "asset entityClass to block-entity registration lookup",
+        "registration call-site evidence",
+        "registered C# type declaration lookup"
+      ]
+    }
+  },
+  "manifests": {
+    "mods": {
+      "manifest": "versions/1.22.7/mods.manifest.json",
+      "query_script": "tools/mod-manifest/query_mod_manifest.py",
+      "use_for": [
+        "selected reference mods and tools",
+        "mod ids and versions",
+        "exact and fallback compatibility",
+        "source provenance",
+        "asset and decompiled-code availability",
+        "native-binary presence",
+        "license-file presence"
+      ]
+    }
+  },
+  "current_index_summary": {
+    "asset_files": 22837,
+    "code_files": 8607,
+    "code_types": 9732,
+    "code_members": 95780,
+    "code_registrations": 836,
+    "class_cross_reference_rows": 722,
+    "selected_mods": 18,
+    "web_sources": 4,
+    "web_sections": 99
+  },
+  "notes": [
+    "This Vintage Story 1.22.7 payload has decompiled built-in API sources for VintagestoryAPI, VintagestoryLib, VSCreativeMod, VSEssentials, and VSSurvivalMod, copied full client assets, selected reference mods and tools, copied curated web sources, a code index, an asset index, and a web index.",
+    "Eleven selected Mod DB releases explicitly list Vintage Story 1.22.7. Pet Bunny 1.0.4, Cats 5.0.2, Jaunt 3.1.0, Pet AI 5.1.1, Dear ImGui 1.2.7, and Wolf Taming 5.0.1 use the newest same-line 1.22.x releases as documented fallbacks; see versions/1.22.7/mods.manifest.json for tracked release evidence and provenance.",
+    "Simple VS Manager 2.3.0 is retained as a Mod DB external-tool reference for mod-manager workflow research. It is not a normal game mod package and has no modinfo.json.",
+    "Curated web sources were copied forward from versions/1.22.6/Web/sources.json and re-indexed for 1.22.7.",
+    "Vintage Story 1.22.7 is the root catalog default because the newest retained release is always the default.",
+    "Generated index manifests remain the source of truth for exact generated-at timestamps, roots, and detailed counts.",
+    "Query indexes before opening raw files."
+  ]
+}

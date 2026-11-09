@@ -1,0 +1,125 @@
+{
+	"editor": {
+		"backDropShape": "K:/VSModding/dog-wolf-updated_2",
+		"collapsedPaths": "Root/Origin/Rear/Midsection/Chest/Neck/Head/L Ear,Root/Origin/Rear/Midsection/Chest/Neck/Head2/Nose2,Root/Origin/Rear/Midsection/Chest/Neck/Head/Fur Cheeks,Root/Origin/Rear/Midsection/Chest/Neck/Head2/Fur Cheeks2,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Eye,Root/Origin/Rear/Midsection/Chest/Neck/Head/Nose/TeethUp,Root/Origin/Rear/Midsection/Chest/Neck/Head/Nose,Root/LeatherArmor,Root/Backpack_Group2,Root/Origin/Rear/Midsection/Chest/Neck/Head2/L Eye2,Root/Origin/Rear/Midsection/Chest/Neck/Head2/R Eye2,Root/Origin/Rear/Midsection/Chest/Neck/Head2/L Ear2,Root/Origin/Rear/Midsection/Chest/Neck/Head/Nose/Jaw,Root/Origin/Rear/Midsection/Chest/Neck/Head2/R Ear2,Root/Origin/Rear/Midsection/Chest/Neck/Head/L Eye,Root/Origin/Rear/Midsection/Chest/Neck/Head/R Ear",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+	},
+	"textures": {
+		"leather": "game:block/leather/plain"
+	},
+	"elements": [
+		{
+			"name": "Helmet",
+			"stepParentName": "Head",
+			"from": [ -0.6, 3.7, 1.25 ],
+			"to": [ -0.6, 3.7, 1.25 ],
+			"rotationOrigin": [ -0.6, 3.7, 1.2 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "Head_0",
+					"from": [ 1.3, -2.7, 2.8 ],
+					"to": [ 5.3, 0.3, 3.8 ],
+					"rotationOrigin": [ 0.0, 0.0, 0.0 ],
+					"rotationX": -9.408,
+					"rotationY": -3.4049,
+					"faces": {
+						"north": { "texture": "#leather" },
+						"east": { "texture": "#leather" },
+						"south": { "texture": "#leather" },
+						"west": { "texture": "#leather" },
+						"up": { "texture": "#leather" },
+						"down": { "texture": "#leather" }
+					}
+				},
+				{
+					"name": "Head_1",
+					"from": [ 1.3, -2.4, -1.8 ],
+					"to": [ 5.3, 0.6, -0.8 ],
+					"rotationOrigin": [ 0.0, 0.0, 0.0 ],
+					"rotationX": 9.408,
+					"rotationY": 3.4049,
+					"faces": {
+						"north": { "texture": "#leather" },
+						"east": { "texture": "#leather" },
+						"south": { "texture": "#leather" },
+						"west": { "texture": "#leather" },
+						"up": { "texture": "#leather" },
+						"down": { "texture": "#leather" }
+					}
+				},
+				{
+					"name": "Head_2",
+					"from": [ 0.4, -0.7, -0.3 ],
+					"to": [ 1.5, 0.2, 2.3 ],
+					"faces": {
+						"north": { "texture": "#leather" },
+						"east": { "texture": "#leather" },
+						"south": { "texture": "#leather" },
+						"west": { "texture": "#leather" },
+						"up": { "texture": "#leather" },
+						"down": { "texture": "#leather" }
+					}
+				},
+				{
+					"name": "Head_3",
+					"from": [ 0.4, 0.2, -1.5 ],
+					"to": [ 5.7, 1.2, 3.5 ],
+					"faces": {
+						"north": { "texture": "#leather" },
+						"east": { "texture": "#leather" },
+						"south": { "texture": "#leather" },
+						"west": { "texture": "#leather" },
+						"up": { "texture": "#leather" },
+						"down": { "texture": "#leather" }
+					}
+				}
+			]
+		},
+		{
+			"name": "HelmetNeck",
+			"stepParentName": "Neck",
+			"from": [ -4.0, 2.2, 1.4 ],
+			"to": [ -4.0, 2.2, 1.4 ],
+			"rotationOrigin": [ -4.0, 2.2, 1.4 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "LeatherHelmet_Neck_0",
+					"from": [ 4.3, 2.6, -1.2 ],
+					"to": [ 6.1, 3.6, 3.2 ],
+					"faces": {
+						"north": { "texture": "#leather" },
+						"east": { "texture": "#leather" },
+						"south": { "texture": "#leather" },
+						"west": { "texture": "#leather" },
+						"up": { "texture": "#leather" },
+						"down": { "texture": "#leather" }
+					}
+				},
+				{
+					"name": "LeatherHelmet_Neck_1",
+					"from": [ 4.9, 2.3, -0.7 ],
+					"to": [ 6.7, 3.3, 2.7 ],
+					"faces": {
+						"north": { "texture": "#leather" },
+						"east": { "texture": "#leather" },
+						"south": { "texture": "#leather" },
+						"west": { "texture": "#leather" },
+						"up": { "texture": "#leather" },
+						"down": { "texture": "#leather" }
+					}
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

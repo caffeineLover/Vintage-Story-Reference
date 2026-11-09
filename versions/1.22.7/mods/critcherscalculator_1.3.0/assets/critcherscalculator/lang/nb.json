@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Critchers barrekalkulator",
+  "hotkey-open-calculator": "Åpne barrekalkulator",
+  "target-ingots": "Ønskede barrer:",
+  "metal-percentages": "Metallandeler:",
+  "required-nuggets": "Nødvendige klumper:",
+  "close": "Lukk",
+  "no-data": "Ingen data",
+  "no-alloys-available": "Ingen legeringsoppskrifter tilgjengelige.",
+  "crucible-slots-header": "Digeloppsett:",
+  "crucible-impossible": "Kan ikke lage {0} barrer av {1} — overskrider digelkapasiteten. Maksimalt mulig: {2} barrer.",
+  "slot-empty": "(tom)"
+}

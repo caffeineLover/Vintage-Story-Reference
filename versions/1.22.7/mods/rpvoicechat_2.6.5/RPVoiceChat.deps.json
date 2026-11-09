@@ -1,0 +1,119 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "RPVoiceChat/1.0.0": {
+        "dependencies": {
+          "Concentus": "2.2.2",
+          "NVorbis": "0.10.5",
+          "Xabe.FFmpeg.Downloader": "6.0.2",
+          "OpenTK.Audio.OpenAL": "4.9.4.0",
+          "OpenTK.Mathematics": "4.9.4.0"
+        },
+        "runtime": {
+          "RPVoiceChat.dll": {}
+        }
+      },
+      "Concentus/2.2.2": {
+        "runtime": {
+          "lib/net8.0/Concentus.dll": {
+            "assemblyVersion": "2.2.2.0",
+            "fileVersion": "2.2.2.0"
+          }
+        }
+      },
+      "NVorbis/0.10.5": {
+        "runtime": {
+          "lib/netstandard2.0/NVorbis.dll": {
+            "assemblyVersion": "0.10.5.0",
+            "fileVersion": "0.10.5.0"
+          }
+        }
+      },
+      "Xabe.FFmpeg/6.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Xabe.FFmpeg.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
+        }
+      },
+      "Xabe.FFmpeg.Downloader/6.0.2": {
+        "dependencies": {
+          "Xabe.FFmpeg": "6.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xabe.FFmpeg.Downloader.dll": {
+            "assemblyVersion": "6.0.2.0",
+            "fileVersion": "6.0.2.0"
+          }
+        }
+      },
+      "OpenTK.Audio.OpenAL/4.9.4.0": {
+        "runtime": {
+          "OpenTK.Audio.OpenAL.dll": {
+            "assemblyVersion": "4.9.4.0",
+            "fileVersion": "4.9.4.0"
+          }
+        }
+      },
+      "OpenTK.Mathematics/4.9.4.0": {
+        "runtime": {
+          "OpenTK.Mathematics.dll": {
+            "assemblyVersion": "4.9.4.0",
+            "fileVersion": "4.9.4.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RPVoiceChat/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Concentus/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2B9YmHPKO+k7YpAAnqmiXwiMJnfjfj1C868RszOll2iZWLnGTAiC1q21L/d7CvTan7T+hyqU8dR0Dcy3cpjVfQ==",
+      "path": "concentus/2.2.2",
+      "hashPath": "concentus.2.2.2.nupkg.sha512"
+    },
+    "NVorbis/0.10.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o+IptCG4Avze39HrGeztC+xIp6fOOwGVAwkoa1J++4Ji1WmZ+KIKlFl5wsgxsXqBkmdpfs/vFSUproiLKYa2bw==",
+      "path": "nvorbis/0.10.5",
+      "hashPath": "nvorbis.0.10.5.nupkg.sha512"
+    },
+    "Xabe.FFmpeg/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-82rhJD6NRXJ71g+Spk3gLINUmoNK3AGmUDCIUSOqR7wW1Z1JHMpkg3RTxeg4Hw7cEaQvuBePCrz4CvPQeNzjLA==",
+      "path": "xabe.ffmpeg/6.0.2",
+      "hashPath": "xabe.ffmpeg.6.0.2.nupkg.sha512"
+    },
+    "Xabe.FFmpeg.Downloader/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UIvlf8airHkU4jxmF2jG0wsRXGnXrKn9C+iGC7Mm7PlLmYrXDcWEdCTO6h49A2zPKepSYkWwcSfyptHlfo+v8g==",
+      "path": "xabe.ffmpeg.downloader/6.0.2",
+      "hashPath": "xabe.ffmpeg.downloader.6.0.2.nupkg.sha512"
+    },
+    "OpenTK.Audio.OpenAL/4.9.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OpenTK.Mathematics/4.9.4.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

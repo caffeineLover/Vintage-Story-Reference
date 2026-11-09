@@ -1,0 +1,21 @@
+{
+	"dialog-title": "Calculateur de lingots de Critcher",
+	"hotkey-open-calculator": "Ouvrir le calculateur de lingots",
+	"target-ingots": "Lingots souhaités :",
+	"metal-percentages": "Pourcentages de métaux :",
+	"required-nuggets": "Pépites requises :",
+	"close": "Fermer",
+	"no-data": "Aucune donnée",
+	"alloy-tinbronze": "Bronze-étain",
+	"alloy-bismuthbronze": "Bronze-bismuth",
+	"alloy-blackbronze": "Bronze noir",
+	"alloy-brass": "Laiton",
+	"alloy-cupronickel": "Cupronickel",
+	"alloy-electrum": "Électrum",
+	"alloy-molybdochalkos": "Cuproplomb",
+	"alloy-leadsolder": "Soudure au plomb",
+	"alloy-silversolder": "Soudure à l'argent",
+	"crucible-slots-header": "Disposition du creuset :",
+	"crucible-impossible": "Impossible de fabriquer {0} lingots de {1} — capacité du creuset dépassée. Maximum réalisable : {2} lingots.",
+	"slot-empty": "(vide)"
+}

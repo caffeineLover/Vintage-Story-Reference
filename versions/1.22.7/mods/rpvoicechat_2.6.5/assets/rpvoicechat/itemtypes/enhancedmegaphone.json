@@ -1,0 +1,66 @@
+{
+  "code": "enhancedmegaphone",
+  "class": "voiceamplifier",
+  "enabled": true,
+  "maxStackSize": 1,
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "tools": [ "*" ],
+    "rpvoicechat": [ "*" ]
+  },
+  "attributes": {
+    "globalBroadcast": true,
+    "ignoreDistanceReduction": true,
+    "wallThicknessOverride": 0,
+    "handbook": {
+      "extraSections": [
+        {
+          "title": "rpvoicechat:Handbook.Usage.item-enhancedmegaphone.Title",
+          "text": "rpvoicechat:Handbook.Usage.item-enhancedmegaphone.Text"
+        }
+      ]
+    }
+  },
+  "drawtype": "json",
+  "renderpass": "transparent",
+  "shape": {
+    "base": "item/enhancedmegaphone"
+  },
+  "guiTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": -77,
+      "y": 1,
+      "z": 44
+    },
+    "origin": {
+      "x": 0,
+      "y": -0.1,
+      "z": 0.65
+    },
+    "scale": 1.51
+  },
+  "tpHandTransform": {
+    "translation": {
+      "x": -1,
+      "y": -0.2,
+      "z": -0.8
+    },
+    "rotation": {
+      "x": -20,
+      "y": -113,
+      "z": 23
+    },
+    "origin": {
+      "x": 0.5,
+      "y": -0.5,
+      "z": 0.5
+    },
+    "scale": 0.7
+  }
+}

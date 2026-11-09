@@ -1,0 +1,322 @@
+[
+	{
+		"ingredientPattern": "_H,SR",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"S": {
+				"type": "item",
+				"tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"R": {
+				"type": "block",
+				"code": "game:metal-scraps"
+			}
+		},
+		"width": 2,
+		"height": 2,
+		"shapeless": true,
+		"output": {
+			"type": "block",
+			"code": "game:metal-parts",
+			"quantity": 1
+		}
+	},
+	{
+		"ingredientPattern": "H_,SF",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-saw"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"S": {
+				"type": "block",
+				"code": "game:log-placed-*-ud",
+				"name": "wood"
+			},
+			"F": {
+				"type": "item",
+				"code": "game:fat-rendered"
+			}
+		},
+		"width": 2,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:woodenaxle-ud",
+			"quantity": 4
+		}
+	},
+	{
+		"ingredientPattern": "PXP,RSF",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"X": {
+				"type": "item",
+				"tags": ["tool-saw"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"S": {
+				"type": "block",
+				"code": "game:log-placed-*-ud",
+				"name": "wood"
+			},
+			"R": {
+				"type": "item",
+				"code": "game:resin"
+			},
+			"P": {
+				"type": "item",
+				"code": "game:stick"
+			},
+			"F": {
+				"type": "item",
+				"code": "game:fat-rendered"
+			}
+		},
+		"width": 3,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:angledgears-s",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "__S,_SL,SLL",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"S": {
+				"type": "item",
+				"code": "game:stick",
+				"quantity": 1
+			},
+			"L": {
+				"type": "block",
+				"code": "game:linen-*",
+				"quantity": 1
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"recipeGroup": 2,
+		"output": {
+			"type": "item",
+			"code": "game:sail",
+			"quantity": 4
+		}
+	},
+	{
+		"ingredientPattern": "C_C,_I_",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"I": {
+				"type": "item",
+				"code": "game:metalplate-copper"
+			},
+			"C": {
+				"type": "item",
+				"code": "game:ingot-copper"
+			}
+		},
+		"width": 3,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:hopper"
+		}
+	},
+	{
+		"ingredientPattern": "XS,CH",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"S": {
+				"type": "item",
+				"tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"X": {
+				"type": "item",
+				"code": "game:metalplate-*"
+			},
+			"C": {
+				"type": "item",
+				"code": "game:chutesection-*"
+			}
+		},
+		"width": 2,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:archimedesscrew-straight",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "XH,CS",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"S": {
+				"type": "item",
+				"tags": ["tool-shears"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"X": {
+				"type": "item",
+				"code": "game:metalplate-*"
+			},
+			"C": {
+				"type": "item",
+				"code": "game:chutesection-*"
+			}
+		},
+		"width": 2,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:archimedesscrew-ported-north",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "IH,_I",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"I": {
+				"type": "item",
+				"code": "game:chutesection-copper"
+			}
+		},
+		"width": 2,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:chute-elbow-down-east",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "IHI",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"I": {
+				"type": "item",
+				"code": "game:chutesection-copper"
+			}
+		},
+		"width": 3,
+		"height": 1,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:chute-straight-ns",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "_I_,IHI,_I_",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"I": {
+				"type": "item",
+				"code": "game:chutesection-copper"
+			}
+		},
+		"width": 3,
+		"height": 3,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:chute-cross-ground",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "_I_,IHI",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"I": {
+				"type": "item",
+				"code": "game:chutesection-copper"
+			}
+		},
+		"width": 3,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:chute-t-ns",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "HI_,II_",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"H": {
+				"type": "item",
+				"tags": ["tool-hammer"], "isTool": true, "toolDurabilityCost": 2
+			},
+			"I": {
+				"type": "item",
+				"code": "game:chutesection-copper"
+			},
+			"X": {
+				"type": "item",
+				"code": "game:chutesection-copper",
+				"quantity": 2
+			}
+		},
+		"width": 3,
+		"height": 2,
+		"recipeGroup": 2,
+		"output": {
+			"type": "block",
+			"code": "game:chute-3way-down-east",
+			"quantity": 2
+		}
+	},
+	{
+		"ingredientPattern": "S,T,M",
+		"requiresTrait": "crafty",
+		"ingredients": {
+			"S": { "type": "item", "code": "game:spear-generic-*", "allwedVariants": ["tinbronze", "bismuthbronze", "blackbronze"] },
+			"T": { "type": "item", "code": "game:gear-rusty", "quantity": 2 },
+			"M": { "type": "block", "code": "game:metal-parts", "quantity": 2 }
+		},
+		"width": 1,
+		"height": 3,
+		"output": { "type": "item", "code": "game:spear-generic-hacking", "quantity": 1  }
+	}
+]

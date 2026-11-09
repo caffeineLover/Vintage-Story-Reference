@@ -1,0 +1,36 @@
+{
+	"editor": {
+		"backDropShape": "block/cluttertest/locust-bronze-cargo1",
+		"collapsedPaths": "Root/body/drill,Root/body/leg 1 L,Root/body/leg 2 L,Root/body/leg 3 L,Root/body/leg 1 R,Root/body/leg 2 R,Root/body/leg 3 R",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 32,
+	"textureHeight": 32,
+	"textureSizes": {
+	},
+	"textures": {
+		"cupronickel4": "block/metal/sheet-plain/cupronickel4"
+	},
+	"elements": [
+		{
+			"name": "CUPROINGOT",
+			"stepParentName": "floor",
+			"from": [ 1.15, 0.0, 1.0 ],
+			"to": [ 8.15, 2.0, 4.0 ],
+			"uv": [ 0.0, 0.0 ],
+			"rotationOrigin": [ 1.15, 0.0, 1.0 ],
+			"rotationZ": 19.6,
+			"faces": {
+				"north": { "texture": "#cupronickel4", "uv": [ 0.0, 3.0, 7.0, 5.0 ] },
+				"east": { "texture": "#cupronickel4", "uv": [ 7.0, 3.0, 10.0, 5.0 ] },
+				"south": { "texture": "#cupronickel4", "uv": [ 10.0, 3.0, 17.0, 5.0 ] },
+				"west": { "texture": "#cupronickel4", "uv": [ 17.0, 3.0, 20.0, 5.0 ] },
+				"up": { "texture": "#cupronickel4", "uv": [ 0.0, 0.0, 7.0, 3.0 ] },
+				"down": { "texture": "#cupronickel4", "uv": [ 7.0, 0.0, 14.0, 3.0 ] }
+			}
+		}
+	],
+	"animations": [
+	]
+}

@@ -1,0 +1,52 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/trader-female",
+		"allAngles": false,
+		"entityTextureMode": true
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"material": [16,16]
+	},
+	"textures": {
+		"material": "entity/humanoid/traderaccessories/foot/wrap1"
+	},
+	"elements": [
+		{
+			"name": "shoeR",
+			"stepParentName": "LowerFootR",
+			"from": [ -0.1, -0.1, -0.1 ],
+			"to": [ 4.1, 5.9, 3.1 ],
+			"unwrapMode": 4,
+			"autoUnwrap": false,
+			"uv": [ 0.0, 8.5 ],
+			"rotationOrigin": [ 2.4, 0.0, 1.6 ],
+			"faces": {
+				"north": { "texture": "#material", "uv": [ 0.0, 10.0, 4.0, 16.0 ] },
+				"east": { "texture": "#material", "uv": [ 11.0, 10.0, 14.0, 16.0 ] },
+				"south": { "texture": "#material", "uv": [ 7.0, 10.0, 11.0, 16.0 ] },
+				"west": { "texture": "#material", "uv": [ 4.0, 10.0, 7.0, 16.0 ] },
+				"up": { "texture": "#material", "uv": [ 9.5, 0.0, 12.5, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+				"down": { "texture": "#material", "uv": [ 0.0, 0.0, 3.0, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+			}
+		},
+		{
+			"name": "shoeL",
+			"stepParentName": "LowerFootL",
+			"from": [ -0.1, -0.1, -0.1 ],
+			"to": [ 4.1, 5.9, 3.1 ],
+			"unwrapMode": 4,
+			"autoUnwrap": false,
+			"uv": [ 0.0, 4.0 ],
+			"rotationOrigin": [ 2.4, 0.0, 1.6 ],
+			"faces": {
+				"north": { "texture": "#material", "uv": [ 0.0, 4.0, 4.0, 10.0 ] },
+				"east": { "texture": "#material", "uv": [ 11.0, 4.0, 14.0, 10.0 ] },
+				"south": { "texture": "#material", "uv": [ 7.0, 4.0, 11.0, 10.0 ] },
+				"west": { "texture": "#material", "uv": [ 4.0, 4.0, 7.0, 10.0 ] },
+				"up": { "texture": "#material", "uv": [ 13.0, 0.0, 16.0, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] },
+				"down": { "texture": "#material", "uv": [ 3.5, 0.0, 6.5, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1] }
+			}
+		}
+	]}

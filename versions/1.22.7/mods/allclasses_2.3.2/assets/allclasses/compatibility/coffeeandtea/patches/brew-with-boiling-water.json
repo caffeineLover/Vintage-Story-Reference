@@ -1,0 +1,32 @@
+[
+  {
+    "op": "replace",
+    "path": "/ingredients/0/validStacks/0/code",
+    "value": "game:boilingwaterportion",
+    "file": "coffeeandtea:recipes/cooking/brew-coffee.json",
+    "dependsOn": [
+      {
+        "modid": "coffeeandtea"
+      },
+      {
+        "modid": "taborservers",
+        "invert": true
+      }
+    ]
+  },
+  {
+    "op": "replace",
+    "path": "/ingredients/0/validStacks/0/code",
+    "value": "game:boilingwaterportion",
+    "file": "coffeeandtea:recipes/cooking/brew-tea.json",
+    "dependsOn": [
+      {
+        "modid": "coffeeandtea"
+      },
+      {
+        "modid": "taborservers",
+        "invert": true
+      }
+    ]
+  }
+]

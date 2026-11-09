@@ -1,0 +1,106 @@
+[
+  {
+    "code": "boilingwaterportion",
+    "isFood": "true",
+    "perishableProps": {
+      "type": "None",
+      "freshHours": {
+        "avg": 48
+      },
+      "transitionHours": {
+        "avg": 48
+      },
+      "transitionRatio": 1,
+      "transitionedStack": {
+        "type": "item",
+        "code": "boilingwaterportion"
+      }
+    },
+    "shape": {
+      "base": "block/food/meal/liquid"
+    },
+    "ingredients": [
+      {
+        "code": "water",
+        "validStacks": [
+          {
+            "type": "item",
+            "code": "waterportion",
+            "shapeElement": "bowl/water"
+          }
+        ],
+        "minQuantity": 3,
+        "maxQuantity": 3,
+        "portionSizeLitres": 1
+      },
+      {
+        "code": "sand",
+        "validStacks": [
+          {
+            "type": "block",
+            "code": "sand-andesite"
+          },
+          {
+            "type": "block",
+            "code": "sand-chalk"
+          },
+          {
+            "type": "block",
+            "code": "sand-chert"
+          },
+          {
+            "type": "block",
+            "code": "sand-conglomerate"
+          },
+          {
+            "type": "block",
+            "code": "sand-limestone"
+          },
+          {
+            "type": "block",
+            "code": "sand-claystone"
+          },
+          {
+            "type": "block",
+            "code": "sand-granite"
+          },
+          {
+            "type": "block",
+            "code": "sand-sandstone"
+          },
+          {
+            "type": "block",
+            "code": "sand-shale"
+          },
+          {
+            "type": "block",
+            "code": "sand-basalt"
+          },
+          {
+            "type": "block",
+            "code": "sand-peridotite"
+          },
+          {
+            "type": "block",
+            "code": "sand-phyllite"
+          },
+          {
+            "type": "block",
+            "code": "sand-slate"
+          },
+          {
+            "type": "block",
+            "code": "sand-bauxite"
+          }
+        ],
+        "minQuantity": 1,
+        "maxQuantity": 1
+      }
+    ],
+    "cooksInto": {
+      "type": "item",
+      "code": "boilingwaterportion",
+      "quantity": 200
+    }
+  }
+]

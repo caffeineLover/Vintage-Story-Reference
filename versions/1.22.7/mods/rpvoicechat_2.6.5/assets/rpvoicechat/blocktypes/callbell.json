@@ -1,0 +1,98 @@
+{
+  "code": "callbell",
+  "class": "soundemittingblock",
+  "entityClass": "BESoundEmitting",
+  "entityBehaviors": [
+    { "name": "BESoundable" }
+  ],
+  "creativeinventory": {
+    "general": [ "*" ],
+    "rpvoicechat": [ "*" ]
+  },
+  "blockmaterial": "Metal",
+  "drawtype": "json",
+  "shape": {
+    "base": "block/callbell"
+  },
+  "attributes": {
+    "soundAudibleDistance": 16,
+    "soundVolume": 0.6,
+    "soundDuration": 1,
+    "blockInteractSounds": [
+      "block/callbell/callbell_1",
+      "block/callbell/callbell_2",
+      "block/callbell/callbell_3"
+    ],
+    "handbook": {
+      "extraSections": [
+        {
+          "title": "rpvoicechat:Handbook.Usage.block-callbell.Title",
+          "text": "rpvoicechat:Handbook.Usage.block-callbell.Text"
+        }
+      ]
+    }
+  },
+  "rainPermeable": true,
+  "sidesolid": {
+    "all": false
+  },
+  "sideopaque": {
+    "all": false
+  },
+  "lightAbsorption": 0,
+  "collisionbox": {
+    "x1": 0.42,
+    "y1": 0,
+    "z1": 0.42,
+    "x2": 0.58,
+    "y2": 0.1,
+    "z2": 0.58
+  },
+  "selectionbox": {
+    "x1": 0.42,
+    "y1": 0,
+    "z1": 0.42,
+    "x2": 0.58,
+    "y2": 0.1,
+    "z2": 0.58
+  },
+  "resistance": 1,
+  "sounds": {
+    "place": "game:block/anvil",
+    "walk": "game:walk/stone"
+  },
+  "guiTransform": {
+    "origin": {
+      "x": 0.5,
+      "y": 0.05,
+      "z": 0.5
+    },
+    "scale": 6
+  },
+  "fpHandTransform": {
+    "translation": {
+      "x": 0,
+      "y": 1.8,
+      "z": 1
+    },
+    "scale": 4.02
+  },
+  "groundTransform": {
+    "translation": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "rotation": {
+      "x": 0,
+      "y": -45,
+      "z": 0
+    },
+    "origin": {
+      "x": 0.5,
+      "y": 0,
+      "z": 0.5
+    },
+    "scale": 5.45
+  }
+}

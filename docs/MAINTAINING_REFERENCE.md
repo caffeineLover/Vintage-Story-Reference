@@ -29,7 +29,8 @@ Use `.codex/skills/do-new-version/SKILL.md` for the standard new-version workflo
    create `versions/<version>/mods.manifest.json` with tracked compatibility and provenance metadata.
 7. Copy or merge curated web source entries from the nearest previous version with `Web/sources.json`.
 8. Add `versions/<version>/version.catalog.json`.
-9. Add the version to `reference.catalog.json`.
+9. Add the version to `reference.catalog.json`. The newest retained Vintage Story release is always
+   `default_game_version`; promote it and update default-version documentation and examples in the same change.
 10. Build asset and code indexes for the new version after API, assets, and selected mods are in place.
 11. Build the web index for the new version after `versions/<version>/Web/sources.json` exists.
 12. Keep `versions/<version>/Index/.gitignore` tracked so the `Index` folder exists in Git, but leave generated index files uncommitted by default; they are local rebuildable artifacts and may exceed normal GitHub file limits.
@@ -65,7 +66,7 @@ Verify with targeted queries, for example:
 
 ```powershell
 python -B tools\reference-query.py --version <version> code --type ICoreAPI --limit 20
-python -B tools\reference-query.py --version <version> code --member RegisterBlockClass --limit 20
+python -B tools\reference-query.py --version <version> code --member StartServerSide --root VintagestoryAPI --limit 20
 python -B tools\reference-query.py --version <version> code --registration BlockDisplayCase --limit 20
 python -B tools\reference-query.py --version <version> class --asset-class BlockDisplayCase --limit 20
 ```
@@ -190,6 +191,7 @@ python -B tools\reference-query.py --version <version> --list-manifests
 python -B tools\reference-query.py --version <version> mod --limit 5
 python -B tools\reference-query.py --version <version> asset --search copper --limit 5
 python -B tools\reference-query.py --version <version> code --type ICoreAPI --limit 5
+python -B tools\reference-query.py --version <version> code --member StartServerSide --root VintagestoryAPI --limit 5
 python -B tools\reference-query.py --version <version> code --registration BlockDisplayCase --limit 5
 python -B tools\reference-query.py --version <version> class --asset-class BlockDisplayCase --limit 5
 python -B tools\reference-query.py --version <version> web --list-sources

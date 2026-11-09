@@ -1,0 +1,222 @@
+{
+	"editor": {
+		"backDropShape": "entity/humanoid/seraph",
+		"allAngles": true,
+		"entityTextureMode": true
+	},
+	"textureWidth": 8,
+	"textureHeight": 8,
+	"textureSizes": {
+		"aristocrat-belt": [8,8],
+		"saxon-noble": [8,8],
+		"germanic-sash": [8,8],
+		"germanic-belt": [8,8]
+	},
+	"textures": {
+		"germanic-belt": "entity/humanoid/seraphclothes/waist/ruralfarmer"
+	},
+	"elements": [
+		{
+			"name": "W",
+			"stepParentName": "LowerTorso",
+			"from": [ -0.2, 2.0, -0.3 ],
+			"to": [ 0.8, 4.0, 6.3 ],
+			"autoUnwrap": false,
+			"uv": [ 0.0, 2.0 ],
+			"rotationOrigin": [ 2.8, 3.0, 3.0 ],
+			"rotationZ": 3.0,
+			"faces": {
+				"north": { "texture": "#germanic-belt", "uv": [ 3.0, 6.0, 4.0, 8.0 ] },
+				"east": { "texture": "#germanic-belt", "uv": [ 1.0, 6.0, 7.5, 8.0 ] },
+				"south": { "texture": "#germanic-belt", "uv": [ 7.0, 6.0, 8.0, 8.0 ] },
+				"west": { "texture": "#germanic-belt", "uv": [ 0.0, 6.0, 6.5, 8.0 ] },
+				"up": { "texture": "#germanic-belt", "uv": [ 0.5, 5.5, 7.0, 6.5 ], "rotation": 90 },
+				"down": { "texture": "#germanic-belt", "uv": [ 0.0, 5.5, 6.5, 6.5 ], "rotation": 90 }
+			},
+			"children": [
+				{
+					"name": "E",
+					"from": [ 4.4, 0.0, 0.0 ],
+					"to": [ 5.4, 2.0, 6.6 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 4.4, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#germanic-belt", "uv": [ 6.5, 6.0, 7.5, 8.0 ] },
+						"east": { "texture": "#germanic-belt", "uv": [ 0.0, 6.0, 6.5, 8.0 ] },
+						"south": { "texture": "#germanic-belt", "uv": [ 0.0, 6.0, 1.0, 8.0 ] },
+						"west": { "texture": "#germanic-belt", "uv": [ 0.5, 6.0, 7.0, 8.0 ] },
+						"up": { "texture": "#germanic-belt", "uv": [ 1.5, 5.5, 8.0, 6.5 ], "rotation": 90 },
+						"down": { "texture": "#germanic-belt", "uv": [ 1.5, 5.5, 8.0, 6.5 ], "rotation": 90 }
+					}
+				},
+				{
+					"name": "N",
+					"from": [ 1.0, 0.0, 0.0 ],
+					"to": [ 4.4, 2.0, 1.0 ],
+					"autoUnwrap": false,
+					"uv": [ 2.0, 0.0 ],
+					"rotationOrigin": [ 1.0, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#germanic-belt", "uv": [ 2.5, 6.0, 5.5, 8.0 ] },
+						"south": { "texture": "#germanic-belt", "uv": [ 2.0, 6.0, 5.0, 8.0 ] },
+						"up": { "texture": "#germanic-belt", "uv": [ 2.5, 5.5, 5.5, 6.5 ] },
+						"down": { "texture": "#germanic-belt", "uv": [ 5.0, 5.5, 8.0, 6.5 ] }
+					}
+				},
+				{
+					"name": "S",
+					"from": [ 1.0, 0.0, 5.6 ],
+					"to": [ 4.4, 2.0, 6.6 ],
+					"autoUnwrap": false,
+					"uv": [ 2.0, 0.0 ],
+					"rotationOrigin": [ 1.0, 0.0, 6.6 ],
+					"faces": {
+						"north": { "texture": "#germanic-belt", "uv": [ 2.5, 6.0, 5.5, 8.0 ] },
+						"south": { "texture": "#germanic-belt", "uv": [ 2.0, 6.0, 5.0, 8.0 ] },
+						"up": { "texture": "#germanic-belt", "uv": [ 0.5, 5.5, 3.5, 6.5 ] },
+						"down": { "texture": "#germanic-belt", "uv": [ 5.0, 5.5, 8.0, 6.5 ] }
+					},
+					"children": [
+						{
+							"name": "string1",
+							"from": [ -0.95, -4.7, -3.4 ],
+							"to": [ -0.45, 0.3, -2.9 ],
+							"autoUnwrap": false,
+							"uv": [ 4.0, 0.5 ],
+							"rotationOrigin": [ -0.7, 0.3, -3.2 ],
+							"rotationX": 3.0,
+							"rotationZ": -11.0,
+							"faces": {
+								"north": { "texture": "#germanic-belt", "uv": [ 4.0, 0.5, 4.5, 5.5 ] },
+								"east": { "texture": "#germanic-belt", "uv": [ 6.0, 0.5, 6.5, 5.5 ] },
+								"south": { "texture": "#germanic-belt", "uv": [ 5.0, 0.0, 5.5, 5.0 ] },
+								"west": { "texture": "#germanic-belt", "uv": [ 4.0, 0.0, 4.5, 5.0 ] }
+							},
+							"children": [
+								{
+									"name": "tassel1",
+									"from": [ -0.05, -1.0, -0.05 ],
+									"to": [ 0.55, 0.0, 0.55 ],
+									"uv": [ 1.0, 0.0 ],
+									"rotationOrigin": [ 0.25, 0.0, 0.25 ],
+									"faces": {
+										"north": { "texture": "#germanic-belt", "uv": [ 1.0, 0.5, 1.5, 1.5 ] },
+										"east": { "texture": "#germanic-belt", "uv": [ 1.5, 0.5, 2.0, 1.5 ] },
+										"south": { "texture": "#germanic-belt", "uv": [ 2.0, 0.5, 2.5, 1.5 ] },
+										"west": { "texture": "#germanic-belt", "uv": [ 2.5, 0.5, 3.0, 1.5 ] },
+										"up": { "texture": "#germanic-belt", "uv": [ 1.0, 0.0, 1.5, 0.5 ] },
+										"down": { "texture": "#germanic-belt", "uv": [ 1.5, 0.0, 2.0, 0.5 ] }
+									}
+								}
+							]
+						},
+						{
+							"name": "string2",
+							"from": [ -0.95, -3.7, -1.4 ],
+							"to": [ -0.45, 0.3, -0.9 ],
+							"uv": [ 4.0, 0.5 ],
+							"rotationOrigin": [ -0.7, 0.3, -1.2 ],
+							"rotationX": -8.0,
+							"rotationZ": -11.0,
+							"faces": {
+								"north": { "texture": "#germanic-belt", "uv": [ 4.0, 0.5, 4.5, 4.5 ] },
+								"east": { "texture": "#germanic-belt", "uv": [ 4.5, 0.5, 5.0, 4.5 ] },
+								"south": { "texture": "#germanic-belt", "uv": [ 5.0, 0.5, 5.5, 4.5 ] },
+								"west": { "texture": "#germanic-belt", "uv": [ 5.5, 0.5, 6.0, 4.5 ] }
+							},
+							"children": [
+								{
+									"name": "tassel2",
+									"from": [ -0.05, -1.0, -0.05 ],
+									"to": [ 0.55, 0.0, 0.55 ],
+									"uv": [ 0.0, 1.5 ],
+									"rotationOrigin": [ 0.25, 0.0, 0.25 ],
+									"faces": {
+										"north": { "texture": "#germanic-belt", "uv": [ 0.0, 2.0, 0.5, 3.0 ] },
+										"east": { "texture": "#germanic-belt", "uv": [ 0.5, 2.0, 1.0, 3.0 ] },
+										"south": { "texture": "#germanic-belt", "uv": [ 1.0, 2.0, 1.5, 3.0 ] },
+										"west": { "texture": "#germanic-belt", "uv": [ 1.5, 2.0, 2.0, 3.0 ] },
+										"up": { "texture": "#germanic-belt", "uv": [ 0.0, 1.5, 0.5, 2.0 ] },
+										"down": { "texture": "#germanic-belt", "uv": [ 0.5, 1.5, 1.0, 2.0 ] }
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "buckle",
+					"from": [ -0.2, -0.6, 2.0 ],
+					"to": [ 0.1, 2.4, 5.0 ],
+					"autoUnwrap": false,
+					"uv": [ 0.0, 0.0 ],
+					"rotationOrigin": [ 0.1, 1.0, 3.5 ],
+					"faces": {
+						"east": { "texture": "#germanic-belt", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+						"west": { "texture": "#germanic-belt", "uv": [ 0.0, 0.0, 3.0, 3.0 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+					},
+					"children": [
+						{
+							"name": "buckle-d",
+							"from": [ -0.1, -0.2, 0.0 ],
+							"to": [ 0.3, 0.0, 3.2 ],
+							"autoUnwrap": false,
+							"uv": [ 0.0, 0.5 ],
+							"faces": {
+								"east": { "texture": "#germanic-belt", "uv": [ 0.5, 3.5, 3.5, 4.0 ] },
+								"south": { "texture": "#germanic-belt", "uv": [ 3.5, 3.5, 4.0, 4.0 ] },
+								"west": { "texture": "#germanic-belt", "uv": [ 1.0, 3.0, 4.0, 3.5 ] },
+								"up": { "texture": "#germanic-belt", "uv": [ 0.0, 3.0, 3.0, 3.5 ], "rotation": 90 },
+								"down": { "texture": "#germanic-belt", "uv": [ 0.5, 3.5, 3.5, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+							}
+						},
+						{
+							"name": "buckle-u",
+							"from": [ -0.1, 3.0, -0.2 ],
+							"to": [ 0.3, 3.2, 3.0 ],
+							"autoUnwrap": false,
+							"uv": [ 0.0, 0.5 ],
+							"rotationOrigin": [ 0.0, 3.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#germanic-belt", "uv": [ 0.0, 3.5, 0.5, 4.0 ] },
+								"east": { "texture": "#germanic-belt", "uv": [ 0.5, 3.5, 3.5, 4.0 ] },
+								"west": { "texture": "#germanic-belt", "uv": [ 1.0, 3.0, 4.0, 3.5 ] },
+								"up": { "texture": "#germanic-belt", "uv": [ 0.0, 3.0, 3.0, 3.5 ], "rotation": 90 },
+								"down": { "texture": "#germanic-belt", "uv": [ 0.5, 3.5, 3.5, 4.0 ], "rotation": 90, "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+							}
+						},
+						{
+							"name": "buckle-N",
+							"from": [ -0.1, -0.2, -0.2 ],
+							"to": [ 0.3, 3.0, 0.0 ],
+							"autoUnwrap": false,
+							"uv": [ 3.0, 0.5 ],
+							"faces": {
+								"north": { "texture": "#germanic-belt", "uv": [ 3.0, 1.0, 3.5, 4.0 ] },
+								"east": { "texture": "#germanic-belt", "uv": [ 3.5, 1.0, 4.0, 4.0 ] },
+								"south": { "texture": "#germanic-belt", "uv": [ 3.0, 0.5, 3.5, 3.5 ] },
+								"west": { "texture": "#germanic-belt", "uv": [ 3.5, 0.0, 4.0, 3.0 ] },
+								"down": { "texture": "#germanic-belt", "uv": [ 3.0, 0.5, 3.5, 1.0 ] }
+							}
+						},
+						{
+							"name": "buckle-S",
+							"from": [ -0.1, 0.0, 3.0 ],
+							"to": [ 0.3, 3.2, 3.2 ],
+							"autoUnwrap": false,
+							"uv": [ 3.0, 0.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 3.0 ],
+							"faces": {
+								"north": { "texture": "#germanic-belt", "uv": [ 3.0, 1.0, 3.5, 4.0 ] },
+								"east": { "texture": "#germanic-belt", "uv": [ 3.5, 1.0, 4.0, 4.0 ] },
+								"south": { "texture": "#germanic-belt", "uv": [ 3.0, 0.5, 3.5, 3.5 ] },
+								"west": { "texture": "#germanic-belt", "uv": [ 3.5, 0.0, 4.0, 3.0 ] },
+								"up": { "texture": "#germanic-belt", "uv": [ 2.0, 3.0, 2.5, 3.5 ], "windMode": [-1,-1,-1,-1], "windData": [1,1,1,1] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

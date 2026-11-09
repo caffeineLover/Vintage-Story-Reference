@@ -1,0 +1,13 @@
+{
+  "dialog-title": "Calcolatore di lingotti di Critcher",
+  "hotkey-open-calculator": "Apri calcolatore di lingotti",
+  "target-ingots": "Lingotti desiderati:",
+  "metal-percentages": "Percentuali dei metalli:",
+  "required-nuggets": "Pepite necessarie:",
+  "close": "Chiudi",
+  "no-data": "Nessun dato",
+  "no-alloys-available": "Nessuna ricetta di lega disponibile.",
+  "crucible-slots-header": "Disposizione del crogiolo:",
+  "crucible-impossible": "Impossibile creare {0} lingotti di {1} — capacità del crogiolo superata. Massimo realizzabile: {2} lingotti.",
+  "slot-empty": "(vuoto)"
+}

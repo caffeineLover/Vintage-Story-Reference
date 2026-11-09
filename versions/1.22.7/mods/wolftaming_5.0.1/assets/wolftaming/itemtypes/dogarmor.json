@@ -1,0 +1,108 @@
+{
+	"code": "dogarmor",
+	"attributes": {
+		"attachableToEntity": {
+			"categoryCode": "armor-dog",
+			"attachedShapeBySlotCode": {
+				"armor-wolf": {
+					"base": "wolftaming:armor/torso/dog-wolf/dogarmor-{type}"
+				},
+				"armor-hunting": {
+					"base": "wolftaming:armor/torso/dog-wolf/dogarmor-{type}"
+				},
+				"armor-shepherd": {
+					"base": "wolftaming:armor/torso/dog-wolf/dogarmor-{type}"
+				},
+				"armor-peach": {
+					"base": "wolftaming:armor/torso/dog-wolf/dogarmor-{type}"
+				}
+			}
+		},
+		"damageReductionByType": {
+			"*-tinbronze": 0.5,
+			"*-iron": 0.75,
+			"*": 0.4
+		}
+	},
+	"maxstacksize": 1,
+	"heldTpIdleAnimation": "holdbothhandslarge",
+	"variantgroups": [
+		{
+			"code": "type",
+			"states": [
+				"basic",
+				"copper",
+				"tinbronze",
+				"iron"
+			]
+		}
+	],
+	"shape": {
+		"base": "armor/torso/inventory/dogarmor-{type}"
+	},
+	"creativeinventory": {
+		"general": [
+			"*"
+		],
+		"items": [
+			"*"
+		],
+		"clothing": [
+			"*"
+		]
+	},
+	"guiTransform": {
+		"translation": {
+			"x": -11,
+			"y": 16,
+			"z": 0
+		},
+		"rotation": {
+			"x": 68,
+			"y": 0,
+			"z": 0
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 3.21
+	},
+	"tpHandTransform": {
+		"translation": {
+			"x": -0.1,
+			"y": -0.1,
+			"z": -0.1
+		},
+		"rotation": {
+			"x": -167,
+			"y": -10,
+			"z": -100
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 1
+	},
+	"groundTransform": {
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"origin": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": 5
+	}
+}

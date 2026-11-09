@@ -1,0 +1,233 @@
+using System;
+
+namespace UglyToad.PdfPig.Fonts.Encodings
+{
+	// Token: 0x0200007E RID: 126
+	public class SymbolEncoding : Encoding
+	{
+		// Token: 0x1700015E RID: 350
+		// (get) Token: 0x060002E1 RID: 737 RVA: 0x000119C3 File Offset: 0x0000FBC3
+		public static SymbolEncoding Instance { get; } = new SymbolEncoding();
+
+		// Token: 0x1700015F RID: 351
+		// (get) Token: 0x060002E2 RID: 738 RVA: 0x000119CA File Offset: 0x0000FBCA
+		public override string EncodingName
+		{
+			get
+			{
+				return "SymbolEncoding";
+			}
+		}
+
+		// Token: 0x060002E3 RID: 739 RVA: 0x000119D4 File Offset: 0x0000FBD4
+		private SymbolEncoding()
+		{
+			foreach (ValueTuple<int, string> valueTuple in SymbolEncoding.EncodingTable)
+			{
+				int item = valueTuple.Item1;
+				string item2 = valueTuple.Item2;
+				base.Add(item, item2);
+			}
+		}
+
+		// Token: 0x040002F7 RID: 759
+		private static readonly ValueTuple<int, string>[] EncodingTable = new ValueTuple<int, string>[]
+		{
+			new ValueTuple<int, string>(65, "Alpha"),
+			new ValueTuple<int, string>(66, "Beta"),
+			new ValueTuple<int, string>(67, "Chi"),
+			new ValueTuple<int, string>(68, "Delta"),
+			new ValueTuple<int, string>(69, "Epsilon"),
+			new ValueTuple<int, string>(72, "Eta"),
+			new ValueTuple<int, string>(160, "Euro"),
+			new ValueTuple<int, string>(71, "Gamma"),
+			new ValueTuple<int, string>(193, "Ifraktur"),
+			new ValueTuple<int, string>(73, "Iota"),
+			new ValueTuple<int, string>(75, "Kappa"),
+			new ValueTuple<int, string>(76, "Lambda"),
+			new ValueTuple<int, string>(77, "Mu"),
+			new ValueTuple<int, string>(78, "Nu"),
+			new ValueTuple<int, string>(87, "Omega"),
+			new ValueTuple<int, string>(79, "Omicron"),
+			new ValueTuple<int, string>(70, "Phi"),
+			new ValueTuple<int, string>(80, "Pi"),
+			new ValueTuple<int, string>(89, "Psi"),
+			new ValueTuple<int, string>(194, "Rfraktur"),
+			new ValueTuple<int, string>(82, "Rho"),
+			new ValueTuple<int, string>(83, "Sigma"),
+			new ValueTuple<int, string>(84, "Tau"),
+			new ValueTuple<int, string>(81, "Theta"),
+			new ValueTuple<int, string>(85, "Upsilon"),
+			new ValueTuple<int, string>(161, "Upsilon1"),
+			new ValueTuple<int, string>(88, "Xi"),
+			new ValueTuple<int, string>(90, "Zeta"),
+			new ValueTuple<int, string>(192, "aleph"),
+			new ValueTuple<int, string>(97, "alpha"),
+			new ValueTuple<int, string>(38, "ampersand"),
+			new ValueTuple<int, string>(208, "angle"),
+			new ValueTuple<int, string>(225, "angleleft"),
+			new ValueTuple<int, string>(241, "angleright"),
+			new ValueTuple<int, string>(187, "approxequal"),
+			new ValueTuple<int, string>(171, "arrowboth"),
+			new ValueTuple<int, string>(219, "arrowdblboth"),
+			new ValueTuple<int, string>(223, "arrowdbldown"),
+			new ValueTuple<int, string>(220, "arrowdblleft"),
+			new ValueTuple<int, string>(222, "arrowdblright"),
+			new ValueTuple<int, string>(221, "arrowdblup"),
+			new ValueTuple<int, string>(175, "arrowdown"),
+			new ValueTuple<int, string>(190, "arrowhorizex"),
+			new ValueTuple<int, string>(172, "arrowleft"),
+			new ValueTuple<int, string>(174, "arrowright"),
+			new ValueTuple<int, string>(173, "arrowup"),
+			new ValueTuple<int, string>(189, "arrowvertex"),
+			new ValueTuple<int, string>(42, "asteriskmath"),
+			new ValueTuple<int, string>(124, "bar"),
+			new ValueTuple<int, string>(98, "beta"),
+			new ValueTuple<int, string>(123, "braceleft"),
+			new ValueTuple<int, string>(125, "braceright"),
+			new ValueTuple<int, string>(236, "bracelefttp"),
+			new ValueTuple<int, string>(237, "braceleftmid"),
+			new ValueTuple<int, string>(238, "braceleftbt"),
+			new ValueTuple<int, string>(252, "bracerighttp"),
+			new ValueTuple<int, string>(253, "bracerightmid"),
+			new ValueTuple<int, string>(254, "bracerightbt"),
+			new ValueTuple<int, string>(239, "braceex"),
+			new ValueTuple<int, string>(91, "bracketleft"),
+			new ValueTuple<int, string>(93, "bracketright"),
+			new ValueTuple<int, string>(233, "bracketlefttp"),
+			new ValueTuple<int, string>(234, "bracketleftex"),
+			new ValueTuple<int, string>(235, "bracketleftbt"),
+			new ValueTuple<int, string>(249, "bracketrighttp"),
+			new ValueTuple<int, string>(250, "bracketrightex"),
+			new ValueTuple<int, string>(251, "bracketrightbt"),
+			new ValueTuple<int, string>(183, "bullet"),
+			new ValueTuple<int, string>(191, "carriagereturn"),
+			new ValueTuple<int, string>(99, "chi"),
+			new ValueTuple<int, string>(196, "circlemultiply"),
+			new ValueTuple<int, string>(197, "circleplus"),
+			new ValueTuple<int, string>(167, "club"),
+			new ValueTuple<int, string>(58, "colon"),
+			new ValueTuple<int, string>(44, "comma"),
+			new ValueTuple<int, string>(64, "congruent"),
+			new ValueTuple<int, string>(227, "copyrightsans"),
+			new ValueTuple<int, string>(211, "copyrightserif"),
+			new ValueTuple<int, string>(176, "degree"),
+			new ValueTuple<int, string>(100, "delta"),
+			new ValueTuple<int, string>(168, "diamond"),
+			new ValueTuple<int, string>(184, "divide"),
+			new ValueTuple<int, string>(215, "dotmath"),
+			new ValueTuple<int, string>(56, "eight"),
+			new ValueTuple<int, string>(206, "element"),
+			new ValueTuple<int, string>(188, "ellipsis"),
+			new ValueTuple<int, string>(198, "emptyset"),
+			new ValueTuple<int, string>(101, "epsilon"),
+			new ValueTuple<int, string>(61, "equal"),
+			new ValueTuple<int, string>(186, "equivalence"),
+			new ValueTuple<int, string>(104, "eta"),
+			new ValueTuple<int, string>(33, "exclam"),
+			new ValueTuple<int, string>(36, "existential"),
+			new ValueTuple<int, string>(53, "five"),
+			new ValueTuple<int, string>(166, "florin"),
+			new ValueTuple<int, string>(52, "four"),
+			new ValueTuple<int, string>(164, "fraction"),
+			new ValueTuple<int, string>(103, "gamma"),
+			new ValueTuple<int, string>(209, "gradient"),
+			new ValueTuple<int, string>(62, "greater"),
+			new ValueTuple<int, string>(179, "greaterequal"),
+			new ValueTuple<int, string>(169, "heart"),
+			new ValueTuple<int, string>(165, "infinity"),
+			new ValueTuple<int, string>(242, "integral"),
+			new ValueTuple<int, string>(243, "integraltp"),
+			new ValueTuple<int, string>(244, "integralex"),
+			new ValueTuple<int, string>(245, "integralbt"),
+			new ValueTuple<int, string>(199, "intersection"),
+			new ValueTuple<int, string>(105, "iota"),
+			new ValueTuple<int, string>(107, "kappa"),
+			new ValueTuple<int, string>(108, "lambda"),
+			new ValueTuple<int, string>(60, "less"),
+			new ValueTuple<int, string>(163, "lessequal"),
+			new ValueTuple<int, string>(217, "logicaland"),
+			new ValueTuple<int, string>(216, "logicalnot"),
+			new ValueTuple<int, string>(218, "logicalor"),
+			new ValueTuple<int, string>(224, "lozenge"),
+			new ValueTuple<int, string>(45, "minus"),
+			new ValueTuple<int, string>(162, "minute"),
+			new ValueTuple<int, string>(109, "mu"),
+			new ValueTuple<int, string>(180, "multiply"),
+			new ValueTuple<int, string>(57, "nine"),
+			new ValueTuple<int, string>(207, "notelement"),
+			new ValueTuple<int, string>(185, "notequal"),
+			new ValueTuple<int, string>(203, "notsubset"),
+			new ValueTuple<int, string>(110, "nu"),
+			new ValueTuple<int, string>(35, "numbersign"),
+			new ValueTuple<int, string>(119, "omega"),
+			new ValueTuple<int, string>(118, "omega1"),
+			new ValueTuple<int, string>(111, "omicron"),
+			new ValueTuple<int, string>(49, "one"),
+			new ValueTuple<int, string>(40, "parenleft"),
+			new ValueTuple<int, string>(41, "parenright"),
+			new ValueTuple<int, string>(230, "parenlefttp"),
+			new ValueTuple<int, string>(231, "parenleftex"),
+			new ValueTuple<int, string>(232, "parenleftbt"),
+			new ValueTuple<int, string>(246, "parenrighttp"),
+			new ValueTuple<int, string>(247, "parenrightex"),
+			new ValueTuple<int, string>(248, "parenrightbt"),
+			new ValueTuple<int, string>(182, "partialdiff"),
+			new ValueTuple<int, string>(37, "percent"),
+			new ValueTuple<int, string>(46, "period"),
+			new ValueTuple<int, string>(94, "perpendicular"),
+			new ValueTuple<int, string>(102, "phi"),
+			new ValueTuple<int, string>(106, "phi1"),
+			new ValueTuple<int, string>(112, "pi"),
+			new ValueTuple<int, string>(43, "plus"),
+			new ValueTuple<int, string>(177, "plusminus"),
+			new ValueTuple<int, string>(213, "product"),
+			new ValueTuple<int, string>(204, "propersubset"),
+			new ValueTuple<int, string>(201, "propersuperset"),
+			new ValueTuple<int, string>(181, "proportional"),
+			new ValueTuple<int, string>(121, "psi"),
+			new ValueTuple<int, string>(63, "question"),
+			new ValueTuple<int, string>(214, "radical"),
+			new ValueTuple<int, string>(96, "radicalex"),
+			new ValueTuple<int, string>(205, "reflexsubset"),
+			new ValueTuple<int, string>(202, "reflexsuperset"),
+			new ValueTuple<int, string>(226, "registersans"),
+			new ValueTuple<int, string>(210, "registerserif"),
+			new ValueTuple<int, string>(114, "rho"),
+			new ValueTuple<int, string>(178, "second"),
+			new ValueTuple<int, string>(59, "semicolon"),
+			new ValueTuple<int, string>(55, "seven"),
+			new ValueTuple<int, string>(115, "sigma"),
+			new ValueTuple<int, string>(86, "sigma1"),
+			new ValueTuple<int, string>(126, "similar"),
+			new ValueTuple<int, string>(54, "six"),
+			new ValueTuple<int, string>(47, "slash"),
+			new ValueTuple<int, string>(32, "space"),
+			new ValueTuple<int, string>(170, "spade"),
+			new ValueTuple<int, string>(39, "suchthat"),
+			new ValueTuple<int, string>(229, "summation"),
+			new ValueTuple<int, string>(116, "tau"),
+			new ValueTuple<int, string>(92, "therefore"),
+			new ValueTuple<int, string>(113, "theta"),
+			new ValueTuple<int, string>(74, "theta1"),
+			new ValueTuple<int, string>(51, "three"),
+			new ValueTuple<int, string>(228, "trademarksans"),
+			new ValueTuple<int, string>(212, "trademarkserif"),
+			new ValueTuple<int, string>(50, "two"),
+			new ValueTuple<int, string>(95, "underscore"),
+			new ValueTuple<int, string>(200, "union"),
+			new ValueTuple<int, string>(34, "universal"),
+			new ValueTuple<int, string>(117, "upsilon"),
+			new ValueTuple<int, string>(195, "weierstrass"),
+			new ValueTuple<int, string>(120, "xi"),
+			new ValueTuple<int, string>(48, "zero"),
+			new ValueTuple<int, string>(122, "zeta")
+		};
+
+		// Token: 0x040002F8 RID: 760
+		private static readonly ValueTuple<int, int>[] UnicodeEquivilants = new ValueTuple<int, int>[]
+		{
+			new ValueTuple<int, int>(913, 65)
+		};
+	}
+}

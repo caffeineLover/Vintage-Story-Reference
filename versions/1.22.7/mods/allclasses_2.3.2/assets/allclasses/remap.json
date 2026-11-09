@@ -1,0 +1,64 @@
+{
+  "remaps": [
+    {
+      "type": "block",
+      "from": "allclasses:coppercookingpot-burned",
+      "to": "allclasses:metalpot-copper-fired"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:coppercookingpot-cooked",
+      "to": "allclasses:metalpot-copper-cooked"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:bronzecookingpot-burned",
+      "to": "allclasses:metalpot-bismuthbronze-fired"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:bronzecookingpot-cooked",
+      "to": "allclasses:metalpot-bismuthbronze-cooked"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:ironcookingpot-burned",
+      "to": "allclasses:metalpot-iron-fired"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:ironcookingpot-cooked",
+      "to": "allclasses:metalpot-iron-cooked"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:meteoricironcookingpot-burned",
+      "to": "allclasses:metalpot-meteoriciron-fired"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:meteoricironcookingpot-cooked",
+      "to": "allclasses:metalpot-meteoriciron-cooked"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:steelcookingpot-burned",
+      "to": "allclasses:metalpot-steel-fired"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:steelcookingpot-cooked",
+      "to": "allclasses:metalpot-steel-cooked"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:goldplatedcookingpot-burned",
+      "to": "allclasses:metalpot-gold-fired"
+    },
+    {
+      "type": "block",
+      "from": "allclasses:goldplatedcookingpot-cooked",
+      "to": "allclasses:metalpot-gold-cooked"
+    }
+  ]
+}
